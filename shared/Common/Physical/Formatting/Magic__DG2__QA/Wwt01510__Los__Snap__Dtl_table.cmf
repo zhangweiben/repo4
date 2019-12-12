@@ -1,0 +1,383 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:fdf39765-978a-4578-b4f1-8ecff2eb0c53 -->
+<metadata name="Wwt01510_Los_Snap_Dtl" path="/shared/Common/Physical/Formatting/Magic_DG2_QA/Wwt01510_Los_Snap_Dtl" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation>null</annotation>
+  <columns>
+    <column name="los_seq_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="class_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="los_lvl_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cycle_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_awd_rnk_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_awd_rnk_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_diamd_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_diamd_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_emd_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_emd_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_platm_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_platm_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_gold_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_gold_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_diamd_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_diamd_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_emd_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_emd_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_platm_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_platm_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_gold_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_gold_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_diamd_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_diamd_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_emd_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_emd_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_platm_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_platm_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_gold_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_gold_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSGLS01/WWT01510_LOS_SNAP_DTL" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="LOS_SEQ_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="CLASS_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="LOS_LVL_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CYCLE_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="CURR_AWD_RNK_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_AWD_RNK_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_DIAMD_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="CURR_GRP_DIAMD_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="CURR_GRP_EMD_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="CURR_GRP_EMD_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="CURR_GRP_PLATM_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="CURR_GRP_PLATM_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="CURR_GRP_GOLD_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="CURR_GRP_GOLD_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="CURR_UPLN_DIAMD_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="CURR_UPLN_DIAMD_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="CURR_UPLN_EMD_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="CURR_UPLN_EMD_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="CURR_UPLN_PLATM_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="CURR_UPLN_PLATM_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="CURR_UPLN_GOLD_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="CURR_UPLN_GOLD_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="PIN_GRP_DIAMD_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="PIN_GRP_DIAMD_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="PIN_GRP_EMD_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="PIN_GRP_EMD_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="PIN_GRP_PLATM_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="PIN_GRP_PLATM_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="PIN_GRP_GOLD_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="PIN_GRP_GOLD_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	WWT01510_LOS_SNAP_DTL.LOS_SEQ_NO los_seq_no,
+	WWT01510_LOS_SNAP_DTL.AFF_ID aff_id,
+	WWT01510_LOS_SNAP_DTL.IBO_NO ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.CLASS_CD AS CHAR(1)) AS class_cd,
+	CAST(WWT01510_LOS_SNAP_DTL.LOS_LVL_NO AS DOUBLE) AS los_lvl_no,
+	CAST(WWT01510_LOS_SNAP_DTL.CYCLE_FLG AS TINYINT) AS cycle_flg,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_AWD_RNK_NO AS DOUBLE) AS curr_awd_rnk_no,
+	CAST(WWT01510_LOS_SNAP_DTL.PIN_AWD_RNK_NO AS DOUBLE) AS pin_awd_rnk_no,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_GRP_DIAMD_AFF_ID AS SMALLINT) AS curr_grp_diamd_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_GRP_DIAMD_IBO_NO AS BIGINT) AS curr_grp_diamd_ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_GRP_EMD_AFF_ID AS SMALLINT) AS curr_grp_emd_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_GRP_EMD_IBO_NO AS BIGINT) AS curr_grp_emd_ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_GRP_PLATM_AFF_ID AS SMALLINT) AS curr_grp_platm_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_GRP_PLATM_IBO_NO AS BIGINT) AS curr_grp_platm_ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_GRP_GOLD_AFF_ID AS SMALLINT) AS curr_grp_gold_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_GRP_GOLD_IBO_NO AS BIGINT) AS curr_grp_gold_ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_UPLN_DIAMD_AFF_ID AS SMALLINT) AS curr_upln_diamd_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_UPLN_DIAMD_IBO_NO AS BIGINT) AS curr_upln_diamd_ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_UPLN_EMD_AFF_ID AS SMALLINT) AS curr_upln_emd_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_UPLN_EMD_IBO_NO AS BIGINT) AS curr_upln_emd_ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_UPLN_PLATM_AFF_ID AS SMALLINT) AS curr_upln_platm_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_UPLN_PLATM_IBO_NO AS BIGINT) AS curr_upln_platm_ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_UPLN_GOLD_AFF_ID AS SMALLINT) AS curr_upln_gold_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.CURR_UPLN_GOLD_IBO_NO AS BIGINT) AS curr_upln_gold_ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.PIN_GRP_DIAMD_AFF_ID AS SMALLINT) AS pin_grp_diamd_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.PIN_GRP_DIAMD_IBO_NO AS BIGINT) AS pin_grp_diamd_ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.PIN_GRP_EMD_AFF_ID AS SMALLINT) AS pin_grp_emd_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.PIN_GRP_EMD_IBO_NO AS BIGINT) AS pin_grp_emd_ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.PIN_GRP_PLATM_AFF_ID AS SMALLINT) AS pin_grp_platm_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.PIN_GRP_PLATM_IBO_NO AS BIGINT) AS pin_grp_platm_ibo_no,
+	CAST(WWT01510_LOS_SNAP_DTL.PIN_GRP_GOLD_AFF_ID AS SMALLINT) AS pin_grp_gold_aff_id,
+	CAST(WWT01510_LOS_SNAP_DTL.PIN_GRP_GOLD_IBO_NO AS BIGINT) AS pin_grp_gold_ibo_no 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSGLS01/WWT01510_LOS_SNAP_DTL WWT01510_LOS_SNAP_DTL</attribute>
+  <attribute name="creationDate" type="LONG">1568033810390</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30109</attribute>
+  <attribute name="creatorUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1568034361946</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30109</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1568033810390</attribute>
+</metadata>

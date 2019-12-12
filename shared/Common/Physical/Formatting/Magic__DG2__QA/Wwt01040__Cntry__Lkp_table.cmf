@@ -1,0 +1,119 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:fdf39765-978a-4578-b4f1-8ecff2eb0c53 -->
+<metadata name="Wwt01040_Cntry_Lkp" path="/shared/Common/Physical/Formatting/Magic_DG2_QA/Wwt01040_Cntry_Lkp" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation>null</annotation>
+  <columns>
+    <column name="amway_cntry_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="amway_cntry_nm" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="begin_oper_dt" nullable="true">
+      <datatype type="STRING" minLength="6" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="iso_lang_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="phn_cntry_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="dms_cntry_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="disable_bal_sync_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSGLS01/WWT01040_CNTRY_LKP" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="AMWAY_CNTRY_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="AMWAY_CNTRY_NM">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="BEGIN_OPER_DT">
+        <datatype type="STRING" minLength="6" maxLength="6"/>
+      </element>
+      <element name="AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="ISO_LANG_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="PHN_CNTRY_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="DMS_CNTRY_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="DISABLE_BAL_SYNC_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	WWT01040_CNTRY_LKP.AMWAY_CNTRY_CD amway_cntry_cd,
+	CAST(WWT01040_CNTRY_LKP.AMWAY_CNTRY_NM AS VARCHAR(30)) AS amway_cntry_nm,
+	CAST(WWT01040_CNTRY_LKP.BEGIN_OPER_DT AS CHAR(6)) AS begin_oper_dt,
+	CAST(WWT01040_CNTRY_LKP.AFF_ID AS SMALLINT) AS aff_id,
+	CAST(WWT01040_CNTRY_LKP.ISO_LANG_CD AS CHAR(2)) AS iso_lang_cd,
+	CAST(WWT01040_CNTRY_LKP.PHN_CNTRY_CD AS CHAR(3)) AS phn_cntry_cd,
+	CAST(WWT01040_CNTRY_LKP.DMS_CNTRY_FLG AS TINYINT) AS dms_cntry_flg,
+	CAST(WWT01040_CNTRY_LKP.DISABLE_BAL_SYNC_FLG AS TINYINT) AS disable_bal_sync_flg 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSGLS01/WWT01040_CNTRY_LKP WWT01040_CNTRY_LKP</attribute>
+  <attribute name="creationDate" type="LONG">1569868480798</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30109</attribute>
+  <attribute name="creatorUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569868514111</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30109</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1569868480798</attribute>
+</metadata>

@@ -1,0 +1,427 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:fdf39765-978a-4578-b4f1-8ecff2eb0c53 -->
+<metadata name="Wwt03900_Trx_Mst" path="/shared/Common/Physical/Formatting/Magic_DG2_QA/Wwt03900_Trx_Mst" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation>null</annotation>
+  <columns>
+    <column name="bns_trx_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aff_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bns_per_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_per_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_bns_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bns_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="orgnl_bns_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bus_entty_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sourc_ref_txt" nullable="true">
+      <datatype type="STRING" maxLength="40"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="trx_batch_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="trx_sourc_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="trx_type_cd" nullable="true">
+      <datatype type="STRING" minLength="4" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="whse_cd" nullable="true">
+      <datatype type="STRING" minLength="10" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="proc_stat_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="rturn_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="trx_creat_dtm" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="orgnl_ref_txt" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_creat_dtm" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_creat_user_nm" nullable="true">
+      <datatype type="STRING" minLength="10" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_chng_dtm" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_chng_user_nm" nullable="true">
+      <datatype type="STRING" minLength="10" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_chng_modul_nm" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="iso_cntry_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="reas_cd" nullable="true">
+      <datatype type="STRING" minLength="5" maxLength="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bns_trx_id_ref" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="dlete_rec_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="trx_audit_cd" nullable="true">
+      <datatype type="STRING" minLength="6" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="defer_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="hist_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="priority" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="close_yr_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_ord_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_bus_natr_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bus_act_summy_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="orgnl_ord_no" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSMGC01/WWT03900_TRX_MST" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="BNS_TRX_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="AFF_NO">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="BNS_PER_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ORD_PER_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ORD_BNS_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="BNS_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ORGNL_BNS_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ORD_DT">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="BUS_ENTTY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="SOURC_REF_TXT">
+        <datatype type="STRING" maxLength="40"/>
+      </element>
+      <element name="TRX_BATCH_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="TRX_SOURC_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="TRX_TYPE_CD">
+        <datatype type="STRING" minLength="4" maxLength="4"/>
+      </element>
+      <element name="WHSE_CD">
+        <datatype type="STRING" minLength="10" maxLength="10"/>
+      </element>
+      <element name="PROC_STAT_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="RTURN_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="TRX_CREAT_DTM">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="ORGNL_REF_TXT">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="AUDIT_CREAT_DTM">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="AUDIT_CREAT_USER_NM">
+        <datatype type="STRING" minLength="10" maxLength="10"/>
+      </element>
+      <element name="AUDIT_CHNG_DTM">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="AUDIT_CHNG_USER_NM">
+        <datatype type="STRING" minLength="10" maxLength="10"/>
+      </element>
+      <element name="AUDIT_CHNG_MODUL_NM">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="ISO_CNTRY_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="REAS_CD">
+        <datatype type="STRING" minLength="5" maxLength="5"/>
+      </element>
+      <element name="BNS_TRX_ID_REF">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="DLETE_REC_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="TRX_AUDIT_CD">
+        <datatype type="STRING" minLength="6" maxLength="6"/>
+      </element>
+      <element name="DEFER_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="HIST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PRIORITY">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="CLOSE_YR_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="LCL_ORD_DT">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="ORD_BUS_NATR_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="BUS_ACT_SUMMY_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="ORGNL_ORD_NO">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	WWT03900_TRX_MST.BNS_TRX_ID bns_trx_id,
+	WWT03900_TRX_MST.AFF_NO aff_no,
+	WWT03900_TRX_MST.BNS_PER_NO bns_per_no,
+	CAST(WWT03900_TRX_MST.ORD_PER_NO AS DOUBLE) AS ord_per_no,
+	CAST(WWT03900_TRX_MST.ORD_BNS_CUST_ID AS DOUBLE) AS ord_bns_cust_id,
+	WWT03900_TRX_MST.BNS_CUST_ID bns_cust_id,
+	CAST(WWT03900_TRX_MST.ORGNL_BNS_CUST_ID AS DOUBLE) AS orgnl_bns_cust_id,
+	CAST(WWT03900_TRX_MST.ORD_DT AS TIMESTAMP) AS ord_dt,
+	WWT03900_TRX_MST.BUS_ENTTY_NO bus_entty_no,
+	WWT03900_TRX_MST.SOURC_REF_TXT sourc_ref_txt,
+	WWT03900_TRX_MST.TRX_BATCH_ID trx_batch_id,
+	WWT03900_TRX_MST.TRX_SOURC_CD trx_sourc_cd,
+	CAST(WWT03900_TRX_MST.TRX_TYPE_CD AS CHAR(4)) AS trx_type_cd,
+	CAST(WWT03900_TRX_MST.WHSE_CD AS CHAR(10)) AS whse_cd,
+	WWT03900_TRX_MST.PROC_STAT_CD proc_stat_cd,
+	WWT03900_TRX_MST.RTURN_CD rturn_cd,
+	CAST(WWT03900_TRX_MST.TRX_CREAT_DTM AS TIMESTAMP) AS trx_creat_dtm,
+	WWT03900_TRX_MST.ORGNL_REF_TXT orgnl_ref_txt,
+	CAST(WWT03900_TRX_MST.AUDIT_CREAT_DTM AS TIMESTAMP) AS audit_creat_dtm,
+	CAST(WWT03900_TRX_MST.AUDIT_CREAT_USER_NM AS CHAR(10)) AS audit_creat_user_nm,
+	CAST(WWT03900_TRX_MST.AUDIT_CHNG_DTM AS TIMESTAMP) AS audit_chng_dtm,
+	CAST(WWT03900_TRX_MST.AUDIT_CHNG_USER_NM AS CHAR(10)) AS audit_chng_user_nm,
+	CAST(WWT03900_TRX_MST.AUDIT_CHNG_MODUL_NM AS VARCHAR(30)) AS audit_chng_modul_nm,
+	CAST(WWT03900_TRX_MST.ISO_CNTRY_CD AS CHAR(2)) AS iso_cntry_cd,
+	CAST(WWT03900_TRX_MST.REAS_CD AS CHAR(5)) AS reas_cd,
+	CAST(WWT03900_TRX_MST.BNS_TRX_ID_REF AS DOUBLE) AS bns_trx_id_ref,
+	CAST(WWT03900_TRX_MST.DLETE_REC_FLG AS TINYINT) AS dlete_rec_flg,
+	WWT03900_TRX_MST.TRX_AUDIT_CD trx_audit_cd,
+	CAST(WWT03900_TRX_MST.DEFER_CD AS CHAR(2)) AS defer_cd,
+	WWT03900_TRX_MST.HIST_ID hist_id,
+	CAST(WWT03900_TRX_MST.PRIORITY AS TINYINT) AS priority,
+	CAST(WWT03900_TRX_MST.CLOSE_YR_NO AS DOUBLE) AS close_yr_no,
+	CAST(WWT03900_TRX_MST.LCL_ORD_DT AS TIMESTAMP) AS lcl_ord_dt,
+	CAST(WWT03900_TRX_MST.ORD_BUS_NATR_CD AS CHAR(2)) AS ord_bus_natr_cd,
+	CAST(WWT03900_TRX_MST.BUS_ACT_SUMMY_FLG AS TINYINT) AS bus_act_summy_flg,
+	CAST(WWT03900_TRX_MST.ORGNL_ORD_NO AS VARCHAR(20)) AS orgnl_ord_no 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSMGC01/WWT03900_TRX_MST WWT03900_TRX_MST</attribute>
+  <attribute name="creationDate" type="LONG">1568033923681</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30109</attribute>
+  <attribute name="creatorUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1568034361946</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30109</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1568033923681</attribute>
+</metadata>

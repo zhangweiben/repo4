@@ -1,0 +1,17 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:fdf39765-978a-4578-b4f1-8ecff2eb0c53 -->
+<metadata name="Magic_DG2_QA" path="/shared/Common/Physical/Formatting/Magic_DG2_QA" type="CONTAINER" subtype="FOLDER" changeToken="0">
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <attribute name="creationDate" type="LONG">1567794475079</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30109</attribute>
+  <attribute name="creatorUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1567794475079</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30109</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1567794475079</attribute>
+</metadata>

@@ -1,0 +1,427 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:fdf39765-978a-4578-b4f1-8ecff2eb0c53 -->
+<metadata name="Wwt03170_Bus_Entty_Dtl" path="/shared/Common/Physical/Formatting/Magic_DG2_QA/Wwt03170_Bus_Entty_Dtl" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation>null</annotation>
+  <columns>
+    <column name="bus_entty_no" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="0"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="eff_bns_per_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bus_allow_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bv_pv_ratio_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="min_stmt_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="redo_class_ar_limt_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="calc_top_up_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="excld_pv_from_awd_vol_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="excld_pv_from_ruby_vol_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="escrw_pay_limt_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="track_first_tm_pct_awd_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="track_mbr_slvr_awd_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="twnty_one_pct_above_fostr_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="incld_net_neg_in_grp_vol_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="iso_curcy_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="co_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="iso_cntry_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aff_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="auto_class_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pay_cust_class_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mbr_clt_vol_allow_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sale_plan_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="dtl_vat_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_creat_dtm" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_creat_user_nm" nullable="true">
+      <datatype type="STRING" minLength="10" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_chng_dtm" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_chng_user_nm" nullable="true">
+      <datatype type="STRING" minLength="10" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_chng_modul_nm" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pay_prec_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pay_rnd_mthod_cd" nullable="true">
+      <datatype type="STRING" minLength="5" maxLength="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ann_inv_curcy_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="top_up_tot_qty" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="top_up_tot_vol_limt_qty" nullable="true">
+      <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="retro_top_up_tot_qty" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="retro_top_up_tot_vol_limt_qty" nullable="true">
+      <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="retro_top_up_range" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSMGC01/WWT03170_BUS_ENTTY_DTL" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="BUS_ENTTY_NO">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="0"/>
+      </element>
+      <element name="EFF_BNS_PER_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="BUS_ALLOW_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="BV_PV_RATIO_AMT">
+        <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      </element>
+      <element name="MIN_STMT_AMT">
+        <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      </element>
+      <element name="REDO_CLASS_AR_LIMT_AMT">
+        <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      </element>
+      <element name="CALC_TOP_UP_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="EXCLD_PV_FROM_AWD_VOL_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="EXCLD_PV_FROM_RUBY_VOL_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="ESCRW_PAY_LIMT_AMT">
+        <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      </element>
+      <element name="TRACK_FIRST_TM_PCT_AWD_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="TRACK_MBR_SLVR_AWD_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="TWNTY_ONE_PCT_ABOVE_FOSTR_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="INCLD_NET_NEG_IN_GRP_VOL_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="ISO_CURCY_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="CO_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="ISO_CNTRY_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="AFF_NO">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="AUTO_CLASS_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="PAY_CUST_CLASS_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="MBR_CLT_VOL_ALLOW_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="SALE_PLAN_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="DTL_VAT_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="AUDIT_CREAT_DTM">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="AUDIT_CREAT_USER_NM">
+        <datatype type="STRING" minLength="10" maxLength="10"/>
+      </element>
+      <element name="AUDIT_CHNG_DTM">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="AUDIT_CHNG_USER_NM">
+        <datatype type="STRING" minLength="10" maxLength="10"/>
+      </element>
+      <element name="AUDIT_CHNG_MODUL_NM">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="PAY_PREC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PAY_RND_MTHOD_CD">
+        <datatype type="STRING" minLength="5" maxLength="5"/>
+      </element>
+      <element name="ANN_INV_CURCY_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="TOP_UP_TOT_QTY">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="TOP_UP_TOT_VOL_LIMT_QTY">
+        <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      </element>
+      <element name="RETRO_TOP_UP_TOT_QTY">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="RETRO_TOP_UP_TOT_VOL_LIMT_QTY">
+        <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      </element>
+      <element name="RETRO_TOP_UP_RANGE">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	WWT03170_BUS_ENTTY_DTL.BUS_ENTTY_NO bus_entty_no,
+	WWT03170_BUS_ENTTY_DTL.EFF_BNS_PER_NO eff_bns_per_no,
+	CAST(WWT03170_BUS_ENTTY_DTL.BUS_ALLOW_FLG AS TINYINT) AS bus_allow_flg,
+	CAST(WWT03170_BUS_ENTTY_DTL.BV_PV_RATIO_AMT AS DECIMAL(20,5)) AS bv_pv_ratio_amt,
+	CAST(WWT03170_BUS_ENTTY_DTL.MIN_STMT_AMT AS DECIMAL(20,5)) AS min_stmt_amt,
+	CAST(WWT03170_BUS_ENTTY_DTL.REDO_CLASS_AR_LIMT_AMT AS DECIMAL(20,5)) AS redo_class_ar_limt_amt,
+	CAST(WWT03170_BUS_ENTTY_DTL.CALC_TOP_UP_FLG AS TINYINT) AS calc_top_up_flg,
+	CAST(WWT03170_BUS_ENTTY_DTL.EXCLD_PV_FROM_AWD_VOL_FLG AS TINYINT) AS excld_pv_from_awd_vol_flg,
+	CAST(WWT03170_BUS_ENTTY_DTL.EXCLD_PV_FROM_RUBY_VOL_FLG AS TINYINT) AS excld_pv_from_ruby_vol_flg,
+	CAST(WWT03170_BUS_ENTTY_DTL.ESCRW_PAY_LIMT_AMT AS DECIMAL(20,5)) AS escrw_pay_limt_amt,
+	CAST(WWT03170_BUS_ENTTY_DTL.TRACK_FIRST_TM_PCT_AWD_FLG AS TINYINT) AS track_first_tm_pct_awd_flg,
+	CAST(WWT03170_BUS_ENTTY_DTL.TRACK_MBR_SLVR_AWD_FLG AS TINYINT) AS track_mbr_slvr_awd_flg,
+	CAST(WWT03170_BUS_ENTTY_DTL.TWNTY_ONE_PCT_ABOVE_FOSTR_FLG AS TINYINT) AS twnty_one_pct_above_fostr_flg,
+	CAST(WWT03170_BUS_ENTTY_DTL.INCLD_NET_NEG_IN_GRP_VOL_FLG AS TINYINT) AS incld_net_neg_in_grp_vol_flg,
+	CAST(WWT03170_BUS_ENTTY_DTL.ISO_CURCY_CD AS CHAR(3)) AS iso_curcy_cd,
+	CAST(WWT03170_BUS_ENTTY_DTL.CO_CD AS CHAR(2)) AS co_cd,
+	WWT03170_BUS_ENTTY_DTL.ISO_CNTRY_CD iso_cntry_cd,
+	CAST(WWT03170_BUS_ENTTY_DTL.AFF_NO AS SMALLINT) AS aff_no,
+	CAST(WWT03170_BUS_ENTTY_DTL.AUTO_CLASS_CD AS CHAR(1)) AS auto_class_cd,
+	CAST(WWT03170_BUS_ENTTY_DTL.PAY_CUST_CLASS_CD AS CHAR(1)) AS pay_cust_class_cd,
+	CAST(WWT03170_BUS_ENTTY_DTL.MBR_CLT_VOL_ALLOW_FLG AS TINYINT) AS mbr_clt_vol_allow_flg,
+	CAST(WWT03170_BUS_ENTTY_DTL.SALE_PLAN_CD AS CHAR(2)) AS sale_plan_cd,
+	CAST(WWT03170_BUS_ENTTY_DTL.DTL_VAT_FLG AS TINYINT) AS dtl_vat_flg,
+	CAST(WWT03170_BUS_ENTTY_DTL.AUDIT_CREAT_DTM AS TIMESTAMP) AS audit_creat_dtm,
+	CAST(WWT03170_BUS_ENTTY_DTL.AUDIT_CREAT_USER_NM AS CHAR(10)) AS audit_creat_user_nm,
+	CAST(WWT03170_BUS_ENTTY_DTL.AUDIT_CHNG_DTM AS TIMESTAMP) AS audit_chng_dtm,
+	CAST(WWT03170_BUS_ENTTY_DTL.AUDIT_CHNG_USER_NM AS CHAR(10)) AS audit_chng_user_nm,
+	CAST(WWT03170_BUS_ENTTY_DTL.AUDIT_CHNG_MODUL_NM AS VARCHAR(30)) AS audit_chng_modul_nm,
+	CAST(WWT03170_BUS_ENTTY_DTL.PAY_PREC_NO AS DOUBLE) AS pay_prec_no,
+	CAST(WWT03170_BUS_ENTTY_DTL.PAY_RND_MTHOD_CD AS CHAR(5)) AS pay_rnd_mthod_cd,
+	CAST(WWT03170_BUS_ENTTY_DTL.ANN_INV_CURCY_CD AS CHAR(3)) AS ann_inv_curcy_cd,
+	CAST(WWT03170_BUS_ENTTY_DTL.TOP_UP_TOT_QTY AS DOUBLE) AS top_up_tot_qty,
+	CAST(WWT03170_BUS_ENTTY_DTL.TOP_UP_TOT_VOL_LIMT_QTY AS DECIMAL(20,5)) AS top_up_tot_vol_limt_qty,
+	CAST(WWT03170_BUS_ENTTY_DTL.RETRO_TOP_UP_TOT_QTY AS DOUBLE) AS retro_top_up_tot_qty,
+	CAST(WWT03170_BUS_ENTTY_DTL.RETRO_TOP_UP_TOT_VOL_LIMT_QTY AS DECIMAL(20,5)) AS retro_top_up_tot_vol_limt_qty,
+	CAST(WWT03170_BUS_ENTTY_DTL.RETRO_TOP_UP_RANGE AS DOUBLE) AS retro_top_up_range 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSMGC01/WWT03170_BUS_ENTTY_DTL WWT03170_BUS_ENTTY_DTL</attribute>
+  <attribute name="creationDate" type="LONG">1568033872533</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30109</attribute>
+  <attribute name="creatorUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1568034361946</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30109</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1568033872533</attribute>
+</metadata>

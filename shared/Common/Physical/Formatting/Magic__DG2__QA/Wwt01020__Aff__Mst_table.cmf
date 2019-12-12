@@ -1,0 +1,174 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:fdf39765-978a-4578-b4f1-8ecff2eb0c53 -->
+<metadata name="Wwt01020_Aff_Mst" path="/shared/Common/Physical/Formatting/Magic_DG2_QA/Wwt01020_Aff_Mst" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation>null</annotation>
+  <columns>
+    <column name="aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aff_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="begin_oper_dt" nullable="true">
+      <datatype type="STRING" minLength="6" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="amway_alias_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="market_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="renewal_type_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="merged_bit" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sends_no_adr_bit" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="chrset_conv_rqd_bit" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ibo_no_for_nmver_bit" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="spon_nof_dflt_ibo_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="inact_rtent_mo_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="nrt_mrkt_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSGLS01/WWT01020_AFF_MST" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="AFF_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="BEGIN_OPER_DT">
+        <datatype type="STRING" minLength="6" maxLength="6"/>
+      </element>
+      <element name="AMWAY_ALIAS_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="MARKET_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="RENEWAL_TYPE_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="MERGED_BIT">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="SENDS_NO_ADR_BIT">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="CHRSET_CONV_RQD_BIT">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="IBO_NO_FOR_NMVER_BIT">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="SPON_NOF_DFLT_IBO_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="INACT_RTENT_MO_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="NRT_MRKT_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	WWT01020_AFF_MST.AFF_ID aff_id,
+	CAST(WWT01020_AFF_MST.AFF_DESC AS VARCHAR(50)) AS aff_desc,
+	CAST(WWT01020_AFF_MST.BEGIN_OPER_DT AS CHAR(6)) AS begin_oper_dt,
+	CAST(WWT01020_AFF_MST.AMWAY_ALIAS_IBO_NO AS BIGINT) AS amway_alias_ibo_no,
+	CAST(WWT01020_AFF_MST.MARKET_CD AS CHAR(1)) AS market_cd,
+	CAST(WWT01020_AFF_MST.RENEWAL_TYPE_CD AS CHAR(1)) AS renewal_type_cd,
+	CAST(WWT01020_AFF_MST.MERGED_BIT AS TINYINT) AS merged_bit,
+	CAST(WWT01020_AFF_MST.SENDS_NO_ADR_BIT AS TINYINT) AS sends_no_adr_bit,
+	CAST(WWT01020_AFF_MST.CHRSET_CONV_RQD_BIT AS TINYINT) AS chrset_conv_rqd_bit,
+	CAST(WWT01020_AFF_MST.IBO_NO_FOR_NMVER_BIT AS TINYINT) AS ibo_no_for_nmver_bit,
+	CAST(WWT01020_AFF_MST.SPON_NOF_DFLT_IBO_NO AS BIGINT) AS spon_nof_dflt_ibo_no,
+	CAST(WWT01020_AFF_MST.INACT_RTENT_MO_NO AS DOUBLE) AS inact_rtent_mo_no,
+	CAST(WWT01020_AFF_MST.NRT_MRKT_FLG AS TINYINT) AS nrt_mrkt_flg 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSGLS01/WWT01020_AFF_MST WWT01020_AFF_MST</attribute>
+  <attribute name="creationDate" type="LONG">1568033788074</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30109</attribute>
+  <attribute name="creatorUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1568034361946</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30109</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1568033788074</attribute>
+</metadata>

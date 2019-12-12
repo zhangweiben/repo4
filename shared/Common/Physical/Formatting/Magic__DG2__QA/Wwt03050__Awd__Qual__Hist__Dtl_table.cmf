@@ -1,0 +1,196 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:fdf39765-978a-4578-b4f1-8ecff2eb0c53 -->
+<metadata name="Wwt03050_Awd_Qual_Hist_Dtl" path="/shared/Common/Physical/Formatting/Magic_DG2_QA/Wwt03050_Awd_Qual_Hist_Dtl" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation>null</annotation>
+  <columns>
+    <column name="bns_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bns_awd_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="qual_per_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aprv_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aprv_by_txt" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bns_awd_stat_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="qual_mthod_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_creat_dtm" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_creat_user_nm" nullable="true">
+      <datatype type="STRING" minLength="10" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_chng_dtm" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_chng_user_nm" nullable="true">
+      <datatype type="STRING" minLength="10" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="audit_chng_modul_nm" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="overlap_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sched_bns_awd_key_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pt_qty" nullable="true">
+      <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSMGC01/WWT03050_AWD_QUAL_HIST_DTL" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="BNS_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="BNS_AWD_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="QUAL_PER_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="APRV_DT">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="APRV_BY_TXT">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="BNS_AWD_STAT_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="QUAL_MTHOD_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="AUDIT_CREAT_DTM">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="AUDIT_CREAT_USER_NM">
+        <datatype type="STRING" minLength="10" maxLength="10"/>
+      </element>
+      <element name="AUDIT_CHNG_DTM">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="AUDIT_CHNG_USER_NM">
+        <datatype type="STRING" minLength="10" maxLength="10"/>
+      </element>
+      <element name="AUDIT_CHNG_MODUL_NM">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="OVERLAP_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="SCHED_BNS_AWD_KEY_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PT_QTY">
+        <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="5"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	WWT03050_AWD_QUAL_HIST_DTL.BNS_CUST_ID bns_cust_id,
+	WWT03050_AWD_QUAL_HIST_DTL.BNS_AWD_NO bns_awd_no,
+	WWT03050_AWD_QUAL_HIST_DTL.QUAL_PER_NO qual_per_no,
+	CAST(WWT03050_AWD_QUAL_HIST_DTL.APRV_DT AS TIMESTAMP) AS aprv_dt,
+	CAST(WWT03050_AWD_QUAL_HIST_DTL.APRV_BY_TXT AS VARCHAR(20)) AS aprv_by_txt,
+	WWT03050_AWD_QUAL_HIST_DTL.BNS_AWD_STAT_CD bns_awd_stat_cd,
+	CAST(WWT03050_AWD_QUAL_HIST_DTL.QUAL_MTHOD_CD AS CHAR(2)) AS qual_mthod_cd,
+	CAST(WWT03050_AWD_QUAL_HIST_DTL.AUDIT_CREAT_DTM AS TIMESTAMP) AS audit_creat_dtm,
+	CAST(WWT03050_AWD_QUAL_HIST_DTL.AUDIT_CREAT_USER_NM AS CHAR(10)) AS audit_creat_user_nm,
+	CAST(WWT03050_AWD_QUAL_HIST_DTL.AUDIT_CHNG_DTM AS TIMESTAMP) AS audit_chng_dtm,
+	CAST(WWT03050_AWD_QUAL_HIST_DTL.AUDIT_CHNG_USER_NM AS CHAR(10)) AS audit_chng_user_nm,
+	CAST(WWT03050_AWD_QUAL_HIST_DTL.AUDIT_CHNG_MODUL_NM AS VARCHAR(30)) AS audit_chng_modul_nm,
+	CAST(WWT03050_AWD_QUAL_HIST_DTL.OVERLAP_FLG AS TINYINT) AS overlap_flg,
+	WWT03050_AWD_QUAL_HIST_DTL.SCHED_BNS_AWD_KEY_ID sched_bns_awd_key_id,
+	CAST(WWT03050_AWD_QUAL_HIST_DTL.PT_QTY AS DECIMAL(20,5)) AS pt_qty 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_Magic_DG2_QA/WWSMGC01/WWT03050_AWD_QUAL_HIST_DTL WWT03050_AWD_QUAL_HIST_DTL</attribute>
+  <attribute name="creationDate" type="LONG">1568033848672</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30109</attribute>
+  <attribute name="creatorUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1568034361946</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30109</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1568033848672</attribute>
+</metadata>
