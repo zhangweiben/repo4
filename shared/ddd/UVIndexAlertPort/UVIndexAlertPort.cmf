@@ -1,0 +1,21 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:319b8b9b-792f-40d4-84b5-dce3f60032e0 -->
+<metadata name="UVIndexAlertPort" path="/shared/ddd/UVIndexAlertPort" type="CONTAINER" subtype="SERVICE" changeToken="0">
+  <security>
+    <owner user="ben" domain="composite"/>
+    <privilege user="ben" domain="composite" privileges="READ WRITE"/>
+  </security>
+  <attribute name="autoAddChildren" type="BOOLEAN">true</attribute>
+  <attribute name="creationDate" type="LONG">1573598699411</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">260101</attribute>
+  <attribute name="creatorUserName" type="STRING">ben</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1573598699411</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">260101</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">ben</attribute>
+  <attribute name="namespace" type="STRING">urn:uvindexalert</attribute>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1573598699411</attribute>
+  <attribute name="selectionState" type="INTEGER">2</attribute>
+  <attribute name="userDeletedSet" type="SET"></attribute>
+</metadata>
