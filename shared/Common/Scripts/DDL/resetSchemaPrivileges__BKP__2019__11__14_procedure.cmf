@@ -1,0 +1,124 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:8427b2c7-a5e3-45e6-85af-0c9faa64d9a2 -->
+<metadata name="resetSchemaPrivileges_BKP_2019_11_14" path="/shared/Common/Scripts/DDL/resetSchemaPrivileges_BKP_2019_11_14" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <parameters></parameters>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/lib/debug/Print" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="textToPrint" direction="IN">
+        <datatype referenceDefinitionSet="/lib/util/System" referenceType="Text" type="STRING" maxLength="2147483647"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/Utilities/repository/copyResourcesPrivileges" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="updatePrivilegesRecursively" direction="IN">
+        <datatype type="INTEGER" minValue="0" maxValue="1"/>
+      </element>
+      <element name="copyPrivilegeMode" direction="IN">
+        <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      </element>
+      <element name="copyPrivilegeEntry" direction="IN">
+        <datatype type="ARRAY" maxLength="0">
+          <itemDatatype>
+            <datatype name="copyPrivilegeEntryType" type="TREE" refId="2">
+              <element name="srcResource">
+                <datatype name="srcResource" type="ARRAY" maxLength="0">
+                  <itemDatatype>
+                    <datatype name="resourceType" type="TREE" refId="3">
+                      <element name="path">
+                        <datatype name="VARCHAR" referenceDefinitionSet="/shared/ASAssets/Utilities/TypeDefinitions" referenceType="pathType" type="STRING" maxLength="4000"/>
+                      </element>
+                      <element name="type">
+                        <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+                      </element>
+                    </datatype>
+                  </itemDatatype>
+                </datatype>
+              </element>
+              <element name="dstResource">
+                <datatype name="dstResource" type="ARRAY" maxLength="0">
+                  <itemDatatype>
+                    <reference refId="3"/>
+                  </itemDatatype>
+                </datatype>
+              </element>
+            </datatype>
+          </itemDatatype>
+        </datatype>
+      </element>
+      <element name="success" direction="OUT">
+        <datatype type="INTEGER" minValue="0" maxValue="1"/>
+      </element>
+      <element name="faultResponse" direction="OUT">
+        <datatype name="XML" referenceType="XML" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="TYPE" componentName="XML">
+          <schemaDatatype>
+            <datatype name="XML" type="TREE" refId="4"></datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/Utilities/repository/definitions/RepositoryDefinitions" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1"></datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">PROCEDURE resetSchemaPrivileges_BKP_2019_11_14()
+BEGIN
+	DECLARE success							BIT;
+	DECLARE responseXML 					XML;
+	DECLARE faultResponse 					XML;
+	DECLARE copyPrivilegeEntry				/shared/ASAssets/Utilities/repository/definitions/RepositoryDefinitions.copyPrivilegeEntryVector;
+
+	SET copyPrivilegeEntry = 
+		VECTOR[
+			ROW(
+				VECTOR[
+					ROW(&apos;/services/databases/TDV/ADM/_shared_test&apos;, &apos;CONTAINER&apos;) -- Resource to copy privileges from (May only have 1 source)
+				]
+				,VECTOR[
+					--ROW(&apos;/services/databases/TDV/ADM/_forecast_group_adm&apos;, &apos;CONTAINER&apos;) -- List of resources to copy privileges to (May have many targets)
+					ROW(&apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP/db-01/eap_adm_shared_test&apos;, &apos;CONTAINER&apos;) -- List of resources to copy privileges to (May have many targets)
+				]
+			)
+		]
+	;
+
+	CALL /shared/ASAssets/Utilities/repository/copyResourcesPrivileges(1, 1, copyPrivilegeEntry, success, faultResponse);
+	CALL PRINT(&apos;Success result: &apos; || success);
+	CALL PRINT(&apos;Fault message: &apos; || CAST(faultResponse AS LONGVARCHAR));
+END
+</attribute>
+  <attribute name="creationDate" type="LONG">1572496377614</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1573839645174</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiu0920</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="MAP">
+    <item>
+      <key type="STRING">7/23</key>
+      <value type="STRING_ARRAY">
+        <item>lib</item>
+        <item>debug</item>
+        <item>Print</item>
+      </value>
+    </item>
+    <item>
+      <key type="STRING">7/24</key>
+      <value type="STRING_ARRAY">
+        <item>lib</item>
+        <item>debug</item>
+        <item>Print</item>
+      </value>
+    </item>
+  </attribute>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1572496377614</attribute>
+</metadata>

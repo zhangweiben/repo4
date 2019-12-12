@@ -1,0 +1,299 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:8427b2c7-a5e3-45e6-85af-0c9faa64d9a2 -->
+<metadata name="updateTablePrivs" path="/shared/Common/Scripts/DDL/updateTablePrivs" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>Set the privilege information for a list of resources.
+
+Only a user with GRANT privilege on a resource can modify the privileges for that
+resource.  The owner of a resource always has GRANT privilege, as do users with the
+MODIFY_ALL_RESOURCES right.
+
+When &quot;mode&quot; is &quot;OVERWRITE_APPEND&quot;, or is not supplied, privileges are applied on a
+per-user or per-group basis, so that updating privileges for one user or group does not
+alter privileges from any other user or group.  The privileges applied for a user or
+group replace the previous value for that user or group. When &quot;mode&quot; is &quot;SET_EXACTLY&quot;,
+all privileges on the resource are made to look exactly like the provided privileges.
+
+When &quot;updateRecursively&quot; is &quot;false&quot;, the privileges are applied only the specified
+resources.  When it is &quot;true&quot;, the privileges are recursively applied into any 
+CONTAINER or DATA_SOURCE resource specified.  When recursively applying privileges, 
+the privilege change is ignored for any resource the user lacks owner privileges for.
+
+Privileges that are not applicable for a given resource type are automatically stripped
+down to the set that is legal for each resource.  TABLE resources support NONE, READ,
+WRITE, SELECT, INSERT, UPDATE, and DELETE.  PROCEDURE resources support NONE, READ,
+WRITE, and EXECUTE.  All other resource types only support NONE, READ, and WRITE.
+
+
+Request Elements:
+    updateRecursively: If &quot;true&quot;, then all children of the given resources will
+       recursively be updated with the privileges assigned to their parent.
+    updateDependenciesRecursively: If &quot;true&quot;, then all dependencies of the given resources will
+       recursively be updated with the privileges assigned to their parent.
+    privilegeEntries: A list of resource names, types, and the privileges.
+    mode (optional): Determines whether privileges are merged with existing ones,
+       default is &quot;OVERWRITE_APPEND&quot;, which merges and does not update privileges for
+       users or groups not mentioned.  &quot;SET_EXACTLY&quot; makes privileges look exactly like
+       those provided in the call.
+
+Response Elements:
+    N/A
+
+Faults:
+    IllegalArgument: If any path is malformed or any type or privilege entry is illegal,
+       or mode is not one of the legal values.
+    NotAllowed: If an attempt is made to use this operation with an insufficient license.
+    NotFound: If a path refers to a resource that does not exist.
+    NotFound: If an unknown domain is provided.
+    NotFound: If an unknown user is provided.
+    NotFound: If an unknown group is provided.
+    Security: If for a given entry path the user does not have READ access on any item
+       in a path other than the last item, or does not have GRANT access on the last item.
+    Security: If the user does not have the ACCESS_TOOLS right.</annotation>
+  <parameters>
+    <parameter name="tableName" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+      <attribute name="Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed</attribute>
+    </parameter>
+    <parameter name="DomainName" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+      <attribute name="Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed;datatype.changed</attribute>
+    </parameter>
+    <parameter name="GroupOrUserName" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+      <attribute name="Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed</attribute>
+    </parameter>
+    <parameter name="GroupOrUserType" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+      <attribute name="Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed</attribute>
+    </parameter>
+    <parameter name="PrivilegeList" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="8"/>
+    </parameter>
+    <parameter name="ResponseMessage" direction="OUT" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+      <attribute name="Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed</attribute>
+    </parameter>
+    <parameter name="faultMessage" direction="OUT" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+      <attribute name="Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed</attribute>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/lib/util/GetProperty" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="property" direction="IN">
+        <datatype referenceDefinitionSet="/lib/util/System" referenceType="PropertyName" type="STRING" maxLength="255"/>
+      </element>
+      <element name="result" direction="OUT">
+        <datatype referenceDefinitionSet="/lib/util/System" referenceType="PropertyValue" type="STRING" maxLength="4096"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/services/webservices/system/admin/resource/operations/updateResourcePrivileges" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="updateResourcePrivileges" direction="IN">
+        <datatype name="updateResourcePrivileges" extendedName="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivileges" namespace="http://www.compositesw.com/services/system/admin/resource" referenceDefinitionSet="/services/webservices/system/admin/resource/operations/ResourceSchema" referenceType="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivileges" subType="ELEMENT_DECL" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="ELEMENT" componentName="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivileges">
+          <schemaDatatype>
+            <datatype name="updateResourcePrivileges" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="updateResourcePrivilegesRequest" superTypeNamespace="http://www.compositesw.com/services/system/admin/resource" subType="ELEMENT_DECL" type="TREE" refId="2">
+              <element name="updateRecursively" namespace="http://www.compositesw.com/services/system/admin/resource">
+                <datatype name="boolean" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="INTEGER" minValue="0" maxValue="1"/>
+              </element>
+              <element name="updateDependenciesRecursively" namespace="http://www.compositesw.com/services/system/admin/resource" minOccurs="0">
+                <datatype name="boolean" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="INTEGER" minValue="0" maxValue="1"/>
+              </element>
+              <element name="updateDependentsRecursively" namespace="http://www.compositesw.com/services/system/admin/resource" minOccurs="0">
+                <datatype name="boolean" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="INTEGER" minValue="0" maxValue="1"/>
+              </element>
+              <element name="privilegeEntries" namespace="http://www.compositesw.com/services/system/admin/resource">
+                <datatype superTypeName="anyType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="COMPLEX_TYPE" type="TREE" refId="3">
+                  <element name="privilegeEntry" namespace="http://www.compositesw.com/services/system/admin/resource" maxOccurs="2147483647" minOccurs="0">
+                    <datatype name="privilegeEntry" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="anyType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="COMPLEX_TYPE" type="TREE" refId="4">
+                      <element name="path" namespace="http://www.compositesw.com/services/system/admin/resource">
+                        <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                      </element>
+                      <element name="type" namespace="http://www.compositesw.com/services/system/admin/resource">
+                        <datatype name="resourceOrColumnType" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                      </element>
+                      <element name="privileges" namespace="http://www.compositesw.com/services/system/admin/resource">
+                        <datatype superTypeName="anyType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="COMPLEX_TYPE" type="TREE" refId="5">
+                          <element name="privilege" namespace="http://www.compositesw.com/services/system/admin/resource" maxOccurs="2147483647" minOccurs="0">
+                            <datatype name="privilege" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="anyType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="COMPLEX_TYPE" type="TREE" refId="6">
+                              <element name="domain" namespace="http://www.compositesw.com/services/system/admin/resource">
+                                <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                              </element>
+                              <element name="name" namespace="http://www.compositesw.com/services/system/admin/resource">
+                                <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                              </element>
+                              <element name="nameType" namespace="http://www.compositesw.com/services/system/admin/resource">
+                                <datatype name="userNameType" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                              </element>
+                              <element name="privs" namespace="http://www.compositesw.com/services/system/admin/resource">
+                                <datatype name="privList" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                              </element>
+                              <element name="combinedPrivs" namespace="http://www.compositesw.com/services/system/admin/resource" minOccurs="0">
+                                <datatype name="privList" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                              </element>
+                              <element name="inheritedPrivs" namespace="http://www.compositesw.com/services/system/admin/resource" minOccurs="0">
+                                <datatype name="privList" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                              </element>
+                            </datatype>
+                          </element>
+                        </datatype>
+                      </element>
+                    </datatype>
+                  </element>
+                </datatype>
+              </element>
+              <element name="mode" namespace="http://www.compositesw.com/services/system/admin/resource" minOccurs="0">
+                <datatype name="updatePrivilegesMode" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+              </element>
+            </datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+      <element name="updateResourcePrivilegesResponse" direction="OUT">
+        <datatype name="updateResourcePrivilegesResponse" extendedName="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivilegesResponse" namespace="http://www.compositesw.com/services/system/admin/resource" referenceDefinitionSet="/services/webservices/system/admin/resource/operations/ResourceSchema" referenceType="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivilegesResponse" subType="ELEMENT_DECL" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="ELEMENT" componentName="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivilegesResponse">
+          <schemaDatatype>
+            <datatype name="updateResourcePrivilegesResponse" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="updateResourcePrivilegesResponse" superTypeNamespace="http://www.compositesw.com/services/system/admin/resource" subType="ELEMENT_DECL" type="TREE" refId="7"></datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+      <element name="fault" direction="OUT">
+        <datatype name="fault" extendedName="{http://www.compositesw.com/services/system/util/common}fault" namespace="http://www.compositesw.com/services/system/util/common" referenceDefinitionSet="/services/webservices/system/util/common/operations/CommonSchema" referenceType="{http://www.compositesw.com/services/system/util/common}fault" subType="ELEMENT_DECL" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="ELEMENT" componentName="{http://www.compositesw.com/services/system/util/common}fault">
+          <schemaDatatype>
+            <datatype name="fault" namespace="http://www.compositesw.com/services/system/util/common" superTypeName="fault" superTypeNamespace="http://www.compositesw.com/services/system/util/common" subType="ELEMENT_DECL" type="TREE" refId="8">
+              <element name="errorEntry" namespace="http://www.compositesw.com/services/system/util/common" maxOccurs="2147483647" minOccurs="0">
+                <datatype name="messageEntry" namespace="http://www.compositesw.com/services/system/util/common" superTypeName="anyType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="COMPLEX_TYPE" type="TREE" refId="9">
+                  <element name="code" namespace="http://www.compositesw.com/services/system/util/common">
+                    <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                  </element>
+                  <element name="name" namespace="http://www.compositesw.com/services/system/util/common">
+                    <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                  </element>
+                  <element name="message" namespace="http://www.compositesw.com/services/system/util/common" minOccurs="0">
+                    <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                  </element>
+                  <element name="detail" namespace="http://www.compositesw.com/services/system/util/common" minOccurs="0">
+                    <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                  </element>
+                  <element name="severity" namespace="http://www.compositesw.com/services/system/util/common" minOccurs="0">
+                    <datatype name="messageSeverity" namespace="http://www.compositesw.com/services/system/util/common" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                  </element>
+                </datatype>
+              </element>
+            </datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">PROCEDURE updateTablePrivs(
+	IN tableName VARCHAR,
+	IN DomainName VARCHAR,
+	IN GroupOrUserName VARCHAR,
+	IN GroupOrUserType VARCHAR,
+	IN PrivilegeList VARCHAR(8),  
+    OUT ResponseMessage LONGVARCHAR, 
+    OUT faultMessage LONGVARCHAR
+    )
+    BEGIN
+		DECLARE schemaBasePath VARCHAR DEFAULT &apos;/services/databases/TDV/ADM/&apos;;
+		DECLARE privilegeText VARCHAR DEFAULT &apos;&apos;;
+		DECLARE userName VARCHAR;
+		DECLARE updateResourcePrivilegesResponse XML;
+		DECLARE fault XML;
+
+		CALL getProperty(&apos;CURRENT_USER_NAME&apos;, userName);
+		
+		IF POSITION(&apos;R&apos; IN PrivilegeList) &gt; 0 THEN
+			SET privilegeText = privilegeText || &apos; READ&apos;;
+		END IF;
+		IF POSITION(&apos;W&apos; IN PrivilegeList) &gt; 0 THEN
+			SET privilegeText = privilegeText || &apos; WRITE&apos;;
+		END IF;							
+		IF POSITION(&apos;X&apos; IN PrivilegeList) &gt; 0 THEN
+			SET privilegeText = privilegeText || &apos; EXECUTE&apos;;						
+		END IF;							
+		IF POSITION(&apos;S&apos; IN PrivilegeList) &gt; 0 THEN
+			SET privilegeText = privilegeText || &apos; SELECT&apos;;					
+		END IF;							
+		IF POSITION(&apos;U&apos; IN PrivilegeList) &gt; 0 THEN
+			SET privilegeText = privilegeText || &apos; UPDATE&apos;;						
+		END IF;							
+		IF POSITION(&apos;I&apos; IN PrivilegeList) &gt; 0 THEN
+			SET privilegeText = privilegeText || &apos; INSERT&apos;;				
+		END IF;							
+		IF POSITION(&apos;D&apos; IN PrivilegeList) &gt; 0 THEN
+			SET privilegeText = privilegeText || &apos; DELETE&apos;;			
+		END IF;							
+		IF POSITION(&apos;G&apos; IN PrivilegeList) &gt; 0 THEN
+			SET privilegeText = privilegeText || &apos; GRANT&apos;;
+		END IF;							
+
+		SET privilegeText = TRIM(privilegeText);
+		
+		-- Use below option WITH CAUTION! This raises the access rights of the user session executing this script temporarily and could lead unwanted security rights escalation!
+		--CALL /lib/users/SetAlternatePrincipal(&apos;privsetter&apos;, &apos;composite&apos;, &apos;privsetter01&apos;); -- Only required if users won&apos;t have ACCESS_TOOLS right. If using this option the selected service account requires elevated rights: ACCESS_TOOLS, READ_ALL_RESOURCES, and MODIFY_ALL_RESOURCES
+
+        CALL /services/webservices/system/admin/resource/operations/updateResourcePrivileges(
+			&apos;&lt;resource:updateResourcePrivileges xmlns:resource=&quot;http://www.compositesw.com/services/system/admin/resource&quot;&gt;
+				&lt;resource:updateRecursively&gt;1&lt;/resource:updateRecursively&gt;
+				&lt;resource:updateDependenciesRecursively&gt;1&lt;/resource:updateDependenciesRecursively&gt;
+				&lt;!--&lt;resource:updateDependentsRecursively&gt;1&lt;/resource:updateDependentsRecursively&gt;--&gt;
+				&lt;resource:privilegeEntries xmlns:resource=&quot;http://www.compositesw.com/services/system/admin/resource&quot;&gt;
+				    &lt;resource:privilegeEntry&gt;
+				        &lt;resource:path&gt;&apos;||schemaBasePath||userName||&apos;/&apos;||tableName||&apos;&lt;/resource:path&gt;
+				        &lt;resource:type&gt;TABLE&lt;/resource:type&gt;
+				        &lt;resource:privileges&gt;
+					      &lt;resource:privilege&gt;
+					        &lt;resource:domain&gt;&apos;||DomainName||&apos;&lt;/resource:domain&gt;
+					        &lt;resource:name&gt;&apos;||GroupOrUserName||&apos;&lt;/resource:name&gt;
+					        &lt;resource:nameType&gt;&apos;||GroupOrUserType||&apos;&lt;/resource:nameType&gt;
+					        &lt;resource:privs&gt;&apos;||privilegeText||&apos;&lt;/resource:privs&gt;
+					      &lt;/resource:privilege&gt;
+				        &lt;/resource:privileges&gt;
+				    &lt;/resource:privilegeEntry&gt;
+				&lt;/resource:privilegeEntries&gt;
+				&lt;resource:mode&gt;OVERWRITE_APPEND&lt;/resource:mode&gt;
+			&lt;/resource:updateResourcePrivileges&gt;&apos;,
+                updateResourcePrivilegesResponse, 
+                fault);
+
+		--CALL /lib/users/ClearAlternatePrincipal(); 
+
+		SET ResponseMessage = CAST(updateResourcePrivilegesResponse AS LONGVARCHAR);
+		SET faultMessage = CAST(fault AS LONGVARCHAR);
+--EXCEPTION
+--ELSE
+	--CALL  /lib/users/ClearAlternatePrincipal();
+	--RAISE;
+END</attribute>
+  <attribute name="creationDate" type="LONG">1380859670807</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1571691922674</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="p:0:Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed</attribute>
+  <attribute name="p:1:Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed;datatype.changed</attribute>
+  <attribute name="p:2:Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed</attribute>
+  <attribute name="p:3:Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed</attribute>
+  <attribute name="p:5:Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed</attribute>
+  <attribute name="p:6:Customized" type="STRING">datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed;datatype.changed</attribute>
+  <attribute name="references" type="MAP">
+    <item>
+      <key type="STRING">8/17</key>
+      <value type="STRING_ARRAY">
+        <item>lib</item>
+        <item>util</item>
+        <item>GetProperty</item>
+      </value>
+    </item>
+  </attribute>
+</metadata>

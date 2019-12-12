@@ -1,0 +1,131 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:8427b2c7-a5e3-45e6-85af-0c9faa64d9a2 -->
+<metadata name="p_getUsersByGroup" path="/shared/Common/Scripts/DDL/p_getUsersByGroup" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <parameters>
+    <parameter name="groupName" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="domainName" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="result" direction="OUT" nullable="true">
+      <datatype name="result" type="TABLE" refId="1">
+        <element name="name">
+          <datatype name="VARCHAR" type="STRING" maxLength="32768"/>
+        </element>
+        <element name="domainName">
+          <datatype name="VARCHAR" type="STRING" maxLength="32768"/>
+        </element>
+        <element name="id">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="explicitRights">
+          <datatype name="VARCHAR" type="STRING" maxLength="32768"/>
+        </element>
+        <element name="effectiveRights">
+          <datatype name="VARCHAR" type="STRING" maxLength="32768"/>
+        </element>
+        <element name="inheritedRights">
+          <datatype name="VARCHAR" type="STRING" maxLength="32768"/>
+        </element>
+        <element name="annotation">
+          <datatype name="VARCHAR" type="STRING" maxLength="32768"/>
+        </element>
+        <element name="isLocked">
+          <datatype name="VARCHAR" type="STRING" maxLength="32768"/>
+        </element>
+      </datatype>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/shared/Common/Scripts/DDL/getUsersByGroupXSLT" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="getUsersByGroup" direction="IN">
+        <datatype name="getUsersByGroup" extendedName="{http://www.compositesw.com/services/system/admin/user}getUsersByGroup" namespace="http://www.compositesw.com/services/system/admin/user" referenceDefinitionSet="/services/webservices/system/admin/user/operations/UserSchema" referenceType="{http://www.compositesw.com/services/system/admin/user}getUsersByGroup" subType="ELEMENT_DECL" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="ELEMENT" componentName="{http://www.compositesw.com/services/system/admin/user}getUsersByGroup">
+          <schemaDatatype>
+            <datatype name="getUsersByGroup" namespace="http://www.compositesw.com/services/system/admin/user" superTypeName="getUsersByGroupRequest" superTypeNamespace="http://www.compositesw.com/services/system/admin/user" subType="ELEMENT_DECL" type="TREE" refId="2">
+              <element name="groupName" namespace="http://www.compositesw.com/services/system/admin/user">
+                <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+              </element>
+              <element name="domainName" namespace="http://www.compositesw.com/services/system/admin/user">
+                <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+              </element>
+            </datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+      <element name="outputs" direction="OUT" nullable="false">
+        <datatype type="TABLE" refId="3">
+          <element name="name">
+            <datatype namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="32768"/>
+          </element>
+          <element name="domainName">
+            <datatype namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="32768"/>
+          </element>
+          <element name="id">
+            <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+          </element>
+          <element name="explicitRights">
+            <datatype namespace="http://www.compositesw.com/services/system/admin/user" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="32768"/>
+          </element>
+          <element name="effectiveRights">
+            <datatype namespace="http://www.compositesw.com/services/system/admin/user" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="32768"/>
+          </element>
+          <element name="inheritedRights">
+            <datatype namespace="http://www.compositesw.com/services/system/admin/user" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="32768"/>
+          </element>
+          <element name="annotation">
+            <datatype namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="32768"/>
+          </element>
+          <element name="isLocked">
+            <datatype namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="32768"/>
+          </element>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">PROCEDURE p_getUsersByGroup(
+	IN groupName VARCHAR,
+	IN domainName VARCHAR,
+    OUT result CURSOR (
+        name VARCHAR(32768), 
+        domainName VARCHAR(32768), 
+        id INTEGER, 
+        explicitRights VARCHAR(32768), 
+        effectiveRights VARCHAR(32768), 
+        inheritedRights VARCHAR(32768), 
+        annotation VARCHAR(32768), 
+        isLocked VARCHAR(32768)
+        )
+    )
+    BEGIN
+        OPEN result FOR 
+            SELECT 
+                getUsersByGroupXSLT.name, 
+                getUsersByGroupXSLT.domainName, 
+                getUsersByGroupXSLT.id, 
+                getUsersByGroupXSLT.explicitRights, 
+                getUsersByGroupXSLT.effectiveRights, 
+                getUsersByGroupXSLT.inheritedRights, 
+                getUsersByGroupXSLT.annotation, 
+                getUsersByGroupXSLT.isLocked
+            FROM      
+                /shared/Common/Scripts/DDL/getUsersByGroupXSLT(&apos;&lt;user:getUsersByGroup xmlns:user=&quot;http://www.compositesw.com/services/system/admin/user&quot;&gt;&lt;user:groupName&gt;&apos;||groupName||&apos;&lt;/user:groupName&gt;&lt;user:domainName&gt;&apos;||domainName||&apos;&lt;/user:domainName&gt;&lt;/user:getUsersByGroup&gt;&apos;) getUsersByGroupXSLT;
+    END</attribute>
+  <attribute name="creationDate" type="LONG">1571755078701</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1573590606788</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiu0920</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1571755078701</attribute>
+</metadata>

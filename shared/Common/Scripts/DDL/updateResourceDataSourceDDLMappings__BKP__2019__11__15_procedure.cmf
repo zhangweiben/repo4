@@ -1,0 +1,471 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:8427b2c7-a5e3-45e6-85af-0c9faa64d9a2 -->
+<metadata name="updateResourceDataSourceDDLMappings_BKP_2019_11_15" path="/shared/Common/Scripts/DDL/updateResourceDataSourceDDLMappings_BKP_2019_11_15" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <parameters></parameters>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/lib/resource/ResourceExists" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="path" direction="IN">
+        <datatype referenceDefinitionSet="/lib/resource/ResourceDefs" referenceType="ResourcePath" type="STRING" maxLength="4096"/>
+      </element>
+      <element name="type" direction="IN">
+        <datatype referenceDefinitionSet="/lib/resource/ResourceDefs" referenceType="ResourceType" type="STRING" maxLength="40"/>
+      </element>
+      <element name="version" direction="IN">
+        <datatype referenceDefinitionSet="/lib/resource/ResourceDefs" referenceType="ResourceVersion" type="STRING" maxLength="255"/>
+      </element>
+      <element name="exists" direction="OUT">
+        <datatype type="BOOLEAN"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/services/webservices/system/admin/resource/operations/updateResourcePrivileges" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="updateResourcePrivileges" direction="IN">
+        <datatype name="updateResourcePrivileges" extendedName="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivileges" namespace="http://www.compositesw.com/services/system/admin/resource" referenceDefinitionSet="/services/webservices/system/admin/resource/operations/ResourceSchema" referenceType="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivileges" subType="ELEMENT_DECL" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="ELEMENT" componentName="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivileges">
+          <schemaDatatype>
+            <datatype name="updateResourcePrivileges" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="updateResourcePrivilegesRequest" superTypeNamespace="http://www.compositesw.com/services/system/admin/resource" subType="ELEMENT_DECL" type="TREE" refId="2">
+              <element name="updateRecursively" namespace="http://www.compositesw.com/services/system/admin/resource">
+                <datatype name="boolean" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="INTEGER" minValue="0" maxValue="1"/>
+              </element>
+              <element name="updateDependenciesRecursively" namespace="http://www.compositesw.com/services/system/admin/resource" minOccurs="0">
+                <datatype name="boolean" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="INTEGER" minValue="0" maxValue="1"/>
+              </element>
+              <element name="updateDependentsRecursively" namespace="http://www.compositesw.com/services/system/admin/resource" minOccurs="0">
+                <datatype name="boolean" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="INTEGER" minValue="0" maxValue="1"/>
+              </element>
+              <element name="privilegeEntries" namespace="http://www.compositesw.com/services/system/admin/resource">
+                <datatype superTypeName="anyType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="COMPLEX_TYPE" type="TREE" refId="3">
+                  <element name="privilegeEntry" namespace="http://www.compositesw.com/services/system/admin/resource" maxOccurs="2147483647" minOccurs="0">
+                    <datatype name="privilegeEntry" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="anyType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="COMPLEX_TYPE" type="TREE" refId="4">
+                      <element name="path" namespace="http://www.compositesw.com/services/system/admin/resource">
+                        <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                      </element>
+                      <element name="type" namespace="http://www.compositesw.com/services/system/admin/resource">
+                        <datatype name="resourceOrColumnType" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                      </element>
+                      <element name="privileges" namespace="http://www.compositesw.com/services/system/admin/resource">
+                        <datatype superTypeName="anyType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="COMPLEX_TYPE" type="TREE" refId="5">
+                          <element name="privilege" namespace="http://www.compositesw.com/services/system/admin/resource" maxOccurs="2147483647" minOccurs="0">
+                            <datatype name="privilege" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="anyType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="COMPLEX_TYPE" type="TREE" refId="6">
+                              <element name="domain" namespace="http://www.compositesw.com/services/system/admin/resource">
+                                <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                              </element>
+                              <element name="name" namespace="http://www.compositesw.com/services/system/admin/resource">
+                                <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                              </element>
+                              <element name="nameType" namespace="http://www.compositesw.com/services/system/admin/resource">
+                                <datatype name="userNameType" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                              </element>
+                              <element name="privs" namespace="http://www.compositesw.com/services/system/admin/resource">
+                                <datatype name="privList" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                              </element>
+                              <element name="combinedPrivs" namespace="http://www.compositesw.com/services/system/admin/resource" minOccurs="0">
+                                <datatype name="privList" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                              </element>
+                              <element name="inheritedPrivs" namespace="http://www.compositesw.com/services/system/admin/resource" minOccurs="0">
+                                <datatype name="privList" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                              </element>
+                            </datatype>
+                          </element>
+                        </datatype>
+                      </element>
+                    </datatype>
+                  </element>
+                </datatype>
+              </element>
+              <element name="mode" namespace="http://www.compositesw.com/services/system/admin/resource" minOccurs="0">
+                <datatype name="updatePrivilegesMode" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+              </element>
+            </datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+      <element name="updateResourcePrivilegesResponse" direction="OUT">
+        <datatype name="updateResourcePrivilegesResponse" extendedName="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivilegesResponse" namespace="http://www.compositesw.com/services/system/admin/resource" referenceDefinitionSet="/services/webservices/system/admin/resource/operations/ResourceSchema" referenceType="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivilegesResponse" subType="ELEMENT_DECL" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="ELEMENT" componentName="{http://www.compositesw.com/services/system/admin/resource}updateResourcePrivilegesResponse">
+          <schemaDatatype>
+            <datatype name="updateResourcePrivilegesResponse" namespace="http://www.compositesw.com/services/system/admin/resource" superTypeName="updateResourcePrivilegesResponse" superTypeNamespace="http://www.compositesw.com/services/system/admin/resource" subType="ELEMENT_DECL" type="TREE" refId="7"></datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+      <element name="fault" direction="OUT">
+        <datatype name="fault" extendedName="{http://www.compositesw.com/services/system/util/common}fault" namespace="http://www.compositesw.com/services/system/util/common" referenceDefinitionSet="/services/webservices/system/util/common/operations/CommonSchema" referenceType="{http://www.compositesw.com/services/system/util/common}fault" subType="ELEMENT_DECL" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="ELEMENT" componentName="{http://www.compositesw.com/services/system/util/common}fault">
+          <schemaDatatype>
+            <datatype name="fault" namespace="http://www.compositesw.com/services/system/util/common" superTypeName="fault" superTypeNamespace="http://www.compositesw.com/services/system/util/common" subType="ELEMENT_DECL" type="TREE" refId="8">
+              <element name="errorEntry" namespace="http://www.compositesw.com/services/system/util/common" maxOccurs="2147483647" minOccurs="0">
+                <datatype name="messageEntry" namespace="http://www.compositesw.com/services/system/util/common" superTypeName="anyType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="COMPLEX_TYPE" type="TREE" refId="9">
+                  <element name="code" namespace="http://www.compositesw.com/services/system/util/common">
+                    <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                  </element>
+                  <element name="name" namespace="http://www.compositesw.com/services/system/util/common">
+                    <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                  </element>
+                  <element name="message" namespace="http://www.compositesw.com/services/system/util/common" minOccurs="0">
+                    <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                  </element>
+                  <element name="detail" namespace="http://www.compositesw.com/services/system/util/common" minOccurs="0">
+                    <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                  </element>
+                  <element name="severity" namespace="http://www.compositesw.com/services/system/util/common" minOccurs="0">
+                    <datatype name="messageSeverity" namespace="http://www.compositesw.com/services/system/util/common" superTypeName="string" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="SIMPLE_TYPE" type="STRING" maxLength="2147483647"/>
+                  </element>
+                </datatype>
+              </element>
+            </datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/Utilities/repository/changeResourceOwner" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="recurseChildren" direction="IN">
+        <datatype type="INTEGER" minValue="0" maxValue="1"/>
+      </element>
+      <element name="resourcePath" direction="IN">
+        <datatype type="STRING" maxLength="4096"/>
+      </element>
+      <element name="resourceType" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="newOwner" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="newOwnerDomain" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/Utilities/repository/createResource" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="resourcePath" direction="IN">
+        <datatype referenceDefinitionSet="/shared/ASAssets/Utilities/TypeDefinitions" referenceType="pathType" type="STRING" maxLength="4000"/>
+      </element>
+      <element name="resourceName" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="resourceType" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="resourceSubType" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="success" direction="OUT">
+        <datatype type="INTEGER" minValue="0" maxValue="1"/>
+      </element>
+      <element name="createResponse" direction="OUT">
+        <datatype name="XML" referenceType="XML" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="TYPE" componentName="XML">
+          <schemaDatatype>
+            <datatype name="XML" type="TREE" refId="2"></datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+      <element name="faultResponse" direction="OUT">
+        <datatype name="XML" referenceType="XML" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="TYPE" componentName="XML">
+          <schemaDatatype>
+            <reference refId="2"/>
+          </schemaDatatype>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/Utilities/repository/introspectResources" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="dsPath" direction="IN">
+        <datatype referenceDefinitionSet="/lib/resource/ResourceDefs" referenceType="ResourcePath" type="STRING" maxLength="4096"/>
+      </element>
+      <element name="catalogName" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="schemaNames" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="schemaTablePatterns" direction="IN">
+        <datatype type="STRING" maxLength="4096"/>
+      </element>
+      <element name="tableNames" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="schemaProcedurePatterns" direction="IN">
+        <datatype type="STRING" maxLength="4096"/>
+      </element>
+      <element name="procedureNames" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="separator" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="inDebug" direction="IN">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="errStatus" direction="OUT">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="errMessage" direction="OUT">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="introspectionResult" direction="OUT">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="dataSourceType" direction="OUT">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="dataSourceSubtype" direction="OUT">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/Utilities/repository/updateResourceDataSourceV2" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="fullResourcePath" direction="IN">
+        <datatype type="STRING" maxLength="4096"/>
+      </element>
+      <element name="resourceType" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="subtype" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="dataSourceType" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="inDataSourceAttrXML" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="success" direction="OUT">
+        <datatype type="INTEGER" minValue="0" maxValue="1"/>
+      </element>
+      <element name="createResponse" direction="OUT">
+        <datatype name="XML" referenceType="XML" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="TYPE" componentName="XML">
+          <schemaDatatype>
+            <datatype name="XML" type="TREE" refId="2"></datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+      <element name="faultResponse" direction="OUT">
+        <datatype name="XML" referenceType="XML" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="TYPE" componentName="XML">
+          <schemaDatatype>
+            <reference refId="2"/>
+          </schemaDatatype>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/Common/Scripts/DDL/Manual_DDL_Mappings" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="Published_Container_Path">
+        <datatype type="STRING" minLength="9" maxLength="33" trailingSpaces="false"/>
+      </element>
+      <element name="Physical_Container_Path">
+        <datatype type="STRING" minLength="62" maxLength="99" trailingSpaces="false"/>
+      </element>
+      <element name="Shared_Physical_Schema_Name">
+        <datatype type="STRING" minLength="22" maxLength="43" trailingSpaces="false"/>
+      </element>
+      <element name="Shared_Published_Schema_Name">
+        <datatype type="STRING" minLength="8" maxLength="29" trailingSpaces="false"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/Common/Scripts/DDL/PrintAndLog" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="message" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/Common/Scripts/DDL/createRedShiftSchema" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="schemaUsername" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="schemaPrefix" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="result" direction="OUT">
+        <datatype type="TABLE" refId="2">
+          <element name="success">
+            <datatype type="INTEGER" minValue="0" maxValue="1"/>
+          </element>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/Common/Scripts/DDL/p_getUsersByGroup" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="groupName" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="domainName" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="result" direction="OUT">
+        <datatype type="TABLE" refId="2">
+          <element name="name">
+            <datatype type="STRING" maxLength="32768"/>
+          </element>
+          <element name="domainName">
+            <datatype type="STRING" maxLength="32768"/>
+          </element>
+          <element name="id">
+            <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+          </element>
+          <element name="explicitRights">
+            <datatype type="STRING" maxLength="32768"/>
+          </element>
+          <element name="effectiveRights">
+            <datatype type="STRING" maxLength="32768"/>
+          </element>
+          <element name="inheritedRights">
+            <datatype type="STRING" maxLength="32768"/>
+          </element>
+          <element name="annotation">
+            <datatype type="STRING" maxLength="32768"/>
+          </element>
+          <element name="isLocked">
+            <datatype type="STRING" maxLength="32768"/>
+          </element>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">PROCEDURE updateResourceDataSourceDDLMappings_BKP_2019_11_15()
+BEGIN
+	DECLARE EAP_Group_Name CONSTANT VARCHAR DEFAULT &apos;ldap-amw-eap.pd-tibco-data-virtualization-adm-schema-access&apos;;
+	DECLARE EAP_Group_Domain CONSTANT VARCHAR DEFAULT &apos;na&apos;;
+	DECLARE publishedDSPath CONSTANT VARCHAR DEFAULT &apos;/services/databases/TDV&apos;;
+	DECLARE publishedCatalogName CONSTANT VARCHAR DEFAULT &apos;ADM&apos;;
+	DECLARE publishedCatalogPath CONSTANT VARCHAR DEFAULT publishedDSPath || &apos;/&apos; || publishedCatalogName;
+	DECLARE physicalDSPath CONSTANT VARCHAR DEFAULT &apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP&apos;;
+	DECLARE physicalCatalogName CONSTANT VARCHAR DEFAULT &apos;db-01&apos;;
+	DECLARE schemaNamePrefix CONSTANT VARCHAR DEFAULT &apos;eap_adm_&apos;;
+	DECLARE schemaPath VARCHAR;
+	DECLARE schemaExists BOOLEAN;
+	DECLARE resultSuccess BIT;
+	DECLARE reIntrospectID VARCHAR;
+	DECLARE introspectStatus VARCHAR;
+	DECLARE introspectReport LONGVARCHAR;
+	DECLARE mappingXML LONGVARCHAR DEFAULT &apos;&lt;common:attribute&gt;
+          &lt;common:name&gt;ddlContainerPathMap&lt;/common:name&gt;
+          &lt;common:type&gt;MAP&lt;/common:type&gt;
+          &lt;common:valueMap&gt;&apos;;
+	DECLARE responseXML XML;
+	DECLARE faultXML XML;
+	DECLARE DDL_Mapping_Failed EXCEPTION;
+
+	CALL /shared/Common/Scripts/DDL/PrintAndLog(&apos;Called updateResourceDataSourceDDLMappings&apos;);
+
+	FOR r AS SELECT name, domainName FROM /shared/Common/Scripts/DDL/p_getUsersByGroup(EAP_Group_Name, EAP_Group_Domain) DO
+		CALL /shared/Common/Scripts/DDL/PrintAndLog(&apos;Checking schema and mappings for: &apos; || r.name);
+		SET schemaPath = publishedCatalogPath || &apos;/&apos; || r.name;
+		CALL /lib/resource/ResourceExists(schemaPath, &apos;CONTAINER&apos;, NULL, schemaExists);
+		IF NOT schemaExists THEN
+			CALL /shared/Common/Scripts/DDL/PrintAndLog(&apos;User &apos; || r.name || &apos; does not already have a schema created, creating one now at: &apos; || publishedCatalogPath || &apos;/&apos; || r.name);
+			SELECT success, faultResponse INTO resultSuccess, faultXML FROM /shared/ASAssets/Utilities/repository/createResource(publishedCatalogPath, r.name, &apos;CONTAINER&apos;, &apos;SCHEMA_CONTAINER&apos;);
+			IF resultSuccess &lt;&gt; 1 THEN
+				CALL /shared/Common/Scripts/DDL/PrintAndLog(&apos;Failed to create published schema for &apos; || r.name || &apos;, error: &apos; || CAST(faultXML AS LONGVARCHAR));
+			END IF; 
+			CALL /shared/ASAssets/Utilities/repository/changeResourceOwner(1, schemaPath, &apos;CONTAINER&apos;, r.name, r.domainName);
+	        CALL /services/webservices/system/admin/resource/operations/updateResourcePrivileges(
+				&apos;&lt;resource:updateResourcePrivileges xmlns:resource=&quot;http://www.compositesw.com/services/system/admin/resource&quot;&gt;
+					&lt;resource:updateRecursively&gt;1&lt;/resource:updateRecursively&gt;
+					&lt;resource:updateDependenciesRecursively&gt;1&lt;/resource:updateDependenciesRecursively&gt;
+					&lt;!--&lt;resource:updateDependentsRecursively&gt;1&lt;/resource:updateDependentsRecursively&gt;--&gt;
+					&lt;resource:privilegeEntries xmlns:resource=&quot;http://www.compositesw.com/services/system/admin/resource&quot;&gt;
+					    &lt;resource:privilegeEntry&gt;
+					        &lt;resource:path&gt;&apos;||schemaPath||&apos;&lt;/resource:path&gt;
+					        &lt;resource:type&gt;CONTAINER&lt;/resource:type&gt;
+					        &lt;resource:privileges&gt;
+						      &lt;resource:privilege&gt;
+						        &lt;resource:domain&gt;&apos;||r.domainName||&apos;&lt;/resource:domain&gt;
+						        &lt;resource:name&gt;&apos;||r.name||&apos;&lt;/resource:name&gt;
+						        &lt;resource:nameType&gt;USER&lt;/resource:nameType&gt;
+						        &lt;resource:privs&gt;READ WRITE EXECUTE SELECT INSERT UPDATE DELETE GRANT&lt;/resource:privs&gt;
+						      &lt;/resource:privilege&gt;
+					        &lt;/resource:privileges&gt;
+					    &lt;/resource:privilegeEntry&gt;
+					&lt;/resource:privilegeEntries&gt;
+					&lt;resource:mode&gt;OVERWRITE_APPEND&lt;/resource:mode&gt;
+				&lt;/resource:updateResourcePrivileges&gt;&apos;,
+	                responseXML, 
+	                faultXML);
+
+			BEGIN INDEPENDENT TRANSACTION -- This is a nested BEGIN...END block so that any exceptions raised from the schema creation failing doesn&apos;t cause the entire procedure block to fail.
+				SELECT success INTO resultSuccess FROM /shared/Common/Scripts/DDL/createRedShiftSchema(r.name, schemaNamePrefix);
+				COMMIT;
+			EXCEPTION
+			ELSE
+				CALL /shared/Common/Scripts/DDL/PrintAndLog(&apos;Creation of user and schema for &apos; || r.name || &apos; within RedShift failed. Likely because user or schema already exists. Skipping.&apos;);
+				ROLLBACK;
+			END; -- End nested block.			
+		END IF;
+
+		SELECT errStatus, errMessage INTO introspectStatus, introspectReport FROM 
+					/shared/ASAssets/Utilities/repository/introspectResources(
+							physicalDSPath, 
+							physicalCatalogName, 
+							schemaNamePrefix||r.name, 
+							NULL, NULL, NULL, NULL, NULL, NULL);
+		CALL /shared/Common/Scripts/DDL/PrintAndLog(&apos;Introspection status for &apos; || r.name || &apos;: &apos; || introspectStatus || &apos;, Message: &apos; || COALESCE(introspectReport,&apos;&apos;));
+
+		SET mappingXML = mappingXML || &apos;
+            &lt;common:entry&gt;
+              &lt;common:key&gt;
+                &lt;common:type&gt;STRING&lt;/common:type&gt;
+                &lt;common:value&gt;&apos;||publishedCatalogName||&apos;.&apos;||r.name||&apos;&lt;/common:value&gt;
+              &lt;/common:key&gt;
+              &lt;common:value&gt;
+                &lt;common:type&gt;STRING&lt;/common:type&gt;
+                &lt;common:value&gt;&apos;||physicalDSPath || &apos;/&apos;||physicalCatalogName||&apos;/&apos;||schemaNamePrefix || r.name || &apos;&lt;/common:value&gt;
+              &lt;/common:value&gt;
+            &lt;/common:entry&gt;
+&apos;;
+	END FOR;
+	FOR r AS SELECT Published_Container_Path, Physical_Container_Path FROM /shared/Common/Scripts/DDL/Manual_DDL_Mappings DO
+		SET mappingXML = mappingXML || &apos;
+            &lt;common:entry&gt;
+              &lt;common:key&gt;
+                &lt;common:type&gt;STRING&lt;/common:type&gt;
+                &lt;common:value&gt;&apos;|| r.Published_Container_Path||&apos;&lt;/common:value&gt;
+              &lt;/common:key&gt;
+              &lt;common:value&gt;
+                &lt;common:type&gt;STRING&lt;/common:type&gt;
+                &lt;common:value&gt;&apos;||r.Physical_Container_Path || &apos;&lt;/common:value&gt;
+              &lt;/common:value&gt;
+            &lt;/common:entry&gt;
+&apos;;
+	END FOR;
+	SET mappingXML = mappingXML ||           &apos;&lt;/common:valueMap&gt;
+        &lt;/common:attribute&gt;&apos;;
+
+	CALL /shared/ASAssets/Utilities/repository/updateResourceDataSourceV2(publishedDSPath, 
+																&apos;DATA_SOURCE&apos;, 
+																&apos;RELATIONAL_DATA_SOURCE&apos;, 
+																&apos;COMPOSITE_DATABASE&apos;,
+																mappingXML, 
+																resultSuccess,
+																responseXML,
+																faultXML);
+	IF resultSuccess &lt;&gt; 1 THEN
+		CALL /shared/Common/Scripts/DDL/PrintAndLog(&apos;Failed to add DDL mappings to published data source: &apos; || CAST(faultXML AS LONGVARCHAR));
+		RAISE DDL_Mapping_Failed VALUE CAST(faultXML AS LONGVARCHAR);
+	END IF;
+	CALL /shared/Common/Scripts/DDL/PrintAndLog(&apos;Finished updateResourceDataSourceDDLMappings&apos;);
+END</attribute>
+  <attribute name="creationDate" type="LONG">1571754993181</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1573839741802</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiu0920</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">true</attribute>
+  <attribute name="references" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1571754993181</attribute>
+</metadata>

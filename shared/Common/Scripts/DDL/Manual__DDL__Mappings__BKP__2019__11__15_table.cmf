@@ -1,0 +1,66 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:8427b2c7-a5e3-45e6-85af-0c9faa64d9a2 -->
+<metadata name="Manual_DDL_Mappings_BKP_2019_11_15" path="/shared/Common/Scripts/DDL/Manual_DDL_Mappings_BKP_2019_11_15" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <columns>
+    <column name="Published_Container_Path" nullable="true">
+      <datatype type="STRING" minLength="9" maxLength="33" trailingSpaces="false"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+    </column>
+    <column name="Physical_Container_Path" nullable="true">
+      <datatype type="STRING" minLength="62" maxLength="99" trailingSpaces="false"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/services/databases/system/DUAL" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="DUMMY">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT &apos;Core_Plus&apos; AS Published_Container_Path, &apos;/shared/Cache/Physical/Metadata/PostgreSQL_Cache/tdv_adhoc_ddl&apos; AS Physical_Container_Path
+UNION ALL
+SELECT &apos;DE.DDL_GDW&apos;, &apos;/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/USJHEK1&apos;
+UNION ALL
+SELECT &apos;ADM._coe_abo_experience&apos;, &apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP/db-01/eap_adm_shared_coe_abo_experience&apos;
+UNION ALL
+SELECT &apos;ADM._coe_customer_experience&apos;, &apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP/db-01/eap_adm_shared_coe_customer_experience&apos;
+UNION ALL
+SELECT &apos;ADM._coe_data_strategy_science&apos;, &apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP/db-01/eap_adm_shared_coe_data_strategy_science&apos;
+UNION ALL
+SELECT &apos;ADM._coe_macro_trends_forecasting&apos;, &apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP/db-01/eap_adm_shared_coe_macro_trends_forecasting&apos;
+UNION ALL
+SELECT &apos;ADM._coe_web_mobile&apos;, &apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP/db-01/eap_adm_shared_coe_web_mobile&apos;
+UNION ALL
+SELECT &apos;ADM._mat_americas&apos;, &apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP/db-01/eap_adm_shared_mat_americas&apos;
+UNION ALL
+SELECT &apos;ADM._mat_apac&apos;, &apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP/db-01/eap_adm_shared_mat_apac&apos;
+UNION ALL
+SELECT &apos;ADM._mat_europe_russia&apos;, &apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP/db-01/eap_adm_shared_mat_europe_russia&apos;
+UNION ALL
+SELECT &apos;ADM._mat_gcr&apos;, &apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP/db-01/eap_adm_shared_mat_gcr&apos;
+UNION ALL
+SELECT &apos;ADM._mat_india&apos;, &apos;/shared/Common/Physical/Metadata/AWS/Redshift_EAP/db-01/eap_adm_shared_mat_india&apos;
+</attribute>
+  <attribute name="creationDate" type="LONG">1573149509105</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1573839616452</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiu0920</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1573149509105</attribute>
+</metadata>
