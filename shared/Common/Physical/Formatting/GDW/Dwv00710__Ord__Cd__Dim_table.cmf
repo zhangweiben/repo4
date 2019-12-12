@@ -1,0 +1,416 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv00710_Ord_Cd_Dim" path="/shared/Common/Physical/Formatting/GDW/Dwv00710_Ord_Cd_Dim" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="ord_cd_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cntry_key_no" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="shp_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="canc_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pay_term_cd" nullable="true">
+      <datatype type="STRING" maxLength="15"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pay_term_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_type_cd" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prepay_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sale_chnl_cd" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sale_chnl_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pay_hold" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_src" nullable="true">
+      <datatype type="STRING" maxLength="240"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pay_req_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="shp_methd_cd" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_use_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_use_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_mthod_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_mthod_desc" nullable="true">
+      <datatype type="STRING" maxLength="25"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_actv_type_cd" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_actv_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="25"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bo_rlse_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="comb_ord_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="comm_ord_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cust_pay_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="updt_inven_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_vol_back_dt_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pay_bns_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="handl_fee_rmove_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="vchr_req_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="drop_cd" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_reas_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_reas_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="insrt_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="updt_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV00710_ORD_CD_DIM" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="ORD_CD_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CNTRY_KEY_NO">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="SHP_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="CANC_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="PAY_TERM_CD">
+        <datatype type="STRING" maxLength="15"/>
+      </element>
+      <element name="PAY_TERM_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="ORD_TYPE_CD">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="ORD_TYPE_DESC">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="PREPAY_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="SALE_CHNL_CD">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="SALE_CHNL_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="PAY_HOLD">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="ORD_SRC">
+        <datatype type="STRING" maxLength="240"/>
+      </element>
+      <element name="PAY_REQ_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="SHP_METHD_CD">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="ORD_USE_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="ORD_USE_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="ORD_MTHOD_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="ORD_MTHOD_DESC">
+        <datatype type="STRING" maxLength="25"/>
+      </element>
+      <element name="ORD_ACTV_TYPE_CD">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="ORD_ACTV_TYPE_DESC">
+        <datatype type="STRING" maxLength="25"/>
+      </element>
+      <element name="BO_RLSE_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="COMB_ORD_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="COMM_ORD_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="CUST_PAY_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="UPDT_INVEN_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="ORD_VOL_BACK_DT_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="PAY_BNS_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="HANDL_FEE_RMOVE_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="VCHR_REQ_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="DROP_CD">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="ORD_REAS_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="ORD_REAS_DESC">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="INSRT_DT">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="UPDT_DT">
+        <datatype type="DATETIME"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV00710_ORD_CD_DIM.ORD_CD_KEY_NO AS ord_cd_key_no,
+	DWV00710_ORD_CD_DIM.CNTRY_KEY_NO AS cntry_key_no,
+	CAST(DWV00710_ORD_CD_DIM.SHP_FLG AS CHAR(1)) AS shp_flg,
+	CAST(DWV00710_ORD_CD_DIM.CANC_FLG AS CHAR(1)) AS canc_flg,
+	CAST(DWV00710_ORD_CD_DIM.PAY_TERM_CD AS VARCHAR(15)) AS pay_term_cd,
+	CAST(DWV00710_ORD_CD_DIM.PAY_TERM_DESC AS VARCHAR(50)) AS pay_term_desc,
+	CAST(DWV00710_ORD_CD_DIM.ORD_TYPE_CD AS VARCHAR(30)) AS ord_type_cd,
+	CAST(DWV00710_ORD_CD_DIM.ORD_TYPE_DESC AS VARCHAR(100)) AS ord_type_desc,
+	CAST(DWV00710_ORD_CD_DIM.PREPAY_FLG AS CHAR(1)) AS prepay_flg,
+	CAST(DWV00710_ORD_CD_DIM.SALE_CHNL_CD AS VARCHAR(30)) AS sale_chnl_cd,
+	CAST(DWV00710_ORD_CD_DIM.SALE_CHNL_DESC AS VARCHAR(50)) AS sale_chnl_desc,
+	CAST(DWV00710_ORD_CD_DIM.PAY_HOLD AS VARCHAR(30)) AS pay_hold,
+	CAST(DWV00710_ORD_CD_DIM.ORD_SRC AS VARCHAR(240)) AS ord_src,
+	CAST(DWV00710_ORD_CD_DIM.PAY_REQ_FLG AS CHAR(1)) AS pay_req_flg,
+	CAST(DWV00710_ORD_CD_DIM.SHP_METHD_CD AS VARCHAR(30)) AS shp_methd_cd,
+	CAST(DWV00710_ORD_CD_DIM.ORD_USE_CD AS VARCHAR(1)) AS ord_use_cd,
+	CAST(DWV00710_ORD_CD_DIM.ORD_USE_DESC AS VARCHAR(50)) AS ord_use_desc,
+	CAST(DWV00710_ORD_CD_DIM.ORD_MTHOD_CD AS VARCHAR(1)) AS ord_mthod_cd,
+	CAST(DWV00710_ORD_CD_DIM.ORD_MTHOD_DESC AS VARCHAR(25)) AS ord_mthod_desc,
+	CAST(DWV00710_ORD_CD_DIM.ORD_ACTV_TYPE_CD AS VARCHAR(3)) AS ord_actv_type_cd,
+	CAST(DWV00710_ORD_CD_DIM.ORD_ACTV_TYPE_DESC AS VARCHAR(25)) AS ord_actv_type_desc,
+	CAST(DWV00710_ORD_CD_DIM.BO_RLSE_FLG AS CHAR(1)) AS bo_rlse_flg,
+	CAST(DWV00710_ORD_CD_DIM.COMB_ORD_FLG AS CHAR(1)) AS comb_ord_flg,
+	CAST(DWV00710_ORD_CD_DIM.COMM_ORD_FLG AS CHAR(1)) AS comm_ord_flg,
+	CAST(DWV00710_ORD_CD_DIM.CUST_PAY_FLG AS CHAR(1)) AS cust_pay_flg,
+	CAST(DWV00710_ORD_CD_DIM.UPDT_INVEN_FLG AS CHAR(1)) AS updt_inven_flg,
+	CAST(DWV00710_ORD_CD_DIM.ORD_VOL_BACK_DT_FLG AS CHAR(1)) AS ord_vol_back_dt_flg,
+	CAST(DWV00710_ORD_CD_DIM.PAY_BNS_FLG AS CHAR(1)) AS pay_bns_flg,
+	CAST(DWV00710_ORD_CD_DIM.HANDL_FEE_RMOVE_FLG AS CHAR(1)) AS handl_fee_rmove_flg,
+	CAST(DWV00710_ORD_CD_DIM.VCHR_REQ_FLG AS CHAR(1)) AS vchr_req_flg,
+	CAST(DWV00710_ORD_CD_DIM.DROP_CD AS VARCHAR(3)) AS drop_cd,
+	CAST(DWV00710_ORD_CD_DIM.ORD_REAS_CD AS VARCHAR(10)) AS ord_reas_cd,
+	CAST(DWV00710_ORD_CD_DIM.ORD_REAS_DESC AS VARCHAR(100)) AS ord_reas_desc,
+	CAST(DWV00710_ORD_CD_DIM.INSRT_DT AS TIMESTAMP) AS insrt_dt,
+	CAST(DWV00710_ORD_CD_DIM.UPDT_DT AS TIMESTAMP) AS updt_dt 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV00710_ORD_CD_DIM DWV00710_ORD_CD_DIM</attribute>
+  <attribute name="creationDate" type="LONG">1559510143808</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">250108</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">250108</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1559510143808</attribute>
+</metadata>

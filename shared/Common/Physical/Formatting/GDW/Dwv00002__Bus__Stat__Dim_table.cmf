@@ -1,0 +1,79 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv00002_Bus_Stat_Dim" path="/shared/Common/Physical/Formatting/GDW/Dwv00002_Bus_Stat_Dim" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="status_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_bus_stat_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_bus_stat_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="globl_bus_stat_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes>
+    <index name="BUS_STAT_DIM_PK" type="PRIMARY_KEY" unique="true">
+      <indexColumn name="status_key_no" sortOrder="ASCENDING"/>
+    </index>
+  </indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV00002_BUS_STAT_DIM" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="STATUS_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="IMC_BUS_STAT_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="IMC_BUS_STAT_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="GLOBL_BUS_STAT_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV00002_BUS_STAT_DIM.STATUS_KEY_NO status_key_no,
+	CAST(DWV00002_BUS_STAT_DIM.IMC_BUS_STAT_CD AS VARCHAR(10)) AS imc_bus_stat_cd,
+	CAST(DWV00002_BUS_STAT_DIM.IMC_BUS_STAT_DESC AS VARCHAR(50)) AS imc_bus_stat_desc,
+	CAST(DWV00002_BUS_STAT_DIM.GLOBL_BUS_STAT_CD AS VARCHAR(10)) AS globl_bus_stat_cd 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV00002_BUS_STAT_DIM DWV00002_BUS_STAT_DIM</attribute>
+  <attribute name="creationDate" type="LONG">1567605780477</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30105</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30105</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1567605780477</attribute>
+</metadata>

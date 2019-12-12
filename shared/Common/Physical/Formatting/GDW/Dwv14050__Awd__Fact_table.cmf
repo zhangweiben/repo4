@@ -1,0 +1,182 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv14050_Awd_Fact" path="/shared/Common/Physical/Formatting/GDW/Dwv14050_Awd_Fact" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aff_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cntry_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mo_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_qual_stat_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_cnt_qty" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="high_rnk_awd_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="new_qual_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="close_mo_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aprv_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aprv_by_cd" nullable="true">
+      <datatype type="STRING" maxLength="11"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="how_qual_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes>
+    <index name="AWARD_FACT_PK" type="PRIMARY_KEY" unique="true">
+      <indexColumn name="imc_key_no" sortOrder="ASCENDING"/>
+      <indexColumn name="aff_key_no" sortOrder="ASCENDING"/>
+      <indexColumn name="awd_key_no" sortOrder="ASCENDING"/>
+      <indexColumn name="mo_yr_key_no" sortOrder="ASCENDING"/>
+      <indexColumn name="close_mo_yr_key_no" sortOrder="ASCENDING"/>
+    </index>
+  </indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV14050_AWD_FACT" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="IMC_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="AFF_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CNTRY_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="MO_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="AWD_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="AWD_QUAL_STAT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="AWD_CNT_QTY">
+        <datatype type="INTEGER" minValue="-999999999999999999" maxValue="999999999999999999"/>
+      </element>
+      <element name="HIGH_RNK_AWD_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="NEW_QUAL_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="CLOSE_MO_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="APRV_DT">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="APRV_BY_CD">
+        <datatype type="STRING" maxLength="11"/>
+      </element>
+      <element name="HOW_QUAL_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV14050_AWD_FACT.IMC_KEY_NO imc_key_no,
+	DWV14050_AWD_FACT.AFF_KEY_NO aff_key_no,
+	CAST(DWV14050_AWD_FACT.CNTRY_KEY_NO AS BIGINT) AS cntry_key_no,
+	DWV14050_AWD_FACT.MO_YR_KEY_NO mo_yr_key_no,
+	DWV14050_AWD_FACT.AWD_KEY_NO awd_key_no,
+	CAST(DWV14050_AWD_FACT.AWD_QUAL_STAT_KEY_NO AS BIGINT) AS awd_qual_stat_key_no,
+	CAST(DWV14050_AWD_FACT.AWD_CNT_QTY AS BIGINT) AS awd_cnt_qty,
+	CAST(DWV14050_AWD_FACT.HIGH_RNK_AWD_FLG AS TINYINT) AS high_rnk_awd_flg,
+	CAST(DWV14050_AWD_FACT.NEW_QUAL_FLG AS TINYINT) AS new_qual_flg,
+	DWV14050_AWD_FACT.CLOSE_MO_YR_KEY_NO close_mo_yr_key_no,
+	CAST(DWV14050_AWD_FACT.APRV_DT AS TIMESTAMP) AS aprv_dt,
+	CAST(DWV14050_AWD_FACT.APRV_BY_CD AS VARCHAR(11)) AS aprv_by_cd,
+	CAST(DWV14050_AWD_FACT.HOW_QUAL_KEY_NO AS BIGINT) AS how_qual_key_no 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV14050_AWD_FACT DWV14050_AWD_FACT</attribute>
+  <attribute name="creationDate" type="LONG">1567632193874</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30105</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30105</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1567632193874</attribute>
+</metadata>

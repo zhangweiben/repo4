@@ -1,0 +1,151 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Sg_Amway_Labs_Imcs" path="/shared/Common/Physical/Formatting/GDW/Sg_Amway_Labs_Imcs" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="group_desc" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="name_in_chinese" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="name_in_english" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="name_in_chinese2" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="name_in_english2" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="qualified_award" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_award" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="gender" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="age" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/USJHEK1/SG_AMWAY_LABS_IMCS" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="GROUP_DESC">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="NAME_IN_CHINESE">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="NAME_IN_ENGLISH">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="NAME_IN_CHINESE2">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="NAME_IN_ENGLISH2">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="IMC_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="QUALIFIED_AWARD">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="PIN_AWARD">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="GENDER">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="AGE">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	CAST(SG_AMWAY_LABS_IMCS.GROUP_DESC AS VARCHAR(20)) AS group_desc,
+	CAST(SG_AMWAY_LABS_IMCS.NAME_IN_CHINESE AS VARCHAR(30)) AS name_in_chinese,
+	CAST(SG_AMWAY_LABS_IMCS.NAME_IN_ENGLISH AS VARCHAR(30)) AS name_in_english,
+	CAST(SG_AMWAY_LABS_IMCS.NAME_IN_CHINESE2 AS VARCHAR(30)) AS name_in_chinese2,
+	CAST(SG_AMWAY_LABS_IMCS.NAME_IN_ENGLISH2 AS VARCHAR(30)) AS name_in_english2,
+	SG_AMWAY_LABS_IMCS.IMC_NO AS imc_no,
+	SG_AMWAY_LABS_IMCS.IMC_KEY_NO AS imc_key_no,
+	CAST(SG_AMWAY_LABS_IMCS.QUALIFIED_AWARD AS VARCHAR(30)) AS qualified_award,
+	CAST(SG_AMWAY_LABS_IMCS.PIN_AWARD AS VARCHAR(30)) AS pin_award,
+	CAST(SG_AMWAY_LABS_IMCS.GENDER AS VARCHAR(10)) AS gender,
+	CAST(SG_AMWAY_LABS_IMCS.AGE AS INTEGER) AS age 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/USJHEK1/SG_AMWAY_LABS_IMCS SG_AMWAY_LABS_IMCS</attribute>
+  <attribute name="creationDate" type="LONG">1566874465398</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30105</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30105</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1566874465398</attribute>
+</metadata>

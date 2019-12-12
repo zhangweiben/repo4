@@ -1,0 +1,152 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Demand_Sales_Chn" path="/shared/Common/Physical/Formatting/GDW/Demand_Sales_Chn" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation>null</annotation>
+  <columns>
+    <column name="ord_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_imc_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="shp_item_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_item_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="vol_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pv" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bv_usd" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="usd" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_type" nullable="true">
+      <datatype type="STRING" maxLength="33"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_mo_yr_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="oper_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSEAI01/DEMAND_SALES_CHN" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="ORD_NO">
+        <datatype type="INTEGER" minValue="-999999999999999999" maxValue="999999999999999999"/>
+      </element>
+      <element name="ORD_IMC_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="SHP_ITEM_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="ORD_ITEM_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="VOL_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="PV">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="BV_USD">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="USD">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_TYPE">
+        <datatype type="STRING" maxLength="33"/>
+      </element>
+      <element name="ORD_MO_YR_KEY_NO">
+        <datatype type="INTEGER" minValue="-999999" maxValue="999999"/>
+      </element>
+      <element name="OPER_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DEMAND_SALES_CHN.ORD_NO AS ord_no,
+	DEMAND_SALES_CHN.ORD_IMC_KEY_NO AS ord_imc_key_no,
+	DEMAND_SALES_CHN.SHP_ITEM_KEY_NO AS shp_item_key_no,
+	DEMAND_SALES_CHN.ORD_ITEM_KEY_NO AS ord_item_key_no,
+	DEMAND_SALES_CHN.VOL_IMC_KEY_NO AS vol_imc_key_no,
+	CAST(DEMAND_SALES_CHN.PV AS DOUBLE) AS pv,
+	CAST(DEMAND_SALES_CHN.BV_USD AS DOUBLE) AS bv_usd,
+	CAST(DEMAND_SALES_CHN.USD AS DOUBLE) AS usd,
+	CAST(DEMAND_SALES_CHN.IMC_TYPE AS VARCHAR(33)) AS imc_type,
+	DEMAND_SALES_CHN.ORD_MO_YR_KEY_NO AS ord_mo_yr_key_no,
+	DEMAND_SALES_CHN.OPER_CNTRY_KEY_NO AS oper_cntry_key_no 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSEAI01/DEMAND_SALES_CHN DEMAND_SALES_CHN</attribute>
+  <attribute name="creationDate" type="LONG">1574785731963</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">292774</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1574785860857</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">292774</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">asp5665</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1574785731963</attribute>
+</metadata>

@@ -1,0 +1,108 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Awv00060_Globl_Imc_Type_Dim" path="/shared/Common/Physical/Formatting/GDW/Awv00060_Globl_Imc_Type_Dim" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="globl_imc_type_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="globl_imc_type_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="globl_imc_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="25"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="globl_imc_emp_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="globl_imc_hnr_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="globl_imc_lgcy_type_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="globl_imc_lgcy_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="25"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/AWV00060_GLOBL_IMC_TYPE_DIM" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="GLOBL_IMC_TYPE_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="GLOBL_IMC_TYPE_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="GLOBL_IMC_TYPE_DESC">
+        <datatype type="STRING" maxLength="25"/>
+      </element>
+      <element name="GLOBL_IMC_EMP_FLG">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="GLOBL_IMC_HNR_FLG">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="GLOBL_IMC_LGCY_TYPE_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="GLOBL_IMC_LGCY_TYPE_DESC">
+        <datatype type="STRING" maxLength="25"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	AWV00060_GLOBL_IMC_TYPE_DIM.GLOBL_IMC_TYPE_KEY_NO AS globl_imc_type_key_no,
+	CAST(AWV00060_GLOBL_IMC_TYPE_DIM.GLOBL_IMC_TYPE_CD AS CHAR(1)) AS globl_imc_type_cd,
+	CAST(AWV00060_GLOBL_IMC_TYPE_DIM.GLOBL_IMC_TYPE_DESC AS VARCHAR(25)) AS globl_imc_type_desc,
+	CAST(AWV00060_GLOBL_IMC_TYPE_DIM.GLOBL_IMC_EMP_FLG AS SMALLINT) AS globl_imc_emp_flg,
+	CAST(AWV00060_GLOBL_IMC_TYPE_DIM.GLOBL_IMC_HNR_FLG AS SMALLINT) AS globl_imc_hnr_flg,
+	CAST(AWV00060_GLOBL_IMC_TYPE_DIM.GLOBL_IMC_LGCY_TYPE_CD AS CHAR(1)) AS globl_imc_lgcy_type_cd,
+	CAST(AWV00060_GLOBL_IMC_TYPE_DIM.GLOBL_IMC_LGCY_TYPE_DESC AS VARCHAR(25)) AS globl_imc_lgcy_type_desc 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/AWV00060_GLOBL_IMC_TYPE_DIM AWV00060_GLOBL_IMC_TYPE_DIM</attribute>
+  <attribute name="creationDate" type="LONG">1559510136564</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">250108</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">250108</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1559510136564</attribute>
+</metadata>

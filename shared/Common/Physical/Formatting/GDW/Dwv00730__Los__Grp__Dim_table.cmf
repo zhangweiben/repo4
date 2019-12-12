@@ -1,0 +1,1047 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv00730_Los_Grp_Dim" path="/shared/Common/Physical/Formatting/GDW/Dwv00730_Los_Grp_Dim" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="los_grp_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_gold_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_platm_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_emd_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_diamd_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_gold_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_platm_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_emd_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_diamd_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_gold_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_platm_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_emd_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_diamd_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="spon_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_silver_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_silver_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_silver_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_silver_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_silver_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_silver_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_gold_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_gold_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_gold_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_dd_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_dd_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_dd_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_emd_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_emd_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_emd_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_diamd_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_diamd_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_diamd_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_silver_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_gold_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_dd_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_emd_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_diamd_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_silver_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_gold_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_platm_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_emd_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_diamd_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_silver_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_gold_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_platm_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_emd_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_diamd_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_silver_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_gold_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_dd_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_emd_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_grp_diamd_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_silver_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_gold_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_platm_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_emd_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_diamd_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_silver_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_gold_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_platm_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_emd_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_diamd_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_silver_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_gold_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_platm_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_emd_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_diamd_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_silver_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_gold_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_platm_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_emd_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_upln_diamd_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_silver_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_gold_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_platm_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_emd_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_diamd_cntry_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_silver_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_gold_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_platm_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_emd_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_diamd_imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_silver_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_gold_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_platm_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_emd_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_diamd_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_silver_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_gold_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_platm_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_emd_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_grp_diamd_globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes>
+    <index name="LOS_GRP_DIM_PK" type="PRIMARY_KEY" unique="true">
+      <indexColumn name="los_grp_key_no" sortOrder="ASCENDING"/>
+    </index>
+  </indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV00730_LOS_GRP_DIM" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="LOS_GRP_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURR_UPLN_GOLD_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURR_UPLN_PLATM_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURR_UPLN_EMD_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURR_UPLN_DIAMD_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURR_GRP_GOLD_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURR_GRP_PLATM_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURR_GRP_EMD_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURR_GRP_DIAMD_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="PIN_GRP_GOLD_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="PIN_GRP_PLATM_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="PIN_GRP_EMD_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="PIN_GRP_DIAMD_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="SPON_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURR_UPLN_SILVER_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURR_GRP_SILVER_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="PIN_GRP_SILVER_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURR_GRP_SILVER_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_SILVER_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="CURR_GRP_SILVER_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_GOLD_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_GOLD_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="CURR_GRP_GOLD_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_DD_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_DD_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="CURR_GRP_DD_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_EMD_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_EMD_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="CURR_GRP_EMD_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_DIAMD_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_DIAMD_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="CURR_GRP_DIAMD_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_SILVER_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_GOLD_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_DD_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_EMD_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_DIAMD_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_SILVER_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_GOLD_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_PLATM_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_EMD_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_DIAMD_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_SILVER_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_GOLD_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_PLATM_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_EMD_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_DIAMD_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_SILVER_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_GOLD_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_DD_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_EMD_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_GRP_DIAMD_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_SILVER_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_GOLD_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_PLATM_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_EMD_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_DIAMD_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_SILVER_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_GOLD_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_PLATM_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_EMD_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_DIAMD_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_SILVER_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="CURR_UPLN_GOLD_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="CURR_UPLN_PLATM_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="CURR_UPLN_EMD_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="CURR_UPLN_DIAMD_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="CURR_UPLN_SILVER_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_GOLD_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_PLATM_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_EMD_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURR_UPLN_DIAMD_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_SILVER_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_GOLD_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_PLATM_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_EMD_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_DIAMD_CNTRY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_SILVER_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_GOLD_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_PLATM_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_EMD_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_DIAMD_IMC_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_SILVER_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="PIN_GRP_GOLD_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="PIN_GRP_PLATM_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="PIN_GRP_EMD_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="PIN_GRP_DIAMD_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="PIN_GRP_SILVER_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_GOLD_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_PLATM_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_EMD_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PIN_GRP_DIAMD_GLOBL_CUST_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV00730_LOS_GRP_DIM.LOS_GRP_KEY_NO los_grp_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_GOLD_IMC_KEY_NO AS BIGINT) AS curr_upln_gold_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_PLATM_IMC_KEY_NO AS BIGINT) AS curr_upln_platm_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_EMD_IMC_KEY_NO AS BIGINT) AS curr_upln_emd_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_DIAMD_IMC_KEY_NO AS BIGINT) AS curr_upln_diamd_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_GOLD_IMC_KEY_NO AS BIGINT) AS curr_grp_gold_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_PLATM_IMC_KEY_NO AS BIGINT) AS curr_grp_platm_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_EMD_IMC_KEY_NO AS BIGINT) AS curr_grp_emd_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_DIAMD_IMC_KEY_NO AS BIGINT) AS curr_grp_diamd_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_GOLD_IMC_KEY_NO AS BIGINT) AS pin_grp_gold_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_PLATM_IMC_KEY_NO AS BIGINT) AS pin_grp_platm_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_EMD_IMC_KEY_NO AS BIGINT) AS pin_grp_emd_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_DIAMD_IMC_KEY_NO AS BIGINT) AS pin_grp_diamd_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.SPON_IMC_KEY_NO AS BIGINT) AS spon_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_SILVER_IMC_KEY_NO AS BIGINT) AS curr_upln_silver_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_SILVER_IMC_KEY_NO AS BIGINT) AS curr_grp_silver_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_SILVER_IMC_KEY_NO AS BIGINT) AS pin_grp_silver_imc_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_SILVER_IMC_NO AS DOUBLE) AS curr_grp_silver_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_SILVER_IMC_NAME AS VARCHAR(360)) AS curr_grp_silver_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_SILVER_CNTRY_KEY_NO AS DOUBLE) AS curr_grp_silver_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_GOLD_IMC_NO AS DOUBLE) AS curr_grp_gold_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_GOLD_IMC_NAME AS VARCHAR(360)) AS curr_grp_gold_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_GOLD_CNTRY_KEY_NO AS DOUBLE) AS curr_grp_gold_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_DD_IMC_NO AS DOUBLE) AS curr_grp_dd_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_DD_IMC_NAME AS VARCHAR(360)) AS curr_grp_dd_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_DD_CNTRY_KEY_NO AS DOUBLE) AS curr_grp_dd_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_EMD_IMC_NO AS DOUBLE) AS curr_grp_emd_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_EMD_IMC_NAME AS VARCHAR(360)) AS curr_grp_emd_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_EMD_CNTRY_KEY_NO AS DOUBLE) AS curr_grp_emd_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_DIAMD_IMC_NO AS DOUBLE) AS curr_grp_diamd_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_DIAMD_IMC_NAME AS VARCHAR(360)) AS curr_grp_diamd_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_DIAMD_CNTRY_KEY_NO AS DOUBLE) AS curr_grp_diamd_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_SILVER_LOA_KEY_NO AS DOUBLE) AS curr_grp_silver_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_GOLD_LOA_KEY_NO AS DOUBLE) AS curr_grp_gold_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_DD_LOA_KEY_NO AS DOUBLE) AS curr_grp_dd_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_EMD_LOA_KEY_NO AS DOUBLE) AS curr_grp_emd_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_DIAMD_LOA_KEY_NO AS DOUBLE) AS curr_grp_diamd_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_SILVER_LOA_KEY_NO AS DOUBLE) AS curr_upln_silver_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_GOLD_LOA_KEY_NO AS DOUBLE) AS curr_upln_gold_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_PLATM_LOA_KEY_NO AS DOUBLE) AS curr_upln_platm_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_EMD_LOA_KEY_NO AS DOUBLE) AS curr_upln_emd_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_DIAMD_LOA_KEY_NO AS DOUBLE) AS curr_upln_diamd_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_SILVER_LOA_KEY_NO AS DOUBLE) AS pin_grp_silver_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_GOLD_LOA_KEY_NO AS DOUBLE) AS pin_grp_gold_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_PLATM_LOA_KEY_NO AS DOUBLE) AS pin_grp_platm_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_EMD_LOA_KEY_NO AS DOUBLE) AS pin_grp_emd_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_DIAMD_LOA_KEY_NO AS DOUBLE) AS pin_grp_diamd_loa_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_SILVER_GLOBL_CUST_ID AS DOUBLE) AS curr_grp_silver_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_GOLD_GLOBL_CUST_ID AS DOUBLE) AS curr_grp_gold_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_DD_GLOBL_CUST_ID AS DOUBLE) AS curr_grp_dd_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_EMD_GLOBL_CUST_ID AS DOUBLE) AS curr_grp_emd_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_GRP_DIAMD_GLOBL_CUST_ID AS DOUBLE) AS curr_grp_diamd_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_SILVER_CNTRY_KEY_NO AS DOUBLE) AS curr_upln_silver_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_GOLD_CNTRY_KEY_NO AS DOUBLE) AS curr_upln_gold_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_PLATM_CNTRY_KEY_NO AS DOUBLE) AS curr_upln_platm_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_EMD_CNTRY_KEY_NO AS DOUBLE) AS curr_upln_emd_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_DIAMD_CNTRY_KEY_NO AS DOUBLE) AS curr_upln_diamd_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_SILVER_IMC_NO AS DOUBLE) AS curr_upln_silver_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_GOLD_IMC_NO AS DOUBLE) AS curr_upln_gold_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_PLATM_IMC_NO AS DOUBLE) AS curr_upln_platm_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_EMD_IMC_NO AS DOUBLE) AS curr_upln_emd_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_DIAMD_IMC_NO AS DOUBLE) AS curr_upln_diamd_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_SILVER_IMC_NAME AS VARCHAR(360)) AS curr_upln_silver_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_GOLD_IMC_NAME AS VARCHAR(360)) AS curr_upln_gold_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_PLATM_IMC_NAME AS VARCHAR(360)) AS curr_upln_platm_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_EMD_IMC_NAME AS VARCHAR(360)) AS curr_upln_emd_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_DIAMD_IMC_NAME AS VARCHAR(360)) AS curr_upln_diamd_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_SILVER_GLOBL_CUST_ID AS DOUBLE) AS curr_upln_silver_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_GOLD_GLOBL_CUST_ID AS DOUBLE) AS curr_upln_gold_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_PLATM_GLOBL_CUST_ID AS DOUBLE) AS curr_upln_platm_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_EMD_GLOBL_CUST_ID AS DOUBLE) AS curr_upln_emd_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.CURR_UPLN_DIAMD_GLOBL_CUST_ID AS DOUBLE) AS curr_upln_diamd_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_SILVER_CNTRY_KEY_NO AS DOUBLE) AS pin_grp_silver_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_GOLD_CNTRY_KEY_NO AS DOUBLE) AS pin_grp_gold_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_PLATM_CNTRY_KEY_NO AS DOUBLE) AS pin_grp_platm_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_EMD_CNTRY_KEY_NO AS DOUBLE) AS pin_grp_emd_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_DIAMD_CNTRY_KEY_NO AS DOUBLE) AS pin_grp_diamd_cntry_key_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_SILVER_IMC_NO AS DOUBLE) AS pin_grp_silver_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_GOLD_IMC_NO AS DOUBLE) AS pin_grp_gold_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_PLATM_IMC_NO AS DOUBLE) AS pin_grp_platm_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_EMD_IMC_NO AS DOUBLE) AS pin_grp_emd_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_DIAMD_IMC_NO AS DOUBLE) AS pin_grp_diamd_imc_no,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_SILVER_IMC_NAME AS VARCHAR(360)) AS pin_grp_silver_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_GOLD_IMC_NAME AS VARCHAR(360)) AS pin_grp_gold_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_PLATM_IMC_NAME AS VARCHAR(360)) AS pin_grp_platm_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_EMD_IMC_NAME AS VARCHAR(360)) AS pin_grp_emd_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_DIAMD_IMC_NAME AS VARCHAR(360)) AS pin_grp_diamd_imc_name,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_SILVER_GLOBL_CUST_ID AS DOUBLE) AS pin_grp_silver_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_GOLD_GLOBL_CUST_ID AS DOUBLE) AS pin_grp_gold_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_PLATM_GLOBL_CUST_ID AS DOUBLE) AS pin_grp_platm_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_EMD_GLOBL_CUST_ID AS DOUBLE) AS pin_grp_emd_globl_cust_id,
+	CAST(DWV00730_LOS_GRP_DIM.PIN_GRP_DIAMD_GLOBL_CUST_ID AS DOUBLE) AS pin_grp_diamd_globl_cust_id 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV00730_LOS_GRP_DIM DWV00730_LOS_GRP_DIM</attribute>
+  <attribute name="creationDate" type="LONG">1567606245275</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30105</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30105</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1567606245275</attribute>
+</metadata>

@@ -1,0 +1,1615 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv03000_Item_Dim" path="/shared/Common/Physical/Formatting/GDW/Dwv03000_Item_Dim" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="cntry_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="corp_cd" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curcy_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_launc_dt_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mo_yr_curcy_comb_key_no" nullable="true">
+      <datatype type="STRING" maxLength="80"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_price_eff_dt_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="whse_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_no" nullable="true">
+      <datatype type="STRING" maxLength="15"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="act_type" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="base_7_item_no" nullable="true">
+      <datatype type="STRING" maxLength="7"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="brand_cd" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="brand_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bus_ln_cd" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bus_ln_desc" nullable="true">
+      <datatype type="STRING" maxLength="45"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="comm_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctlg_item_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctlg_item_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_buyer_cd" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_buyer_desc" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_desc" nullable="true">
+      <datatype type="STRING" maxLength="300"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_eng_desc" nullable="true">
+      <datatype type="STRING" maxLength="300"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_long_desc" nullable="true">
+      <datatype type="STRING" maxLength="300"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_plnr_cd" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_plnr_desc" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_type_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_vend_cd" nullable="true">
+      <datatype type="STRING" maxLength="15"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_vend_desc" nullable="true">
+      <datatype type="STRING" maxLength="25"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_um_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="stat_cd" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="stat_desc" nullable="true">
+      <datatype type="STRING" maxLength="45"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctgry_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctgry_desc" nullable="true">
+      <datatype type="STRING" maxLength="45"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sub_ctgry_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sub_ctgry_desc" nullable="true">
+      <datatype type="STRING" maxLength="45"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="uom_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="uom_cd_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bns_bv_pct" nullable="true">
+      <datatype type="DECIMAL" maxDigits="6" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aff_cost_of_sales_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="meas_cr_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="xfr_cost_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ada_base_dist_exp_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="clt_cs_cost_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="clt_ea_cost_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ibo_cs_cost_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ibo_ea_cost_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_cs_bv_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_cs_pv_lc_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_ea_bv_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_ea_pv_lc_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mbr_cs_cost_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mbr_ea_cost_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="postg_cs_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="postg_ea_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="rtail_cs_cost_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="rtail_ea_cost_lc_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_ship_qty" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_cs_qty" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_pall_qty" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="conv_to_ltu_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="local_src_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="logic_item_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sale_kit_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_brand_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_brand_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_bus_ln_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_bus_ln_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_ctgry_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_ctgry_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_sub_ctgry_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_sub_ctgry_desc" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_fn_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_fn_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_frmt_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_frmt_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_indst_cut_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_indst_cut_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_pkg_type_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_pkg_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_size_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_size_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_subln_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_subln_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_type_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="jde_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="270"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="rec_type_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_marg_valid_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="l070_prod_cd" nullable="true">
+      <datatype type="STRING" maxLength="7"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="l070_prod_cd_desc" nullable="true">
+      <datatype type="STRING" maxLength="35"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="l070_prod_cd_cumm_pos_2" nullable="true">
+      <datatype type="STRING" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="l070_prod_cd_cumm_pos_3" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="l070_prod_cd_cumm_pos_4" nullable="true">
+      <datatype type="STRING" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="l070_prod_cd_cumm_pos_5" nullable="true">
+      <datatype type="STRING" maxLength="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="l070_prod_cd_cumm_pos_6" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_assmbly_type" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_bv_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_sales_ctgry_cd" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_sales_ctgry_desc" nullable="true">
+      <datatype type="STRING" maxLength="25"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_sales_div_cd" nullable="true">
+      <datatype type="STRING" maxLength="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_sales_div_desc" nullable="true">
+      <datatype type="STRING" maxLength="35"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_sales_sub_div_cd" nullable="true">
+      <datatype type="STRING" maxLength="8"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_sales_sub_div_cd_desc" nullable="true">
+      <datatype type="STRING" maxLength="45"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_vds" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_vds_type" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_vmi_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_bus_ln_src" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_bus_ln_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_bus_ln_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_ctgry_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_ctgry_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_sub_ctgry_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_sub_ctgry_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_brand_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_brand_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_sub_brand_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_sub_brand_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_prdct_fmly_cd" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_prdct_fmly_desc" nullable="true">
+      <datatype type="STRING" maxLength="300"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_prdct_ind_cut_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_prdct_ind_cut_desc" nullable="true">
+      <datatype type="STRING" maxLength="300"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_prdct_grp_cd" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_prdct_grp_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_base_item_no" nullable="true">
+      <datatype type="STRING" maxLength="60"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_base_item_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_harm_cd" nullable="true">
+      <datatype type="STRING" maxLength="15"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_food_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_brand_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_brand_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_ctgry_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_ctgry_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_sub_ctgry_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_sub_ctgry_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_prdct_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_prdct_eng_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_prdct_lcl_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lc_unit_cost_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lc_xfr_cost_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lc_duty_rt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="insrt_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="updt_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_bus_ln_ovrride_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_bus_ln_src_ori" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="glbl_gph_ovrride_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV03000_ITEM_DIM" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="CNTRY_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CORP_CD">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="ITEM_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURCY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ITEM_LAUNC_DT_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="MO_YR_CURCY_COMB_KEY_NO">
+        <datatype type="STRING" maxLength="80"/>
+      </element>
+      <element name="ITEM_PRICE_EFF_DT_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="WHSE_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="ITEM_NO">
+        <datatype type="STRING" maxLength="15"/>
+      </element>
+      <element name="ACT_TYPE">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="BASE_7_ITEM_NO">
+        <datatype type="STRING" maxLength="7"/>
+      </element>
+      <element name="BRAND_CD">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="BRAND_DESC">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="BUS_LN_CD">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="BUS_LN_DESC">
+        <datatype type="STRING" maxLength="45"/>
+      </element>
+      <element name="COMM_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="CTLG_ITEM_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="CTLG_ITEM_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="ITEM_BUYER_CD">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="ITEM_BUYER_DESC">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="ITEM_DESC">
+        <datatype type="STRING" maxLength="300"/>
+      </element>
+      <element name="ITEM_ENG_DESC">
+        <datatype type="STRING" maxLength="300"/>
+      </element>
+      <element name="ITEM_LONG_DESC">
+        <datatype type="STRING" maxLength="300"/>
+      </element>
+      <element name="ITEM_PLNR_CD">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="ITEM_PLNR_DESC">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="ITEM_TYPE_CD">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="ITEM_TYPE_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="ITEM_VEND_CD">
+        <datatype type="STRING" maxLength="15"/>
+      </element>
+      <element name="ITEM_VEND_DESC">
+        <datatype type="STRING" maxLength="25"/>
+      </element>
+      <element name="PRM_UM_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="STAT_CD">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="STAT_DESC">
+        <datatype type="STRING" maxLength="45"/>
+      </element>
+      <element name="CTGRY_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="CTGRY_DESC">
+        <datatype type="STRING" maxLength="45"/>
+      </element>
+      <element name="SUB_CTGRY_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="SUB_CTGRY_DESC">
+        <datatype type="STRING" maxLength="45"/>
+      </element>
+      <element name="UOM_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="UOM_CD_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="BNS_BV_PCT">
+        <datatype type="DECIMAL" maxDigits="6" maxFractionalDigits="4"/>
+      </element>
+      <element name="AFF_COST_OF_SALES_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="MEAS_CR_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="XFR_COST_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ADA_BASE_DIST_EXP_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CLT_CS_COST_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CLT_EA_COST_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IBO_CS_COST_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IBO_EA_COST_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ITEM_CS_BV_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ITEM_CS_PV_LC_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="ITEM_EA_BV_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ITEM_EA_PV_LC_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="MBR_CS_COST_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="MBR_EA_COST_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="POSTG_CS_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="POSTG_EA_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="RTAIL_CS_COST_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="RTAIL_EA_COST_LC_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ITEM_SHIP_QTY">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="ITEM_CS_QTY">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="ITEM_PALL_QTY">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CONV_TO_LTU_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="LOCAL_SRC_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="LOGIC_ITEM_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="SALE_KIT_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="JDE_BRAND_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="JDE_BRAND_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="JDE_BUS_LN_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="JDE_BUS_LN_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="JDE_CTGRY_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="JDE_CTGRY_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="JDE_SUB_CTGRY_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="JDE_SUB_CTGRY_DESC" nullable="false">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="JDE_FN_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="JDE_FN_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="JDE_FRMT_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="JDE_FRMT_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="JDE_INDST_CUT_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="JDE_INDST_CUT_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="JDE_PKG_TYPE_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="JDE_PKG_TYPE_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="JDE_SIZE_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="JDE_SIZE_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="JDE_SUBLN_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="JDE_SUBLN_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="JDE_TYPE_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="JDE_TYPE_DESC">
+        <datatype type="STRING" maxLength="270"/>
+      </element>
+      <element name="REC_TYPE_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="ITEM_MARG_VALID_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="L070_PROD_CD">
+        <datatype type="STRING" maxLength="7"/>
+      </element>
+      <element name="L070_PROD_CD_DESC">
+        <datatype type="STRING" maxLength="35"/>
+      </element>
+      <element name="L070_PROD_CD_CUMM_POS_2">
+        <datatype type="STRING" maxLength="2"/>
+      </element>
+      <element name="L070_PROD_CD_CUMM_POS_3">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="L070_PROD_CD_CUMM_POS_4">
+        <datatype type="STRING" maxLength="4"/>
+      </element>
+      <element name="L070_PROD_CD_CUMM_POS_5">
+        <datatype type="STRING" maxLength="5"/>
+      </element>
+      <element name="L070_PROD_CD_CUMM_POS_6">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="ITEM_ASSMBLY_TYPE" nullable="false">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="ITEM_BV_FLG" nullable="false">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="ITEM_SALES_CTGRY_CD" nullable="false">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="ITEM_SALES_CTGRY_DESC" nullable="false">
+        <datatype type="STRING" maxLength="25"/>
+      </element>
+      <element name="ITEM_SALES_DIV_CD" nullable="false">
+        <datatype type="STRING" maxLength="5"/>
+      </element>
+      <element name="ITEM_SALES_DIV_DESC" nullable="false">
+        <datatype type="STRING" maxLength="35"/>
+      </element>
+      <element name="ITEM_SALES_SUB_DIV_CD" nullable="false">
+        <datatype type="STRING" maxLength="8"/>
+      </element>
+      <element name="ITEM_SALES_SUB_DIV_CD_DESC" nullable="false">
+        <datatype type="STRING" maxLength="45"/>
+      </element>
+      <element name="ITEM_VDS" nullable="false">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="ITEM_VDS_TYPE" nullable="false">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="ITEM_VMI_CD" nullable="false">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="GLBL_BUS_LN_SRC" nullable="false">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="GLBL_BUS_LN_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="GLBL_BUS_LN_DESC" nullable="false">
+        <datatype type="STRING" maxLength="1000"/>
+      </element>
+      <element name="GLBL_CTGRY_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="GLBL_CTGRY_DESC" nullable="false">
+        <datatype type="STRING" maxLength="1000"/>
+      </element>
+      <element name="GLBL_SUB_CTGRY_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="GLBL_SUB_CTGRY_DESC" nullable="false">
+        <datatype type="STRING" maxLength="1000"/>
+      </element>
+      <element name="GLBL_BRAND_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="GLBL_BRAND_DESC" nullable="false">
+        <datatype type="STRING" maxLength="1000"/>
+      </element>
+      <element name="GLBL_SUB_BRAND_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="GLBL_SUB_BRAND_DESC" nullable="false">
+        <datatype type="STRING" maxLength="1000"/>
+      </element>
+      <element name="GLBL_PRDCT_FMLY_CD" nullable="false">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="GLBL_PRDCT_FMLY_DESC" nullable="false">
+        <datatype type="STRING" maxLength="3000"/>
+      </element>
+      <element name="GLBL_PRDCT_IND_CUT_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="GLBL_PRDCT_IND_CUT_DESC" nullable="false">
+        <datatype type="STRING" maxLength="3000"/>
+      </element>
+      <element name="GLBL_PRDCT_GRP_CD" nullable="false">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="GLBL_PRDCT_GRP_DESC" nullable="false">
+        <datatype type="STRING" maxLength="1000"/>
+      </element>
+      <element name="GLBL_BASE_ITEM_NO" nullable="false">
+        <datatype type="STRING" maxLength="60"/>
+      </element>
+      <element name="GLBL_BASE_ITEM_DESC" nullable="false">
+        <datatype type="STRING" maxLength="1000"/>
+      </element>
+      <element name="ITEM_HARM_CD" nullable="false">
+        <datatype type="STRING" maxLength="15"/>
+      </element>
+      <element name="ITEM_FOOD_FLG" nullable="false">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="LCL_BRAND_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="LCL_BRAND_DESC" nullable="false">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="LCL_CTGRY_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="LCL_CTGRY_DESC" nullable="false">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="LCL_SUB_CTGRY_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="LCL_SUB_CTGRY_DESC" nullable="false">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="LCL_PRDCT_CD" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="LCL_PRDCT_ENG_DESC" nullable="false">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="LCL_PRDCT_LCL_DESC" nullable="false">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="LC_UNIT_COST_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="LC_XFR_COST_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="LC_DUTY_RT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="INSRT_DT">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="UPDT_DT">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="GLBL_BUS_LN_OVRRIDE_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="GLBL_BUS_LN_SRC_ORI">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="GLBL_GPH_OVRRIDE_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+    DWV03000_ITEM_DIM.CNTRY_KEY_NO cntry_key_no, 
+    CAST(DWV03000_ITEM_DIM.CORP_CD AS VARCHAR(3)) corp_cd, 
+    DWV03000_ITEM_DIM.ITEM_KEY_NO item_key_no, 
+    CAST(DWV03000_ITEM_DIM.CURCY_KEY_NO AS DOUBLE) curcy_key_no, 
+    CAST(DWV03000_ITEM_DIM.ITEM_LAUNC_DT_KEY_NO AS DOUBLE) item_launc_dt_key_no, 
+    CAST(DWV03000_ITEM_DIM.MO_YR_CURCY_COMB_KEY_NO AS VARCHAR(80)) mo_yr_curcy_comb_key_no, 
+    CAST(DWV03000_ITEM_DIM.ITEM_PRICE_EFF_DT_KEY_NO AS DOUBLE) item_price_eff_dt_key_no, 
+    CAST(DWV03000_ITEM_DIM.WHSE_KEY_NO AS BIGINT) whse_key_no, 
+    CAST(DWV03000_ITEM_DIM.ITEM_NO AS VARCHAR(15)) item_no, 
+    CAST(DWV03000_ITEM_DIM.ACT_TYPE AS VARCHAR(3)) act_type, 
+    CAST(DWV03000_ITEM_DIM.BASE_7_ITEM_NO AS VARCHAR(7)) base_7_item_no, 
+    CAST(DWV03000_ITEM_DIM.BRAND_CD AS VARCHAR(3)) brand_cd, 
+    CAST(DWV03000_ITEM_DIM.BRAND_DESC AS VARCHAR(100)) brand_desc, 
+    CAST(DWV03000_ITEM_DIM.BUS_LN_CD AS VARCHAR(12)) bus_ln_cd, 
+    CAST(DWV03000_ITEM_DIM.BUS_LN_DESC AS VARCHAR(45)) bus_ln_desc, 
+    CAST(DWV03000_ITEM_DIM.COMM_CD AS VARCHAR(10)) comm_cd, 
+    CAST(DWV03000_ITEM_DIM.CTLG_ITEM_CD AS VARCHAR(10)) ctlg_item_cd, 
+    CAST(DWV03000_ITEM_DIM.CTLG_ITEM_DESC AS VARCHAR(270)) ctlg_item_desc, 
+    CAST(DWV03000_ITEM_DIM.ITEM_BUYER_CD AS VARCHAR(20)) item_buyer_cd, 
+    CAST(DWV03000_ITEM_DIM.ITEM_BUYER_DESC AS VARCHAR(20)) item_buyer_desc, 
+    CAST(DWV03000_ITEM_DIM.ITEM_DESC AS VARCHAR(300)) item_desc, 
+    CAST(DWV03000_ITEM_DIM.ITEM_ENG_DESC AS VARCHAR(300)) item_eng_desc, 
+    CAST(DWV03000_ITEM_DIM.ITEM_LONG_DESC AS VARCHAR(300)) item_long_desc, 
+    CAST(DWV03000_ITEM_DIM.ITEM_PLNR_CD AS VARCHAR(20)) item_plnr_cd, 
+    CAST(DWV03000_ITEM_DIM.ITEM_PLNR_DESC AS VARCHAR(20)) item_plnr_desc, 
+    CAST(DWV03000_ITEM_DIM.ITEM_TYPE_CD AS VARCHAR(10)) item_type_cd, 
+    CAST(DWV03000_ITEM_DIM.ITEM_TYPE_DESC AS VARCHAR(270)) item_type_desc, 
+    CAST(DWV03000_ITEM_DIM.ITEM_VEND_CD AS VARCHAR(15)) item_vend_cd, 
+    CAST(DWV03000_ITEM_DIM.ITEM_VEND_DESC AS VARCHAR(25)) item_vend_desc, 
+    CAST(DWV03000_ITEM_DIM.PRM_UM_CD AS VARCHAR(10)) prm_um_cd, 
+    CAST(DWV03000_ITEM_DIM.STAT_CD AS VARCHAR(12)) stat_cd, 
+    CAST(DWV03000_ITEM_DIM.STAT_DESC AS VARCHAR(45)) stat_desc, 
+    CAST(DWV03000_ITEM_DIM.CTGRY_CD AS CHAR(2)) ctgry_cd, 
+    CAST(DWV03000_ITEM_DIM.CTGRY_DESC AS VARCHAR(45)) ctgry_desc, 
+    CAST(DWV03000_ITEM_DIM.SUB_CTGRY_CD AS CHAR(3)) sub_ctgry_cd, 
+    CAST(DWV03000_ITEM_DIM.SUB_CTGRY_DESC AS VARCHAR(45)) sub_ctgry_desc, 
+    CAST(DWV03000_ITEM_DIM.UOM_CD AS VARCHAR(10)) uom_cd, 
+    CAST(DWV03000_ITEM_DIM.UOM_CD_DESC AS VARCHAR(270)) uom_cd_desc, 
+    CAST(DWV03000_ITEM_DIM.BNS_BV_PCT AS DECIMAL(6,4)) bns_bv_pct, 
+    CAST(DWV03000_ITEM_DIM.AFF_COST_OF_SALES_LC_AMT AS DOUBLE) aff_cost_of_sales_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.MEAS_CR_LC_AMT AS DOUBLE) meas_cr_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.XFR_COST_LC_AMT AS DOUBLE) xfr_cost_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.ADA_BASE_DIST_EXP_LC_AMT AS DOUBLE) ada_base_dist_exp_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.CLT_CS_COST_LC_AMT AS DOUBLE) clt_cs_cost_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.CLT_EA_COST_LC_AMT AS DOUBLE) clt_ea_cost_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.IBO_CS_COST_LC_AMT AS DOUBLE) ibo_cs_cost_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.IBO_EA_COST_LC_AMT AS DOUBLE) ibo_ea_cost_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.ITEM_CS_BV_LC_AMT AS DOUBLE) item_cs_bv_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.ITEM_CS_PV_LC_AMT AS DECIMAL(19,4)) item_cs_pv_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.ITEM_EA_BV_LC_AMT AS DOUBLE) item_ea_bv_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.ITEM_EA_PV_LC_AMT AS DECIMAL(19,4)) item_ea_pv_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.MBR_CS_COST_LC_AMT AS DOUBLE) mbr_cs_cost_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.MBR_EA_COST_LC_AMT AS DOUBLE) mbr_ea_cost_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.POSTG_CS_LC_AMT AS DOUBLE) postg_cs_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.POSTG_EA_LC_AMT AS DOUBLE) postg_ea_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.RTAIL_CS_COST_LC_AMT AS DOUBLE) rtail_cs_cost_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.RTAIL_EA_COST_LC_AMT AS DOUBLE) rtail_ea_cost_lc_amt, 
+    CAST(DWV03000_ITEM_DIM.ITEM_SHIP_QTY AS BIGINT) item_ship_qty, 
+    CAST(DWV03000_ITEM_DIM.ITEM_CS_QTY AS BIGINT) item_cs_qty, 
+    CAST(DWV03000_ITEM_DIM.ITEM_PALL_QTY AS BIGINT) item_pall_qty, 
+    CAST(DWV03000_ITEM_DIM.CONV_TO_LTU_FLG AS CHAR(1)) conv_to_ltu_flg, 
+    CAST(DWV03000_ITEM_DIM.LOCAL_SRC_FLG AS CHAR(1)) local_src_flg, 
+    CAST(DWV03000_ITEM_DIM.LOGIC_ITEM_FLG AS CHAR(1)) logic_item_flg, 
+    CAST(DWV03000_ITEM_DIM.SALE_KIT_FLG AS CHAR(1)) sale_kit_flg, 
+    CAST(DWV03000_ITEM_DIM.JDE_BRAND_CD AS VARCHAR(10)) jde_brand_cd, 
+    CAST(DWV03000_ITEM_DIM.JDE_BRAND_DESC AS VARCHAR(270)) jde_brand_desc, 
+    CAST(DWV03000_ITEM_DIM.JDE_BUS_LN_CD AS VARCHAR(10)) jde_bus_ln_cd, 
+    CAST(DWV03000_ITEM_DIM.JDE_BUS_LN_DESC AS VARCHAR(270)) jde_bus_ln_desc, 
+    CAST(DWV03000_ITEM_DIM.JDE_CTGRY_CD AS VARCHAR(10)) jde_ctgry_cd, 
+    CAST(DWV03000_ITEM_DIM.JDE_CTGRY_DESC AS VARCHAR(270)) jde_ctgry_desc, 
+    CAST(DWV03000_ITEM_DIM.JDE_SUB_CTGRY_CD AS VARCHAR(10)) jde_sub_ctgry_cd, 
+    CAST(DWV03000_ITEM_DIM.JDE_SUB_CTGRY_DESC AS VARCHAR(30)) jde_sub_ctgry_desc, 
+    CAST(DWV03000_ITEM_DIM.JDE_FN_CD AS VARCHAR(10)) jde_fn_cd, 
+    CAST(DWV03000_ITEM_DIM.JDE_FN_DESC AS VARCHAR(270)) jde_fn_desc, 
+    CAST(DWV03000_ITEM_DIM.JDE_FRMT_CD AS VARCHAR(10)) jde_frmt_cd, 
+    CAST(DWV03000_ITEM_DIM.JDE_FRMT_DESC AS VARCHAR(270)) jde_frmt_desc, 
+    CAST(DWV03000_ITEM_DIM.JDE_INDST_CUT_CD AS VARCHAR(10)) jde_indst_cut_cd, 
+    CAST(DWV03000_ITEM_DIM.JDE_INDST_CUT_DESC AS VARCHAR(270)) jde_indst_cut_desc, 
+    CAST(DWV03000_ITEM_DIM.JDE_PKG_TYPE_CD AS VARCHAR(10)) jde_pkg_type_cd, 
+    CAST(DWV03000_ITEM_DIM.JDE_PKG_TYPE_DESC AS VARCHAR(270)) jde_pkg_type_desc, 
+    CAST(DWV03000_ITEM_DIM.JDE_SIZE_CD AS VARCHAR(10)) jde_size_cd, 
+    CAST(DWV03000_ITEM_DIM.JDE_SIZE_DESC AS VARCHAR(270)) jde_size_desc, 
+    CAST(DWV03000_ITEM_DIM.JDE_SUBLN_CD AS VARCHAR(10)) jde_subln_cd, 
+    CAST(DWV03000_ITEM_DIM.JDE_SUBLN_DESC AS VARCHAR(270)) jde_subln_desc, 
+    CAST(DWV03000_ITEM_DIM.JDE_TYPE_CD AS VARCHAR(10)) jde_type_cd, 
+    CAST(DWV03000_ITEM_DIM.JDE_TYPE_DESC AS VARCHAR(270)) jde_type_desc, 
+    CAST(DWV03000_ITEM_DIM.REC_TYPE_CD AS CHAR(1)) rec_type_cd, 
+    CAST(DWV03000_ITEM_DIM.ITEM_MARG_VALID_FLG AS CHAR(1)) item_marg_valid_flg, 
+    CAST(DWV03000_ITEM_DIM.L070_PROD_CD AS VARCHAR(7)) l070_prod_cd, 
+    CAST(DWV03000_ITEM_DIM.L070_PROD_CD_DESC AS VARCHAR(35)) l070_prod_cd_desc, 
+    CAST(DWV03000_ITEM_DIM.L070_PROD_CD_CUMM_POS_2 AS VARCHAR(2)) l070_prod_cd_cumm_pos_2, 
+    CAST(DWV03000_ITEM_DIM.L070_PROD_CD_CUMM_POS_3 AS VARCHAR(3)) l070_prod_cd_cumm_pos_3, 
+    CAST(DWV03000_ITEM_DIM.L070_PROD_CD_CUMM_POS_4 AS VARCHAR(4)) l070_prod_cd_cumm_pos_4, 
+    CAST(DWV03000_ITEM_DIM.L070_PROD_CD_CUMM_POS_5 AS VARCHAR(5)) l070_prod_cd_cumm_pos_5, 
+    CAST(DWV03000_ITEM_DIM.L070_PROD_CD_CUMM_POS_6 AS VARCHAR(6)) l070_prod_cd_cumm_pos_6, 
+    CAST(DWV03000_ITEM_DIM.ITEM_ASSMBLY_TYPE AS VARCHAR(1)) item_assmbly_type, 
+    CAST(DWV03000_ITEM_DIM.ITEM_BV_FLG AS VARCHAR(1)) item_bv_flg, 
+    CAST(DWV03000_ITEM_DIM.ITEM_SALES_CTGRY_CD AS VARCHAR(3)) item_sales_ctgry_cd, 
+    CAST(DWV03000_ITEM_DIM.ITEM_SALES_CTGRY_DESC AS VARCHAR(25)) item_sales_ctgry_desc, 
+    CAST(DWV03000_ITEM_DIM.ITEM_SALES_DIV_CD AS VARCHAR(5)) item_sales_div_cd, 
+    CAST(DWV03000_ITEM_DIM.ITEM_SALES_DIV_DESC AS VARCHAR(35)) item_sales_div_desc, 
+    CAST(DWV03000_ITEM_DIM.ITEM_SALES_SUB_DIV_CD AS VARCHAR(8)) item_sales_sub_div_cd, 
+    CAST(DWV03000_ITEM_DIM.ITEM_SALES_SUB_DIV_CD_DESC AS VARCHAR(45)) item_sales_sub_div_cd_desc, 
+    CAST(DWV03000_ITEM_DIM.ITEM_VDS AS VARCHAR(1)) item_vds, 
+    CAST(DWV03000_ITEM_DIM.ITEM_VDS_TYPE AS VARCHAR(1)) item_vds_type, 
+    CAST(DWV03000_ITEM_DIM.ITEM_VMI_CD AS VARCHAR(1)) item_vmi_cd, 
+    CAST(DWV03000_ITEM_DIM.GLBL_BUS_LN_SRC AS VARCHAR(3)) glbl_bus_ln_src, 
+    CAST(DWV03000_ITEM_DIM.GLBL_BUS_LN_CD AS VARCHAR(10)) glbl_bus_ln_cd, 
+    CAST(DWV03000_ITEM_DIM.GLBL_BUS_LN_DESC AS VARCHAR(100)) glbl_bus_ln_desc, 
+    CAST(DWV03000_ITEM_DIM.GLBL_CTGRY_CD AS VARCHAR(10)) glbl_ctgry_cd, 
+    CAST(DWV03000_ITEM_DIM.GLBL_CTGRY_DESC AS VARCHAR(100)) glbl_ctgry_desc, 
+    CAST(DWV03000_ITEM_DIM.GLBL_SUB_CTGRY_CD AS VARCHAR(10)) glbl_sub_ctgry_cd, 
+    CAST(DWV03000_ITEM_DIM.GLBL_SUB_CTGRY_DESC AS VARCHAR(100)) glbl_sub_ctgry_desc, 
+    CAST(DWV03000_ITEM_DIM.GLBL_BRAND_CD AS VARCHAR(10)) glbl_brand_cd, 
+    CAST(DWV03000_ITEM_DIM.GLBL_BRAND_DESC AS VARCHAR(100)) glbl_brand_desc, 
+    CAST(DWV03000_ITEM_DIM.GLBL_SUB_BRAND_CD AS VARCHAR(10)) glbl_sub_brand_cd, 
+    CAST(DWV03000_ITEM_DIM.GLBL_SUB_BRAND_DESC AS VARCHAR(100)) glbl_sub_brand_desc, 
+    CAST(DWV03000_ITEM_DIM.GLBL_PRDCT_FMLY_CD AS VARCHAR(30)) glbl_prdct_fmly_cd, 
+    CAST(DWV03000_ITEM_DIM.GLBL_PRDCT_FMLY_DESC AS VARCHAR(300)) glbl_prdct_fmly_desc, 
+    CAST(DWV03000_ITEM_DIM.GLBL_PRDCT_IND_CUT_CD AS VARCHAR(10)) glbl_prdct_ind_cut_cd, 
+    CAST(DWV03000_ITEM_DIM.GLBL_PRDCT_IND_CUT_DESC AS VARCHAR(300)) glbl_prdct_ind_cut_desc, 
+    CAST(DWV03000_ITEM_DIM.GLBL_PRDCT_GRP_CD AS VARCHAR(20)) glbl_prdct_grp_cd, 
+    CAST(DWV03000_ITEM_DIM.GLBL_PRDCT_GRP_DESC AS VARCHAR(100)) glbl_prdct_grp_desc, 
+    CAST(DWV03000_ITEM_DIM.GLBL_BASE_ITEM_NO AS VARCHAR(60)) glbl_base_item_no, 
+    CAST(DWV03000_ITEM_DIM.GLBL_BASE_ITEM_DESC AS VARCHAR(100)) glbl_base_item_desc, 
+    CAST(DWV03000_ITEM_DIM.ITEM_HARM_CD AS VARCHAR(15)) item_harm_cd, 
+    CAST(DWV03000_ITEM_DIM.ITEM_FOOD_FLG AS CHAR(1)) item_food_flg, 
+    CAST(DWV03000_ITEM_DIM.LCL_BRAND_CD AS VARCHAR(10)) lcl_brand_cd, 
+    CAST(DWV03000_ITEM_DIM.LCL_BRAND_DESC AS VARCHAR(100)) lcl_brand_desc, 
+    CAST(DWV03000_ITEM_DIM.LCL_CTGRY_CD AS VARCHAR(10)) lcl_ctgry_cd, 
+    CAST(DWV03000_ITEM_DIM.LCL_CTGRY_DESC AS VARCHAR(100)) lcl_ctgry_desc, 
+    CAST(DWV03000_ITEM_DIM.LCL_SUB_CTGRY_CD AS VARCHAR(10)) lcl_sub_ctgry_cd, 
+    CAST(DWV03000_ITEM_DIM.LCL_SUB_CTGRY_DESC AS VARCHAR(100)) lcl_sub_ctgry_desc, 
+    CAST(DWV03000_ITEM_DIM.LCL_PRDCT_CD AS VARCHAR(10)) lcl_prdct_cd, 
+    CAST(DWV03000_ITEM_DIM.LCL_PRDCT_ENG_DESC AS VARCHAR(100)) lcl_prdct_eng_desc, 
+    CAST(DWV03000_ITEM_DIM.LCL_PRDCT_LCL_DESC AS VARCHAR(100)) lcl_prdct_lcl_desc, 
+    CAST(DWV03000_ITEM_DIM.LC_UNIT_COST_AMT AS DOUBLE) lc_unit_cost_amt, 
+    CAST(DWV03000_ITEM_DIM.LC_XFR_COST_AMT AS DOUBLE) lc_xfr_cost_amt, 
+    CAST(DWV03000_ITEM_DIM.LC_DUTY_RT AS DOUBLE) lc_duty_rt, 
+    CAST(DWV03000_ITEM_DIM.INSRT_DT AS TIMESTAMP) insrt_dt, 
+    CAST(DWV03000_ITEM_DIM.UPDT_DT AS TIMESTAMP) updt_dt, 
+    CAST(DWV03000_ITEM_DIM.GLBL_BUS_LN_OVRRIDE_FLG AS CHAR(1)) glbl_bus_ln_ovrride_flg, 
+    CAST(DWV03000_ITEM_DIM.GLBL_BUS_LN_SRC_ORI AS VARCHAR(3)) glbl_bus_ln_src_ori, 
+    CAST(DWV03000_ITEM_DIM.GLBL_GPH_OVRRIDE_FLG AS CHAR(1)) glbl_gph_ovrride_flg
+FROM      
+    /shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV03000_ITEM_DIM DWV03000_ITEM_DIM</attribute>
+  <attribute name="creationDate" type="LONG">1559510168753</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">250108</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">250108</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1559510168753</attribute>
+</metadata>

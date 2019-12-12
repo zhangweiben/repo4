@@ -1,0 +1,581 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv05017_Mos_Exchg_Rt_Dim" path="/shared/Common/Physical/Formatting/GDW/Dwv05017_Mos_Exchg_Rt_Dim" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="comb_curcy_mo_yr_curcy_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curcy_mo_yr_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curcy_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_usd_budgt_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_usd_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_dop_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_cad_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_ars_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_aud_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_bnd_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_brl_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_chf_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_clp_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_cny_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_cop_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_crc_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_czk_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_dkk_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_eur_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_gdp_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_gtq_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_hkd_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_hnl_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_hrk_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_huf_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_idr_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_inr_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_jpy_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_krw_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_mxn_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_myr_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_nok_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_nzd_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_php_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_pln_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_ron_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_rub_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_sek_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_sgd_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_sit_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_skk_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_thb_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_try_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_twd_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_uah_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_uyu_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_vef_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_vnd_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_zar_mos_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pv_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV05017_MOS_EXCHG_RT_DIM" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="COMB_CURCY_MO_YR_CURCY_KEY_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURCY_MO_YR_KEY_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURCY_KEY_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="TO_USD_BUDGT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_USD_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_DOP_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CAD_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_ARS_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_AUD_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_BND_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_BRL_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CHF_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CLP_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CNY_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_COP_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CRC_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CZK_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_DKK_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_EUR_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_GDP_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_GTQ_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_HKD_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_HNL_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_HRK_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_HUF_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_IDR_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_INR_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_JPY_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_KRW_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_MXN_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_MYR_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_NOK_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_NZD_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_PHP_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_PLN_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_RON_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_RUB_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_SEK_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_SGD_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_SIT_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_SKK_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_THB_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_TRY_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_TWD_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_UAH_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_UYU_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_VEF_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_VND_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_ZAR_MOS_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="PV_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV05017_MOS_EXCHG_RT_DIM.COMB_CURCY_MO_YR_CURCY_KEY_NO AS comb_curcy_mo_yr_curcy_key_no,
+	DWV05017_MOS_EXCHG_RT_DIM.CURCY_MO_YR_KEY_NO AS curcy_mo_yr_key_no,
+	DWV05017_MOS_EXCHG_RT_DIM.CURCY_KEY_NO AS curcy_key_no,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_USD_BUDGT_EXCHG_RT AS DECIMAL(38,19)) AS to_usd_budgt_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_USD_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_usd_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_DOP_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_dop_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_CAD_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_cad_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_ARS_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_ars_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_AUD_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_aud_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_BND_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_bnd_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_BRL_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_brl_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_CHF_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_chf_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_CLP_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_clp_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_CNY_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_cny_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_COP_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_cop_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_CRC_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_crc_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_CZK_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_czk_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_DKK_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_dkk_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_EUR_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_eur_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_GDP_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_gdp_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_GTQ_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_gtq_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_HKD_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_hkd_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_HNL_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_hnl_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_HRK_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_hrk_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_HUF_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_huf_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_IDR_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_idr_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_INR_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_inr_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_JPY_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_jpy_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_KRW_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_krw_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_MXN_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_mxn_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_MYR_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_myr_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_NOK_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_nok_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_NZD_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_nzd_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_PHP_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_php_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_PLN_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_pln_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_RON_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_ron_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_RUB_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_rub_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_SEK_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_sek_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_SGD_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_sgd_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_SIT_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_sit_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_SKK_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_skk_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_THB_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_thb_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_TRY_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_try_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_TWD_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_twd_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_UAH_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_uah_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_UYU_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_uyu_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_VEF_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_vef_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_VND_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_vnd_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.TO_ZAR_MOS_EXCHG_RT AS DECIMAL(38,19)) AS to_zar_mos_exchg_rt,
+	CAST(DWV05017_MOS_EXCHG_RT_DIM.PV_EXCHG_RT AS DECIMAL(38,19)) AS pv_exchg_rt 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV05017_MOS_EXCHG_RT_DIM DWV05017_MOS_EXCHG_RT_DIM</attribute>
+  <attribute name="creationDate" type="LONG">1559510170037</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">250108</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">250108</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1559510170037</attribute>
+</metadata>

@@ -1,0 +1,559 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv00010_Dt_Dim" path="/shared/Common/Physical/Formatting/GDW/Dwv00010_Dt_Dim" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="full_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ldo_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lmo_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lqo_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lyr_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="calen_yr_dy_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fiscl_yr_dy_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="wk_dy_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="wk_dy_nm" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="wrk_dy_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="calen_yr_wk_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fiscl_yr_wk_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mo_dy_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mo_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mo_yr_desc" nullable="true">
+      <datatype type="STRING" minLength="8" maxLength="8"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="calen_yr_mo_desc" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fiscl_yr_mo_desc" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mo_full_nm" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mo_abbr_nm" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="calen_mo_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fiscl_mo_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lmo_mo_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lqo_mo_yr_key_no" nullable="true">
+      <datatype type="STRING" minLength="10" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lyr_mo_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="calen_qtr_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fiscl_qtr_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="calen_qtr_yr_desc" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fiscl_qtr_yr_desc" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="calen_qtr_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fiscl_qtr_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lqo_calen_qtr_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lqo_fiscl_qtr_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lyr_calen_qtr_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lyr_fiscl_qtr_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="calen_yr_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fiscl_yr_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="calen_yr_desc" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fiscl_yr_desc" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lyr_calen_yr_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lyr_fiscl_yr_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cmpl_mnth_curr_cal_yr_flag" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cmpl_mnth_curr_perf_yr_flag" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_cal_yr_flag" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_perf_yr_flag" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_day_flag" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_mnth_flag" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="last_cmpl_mnth_flag" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV00010_DT_DIM" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FULL_DT" nullable="false">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="LDO_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LMO_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LQO_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LYR_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CALEN_YR_DY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="FISCL_YR_DY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="WK_DY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="WK_DY_NM" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="WRK_DY_FLG" nullable="false">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="CALEN_YR_WK_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="FISCL_YR_WK_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="MO_DY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="MO_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="MO_YR_DESC" nullable="false">
+        <datatype type="STRING" minLength="8" maxLength="8"/>
+      </element>
+      <element name="CALEN_YR_MO_DESC" nullable="false">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="FISCL_YR_MO_DESC" nullable="false">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="MO_FULL_NM" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="MO_ABBR_NM" nullable="false">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="CALEN_MO_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="FISCL_MO_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="LMO_MO_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LQO_MO_YR_KEY_NO" nullable="false">
+        <datatype type="STRING" minLength="10" maxLength="10"/>
+      </element>
+      <element name="LYR_MO_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CALEN_QTR_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FISCL_QTR_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CALEN_QTR_YR_DESC" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="FISCL_QTR_YR_DESC" nullable="false">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="CALEN_QTR_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="FISCL_QTR_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="LQO_CALEN_QTR_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LQO_FISCL_QTR_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LYR_CALEN_QTR_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LYR_FISCL_QTR_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CALEN_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="FISCL_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="CALEN_YR_DESC" nullable="false">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="FISCL_YR_DESC" nullable="false">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="LYR_CALEN_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="LYR_FISCL_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="CMPL_MNTH_CURR_CAL_YR_FLAG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="CMPL_MNTH_CURR_PERF_YR_FLAG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="CURR_CAL_YR_FLAG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="CURR_PERF_YR_FLAG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="CURR_DAY_FLAG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="CURR_MNTH_FLAG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="LAST_CMPL_MNTH_FLAG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV00010_DT_DIM.DT_KEY_NO AS dt_key_no,
+	DWV00010_DT_DIM.FULL_DT AS full_dt,
+	DWV00010_DT_DIM.LDO_DT_KEY_NO AS ldo_dt_key_no,
+	DWV00010_DT_DIM.LMO_DT_KEY_NO AS lmo_dt_key_no,
+	DWV00010_DT_DIM.LQO_DT_KEY_NO AS lqo_dt_key_no,
+	DWV00010_DT_DIM.LYR_DT_KEY_NO AS lyr_dt_key_no,
+	DWV00010_DT_DIM.CALEN_YR_DY_NO AS calen_yr_dy_no,
+	DWV00010_DT_DIM.FISCL_YR_DY_NO AS fiscl_yr_dy_no,
+	DWV00010_DT_DIM.WK_DY_NO AS wk_dy_no,
+	CAST(DWV00010_DT_DIM.WK_DY_NM AS VARCHAR(10)) AS wk_dy_nm,
+	CAST(DWV00010_DT_DIM.WRK_DY_FLG AS CHAR(1)) AS wrk_dy_flg,
+	DWV00010_DT_DIM.CALEN_YR_WK_NO AS calen_yr_wk_no,
+	DWV00010_DT_DIM.FISCL_YR_WK_NO AS fiscl_yr_wk_no,
+	DWV00010_DT_DIM.MO_DY_NO AS mo_dy_no,
+	DWV00010_DT_DIM.MO_YR_KEY_NO AS mo_yr_key_no,
+	CAST(DWV00010_DT_DIM.MO_YR_DESC AS CHAR(8)) AS mo_yr_desc,
+	CAST(DWV00010_DT_DIM.CALEN_YR_MO_DESC AS VARCHAR(20)) AS calen_yr_mo_desc,
+	CAST(DWV00010_DT_DIM.FISCL_YR_MO_DESC AS VARCHAR(20)) AS fiscl_yr_mo_desc,
+	CAST(DWV00010_DT_DIM.MO_FULL_NM AS VARCHAR(10)) AS mo_full_nm,
+	CAST(DWV00010_DT_DIM.MO_ABBR_NM AS CHAR(3)) AS mo_abbr_nm,
+	DWV00010_DT_DIM.CALEN_MO_NO AS calen_mo_no,
+	DWV00010_DT_DIM.FISCL_MO_NO AS fiscl_mo_no,
+	DWV00010_DT_DIM.LMO_MO_YR_KEY_NO AS lmo_mo_yr_key_no,
+	DWV00010_DT_DIM.LQO_MO_YR_KEY_NO AS lqo_mo_yr_key_no,
+	DWV00010_DT_DIM.LYR_MO_YR_KEY_NO AS lyr_mo_yr_key_no,
+	DWV00010_DT_DIM.CALEN_QTR_YR_KEY_NO AS calen_qtr_yr_key_no,
+	DWV00010_DT_DIM.FISCL_QTR_YR_KEY_NO AS fiscl_qtr_yr_key_no,
+	CAST(DWV00010_DT_DIM.CALEN_QTR_YR_DESC AS VARCHAR(10)) AS calen_qtr_yr_desc,
+	CAST(DWV00010_DT_DIM.FISCL_QTR_YR_DESC AS VARCHAR(10)) AS fiscl_qtr_yr_desc,
+	DWV00010_DT_DIM.CALEN_QTR_NO AS calen_qtr_no,
+	DWV00010_DT_DIM.FISCL_QTR_NO AS fiscl_qtr_no,
+	DWV00010_DT_DIM.LQO_CALEN_QTR_YR_KEY_NO AS lqo_calen_qtr_yr_key_no,
+	DWV00010_DT_DIM.LQO_FISCL_QTR_YR_KEY_NO AS lqo_fiscl_qtr_yr_key_no,
+	DWV00010_DT_DIM.LYR_CALEN_QTR_YR_KEY_NO AS lyr_calen_qtr_yr_key_no,
+	DWV00010_DT_DIM.LYR_FISCL_QTR_YR_KEY_NO AS lyr_fiscl_qtr_yr_key_no,
+	DWV00010_DT_DIM.CALEN_YR_KEY_NO AS calen_yr_key_no,
+	DWV00010_DT_DIM.FISCL_YR_KEY_NO AS fiscl_yr_key_no,
+	CAST(DWV00010_DT_DIM.CALEN_YR_DESC AS VARCHAR(6)) AS calen_yr_desc,
+	CAST(DWV00010_DT_DIM.FISCL_YR_DESC AS VARCHAR(6)) AS fiscl_yr_desc,
+	DWV00010_DT_DIM.LYR_CALEN_YR_KEY_NO AS lyr_calen_yr_key_no,
+	DWV00010_DT_DIM.LYR_FISCL_YR_KEY_NO AS lyr_fiscl_yr_key_no,
+	CAST(DWV00010_DT_DIM.CMPL_MNTH_CURR_CAL_YR_FLAG AS CHAR(1)) AS cmpl_mnth_curr_cal_yr_flag,
+	CAST(DWV00010_DT_DIM.CMPL_MNTH_CURR_PERF_YR_FLAG AS CHAR(1)) AS cmpl_mnth_curr_perf_yr_flag,
+	CAST(DWV00010_DT_DIM.CURR_CAL_YR_FLAG AS CHAR(1)) AS curr_cal_yr_flag,
+	CAST(DWV00010_DT_DIM.CURR_PERF_YR_FLAG AS CHAR(1)) AS curr_perf_yr_flag,
+	CAST(DWV00010_DT_DIM.CURR_DAY_FLAG AS CHAR(1)) AS curr_day_flag,
+	CAST(DWV00010_DT_DIM.CURR_MNTH_FLAG AS CHAR(1)) AS curr_mnth_flag,
+	CAST(DWV00010_DT_DIM.LAST_CMPL_MNTH_FLAG AS CHAR(1)) AS last_cmpl_mnth_flag 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV00010_DT_DIM DWV00010_DT_DIM</attribute>
+  <attribute name="creationDate" type="LONG">1559510137894</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">250108</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">250108</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1559510137894</attribute>
+</metadata>

@@ -1,0 +1,273 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Ffp1020_Rpt_Sku_Class_Deep_Get" path="/shared/Common/Physical/Formatting/GDW/Ffp1020_Rpt_Sku_Class_Deep_Get" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="corp_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="base_7_item_no" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_no_trimmed" nullable="true">
+      <datatype type="STRING" minLength="12" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_desc_nm" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_corp_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_base_7_item_no" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_item_trimmed" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_item_desc_nm" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="class_a" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="class_a_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="class_b" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="class_b_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="class_c" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="class_c_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="class_d" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="class_d_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mo_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="salesdmndyear" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="salesdmndmonth" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="eaches" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="usdcsales" nullable="true">
+      <datatype type="DECIMAL" maxDigits="21" maxFractionalDigits="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="percentofmacro" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="9"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSANL02/FFP1020_RPT_SKU_CLASS_DEEP_GET" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="CORP_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="BASE_7_ITEM_NO">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="ITEM_NO_TRIMMED">
+        <datatype type="STRING" minLength="12" maxLength="12"/>
+      </element>
+      <element name="ITEM_DESC_NM">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="TO_CORP_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="TO_BASE_7_ITEM_NO">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="TO_ITEM_TRIMMED">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="TO_ITEM_DESC_NM">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="CLASS_A">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="CLASS_A_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="CLASS_B">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="CLASS_B_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="CLASS_C">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="CLASS_C_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="CLASS_D">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="CLASS_D_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="MO_YR_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="SALESDMNDYEAR">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="SALESDMNDMONTH">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="EACHES">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="USDCSALES">
+        <datatype type="DECIMAL" maxDigits="21" maxFractionalDigits="10"/>
+      </element>
+      <element name="PERCENTOFMACRO">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="9"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.CORP_CD AS CHAR(3)) AS corp_cd,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.BASE_7_ITEM_NO AS VARCHAR(12)) AS base_7_item_no,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.ITEM_NO_TRIMMED AS CHAR(12)) AS item_no_trimmed,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.ITEM_DESC_NM AS VARCHAR(100)) AS item_desc_nm,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.TO_CORP_CD AS CHAR(3)) AS to_corp_cd,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.TO_BASE_7_ITEM_NO AS VARCHAR(12)) AS to_base_7_item_no,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.TO_ITEM_TRIMMED AS VARCHAR(12)) AS to_item_trimmed,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.TO_ITEM_DESC_NM AS VARCHAR(100)) AS to_item_desc_nm,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.CLASS_A AS CHAR(3)) AS class_a,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.CLASS_A_DESC AS VARCHAR(50)) AS class_a_desc,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.CLASS_B AS CHAR(3)) AS class_b,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.CLASS_B_DESC AS VARCHAR(50)) AS class_b_desc,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.CLASS_C AS CHAR(3)) AS class_c,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.CLASS_C_DESC AS VARCHAR(50)) AS class_c_desc,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.CLASS_D AS CHAR(3)) AS class_d,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.CLASS_D_DESC AS VARCHAR(50)) AS class_d_desc,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.MO_YR_KEY_NO AS BIGINT) AS mo_yr_key_no,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.SALESDMNDYEAR AS INTEGER) AS salesdmndyear,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.SALESDMNDMONTH AS SMALLINT) AS salesdmndmonth,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.EACHES AS BIGINT) AS eaches,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.USDCSALES AS DECIMAL(21,10)) AS usdcsales,
+	CAST(FFP1020_RPT_SKU_CLASS_DEEP_GET.PERCENTOFMACRO AS DECIMAL(19,9)) AS percentofmacro 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSANL02/FFP1020_RPT_SKU_CLASS_DEEP_GET FFP1020_RPT_SKU_CLASS_DEEP_GET</attribute>
+  <attribute name="creationDate" type="LONG">1564765119981</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30109</attribute>
+  <attribute name="creatorUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30109</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1564765119981</attribute>
+</metadata>

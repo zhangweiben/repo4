@@ -1,0 +1,284 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv02010_Ord_Dim" path="/shared/Common/Physical/Formatting/GDW/Dwv02010_Ord_Dim" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="ord_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cntry_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="orgnl_ord_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="orgnl_ord_dt_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_cfirm_dt_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_inv_dt_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="inv_no" nullable="true">
+      <datatype type="STRING" maxLength="11"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ref_inv_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="batch_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="comb_ord_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="con_ord_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_dmain_nm" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="insrt_proc_nm" nullable="true">
+      <datatype type="STRING" maxLength="240"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="insrt_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="updt_user_id" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="updt_proc_nm" nullable="true">
+      <datatype type="STRING" maxLength="240"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="updt_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="epp_ord_flex_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_schm_flex_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cust_imc_no" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cust_src_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="dscnt_price_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV02010_ORD_DIM" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="ORD_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CNTRY_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="ORD_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ORGNL_ORD_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ORGNL_ORD_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-99999999" maxValue="99999999"/>
+      </element>
+      <element name="ORD_CFIRM_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-99999999" maxValue="99999999"/>
+      </element>
+      <element name="ORD_INV_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-99999999" maxValue="99999999"/>
+      </element>
+      <element name="INV_NO">
+        <datatype type="STRING" maxLength="11"/>
+      </element>
+      <element name="REF_INV_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="BATCH_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="COMB_ORD_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CON_ORD_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ORD_DMAIN_NM">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="INSRT_PROC_NM" nullable="false">
+        <datatype type="STRING" maxLength="240"/>
+      </element>
+      <element name="INSRT_DT" nullable="false">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="UPDT_USER_ID" nullable="false">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="UPDT_PROC_NM" nullable="false">
+        <datatype type="STRING" maxLength="240"/>
+      </element>
+      <element name="UPDT_DT" nullable="false">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="EPP_ORD_FLEX_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="ORD_SCHM_FLEX_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CUST_IMC_NO">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="CUST_SRC_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="DSCNT_PRICE_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	CAST(DWV02010_ORD_DIM.ORD_KEY_NO AS BIGINT) AS ord_key_no,
+	CAST(DWV02010_ORD_DIM.CNTRY_KEY_NO AS BIGINT) AS cntry_key_no,
+	CAST(DWV02010_ORD_DIM.ORD_NO AS DOUBLE) AS ord_no,
+	CAST(DWV02010_ORD_DIM.ORGNL_ORD_NO AS DOUBLE) AS orgnl_ord_no,
+	CAST(DWV02010_ORD_DIM.ORGNL_ORD_DT_KEY_NO AS INTEGER) AS orgnl_ord_dt_key_no,
+	CAST(DWV02010_ORD_DIM.ORD_CFIRM_DT_KEY_NO AS INTEGER) AS ord_cfirm_dt_key_no,
+	CAST(DWV02010_ORD_DIM.ORD_INV_DT_KEY_NO AS INTEGER) AS ord_inv_dt_key_no,
+	CAST(DWV02010_ORD_DIM.INV_NO AS VARCHAR(11)) AS inv_no,
+	CAST(DWV02010_ORD_DIM.REF_INV_NO AS BIGINT) AS ref_inv_no,
+	CAST(DWV02010_ORD_DIM.BATCH_NO AS DOUBLE) AS batch_no,
+	CAST(DWV02010_ORD_DIM.COMB_ORD_NO AS DOUBLE) AS comb_ord_no,
+	CAST(DWV02010_ORD_DIM.CON_ORD_NO AS DOUBLE) AS con_ord_no,
+	CAST(DWV02010_ORD_DIM.ORD_DMAIN_NM AS VARCHAR(50)) AS ord_dmain_nm,
+	CAST(DWV02010_ORD_DIM.INSRT_PROC_NM AS VARCHAR(240)) AS insrt_proc_nm,
+	CAST(DWV02010_ORD_DIM.INSRT_DT AS TIMESTAMP) AS insrt_dt,
+	CAST(DWV02010_ORD_DIM.UPDT_USER_ID AS VARCHAR(50)) AS updt_user_id,
+	CAST(DWV02010_ORD_DIM.UPDT_PROC_NM AS VARCHAR(240)) AS updt_proc_nm,
+	CAST(DWV02010_ORD_DIM.UPDT_DT AS TIMESTAMP) AS updt_dt,
+	CAST(DWV02010_ORD_DIM.EPP_ORD_FLEX_KEY_NO AS BIGINT) AS epp_ord_flex_key_no,
+	CAST(DWV02010_ORD_DIM.ORD_SCHM_FLEX_KEY_NO AS BIGINT) AS ord_schm_flex_key_no,
+	CAST(DWV02010_ORD_DIM.CUST_IMC_NO AS VARCHAR(20)) AS cust_imc_no,
+	CAST(DWV02010_ORD_DIM.CUST_SRC_CD AS VARCHAR(1)) AS cust_src_cd,
+	CAST(DWV02010_ORD_DIM.DSCNT_PRICE_FLG AS VARCHAR(1)) AS dscnt_price_flg 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV02010_ORD_DIM DWV02010_ORD_DIM</attribute>
+  <attribute name="creationDate" type="LONG">1566501589763</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30109</attribute>
+  <attribute name="creatorUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30109</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1566501589763</attribute>
+</metadata>

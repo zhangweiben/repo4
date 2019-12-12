@@ -1,0 +1,273 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv14000_Bns_Fact" path="/shared/Common/Physical/Formatting/GDW/Dwv14000_Bns_Fact" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aff_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cntry_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curcy_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mo_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bns_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bns_lc_pay_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bns_usd_pay_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="close_mo_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="last_pay_dt" nullable="true">
+      <datatype type="STRING" maxLength="25"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="rework_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="yrly_bns_pay_qty" nullable="true">
+      <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pv_natl_vol_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pv_intl_vol_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pv_tot_vol_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bv_natl_vol_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bv_intl_vol_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bv_tot_vol_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fdsa_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="snap_imc_cd_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="snap_imc_sale_plan_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="comb_curcy_mo_yr_curcy_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV14000_BNS_FACT" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="IMC_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="AFF_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CNTRY_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURCY_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="MO_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="BNS_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="BNS_LC_PAY_AMT">
+        <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      </element>
+      <element name="BNS_USD_PAY_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CLOSE_MO_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LAST_PAY_DT">
+        <datatype type="STRING" maxLength="25"/>
+      </element>
+      <element name="REWORK_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-999999999999999999" maxValue="999999999999999999"/>
+      </element>
+      <element name="YRLY_BNS_PAY_QTY">
+        <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      </element>
+      <element name="PV_NATL_VOL_AMT">
+        <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      </element>
+      <element name="PV_INTL_VOL_AMT">
+        <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      </element>
+      <element name="PV_TOT_VOL_AMT">
+        <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      </element>
+      <element name="BV_NATL_VOL_AMT">
+        <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      </element>
+      <element name="BV_INTL_VOL_AMT">
+        <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      </element>
+      <element name="BV_TOT_VOL_AMT">
+        <datatype type="DECIMAL" maxDigits="28" maxFractionalDigits="2"/>
+      </element>
+      <element name="FDSA_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="SNAP_IMC_CD_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="SNAP_IMC_SALE_PLAN_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="COMB_CURCY_MO_YR_CURCY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV14000_BNS_FACT.IMC_KEY_NO AS imc_key_no,
+	DWV14000_BNS_FACT.AFF_KEY_NO AS aff_key_no,
+	DWV14000_BNS_FACT.CNTRY_KEY_NO AS cntry_key_no,
+	DWV14000_BNS_FACT.CURCY_KEY_NO AS curcy_key_no,
+	DWV14000_BNS_FACT.MO_YR_KEY_NO AS mo_yr_key_no,
+	DWV14000_BNS_FACT.BNS_KEY_NO AS bns_key_no,
+	CAST(DWV14000_BNS_FACT.BNS_LC_PAY_AMT AS DECIMAL(15,2)) AS bns_lc_pay_amt,
+	CAST(DWV14000_BNS_FACT.BNS_USD_PAY_AMT AS DOUBLE) AS bns_usd_pay_amt,
+	CAST(DWV14000_BNS_FACT.CLOSE_MO_YR_KEY_NO AS BIGINT) AS close_mo_yr_key_no,
+	CAST(DWV14000_BNS_FACT.LAST_PAY_DT AS VARCHAR(25)) AS last_pay_dt,
+	CAST(DWV14000_BNS_FACT.REWORK_NO AS BIGINT) AS rework_no,
+	CAST(DWV14000_BNS_FACT.YRLY_BNS_PAY_QTY AS DECIMAL(28,2)) AS yrly_bns_pay_qty,
+	CAST(DWV14000_BNS_FACT.PV_NATL_VOL_AMT AS DECIMAL(28,2)) AS pv_natl_vol_amt,
+	CAST(DWV14000_BNS_FACT.PV_INTL_VOL_AMT AS DECIMAL(28,2)) AS pv_intl_vol_amt,
+	CAST(DWV14000_BNS_FACT.PV_TOT_VOL_AMT AS DECIMAL(28,2)) AS pv_tot_vol_amt,
+	CAST(DWV14000_BNS_FACT.BV_NATL_VOL_AMT AS DECIMAL(28,2)) AS bv_natl_vol_amt,
+	CAST(DWV14000_BNS_FACT.BV_INTL_VOL_AMT AS DECIMAL(28,2)) AS bv_intl_vol_amt,
+	CAST(DWV14000_BNS_FACT.BV_TOT_VOL_AMT AS DECIMAL(28,2)) AS bv_tot_vol_amt,
+	CAST(DWV14000_BNS_FACT.FDSA_FLG AS TINYINT) AS fdsa_flg,
+	CAST(DWV14000_BNS_FACT.SNAP_IMC_CD_KEY_NO AS DOUBLE) AS snap_imc_cd_key_no,
+	CAST(DWV14000_BNS_FACT.SNAP_IMC_SALE_PLAN_KEY_NO AS DOUBLE) AS snap_imc_sale_plan_key_no,
+	CAST(DWV14000_BNS_FACT.COMB_CURCY_MO_YR_CURCY_KEY_NO AS DOUBLE) AS comb_curcy_mo_yr_curcy_key_no 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV14000_BNS_FACT DWV14000_BNS_FACT</attribute>
+  <attribute name="creationDate" type="LONG">1567092515171</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30105</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30105</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1567092515171</attribute>
+</metadata>

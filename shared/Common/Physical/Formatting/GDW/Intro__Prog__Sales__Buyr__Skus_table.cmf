@@ -1,0 +1,141 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Intro_Prog_Sales_Buyr_Skus" path="/shared/Common/Physical/Formatting/GDW/Intro_Prog_Sales_Buyr_Skus" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="cntry_key_no" nullable="true">
+      <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="0"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="corp_cd" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="base_7_item_no" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_corp_cd" nullable="true">
+      <datatype type="STRING" minLength="4" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_base_7_item_no" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="item_key_no" nullable="true">
+      <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="0"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prog_cd" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prog_desc_nm" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="req_guid" nullable="true">
+      <datatype type="STRING" maxLength="36"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="req_ts" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/USJHEK1/INTRO_PROG_SALES_BUYR_SKUS" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="CNTRY_KEY_NO">
+        <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="0"/>
+      </element>
+      <element name="CORP_CD">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="BASE_7_ITEM_NO">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="TO_CORP_CD">
+        <datatype type="STRING" minLength="4" maxLength="4"/>
+      </element>
+      <element name="TO_BASE_7_ITEM_NO">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="ITEM_KEY_NO">
+        <datatype type="DECIMAL" maxDigits="20" maxFractionalDigits="0"/>
+      </element>
+      <element name="PROG_CD" nullable="false">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="PROG_DESC_NM">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="REQ_GUID">
+        <datatype type="STRING" maxLength="36"/>
+      </element>
+      <element name="REQ_TS">
+        <datatype type="DATETIME"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	INTRO_PROG_SALES_BUYR_SKUS.CNTRY_KEY_NO AS cntry_key_no,
+	INTRO_PROG_SALES_BUYR_SKUS.CORP_CD AS corp_cd,
+	CAST(INTRO_PROG_SALES_BUYR_SKUS.BASE_7_ITEM_NO AS VARCHAR(10)) AS base_7_item_no,
+	CAST(INTRO_PROG_SALES_BUYR_SKUS.TO_CORP_CD AS CHAR(4)) AS to_corp_cd,
+	CAST(INTRO_PROG_SALES_BUYR_SKUS.TO_BASE_7_ITEM_NO AS VARCHAR(10)) AS to_base_7_item_no,
+	INTRO_PROG_SALES_BUYR_SKUS.ITEM_KEY_NO AS item_key_no,
+	CAST(INTRO_PROG_SALES_BUYR_SKUS.PROG_CD AS BIGINT) AS prog_cd,
+	CAST(INTRO_PROG_SALES_BUYR_SKUS.PROG_DESC_NM AS VARCHAR(100)) AS prog_desc_nm,
+	INTRO_PROG_SALES_BUYR_SKUS.REQ_GUID AS req_guid,
+	CAST(INTRO_PROG_SALES_BUYR_SKUS.REQ_TS AS TIMESTAMP) AS req_ts 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/USJHEK1/INTRO_PROG_SALES_BUYR_SKUS INTRO_PROG_SALES_BUYR_SKUS</attribute>
+  <attribute name="creationDate" type="LONG">1556673603930</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">250108</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">250108</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1556673603930</attribute>
+</metadata>

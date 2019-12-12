@@ -1,0 +1,559 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv05018_Daily_Exchg_Rt_Dim" path="/shared/Common/Physical/Formatting/GDW/Dwv05018_Daily_Exchg_Rt_Dim" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="comb_curcy_dt_curcy_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curcy_dt_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curcy_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_usd_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_dop_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_cad_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_ars_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_aud_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_bnd_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_brl_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_chf_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_clp_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_cny_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_cop_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_crc_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_czk_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_dkk_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_eur_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_gdp_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_gtq_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_hkd_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_hnl_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_hrk_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_huf_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_idr_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_inr_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_jpy_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_krw_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_mxn_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_myr_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_nok_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_nzd_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_php_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_pln_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_ron_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_rub_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_sek_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_sgd_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_sit_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_skk_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_thb_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_try_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_twd_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_uah_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_uyu_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_vef_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_vnd_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="to_zar_daily_spot_exchg_rt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV05018_DAILY_EXCHG_RT_DIM" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="COMB_CURCY_DT_CURCY_KEY_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURCY_DT_KEY_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CURCY_KEY_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="TO_USD_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_DOP_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CAD_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_ARS_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_AUD_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_BND_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_BRL_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CHF_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CLP_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CNY_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_COP_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CRC_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_CZK_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_DKK_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_EUR_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_GDP_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_GTQ_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_HKD_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_HNL_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_HRK_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_HUF_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_IDR_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_INR_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_JPY_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_KRW_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_MXN_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_MYR_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_NOK_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_NZD_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_PHP_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_PLN_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_RON_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_RUB_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_SEK_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_SGD_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_SIT_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_SKK_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_THB_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_TRY_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_TWD_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_UAH_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_UYU_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_VEF_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_VND_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+      <element name="TO_ZAR_DAILY_SPOT_EXCHG_RT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="38" maxFractionalDigits="19"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV05018_DAILY_EXCHG_RT_DIM.COMB_CURCY_DT_CURCY_KEY_NO AS comb_curcy_dt_curcy_key_no,
+	DWV05018_DAILY_EXCHG_RT_DIM.CURCY_DT_KEY_NO AS curcy_dt_key_no,
+	DWV05018_DAILY_EXCHG_RT_DIM.CURCY_KEY_NO AS curcy_key_no,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_USD_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_usd_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_DOP_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_dop_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_CAD_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_cad_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_ARS_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_ars_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_AUD_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_aud_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_BND_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_bnd_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_BRL_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_brl_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_CHF_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_chf_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_CLP_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_clp_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_CNY_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_cny_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_COP_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_cop_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_CRC_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_crc_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_CZK_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_czk_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_DKK_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_dkk_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_EUR_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_eur_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_GDP_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_gdp_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_GTQ_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_gtq_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_HKD_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_hkd_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_HNL_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_hnl_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_HRK_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_hrk_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_HUF_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_huf_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_IDR_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_idr_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_INR_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_inr_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_JPY_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_jpy_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_KRW_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_krw_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_MXN_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_mxn_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_MYR_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_myr_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_NOK_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_nok_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_NZD_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_nzd_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_PHP_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_php_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_PLN_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_pln_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_RON_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_ron_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_RUB_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_rub_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_SEK_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_sek_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_SGD_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_sgd_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_SIT_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_sit_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_SKK_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_skk_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_THB_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_thb_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_TRY_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_try_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_TWD_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_twd_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_UAH_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_uah_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_UYU_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_uyu_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_VEF_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_vef_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_VND_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_vnd_daily_spot_exchg_rt,
+	CAST(DWV05018_DAILY_EXCHG_RT_DIM.TO_ZAR_DAILY_SPOT_EXCHG_RT AS DECIMAL(38,19)) AS to_zar_daily_spot_exchg_rt 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV05018_DAILY_EXCHG_RT_DIM DWV05018_DAILY_EXCHG_RT_DIM</attribute>
+  <attribute name="creationDate" type="LONG">1559510171169</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">250108</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">250108</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1559510171169</attribute>
+</metadata>

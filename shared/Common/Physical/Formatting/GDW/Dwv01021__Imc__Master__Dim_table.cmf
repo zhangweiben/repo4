@@ -1,0 +1,4816 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv01021_Imc_Master_Dim" path="/shared/Common/Physical/Formatting/GDW/Dwv01021_Imc_Master_Dim" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_aff_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_aff_id" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_cntry_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="globl_imc_type_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="orgn_globl_imc_type_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_amway_cntry_cd" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_amway_cntry_nm" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_class_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_class_desc" nullable="true">
+      <datatype type="STRING" maxLength="150"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="appl_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="spon_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="spon_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_spon_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="status_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_type_cd" nullable="true">
+      <datatype type="STRING" maxLength="150"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="original_imc_type_cd" nullable="true">
+      <datatype type="STRING" maxLength="150"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_loa_cd" nullable="true">
+      <datatype type="STRING" maxLength="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_loa_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_loa_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bus_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bus_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bus_cntry_cd" nullable="true">
+      <datatype type="STRING" maxLength="150"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ispon_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ispon_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ispon_aff_id" nullable="true">
+      <datatype type="STRING" maxLength="150"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ispon_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pin_no" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_pin_yr_no" nullable="true">
+      <datatype type="STRING" minLength="4" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_pin_mo_no" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_dlete_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="los_grp_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bus_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="acqur_pay_mthod_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="auto_renew_pay_mthod_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="auto_renew_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bus_natr_cd" nullable="true">
+      <datatype type="STRING" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="original_bus_natr_cd" nullable="true">
+      <datatype type="STRING" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_appl_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cfirm_appl_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="auhzd_mop_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="auhzd_ord_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="dir_debit_auhzd_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="over_due_pay_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="formr_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="reg_src_cd" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bus_natr_cd_desc" nullable="true">
+      <datatype type="STRING" maxLength="25"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="original_bus_natr_cd_desc" nullable="true">
+      <datatype type="STRING" maxLength="25"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lgl_entty_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="los_seq_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="los_lvl_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="los_end_seq_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_first_nm" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_last_nm" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_first_nm" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_last_nm" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_birth_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_birth_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_gndr_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_gndr_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_email_adr" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_email_adr" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_email_adr" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_bad_adr_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_bad_adr_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_adr_ln_1" nullable="true">
+      <datatype type="STRING" maxLength="240"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_adr_ln_2" nullable="true">
+      <datatype type="STRING" maxLength="240"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_adr_ln_3" nullable="true">
+      <datatype type="STRING" maxLength="240"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_adr_ln_4" nullable="true">
+      <datatype type="STRING" maxLength="240"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_country" nullable="true">
+      <datatype type="STRING" maxLength="60"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_county" nullable="true">
+      <datatype type="STRING" maxLength="60"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_prov" nullable="true">
+      <datatype type="STRING" maxLength="60"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_city" nullable="true">
+      <datatype type="STRING" maxLength="60"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_post_code" nullable="true">
+      <datatype type="STRING" maxLength="60"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_state" nullable="true">
+      <datatype type="STRING" maxLength="60"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="postl_cd_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="globl_cust_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_home_phone" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bus_phone" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_mobile_phone" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_home_phone" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_mobile_phone" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_bus_phone" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_home_phone" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_mobile_phone" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_bus_phone" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_fname_prop" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_lname_prop" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_fname_prop" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_lname_prop" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_mname_prop" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_mname_prop" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_name" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_name" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_home_phone_ext" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bus_phone_ext" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_home_phone_ext" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_bus_phone_ext" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_home_phone_ext" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_bus_phone_ext" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_lang_cd" nullable="true">
+      <datatype type="STRING" maxLength="240"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_ethn_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sec_email_adr" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_mobl_email_adr" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_state_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_first_nm_latin" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_mid_nm_latin" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_last_nm_latin" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_first_nm_latin" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_mid_nm_latin" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_last_nm_latin" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_adr_1_latin" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_adr_2_latin" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_care_of_latin" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_city_latin" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_district_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_st_nm_cd_latin" nullable="true">
+      <datatype type="STRING" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_st_nm_desc_latin" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_home_phn_globl_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_mobl_phn_globl_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bus_phn_globl_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_mid_nm" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_mid_nm" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_ethn_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_ethn_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_1_sms_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_2_sms_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_1_email_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_2_email_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_1_email_bounce_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_2_email_bounce_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_1_use_email_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_2_use_email_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_1_dir_mail_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_2_dir_mail_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_prf_cntac_mthod" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_prm_sms_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_prm_email_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_prm_email_bounce_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_prm_use_email_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_prm_dir_mail_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_prf_cntac_mthod" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_prf_cntac_mthod" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="comm_hard_hold_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_prm_shrd_email_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_1_shrd_email_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_2_shrd_email_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_sec_email_blk_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_sec_email_bounce_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_sec_shrd_email_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_sec_use_email_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_1_mbl_email_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_2_mbl_email_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_prm_mbl_email_blck" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_email_frmt_cd" nullable="true">
+      <datatype type="STRING" maxLength="13"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_mobl_email_frmt_cd" nullable="true">
+      <datatype type="STRING" maxLength="13"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_prm_sms_bounce_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bad_adr_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="spon_dsclse_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="platm_dsclse_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="actv_ord_oimc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="actv_ord_simc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="actv_ord_vimc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="appl_dt_plus_90_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ar_curr_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ar_val_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bas_load_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bas_per" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cur_awd_legs" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cur_awd_pv" nullable="true">
+      <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cur_bns_lvl" nullable="true">
+      <datatype type="DECIMAL" maxDigits="6" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cur_qual_legs" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="distb_90dy_activ_cmplt_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="distb_90dy_activ_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="engage_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="escrw_amt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="escrw_curcy_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="escrw_type" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="expire_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_ord_oimc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_ord_simc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_ord_vimc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_order_type_cd" nullable="true">
+      <datatype type="STRING" minLength="6" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_spon_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_whse_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="frontln_cust_cnt" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="frontln_distb_cnt" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="frontln_engaged_cnt" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_achv_awd_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_curr_awd_mo_yr_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_curr_qual_awd_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_curr_seg_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_dflt_curcy_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_expec_awd_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_expec_awd_mo_yr_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_expec_faa_awd_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_expec_faa_awd_mo_yr_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_high_awd_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_high_awd_mo_yr_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_last_web_lgin_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_renew_scr_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="last_distb_spon_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="last_mbr_spon_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="last_ord_oimc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="last_ord_simc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="last_ord_vimc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="last_spon_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="local_seg_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ltr_1yr_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ltr_5yr_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ltr_90dy_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ltv_1yr_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ltv_5yr_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ltv_90dy_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ltv_90dy_cmplt_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mult_bus_org_imc_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="next_bns_lvl" nullable="true">
+      <datatype type="DECIMAL" maxDigits="6" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_entry_mo_wo_fdy_cmplt_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ord_entry_mo_wo_fdy_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pct_req_next_lvl" nullable="true">
+      <datatype type="DECIMAL" maxDigits="6" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="puc_sponsor_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="puc_user_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pv_req_next_lvl" nullable="true">
+      <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="reg_with_prod_cmplt_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="reg_with_prod_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="renew_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="rpt_imc_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="simc_f90_ibo_prc_hlc_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="simc_f90_pv_lc_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="simc_f90_wo_fd_ibo_prc_hlc_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="simc_f90_wo_fd_pv_lc_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="test_ibo_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="trained_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="vimc_f90_ibo_prc_hlc_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="vimc_f90_pv_lc_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="vimc_f90_wo_fd_ibo_prc_hlc_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="vimc_f90_wo_fd_pv_lc_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_distb_spon_dt_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_mbr_spon_dt_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="insrt_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="insrt_proc_nm" nullable="true">
+      <datatype type="STRING" maxLength="240"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="updt_dt" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="updt_proc_nm" nullable="true">
+      <datatype type="STRING" maxLength="240"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="updt_user_id" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="insrt_dt_key_no" nullable="true">
+      <datatype type="STRING" maxLength="8"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="updt_dt_key_no" nullable="true">
+      <datatype type="STRING" maxLength="8"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_age" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_age" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_1_ok_to_email_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_app_2_ok_to_email_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_prm_ok_to_email_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_sec_ok_to_email_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_prm_mobl_ok_to_phone_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_prm_shrd_mobl_phn_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="local_imc_type_cd" nullable="true">
+      <datatype type="STRING" maxLength="15"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="local_imc_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="orgn_local_imc_type_cd" nullable="true">
+      <datatype type="STRING" maxLength="15"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="orgn_local_imc_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bns_cpbl_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curr_shop_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="reg_shop_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="missing_info_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_signed_cntrc_date" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="reg_chnl_cd" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="reg_chnl_nm" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_reg_url" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_last_renew_year" nullable="true">
+      <datatype type="STRING" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_renewal_mthod_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_renewal_mthod_desc" nullable="true">
+      <datatype type="STRING" maxLength="480"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_signup_mthod_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_signup_mthod_desc" nullable="true">
+      <datatype type="STRING" maxLength="480"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_receive_pub_pack_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_appl_cnt_iboship" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_xcept_class_cd" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_xcept_class_desc" nullable="true">
+      <datatype type="STRING" maxLength="480"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aff_leader_imc_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mol_imc_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="spons_leader_imc_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="team_leader_imc_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="grp_leader_imc_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sale_advsr_id" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sale_mgr_id" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sale_advsr_nm" nullable="true">
+      <datatype type="STRING" maxLength="250"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sale_mgr_nm" nullable="true">
+      <datatype type="STRING" maxLength="250"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ibo_cust_lead_prgm_sign_up_flg" nullable="true">
+      <datatype type="STRING" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_bo_blck_flg" nullable="true">
+      <datatype type="STRING" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ibo_cust_lead_elgbl_flg" nullable="true">
+      <datatype type="STRING" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fulfl_cd" nullable="true">
+      <datatype type="STRING" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="fulfl_desc" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="paid_dir_flg" nullable="true">
+      <datatype type="STRING" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ibo_ref_flg" nullable="true">
+      <datatype type="STRING" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="withd_tax_cd" nullable="true">
+      <datatype type="STRING" maxLength="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="withd_tax_desc" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_inact_stat_dt_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_gndr_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_gndr_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="share_imc_cntac_info_flg" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="share_imc_ord_info_flg" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_vintg_grp_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_vintg_grp_desc" nullable="true">
+      <datatype type="STRING" maxLength="75"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="dwnln_act_distb_cnt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="only_one_dwnln_lvl_flg" nullable="true">
+      <datatype type="STRING" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="frontln_client_cnt" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_ethnc_targt_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_ethnc_targt_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_hisp_ethnc_targt_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_pers_website_ctgry" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_pers_website_theme" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_pers_website_name" nullable="true">
+      <datatype type="STRING" maxLength="400"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_pers_website_path" nullable="true">
+      <datatype type="STRING" maxLength="254"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_hard_mail_hold_flg" nullable="true">
+      <datatype type="STRING" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_match_cust_adr_flg" nullable="true">
+      <datatype type="STRING" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_match_ibo_adr_flg" nullable="true">
+      <datatype type="STRING" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_email_frmt_desc" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_vm" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_vm_typ_cd" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_vm_typ_desc" nullable="true">
+      <datatype type="STRING" maxLength="40"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sec_email_flg" nullable="true">
+      <datatype type="STRING" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sec_pers_website_path" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sec_pers_website_name" nullable="true">
+      <datatype type="STRING" maxLength="400"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sec_pers_website_theme" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sec_pers_website_ctgry" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="auth_spon_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_lang_desc" nullable="true">
+      <datatype type="STRING" maxLength="25"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_last_pc_2_sr_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_last_pc_2_aa_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_last_pc_2_emp_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_last_sr_2_aa_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_first_sr_2_aa_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="gbl_last_distb_to_rc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="gbl_last_rc_2_distb_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="gbl_first_cus_2_dist_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_oimc_90_pv_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_simc_90_pv_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_vimc_90_pv_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_oimc_bv_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_simc_bv_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_vimc_bv_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="last_oimc_bv_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="last_simc_bv_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="last_vimc_bv_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_curr_type_start_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="local_act_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="first_60d_pv_lc_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_home_phone_lcl" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bus_phone_lcl" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_mobile_phone_lcl" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_home_phone_lcl" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_bus_phone_lcl" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_mobile_phone_lcl" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_home_phone_lcl" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_bus_phone_lcl" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_mobile_phone_lcl" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="center_cd" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sales_coord_nm" nullable="true">
+      <datatype type="STRING" maxLength="22"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sales_coord_vm_box_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="grp_pv_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="grp_bv_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pers_pv_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pers_bv_amt" nullable="true">
+      <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="second_ord_oimc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="second_ord_simc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="second_ord_vimc_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_u35_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_dlt_cd" nullable="true">
+      <datatype type="STRING" maxLength="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_dlt_desc" nullable="true">
+      <datatype type="STRING" maxLength="33"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_age_brckt_cd" nullable="true">
+      <datatype type="STRING" maxLength="14"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_age_brckt_desc" nullable="true">
+      <datatype type="STRING" maxLength="10"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_gndr_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_gndr_desc" nullable="true">
+      <datatype type="STRING" maxLength="7"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_los_grp_cd" nullable="true">
+      <datatype type="STRING" maxLength="55"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_los_lcl_desc" nullable="true">
+      <datatype type="STRING" maxLength="55"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_los_eng_desc" nullable="true">
+      <datatype type="STRING" maxLength="55"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sub_loa_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="lcl_los_grp_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sub_loa_cd" nullable="true">
+      <datatype type="STRING" maxLength="55"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sub_loa_lcl_desc" nullable="true">
+      <datatype type="STRING" maxLength="55"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="sub_loa_eng_desc" nullable="true">
+      <datatype type="STRING" maxLength="55"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="rsdncy_type_cd" nullable="true">
+      <datatype type="STRING" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="rsdncy_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_home_phn_cntry_cd" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_home_phn_city_cd" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_home_phn_nbr" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bus_phn_cntry_cd" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bus_phn_city_cd" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_bus_phn_nbr" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_mobile_phn_cntry_cd" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_mobile_phn_city_cd" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_mobile_phn_nbr" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_home_phn_cntry_cd" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_home_phn_city_cd" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_home_phn_nbr" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_bus_phn_cntry_cd" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_bus_phn_city_cd" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_bus_phn_nbr" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_mobile_phn_cntry_cd" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_mobile_phn_city_cd" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_mobile_phn_nbr" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_home_phn_cntry_cd" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_home_phn_city_cd" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_home_phn_nbr" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_bus_phn_cntry_cd" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_bus_phn_city_cd" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_bus_phn_nbr" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_mobile_phn_cntry_cd" nullable="true">
+      <datatype type="STRING" maxLength="6"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_mobile_phn_city_cd" nullable="true">
+      <datatype type="STRING" maxLength="12"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_mobile_phn_nbr" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctd_imc_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctd_imc_cntry_key_no" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctd_imc_cntry_nm" nullable="true">
+      <datatype type="STRING" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctd_imc_loa_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctd_imc_loa_cd" nullable="true">
+      <datatype type="STRING" maxLength="5"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctd_imc_loa_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctd_globl_amway_account_id" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctd_globl_amway_account_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="ctd_imc_name" nullable="true">
+      <datatype type="STRING" maxLength="360"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_pfr_lang_cd" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_pfr_lang_desc" nullable="true">
+      <datatype type="STRING" maxLength="25"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="place_holder_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="place_holder_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_bns_acc_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_direct_dbt_acc_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_bns_direct_dbt_acc_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="distb_cur_90dy_activ_dt_key_no" nullable="true">
+      <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="distb_cur_90dy_activ_cmplt_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="distb_cur_90dy_activ_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mobl_doc_complete" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="imc_latin_name" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_1_latin_name" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="app_2_latin_name" nullable="true">
+      <datatype type="STRING" maxLength="200"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="gba_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_wap_phn_globl_flg" nullable="true">
+      <datatype type="STRING" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prm_wap_phone" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV01021_IMC_MASTER_DIM" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="IMC_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="IMC_AFF_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="IMC_AFF_ID">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="IMC_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_CNTRY_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="GLOBL_IMC_TYPE_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="ORGN_GLOBL_IMC_TYPE_KEY_NO">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="IMC_AMWAY_CNTRY_CD">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="IMC_AMWAY_CNTRY_NM">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="IMC_CLASS_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_CLASS_DESC">
+        <datatype type="STRING" maxLength="150"/>
+      </element>
+      <element name="APPL_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="SPON_NO">
+        <datatype type="INTEGER" minValue="-999999999999999999" maxValue="999999999999999999"/>
+      </element>
+      <element name="SPON_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="APP_SPON_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="STATUS_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="IMC_TYPE_CD">
+        <datatype type="STRING" maxLength="150"/>
+      </element>
+      <element name="ORIGINAL_IMC_TYPE_CD">
+        <datatype type="STRING" maxLength="150"/>
+      </element>
+      <element name="IMC_LOA_CD">
+        <datatype type="STRING" maxLength="5"/>
+      </element>
+      <element name="IMC_LOA_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="IMC_LOA_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="PRM_BUS_NO">
+        <datatype type="INTEGER" minValue="-999999999999999999" maxValue="999999999999999999"/>
+      </element>
+      <element name="PRM_BUS_KEY_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="PRM_BUS_CNTRY_CD">
+        <datatype type="STRING" maxLength="150"/>
+      </element>
+      <element name="ISPON_NO">
+        <datatype type="INTEGER" minValue="-999999999999999999" maxValue="999999999999999999"/>
+      </element>
+      <element name="ISPON_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="ISPON_AFF_ID">
+        <datatype type="STRING" maxLength="150"/>
+      </element>
+      <element name="ISPON_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="PIN_NO">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="IMC_PIN_YR_NO">
+        <datatype type="STRING" minLength="4" maxLength="4"/>
+      </element>
+      <element name="IMC_PIN_MO_NO">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="IMC_DLETE_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LOS_GRP_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="PRM_BUS_FLG">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="ACQUR_PAY_MTHOD_KEY_NO">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="AUTO_RENEW_PAY_MTHOD_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="AUTO_RENEW_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="BUS_NATR_CD">
+        <datatype type="STRING" maxLength="2"/>
+      </element>
+      <element name="ORIGINAL_BUS_NATR_CD">
+        <datatype type="STRING" maxLength="2"/>
+      </element>
+      <element name="CURR_APPL_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CFIRM_APPL_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="AUHZD_MOP_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="AUHZD_ORD_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="DIR_DEBIT_AUHZD_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="OVER_DUE_PAY_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="FORMR_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-99999999999" maxValue="99999999999"/>
+      </element>
+      <element name="REG_SRC_CD">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="BUS_NATR_CD_DESC">
+        <datatype type="STRING" maxLength="25"/>
+      </element>
+      <element name="ORIGINAL_BUS_NATR_CD_DESC">
+        <datatype type="STRING" maxLength="25"/>
+      </element>
+      <element name="LGL_ENTTY_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="LOS_SEQ_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="LOS_LVL_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="LOS_END_SEQ_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="APP_1_FIRST_NM">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_1_LAST_NM">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_2_FIRST_NM">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_2_LAST_NM">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_1_BIRTH_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="APP_2_BIRTH_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="APP_1_GNDR_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="APP_2_GNDR_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="APP_1_EMAIL_ADR">
+        <datatype type="STRING" maxLength="2000"/>
+      </element>
+      <element name="APP_2_EMAIL_ADR">
+        <datatype type="STRING" maxLength="2000"/>
+      </element>
+      <element name="PRM_EMAIL_ADR">
+        <datatype type="STRING" maxLength="2000"/>
+      </element>
+      <element name="APP_1_BAD_ADR_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="APP_2_BAD_ADR_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="PRM_ADR_LN_1">
+        <datatype type="STRING" maxLength="240"/>
+      </element>
+      <element name="PRM_ADR_LN_2">
+        <datatype type="STRING" maxLength="240"/>
+      </element>
+      <element name="PRM_ADR_LN_3">
+        <datatype type="STRING" maxLength="240"/>
+      </element>
+      <element name="PRM_ADR_LN_4">
+        <datatype type="STRING" maxLength="240"/>
+      </element>
+      <element name="PRM_COUNTRY">
+        <datatype type="STRING" maxLength="60"/>
+      </element>
+      <element name="PRM_COUNTY">
+        <datatype type="STRING" maxLength="60"/>
+      </element>
+      <element name="PRM_PROV">
+        <datatype type="STRING" maxLength="60"/>
+      </element>
+      <element name="PRM_CITY">
+        <datatype type="STRING" maxLength="60"/>
+      </element>
+      <element name="PRM_POST_CODE">
+        <datatype type="STRING" maxLength="60"/>
+      </element>
+      <element name="PRM_STATE">
+        <datatype type="STRING" maxLength="60"/>
+      </element>
+      <element name="POSTL_CD_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="GLOBL_CUST_ID" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="PRM_HOME_PHONE">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="PRM_BUS_PHONE">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="PRM_MOBILE_PHONE">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_1_HOME_PHONE">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_1_MOBILE_PHONE">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_1_BUS_PHONE">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_2_HOME_PHONE">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_2_MOBILE_PHONE">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_2_BUS_PHONE">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_1_FNAME_PROP">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_1_LNAME_PROP">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_2_FNAME_PROP">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_2_LNAME_PROP">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_1_MNAME_PROP">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_2_MNAME_PROP">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_1_NAME">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_2_NAME">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="PRM_HOME_PHONE_EXT">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="PRM_BUS_PHONE_EXT">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="APP_1_HOME_PHONE_EXT">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="APP_1_BUS_PHONE_EXT">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="APP_2_HOME_PHONE_EXT">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="APP_2_BUS_PHONE_EXT">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="PRM_LANG_CD">
+        <datatype type="STRING" maxLength="240"/>
+      </element>
+      <element name="PRM_ETHN_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="SEC_EMAIL_ADR">
+        <datatype type="STRING" maxLength="2000"/>
+      </element>
+      <element name="PRM_MOBL_EMAIL_ADR">
+        <datatype type="STRING" maxLength="2000"/>
+      </element>
+      <element name="PRM_STATE_DESC">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="APP_1_FIRST_NM_LATIN">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="APP_1_MID_NM_LATIN">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="APP_1_LAST_NM_LATIN">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="APP_2_FIRST_NM_LATIN">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="APP_2_MID_NM_LATIN">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="APP_2_LAST_NM_LATIN">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="PRM_ADR_1_LATIN">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="PRM_ADR_2_LATIN">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="PRM_CARE_OF_LATIN">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="PRM_CITY_LATIN">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="PRM_DISTRICT_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="PRM_ST_NM_CD_LATIN">
+        <datatype type="STRING" maxLength="4"/>
+      </element>
+      <element name="PRM_ST_NM_DESC_LATIN">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="PRM_HOME_PHN_GLOBL_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="PRM_MOBL_PHN_GLOBL_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="PRM_BUS_PHN_GLOBL_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="APP_1_MID_NM">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="APP_2_MID_NM">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="APP_1_ETHN_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="APP_2_ETHN_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_1_SMS_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_2_SMS_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_1_EMAIL_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_2_EMAIL_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_1_EMAIL_BOUNCE_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_2_EMAIL_BOUNCE_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_1_USE_EMAIL_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_2_USE_EMAIL_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_1_DIR_MAIL_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_2_DIR_MAIL_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="PRM_PRF_CNTAC_MTHOD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_PRM_SMS_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_PRM_EMAIL_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_PRM_EMAIL_BOUNCE_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_PRM_USE_EMAIL_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_PRM_DIR_MAIL_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="APP_1_PRF_CNTAC_MTHOD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="APP_2_PRF_CNTAC_MTHOD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="COMM_HARD_HOLD_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="IMC_PRM_SHRD_EMAIL_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_1_SHRD_EMAIL_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_2_SHRD_EMAIL_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="IMC_SEC_EMAIL_BLK_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_SEC_EMAIL_BOUNCE_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_SEC_SHRD_EMAIL_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_SEC_USE_EMAIL_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_1_MBL_EMAIL_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_2_MBL_EMAIL_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_PRM_MBL_EMAIL_BLCK">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="PRM_EMAIL_FRMT_CD">
+        <datatype type="STRING" maxLength="13"/>
+      </element>
+      <element name="PRM_MOBL_EMAIL_FRMT_CD">
+        <datatype type="STRING" maxLength="13"/>
+      </element>
+      <element name="IMC_PRM_SMS_BOUNCE_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="PRM_BAD_ADR_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="SPON_DSCLSE_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="PLATM_DSCLSE_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="ACTV_ORD_OIMC_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="ACTV_ORD_SIMC_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="ACTV_ORD_VIMC_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="APPL_DT_PLUS_90_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999999" maxValue="9999999999999"/>
+      </element>
+      <element name="AR_CURR_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="AR_VAL_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="BAS_LOAD_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="BAS_PER">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CUR_AWD_LEGS">
+        <datatype type="INTEGER" minValue="-999999" maxValue="999999"/>
+      </element>
+      <element name="CUR_AWD_PV">
+        <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      </element>
+      <element name="CUR_BNS_LVL">
+        <datatype type="DECIMAL" maxDigits="6" maxFractionalDigits="2"/>
+      </element>
+      <element name="CUR_QUAL_LEGS">
+        <datatype type="INTEGER" minValue="-999999" maxValue="999999"/>
+      </element>
+      <element name="DISTB_90DY_ACTIV_CMPLT_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="DISTB_90DY_ACTIV_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="ENGAGE_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="ESCRW_AMT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ESCRW_CURCY_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ESCRW_TYPE">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="EXPIRE_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FIRST_ORD_OIMC_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FIRST_ORD_SIMC_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FIRST_ORD_VIMC_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FIRST_ORDER_TYPE_CD">
+        <datatype type="STRING" minLength="6" maxLength="6"/>
+      </element>
+      <element name="FIRST_SPON_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FIRST_WHSE_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FRONTLN_CUST_CNT">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FRONTLN_DISTB_CNT">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FRONTLN_ENGAGED_CNT">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="IMC_ACHV_AWD_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="IMC_CURR_AWD_MO_YR_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_CURR_QUAL_AWD_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_CURR_SEG_KEY_NO">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="IMC_DFLT_CURCY_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999999" maxValue="9999999999999"/>
+      </element>
+      <element name="IMC_EXPEC_AWD_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_EXPEC_AWD_MO_YR_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_EXPEC_FAA_AWD_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_EXPEC_FAA_AWD_MO_YR_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_HIGH_AWD_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_HIGH_AWD_MO_YR_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_LAST_WEB_LGIN_DT">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="IMC_RENEW_SCR_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LAST_DISTB_SPON_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LAST_MBR_SPON_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LAST_ORD_OIMC_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LAST_ORD_SIMC_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LAST_ORD_VIMC_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LAST_SPON_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LOCAL_SEG_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="LTR_1YR_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="LTR_5YR_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="LTR_90DY_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="LTV_1YR_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="LTV_5YR_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="LTV_90DY_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="LTV_90DY_CMPLT_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="MULT_BUS_ORG_IMC_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="NEXT_BNS_LVL">
+        <datatype type="DECIMAL" maxDigits="6" maxFractionalDigits="2"/>
+      </element>
+      <element name="ORD_ENTRY_MO_WO_FDY_CMPLT_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="ORD_ENTRY_MO_WO_FDY_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="PCT_REQ_NEXT_LVL">
+        <datatype type="DECIMAL" maxDigits="6" maxFractionalDigits="2"/>
+      </element>
+      <element name="PUC_SPONSOR_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="PUC_USER_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="PV_REQ_NEXT_LVL">
+        <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      </element>
+      <element name="REG_WITH_PROD_CMPLT_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="REG_WITH_PROD_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="RENEW_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="RPT_IMC_FLG">
+        <datatype type="INTEGER" minValue="-99999" maxValue="99999"/>
+      </element>
+      <element name="SIMC_F90_IBO_PRC_HLC_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="SIMC_F90_PV_LC_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="SIMC_F90_WO_FD_IBO_PRC_HLC_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="SIMC_F90_WO_FD_PV_LC_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="TEST_IBO_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="TRAINED_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="VIMC_F90_IBO_PRC_HLC_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="VIMC_F90_PV_LC_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="VIMC_F90_WO_FD_IBO_PRC_HLC_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="VIMC_F90_WO_FD_PV_LC_AMT">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="FIRST_DISTB_SPON_DT_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="FIRST_MBR_SPON_DT_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="INSRT_DT">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="INSRT_PROC_NM">
+        <datatype type="STRING" maxLength="240"/>
+      </element>
+      <element name="UPDT_DT">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="UPDT_PROC_NM">
+        <datatype type="STRING" maxLength="240"/>
+      </element>
+      <element name="UPDT_USER_ID">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="INSRT_DT_KEY_NO">
+        <datatype type="STRING" maxLength="8"/>
+      </element>
+      <element name="UPDT_DT_KEY_NO">
+        <datatype type="STRING" maxLength="8"/>
+      </element>
+      <element name="APP_1_AGE">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="APP_2_AGE">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_APP_1_OK_TO_EMAIL_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="IMC_APP_2_OK_TO_EMAIL_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="IMC_PRM_OK_TO_EMAIL_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="IMC_SEC_OK_TO_EMAIL_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="IMC_PRM_MOBL_OK_TO_PHONE_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_PRM_SHRD_MOBL_PHN_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="LOCAL_IMC_TYPE_CD">
+        <datatype type="STRING" maxLength="15"/>
+      </element>
+      <element name="LOCAL_IMC_TYPE_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="ORGN_LOCAL_IMC_TYPE_CD">
+        <datatype type="STRING" maxLength="15"/>
+      </element>
+      <element name="ORGN_LOCAL_IMC_TYPE_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="BNS_CPBL_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="CURR_SHOP_KEY_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="REG_SHOP_KEY_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="MISSING_INFO_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_SIGNED_CNTRC_DATE">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="REG_CHNL_CD">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="REG_CHNL_NM">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="IMC_REG_URL">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="IMC_LAST_RENEW_YEAR">
+        <datatype type="STRING" maxLength="4"/>
+      </element>
+      <element name="IMC_RENEWAL_MTHOD_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_RENEWAL_MTHOD_DESC">
+        <datatype type="STRING" maxLength="480"/>
+      </element>
+      <element name="IMC_SIGNUP_MTHOD_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_SIGNUP_MTHOD_DESC">
+        <datatype type="STRING" maxLength="480"/>
+      </element>
+      <element name="IMC_RECEIVE_PUB_PACK_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_APPL_CNT_IBOSHIP">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_XCEPT_CLASS_CD">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="IMC_XCEPT_CLASS_DESC">
+        <datatype type="STRING" maxLength="480"/>
+      </element>
+      <element name="AFF_LEADER_IMC_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="MOL_IMC_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="SPONS_LEADER_IMC_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="TEAM_LEADER_IMC_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="GRP_LEADER_IMC_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="SALE_ADVSR_ID">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="SALE_MGR_ID">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="SALE_ADVSR_NM">
+        <datatype type="STRING" maxLength="250"/>
+      </element>
+      <element name="SALE_MGR_NM">
+        <datatype type="STRING" maxLength="250"/>
+      </element>
+      <element name="IBO_CUST_LEAD_PRGM_SIGN_UP_FLG">
+        <datatype type="STRING" maxLength="4"/>
+      </element>
+      <element name="IMC_BO_BLCK_FLG">
+        <datatype type="STRING" maxLength="4"/>
+      </element>
+      <element name="IBO_CUST_LEAD_ELGBL_FLG">
+        <datatype type="STRING" maxLength="4"/>
+      </element>
+      <element name="FULFL_CD">
+        <datatype type="STRING" maxLength="4"/>
+      </element>
+      <element name="FULFL_DESC">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="PAID_DIR_FLG">
+        <datatype type="STRING" maxLength="4"/>
+      </element>
+      <element name="IBO_REF_FLG">
+        <datatype type="STRING" maxLength="4"/>
+      </element>
+      <element name="WITHD_TAX_CD">
+        <datatype type="STRING" maxLength="5"/>
+      </element>
+      <element name="WITHD_TAX_DESC">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="IMC_INACT_STAT_DT_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="APP_1_GNDR_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="APP_2_GNDR_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="SHARE_IMC_CNTAC_INFO_FLG">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="SHARE_IMC_ORD_INFO_FLG">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="IMC_VINTG_GRP_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_VINTG_GRP_DESC">
+        <datatype type="STRING" maxLength="75"/>
+      </element>
+      <element name="DWNLN_ACT_DISTB_CNT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="ONLY_ONE_DWNLN_LVL_FLG">
+        <datatype type="STRING" maxLength="4"/>
+      </element>
+      <element name="FRONTLN_CLIENT_CNT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="IMC_ETHNC_TARGT_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_ETHNC_TARGT_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="IMC_HISP_ETHNC_TARGT_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="FIRST_PERS_WEBSITE_CTGRY">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="FIRST_PERS_WEBSITE_THEME">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="FIRST_PERS_WEBSITE_NAME">
+        <datatype type="STRING" maxLength="400"/>
+      </element>
+      <element name="FIRST_PERS_WEBSITE_PATH">
+        <datatype type="STRING" maxLength="254"/>
+      </element>
+      <element name="IMC_HARD_MAIL_HOLD_FLG">
+        <datatype type="STRING" maxLength="2"/>
+      </element>
+      <element name="IMC_MATCH_CUST_ADR_FLG">
+        <datatype type="STRING" maxLength="2"/>
+      </element>
+      <element name="IMC_MATCH_IBO_ADR_FLG">
+        <datatype type="STRING" maxLength="2"/>
+      </element>
+      <element name="PRM_EMAIL_FRMT_DESC">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="PRM_VM">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="PRM_VM_TYP_CD">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="PRM_VM_TYP_DESC">
+        <datatype type="STRING" maxLength="40"/>
+      </element>
+      <element name="SEC_EMAIL_FLG">
+        <datatype type="STRING" maxLength="2"/>
+      </element>
+      <element name="SEC_PERS_WEBSITE_PATH">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="SEC_PERS_WEBSITE_NAME">
+        <datatype type="STRING" maxLength="400"/>
+      </element>
+      <element name="SEC_PERS_WEBSITE_THEME">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="SEC_PERS_WEBSITE_CTGRY">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="AUTH_SPON_FLG" nullable="false">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="PRM_LANG_DESC">
+        <datatype type="STRING" maxLength="25"/>
+      </element>
+      <element name="LCL_LAST_PC_2_SR_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LCL_LAST_PC_2_AA_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LCL_LAST_PC_2_EMP_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LCL_LAST_SR_2_AA_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LCL_FIRST_SR_2_AA_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="GBL_LAST_DISTB_TO_RC_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="GBL_LAST_RC_2_DISTB_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="GBL_FIRST_CUS_2_DIST_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FIRST_OIMC_90_PV_FLG" nullable="false">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="FIRST_SIMC_90_PV_FLG" nullable="false">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="FIRST_VIMC_90_PV_FLG" nullable="false">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="FIRST_OIMC_BV_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FIRST_SIMC_BV_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FIRST_VIMC_BV_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LAST_OIMC_BV_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LAST_SIMC_BV_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LAST_VIMC_BV_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LCL_CURR_TYPE_START_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="LOCAL_ACT_FLG" nullable="false">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="FIRST_60D_PV_LC_AMT" nullable="false">
+        <datatype type="DECIMAL" maxDigits="19" maxFractionalDigits="4"/>
+      </element>
+      <element name="PRM_HOME_PHONE_LCL">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="PRM_BUS_PHONE_LCL">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="PRM_MOBILE_PHONE_LCL">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_1_HOME_PHONE_LCL">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_1_BUS_PHONE_LCL">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_1_MOBILE_PHONE_LCL">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_2_HOME_PHONE_LCL">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_2_BUS_PHONE_LCL">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_2_MOBILE_PHONE_LCL">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="CENTER_CD">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="SALES_COORD_NM">
+        <datatype type="STRING" maxLength="22"/>
+      </element>
+      <element name="SALES_COORD_VM_BOX_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="GRP_PV_AMT">
+        <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      </element>
+      <element name="GRP_BV_AMT">
+        <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      </element>
+      <element name="PERS_PV_AMT">
+        <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      </element>
+      <element name="PERS_BV_AMT">
+        <datatype type="DECIMAL" maxDigits="15" maxFractionalDigits="2"/>
+      </element>
+      <element name="SECOND_ORD_OIMC_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="SECOND_ORD_SIMC_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="SECOND_ORD_VIMC_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="IMC_U35_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="IMC_DLT_CD">
+        <datatype type="STRING" maxLength="4"/>
+      </element>
+      <element name="IMC_DLT_DESC">
+        <datatype type="STRING" maxLength="33"/>
+      </element>
+      <element name="IMC_AGE_BRCKT_CD">
+        <datatype type="STRING" maxLength="14"/>
+      </element>
+      <element name="IMC_AGE_BRCKT_DESC">
+        <datatype type="STRING" maxLength="10"/>
+      </element>
+      <element name="IMC_GNDR_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="IMC_GNDR_DESC">
+        <datatype type="STRING" maxLength="7"/>
+      </element>
+      <element name="LCL_LOS_GRP_CD" nullable="false">
+        <datatype type="STRING" maxLength="55"/>
+      </element>
+      <element name="LCL_LOS_LCL_DESC" nullable="false">
+        <datatype type="STRING" maxLength="55"/>
+      </element>
+      <element name="LCL_LOS_ENG_DESC" nullable="false">
+        <datatype type="STRING" maxLength="55"/>
+      </element>
+      <element name="SUB_LOA_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="LCL_LOS_GRP_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="SUB_LOA_CD" nullable="false">
+        <datatype type="STRING" maxLength="55"/>
+      </element>
+      <element name="SUB_LOA_LCL_DESC" nullable="false">
+        <datatype type="STRING" maxLength="55"/>
+      </element>
+      <element name="SUB_LOA_ENG_DESC" nullable="false">
+        <datatype type="STRING" maxLength="55"/>
+      </element>
+      <element name="RSDNCY_TYPE_CD" nullable="false">
+        <datatype type="STRING" maxLength="3"/>
+      </element>
+      <element name="RSDNCY_TYPE_DESC" nullable="false">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="PRM_HOME_PHN_CNTRY_CD">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="PRM_HOME_PHN_CITY_CD">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="PRM_HOME_PHN_NBR">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="PRM_BUS_PHN_CNTRY_CD">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="PRM_BUS_PHN_CITY_CD">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="PRM_BUS_PHN_NBR">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="PRM_MOBILE_PHN_CNTRY_CD">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="PRM_MOBILE_PHN_CITY_CD">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="PRM_MOBILE_PHN_NBR">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_1_HOME_PHN_CNTRY_CD">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="APP_1_HOME_PHN_CITY_CD">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="APP_1_HOME_PHN_NBR">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_1_BUS_PHN_CNTRY_CD">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="APP_1_BUS_PHN_CITY_CD">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="APP_1_BUS_PHN_NBR">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_1_MOBILE_PHN_CNTRY_CD">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="APP_1_MOBILE_PHN_CITY_CD">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="APP_1_MOBILE_PHN_NBR">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_2_HOME_PHN_CNTRY_CD">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="APP_2_HOME_PHN_CITY_CD">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="APP_2_HOME_PHN_NBR">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_2_BUS_PHN_CNTRY_CD">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="APP_2_BUS_PHN_CITY_CD">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="APP_2_BUS_PHN_NBR">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="APP_2_MOBILE_PHN_CNTRY_CD">
+        <datatype type="STRING" maxLength="6"/>
+      </element>
+      <element name="APP_2_MOBILE_PHN_CITY_CD">
+        <datatype type="STRING" maxLength="12"/>
+      </element>
+      <element name="APP_2_MOBILE_PHN_NBR">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="CTD_IMC_KEY_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CTD_IMC_CNTRY_KEY_NO">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="CTD_IMC_CNTRY_NM">
+        <datatype type="STRING" maxLength="30"/>
+      </element>
+      <element name="CTD_IMC_LOA_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CTD_IMC_LOA_CD">
+        <datatype type="STRING" maxLength="5"/>
+      </element>
+      <element name="CTD_IMC_LOA_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="CTD_GLOBL_AMWAY_ACCOUNT_ID">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CTD_GLOBL_AMWAY_ACCOUNT_NO">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="CTD_IMC_NAME">
+        <datatype type="STRING" maxLength="360"/>
+      </element>
+      <element name="PRM_PFR_LANG_CD" nullable="false">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="PRM_PFR_LANG_DESC" nullable="false">
+        <datatype type="STRING" maxLength="25"/>
+      </element>
+      <element name="PLACE_HOLDER_FLG" nullable="false">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="PLACE_HOLDER_DT_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="IMC_BNS_ACC_FLG" nullable="false">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="IMC_DIRECT_DBT_ACC_FLG" nullable="false">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="IMC_BNS_DIRECT_DBT_ACC_FLG" nullable="false">
+        <datatype type="INTEGER" minValue="-999" maxValue="999"/>
+      </element>
+      <element name="DISTB_CUR_90DY_ACTIV_DT_KEY_NO" nullable="false">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="DISTB_CUR_90DY_ACTIV_CMPLT_FLG" nullable="false">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="DISTB_CUR_90DY_ACTIV_FLG" nullable="false">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="MOBL_DOC_COMPLETE">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="IMC_LATIN_NAME">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_1_LATIN_NAME">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="APP_2_LATIN_NAME">
+        <datatype type="STRING" maxLength="200"/>
+      </element>
+      <element name="GBA_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="PRM_WAP_PHN_GLOBL_FLG">
+        <datatype type="STRING" maxLength="1"/>
+      </element>
+      <element name="PRM_WAP_PHONE">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV01021_IMC_MASTER_DIM.IMC_KEY_NO AS imc_key_no,
+	DWV01021_IMC_MASTER_DIM.IMC_AFF_KEY_NO AS imc_aff_key_no,
+	DWV01021_IMC_MASTER_DIM.IMC_AFF_ID AS imc_aff_id,
+	DWV01021_IMC_MASTER_DIM.IMC_NO AS imc_no,
+	DWV01021_IMC_MASTER_DIM.IMC_CNTRY_KEY_NO AS imc_cntry_key_no,
+	DWV01021_IMC_MASTER_DIM.GLOBL_IMC_TYPE_KEY_NO AS globl_imc_type_key_no,
+	DWV01021_IMC_MASTER_DIM.ORGN_GLOBL_IMC_TYPE_KEY_NO AS orgn_globl_imc_type_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_AMWAY_CNTRY_CD AS VARCHAR(3)) AS imc_amway_cntry_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_AMWAY_CNTRY_NM AS VARCHAR(30)) AS imc_amway_cntry_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_NAME AS VARCHAR(360)) AS imc_name,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_CLASS_CD AS VARCHAR(1)) AS imc_class_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_CLASS_DESC AS VARCHAR(150)) AS imc_class_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.APPL_DT_KEY_NO AS BIGINT) AS appl_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.SPON_NO AS BIGINT) AS spon_no,
+	DWV01021_IMC_MASTER_DIM.SPON_IMC_KEY_NO AS spon_imc_key_no,
+	DWV01021_IMC_MASTER_DIM.APP_SPON_IMC_KEY_NO AS app_spon_imc_key_no,
+	DWV01021_IMC_MASTER_DIM.STATUS_KEY_NO AS status_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_TYPE_CD AS VARCHAR(150)) AS imc_type_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.ORIGINAL_IMC_TYPE_CD AS VARCHAR(150)) AS original_imc_type_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_LOA_CD AS VARCHAR(5)) AS imc_loa_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_LOA_DESC AS VARCHAR(50)) AS imc_loa_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_LOA_KEY_NO AS BIGINT) AS imc_loa_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BUS_NO AS BIGINT) AS prm_bus_no,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BUS_KEY_NO AS BIGINT) AS prm_bus_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BUS_CNTRY_CD AS VARCHAR(150)) AS prm_bus_cntry_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.ISPON_NO AS BIGINT) AS ispon_no,
+	CAST(DWV01021_IMC_MASTER_DIM.ISPON_FLG AS VARCHAR(1)) AS ispon_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.ISPON_AFF_ID AS VARCHAR(150)) AS ispon_aff_id,
+	CAST(DWV01021_IMC_MASTER_DIM.ISPON_IMC_KEY_NO AS BIGINT) AS ispon_imc_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.PIN_NO AS VARCHAR(10)) AS pin_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PIN_YR_NO AS CHAR(4)) AS imc_pin_yr_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PIN_MO_NO AS CHAR(2)) AS imc_pin_mo_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_DLETE_DT_KEY_NO AS BIGINT) AS imc_dlete_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LOS_GRP_KEY_NO AS BIGINT) AS los_grp_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BUS_FLG AS SMALLINT) AS prm_bus_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.ACQUR_PAY_MTHOD_KEY_NO AS SMALLINT) AS acqur_pay_mthod_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.AUTO_RENEW_PAY_MTHOD_KEY_NO AS BIGINT) AS auto_renew_pay_mthod_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.AUTO_RENEW_FLG AS CHAR(1)) AS auto_renew_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.BUS_NATR_CD AS VARCHAR(2)) AS bus_natr_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.ORIGINAL_BUS_NATR_CD AS VARCHAR(2)) AS original_bus_natr_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.CURR_APPL_DT_KEY_NO AS BIGINT) AS curr_appl_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.CFIRM_APPL_DT_KEY_NO AS BIGINT) AS cfirm_appl_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.AUHZD_MOP_CD AS VARCHAR(1)) AS auhzd_mop_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.AUHZD_ORD_CD AS VARCHAR(1)) AS auhzd_ord_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.DIR_DEBIT_AUHZD_FLG AS VARCHAR(1)) AS dir_debit_auhzd_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.OVER_DUE_PAY_FLG AS VARCHAR(1)) AS over_due_pay_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.FORMR_IMC_KEY_NO AS BIGINT) AS formr_imc_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.REG_SRC_CD AS VARCHAR(30)) AS reg_src_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.BUS_NATR_CD_DESC AS VARCHAR(25)) AS bus_natr_cd_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.ORIGINAL_BUS_NATR_CD_DESC AS VARCHAR(25)) AS original_bus_natr_cd_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.LGL_ENTTY_FLG AS VARCHAR(1)) AS lgl_entty_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.LOS_SEQ_NO AS DOUBLE) AS los_seq_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LOS_LVL_NO AS DOUBLE) AS los_lvl_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LOS_END_SEQ_NO AS DOUBLE) AS los_end_seq_no,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_FIRST_NM AS VARCHAR(200)) AS app_1_first_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_LAST_NM AS VARCHAR(200)) AS app_1_last_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_FIRST_NM AS VARCHAR(200)) AS app_2_first_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_LAST_NM AS VARCHAR(200)) AS app_2_last_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_BIRTH_DT_KEY_NO AS BIGINT) AS app_1_birth_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_BIRTH_DT_KEY_NO AS BIGINT) AS app_2_birth_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_GNDR_CD AS CHAR(1)) AS app_1_gndr_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_GNDR_CD AS CHAR(1)) AS app_2_gndr_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_EMAIL_ADR AS VARCHAR(200)) AS app_1_email_adr,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_EMAIL_ADR AS VARCHAR(200)) AS app_2_email_adr,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_EMAIL_ADR AS VARCHAR(200)) AS prm_email_adr,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_BAD_ADR_FLG AS CHAR(1)) AS app_1_bad_adr_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_BAD_ADR_FLG AS CHAR(1)) AS app_2_bad_adr_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_ADR_LN_1 AS VARCHAR(240)) AS prm_adr_ln_1,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_ADR_LN_2 AS VARCHAR(240)) AS prm_adr_ln_2,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_ADR_LN_3 AS VARCHAR(240)) AS prm_adr_ln_3,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_ADR_LN_4 AS VARCHAR(240)) AS prm_adr_ln_4,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_COUNTRY AS VARCHAR(60)) AS prm_country,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_COUNTY AS VARCHAR(60)) AS prm_county,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_PROV AS VARCHAR(60)) AS prm_prov,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_CITY AS VARCHAR(60)) AS prm_city,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_POST_CODE AS VARCHAR(60)) AS prm_post_code,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_STATE AS VARCHAR(60)) AS prm_state,
+	CAST(DWV01021_IMC_MASTER_DIM.POSTL_CD_KEY_NO AS BIGINT) AS postl_cd_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.GLOBL_CUST_ID AS DOUBLE) AS globl_cust_id,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_HOME_PHONE AS VARCHAR(20)) AS prm_home_phone,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BUS_PHONE AS VARCHAR(20)) AS prm_bus_phone,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_MOBILE_PHONE AS VARCHAR(20)) AS prm_mobile_phone,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_HOME_PHONE AS VARCHAR(20)) AS app_1_home_phone,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_MOBILE_PHONE AS VARCHAR(20)) AS app_1_mobile_phone,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_BUS_PHONE AS VARCHAR(20)) AS app_1_bus_phone,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_HOME_PHONE AS VARCHAR(20)) AS app_2_home_phone,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_MOBILE_PHONE AS VARCHAR(20)) AS app_2_mobile_phone,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_BUS_PHONE AS VARCHAR(20)) AS app_2_bus_phone,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_FNAME_PROP AS VARCHAR(200)) AS app_1_fname_prop,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_LNAME_PROP AS VARCHAR(200)) AS app_1_lname_prop,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_FNAME_PROP AS VARCHAR(200)) AS app_2_fname_prop,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_LNAME_PROP AS VARCHAR(200)) AS app_2_lname_prop,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_MNAME_PROP AS VARCHAR(200)) AS app_1_mname_prop,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_MNAME_PROP AS VARCHAR(200)) AS app_2_mname_prop,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_NAME AS VARCHAR(200)) AS app_1_name,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_NAME AS VARCHAR(200)) AS app_2_name,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_HOME_PHONE_EXT AS VARCHAR(12)) AS prm_home_phone_ext,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BUS_PHONE_EXT AS VARCHAR(12)) AS prm_bus_phone_ext,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_HOME_PHONE_EXT AS VARCHAR(12)) AS app_1_home_phone_ext,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_BUS_PHONE_EXT AS VARCHAR(12)) AS app_1_bus_phone_ext,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_HOME_PHONE_EXT AS VARCHAR(12)) AS app_2_home_phone_ext,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_BUS_PHONE_EXT AS VARCHAR(12)) AS app_2_bus_phone_ext,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_LANG_CD AS VARCHAR(240)) AS prm_lang_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_ETHN_CD AS CHAR(1)) AS prm_ethn_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.SEC_EMAIL_ADR AS VARCHAR(200)) AS sec_email_adr,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_MOBL_EMAIL_ADR AS VARCHAR(200)) AS prm_mobl_email_adr,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_STATE_DESC AS VARCHAR(100)) AS prm_state_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_FIRST_NM_LATIN AS VARCHAR(100)) AS app_1_first_nm_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_MID_NM_LATIN AS VARCHAR(100)) AS app_1_mid_nm_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_LAST_NM_LATIN AS VARCHAR(100)) AS app_1_last_nm_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_FIRST_NM_LATIN AS VARCHAR(100)) AS app_2_first_nm_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_MID_NM_LATIN AS VARCHAR(100)) AS app_2_mid_nm_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_LAST_NM_LATIN AS VARCHAR(100)) AS app_2_last_nm_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_ADR_1_LATIN AS VARCHAR(100)) AS prm_adr_1_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_ADR_2_LATIN AS VARCHAR(100)) AS prm_adr_2_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_CARE_OF_LATIN AS VARCHAR(100)) AS prm_care_of_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_CITY_LATIN AS VARCHAR(100)) AS prm_city_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_DISTRICT_DESC AS VARCHAR(50)) AS prm_district_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_ST_NM_CD_LATIN AS VARCHAR(4)) AS prm_st_nm_cd_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_ST_NM_DESC_LATIN AS VARCHAR(30)) AS prm_st_nm_desc_latin,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_HOME_PHN_GLOBL_FLG AS VARCHAR(1)) AS prm_home_phn_globl_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_MOBL_PHN_GLOBL_FLG AS VARCHAR(1)) AS prm_mobl_phn_globl_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BUS_PHN_GLOBL_FLG AS VARCHAR(1)) AS prm_bus_phn_globl_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_MID_NM AS VARCHAR(50)) AS app_1_mid_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_MID_NM AS VARCHAR(50)) AS app_2_mid_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_ETHN_CD AS CHAR(1)) AS app_1_ethn_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_ETHN_CD AS CHAR(1)) AS app_2_ethn_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_1_SMS_BLCK AS VARCHAR(1)) AS imc_app_1_sms_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_2_SMS_BLCK AS VARCHAR(1)) AS imc_app_2_sms_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_1_EMAIL_BLCK AS VARCHAR(1)) AS imc_app_1_email_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_2_EMAIL_BLCK AS VARCHAR(1)) AS imc_app_2_email_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_1_EMAIL_BOUNCE_FLG AS VARCHAR(1)) AS imc_app_1_email_bounce_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_2_EMAIL_BOUNCE_FLG AS VARCHAR(1)) AS imc_app_2_email_bounce_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_1_USE_EMAIL_FLG AS VARCHAR(1)) AS imc_app_1_use_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_2_USE_EMAIL_FLG AS VARCHAR(1)) AS imc_app_2_use_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_1_DIR_MAIL_BLCK AS VARCHAR(1)) AS imc_app_1_dir_mail_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_2_DIR_MAIL_BLCK AS VARCHAR(1)) AS imc_app_2_dir_mail_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_PRF_CNTAC_MTHOD AS VARCHAR(1)) AS prm_prf_cntac_mthod,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PRM_SMS_BLCK AS VARCHAR(1)) AS imc_prm_sms_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PRM_EMAIL_BLCK AS VARCHAR(1)) AS imc_prm_email_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PRM_EMAIL_BOUNCE_FLG AS VARCHAR(1)) AS imc_prm_email_bounce_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PRM_USE_EMAIL_FLG AS VARCHAR(1)) AS imc_prm_use_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PRM_DIR_MAIL_BLCK AS VARCHAR(1)) AS imc_prm_dir_mail_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_PRF_CNTAC_MTHOD AS VARCHAR(1)) AS app_1_prf_cntac_mthod,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_PRF_CNTAC_MTHOD AS VARCHAR(1)) AS app_2_prf_cntac_mthod,
+	CAST(DWV01021_IMC_MASTER_DIM.COMM_HARD_HOLD_FLG AS CHAR(1)) AS comm_hard_hold_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PRM_SHRD_EMAIL_FLG AS CHAR(1)) AS imc_prm_shrd_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_1_SHRD_EMAIL_FLG AS CHAR(1)) AS imc_app_1_shrd_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_2_SHRD_EMAIL_FLG AS CHAR(1)) AS imc_app_2_shrd_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_SEC_EMAIL_BLK_FLG AS VARCHAR(1)) AS imc_sec_email_blk_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_SEC_EMAIL_BOUNCE_FLG AS VARCHAR(1)) AS imc_sec_email_bounce_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_SEC_SHRD_EMAIL_FLG AS VARCHAR(1)) AS imc_sec_shrd_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_SEC_USE_EMAIL_FLG AS VARCHAR(1)) AS imc_sec_use_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_1_MBL_EMAIL_BLCK AS VARCHAR(1)) AS imc_app_1_mbl_email_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_2_MBL_EMAIL_BLCK AS VARCHAR(1)) AS imc_app_2_mbl_email_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PRM_MBL_EMAIL_BLCK AS VARCHAR(1)) AS imc_prm_mbl_email_blck,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_EMAIL_FRMT_CD AS VARCHAR(13)) AS prm_email_frmt_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_MOBL_EMAIL_FRMT_CD AS VARCHAR(13)) AS prm_mobl_email_frmt_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PRM_SMS_BOUNCE_FLG AS VARCHAR(1)) AS imc_prm_sms_bounce_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BAD_ADR_FLG AS VARCHAR(1)) AS prm_bad_adr_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.SPON_DSCLSE_KEY_NO AS BIGINT) AS spon_dsclse_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.PLATM_DSCLSE_KEY_NO AS BIGINT) AS platm_dsclse_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.ACTV_ORD_OIMC_DT_KEY_NO AS BIGINT) AS actv_ord_oimc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.ACTV_ORD_SIMC_DT_KEY_NO AS BIGINT) AS actv_ord_simc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.ACTV_ORD_VIMC_DT_KEY_NO AS BIGINT) AS actv_ord_vimc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.APPL_DT_PLUS_90_DT_KEY_NO AS BIGINT) AS appl_dt_plus_90_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.AR_CURR_KEY_NO AS DOUBLE) AS ar_curr_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.AR_VAL_AMT AS DOUBLE) AS ar_val_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.BAS_LOAD_DT_KEY_NO AS BIGINT) AS bas_load_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.BAS_PER AS BIGINT) AS bas_per,
+	CAST(DWV01021_IMC_MASTER_DIM.CUR_AWD_LEGS AS INTEGER) AS cur_awd_legs,
+	CAST(DWV01021_IMC_MASTER_DIM.CUR_AWD_PV AS DECIMAL(15,2)) AS cur_awd_pv,
+	CAST(DWV01021_IMC_MASTER_DIM.CUR_BNS_LVL AS DECIMAL(6,2)) AS cur_bns_lvl,
+	CAST(DWV01021_IMC_MASTER_DIM.CUR_QUAL_LEGS AS INTEGER) AS cur_qual_legs,
+	CAST(DWV01021_IMC_MASTER_DIM.DISTB_90DY_ACTIV_CMPLT_FLG AS CHAR(1)) AS distb_90dy_activ_cmplt_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.DISTB_90DY_ACTIV_FLG AS CHAR(1)) AS distb_90dy_activ_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.ENGAGE_FLG AS CHAR(1)) AS engage_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.ESCRW_AMT AS DOUBLE) AS escrw_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.ESCRW_CURCY_KEY_NO AS DOUBLE) AS escrw_curcy_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.ESCRW_TYPE AS VARCHAR(3)) AS escrw_type,
+	CAST(DWV01021_IMC_MASTER_DIM.EXPIRE_DT_KEY_NO AS BIGINT) AS expire_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_ORD_OIMC_DT_KEY_NO AS BIGINT) AS first_ord_oimc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_ORD_SIMC_DT_KEY_NO AS BIGINT) AS first_ord_simc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_ORD_VIMC_DT_KEY_NO AS BIGINT) AS first_ord_vimc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_ORDER_TYPE_CD AS CHAR(6)) AS first_order_type_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_SPON_DT_KEY_NO AS BIGINT) AS first_spon_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_WHSE_KEY_NO AS BIGINT) AS first_whse_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.FRONTLN_CUST_CNT AS BIGINT) AS frontln_cust_cnt,
+	CAST(DWV01021_IMC_MASTER_DIM.FRONTLN_DISTB_CNT AS BIGINT) AS frontln_distb_cnt,
+	CAST(DWV01021_IMC_MASTER_DIM.FRONTLN_ENGAGED_CNT AS BIGINT) AS frontln_engaged_cnt,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_ACHV_AWD_KEY_NO AS BIGINT) AS imc_achv_awd_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_CURR_AWD_MO_YR_KEY_NO AS DOUBLE) AS imc_curr_awd_mo_yr_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_CURR_QUAL_AWD_KEY_NO AS DOUBLE) AS imc_curr_qual_awd_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_CURR_SEG_KEY_NO AS INTEGER) AS imc_curr_seg_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_DFLT_CURCY_KEY_NO AS BIGINT) AS imc_dflt_curcy_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_EXPEC_AWD_KEY_NO AS DOUBLE) AS imc_expec_awd_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_EXPEC_AWD_MO_YR_KEY_NO AS DOUBLE) AS imc_expec_awd_mo_yr_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_EXPEC_FAA_AWD_KEY_NO AS DOUBLE) AS imc_expec_faa_awd_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_EXPEC_FAA_AWD_MO_YR_KEY_NO AS DOUBLE) AS imc_expec_faa_awd_mo_yr_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_HIGH_AWD_KEY_NO AS DOUBLE) AS imc_high_awd_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_HIGH_AWD_MO_YR_KEY_NO AS DOUBLE) AS imc_high_awd_mo_yr_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_LAST_WEB_LGIN_DT AS TIMESTAMP) AS imc_last_web_lgin_dt,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_RENEW_SCR_NO AS BIGINT) AS imc_renew_scr_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LAST_DISTB_SPON_DT_KEY_NO AS BIGINT) AS last_distb_spon_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LAST_MBR_SPON_DT_KEY_NO AS BIGINT) AS last_mbr_spon_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LAST_ORD_OIMC_DT_KEY_NO AS BIGINT) AS last_ord_oimc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LAST_ORD_SIMC_DT_KEY_NO AS BIGINT) AS last_ord_simc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LAST_ORD_VIMC_DT_KEY_NO AS BIGINT) AS last_ord_vimc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LAST_SPON_DT_KEY_NO AS BIGINT) AS last_spon_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LOCAL_SEG_KEY_NO AS DOUBLE) AS local_seg_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LTR_1YR_AMT AS DECIMAL(19,4)) AS ltr_1yr_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.LTR_5YR_AMT AS DECIMAL(19,4)) AS ltr_5yr_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.LTR_90DY_AMT AS DECIMAL(19,4)) AS ltr_90dy_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.LTV_1YR_AMT AS DECIMAL(19,4)) AS ltv_1yr_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.LTV_5YR_AMT AS DECIMAL(19,4)) AS ltv_5yr_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.LTV_90DY_AMT AS DECIMAL(19,4)) AS ltv_90dy_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.LTV_90DY_CMPLT_FLG AS CHAR(1)) AS ltv_90dy_cmplt_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.MULT_BUS_ORG_IMC_KEY_NO AS BIGINT) AS mult_bus_org_imc_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.NEXT_BNS_LVL AS DECIMAL(6,2)) AS next_bns_lvl,
+	CAST(DWV01021_IMC_MASTER_DIM.ORD_ENTRY_MO_WO_FDY_CMPLT_FLG AS CHAR(1)) AS ord_entry_mo_wo_fdy_cmplt_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.ORD_ENTRY_MO_WO_FDY_FLG AS CHAR(1)) AS ord_entry_mo_wo_fdy_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.PCT_REQ_NEXT_LVL AS DECIMAL(6,2)) AS pct_req_next_lvl,
+	CAST(DWV01021_IMC_MASTER_DIM.PUC_SPONSOR_FLG AS CHAR(1)) AS puc_sponsor_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.PUC_USER_FLG AS CHAR(1)) AS puc_user_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.PV_REQ_NEXT_LVL AS DECIMAL(15,2)) AS pv_req_next_lvl,
+	CAST(DWV01021_IMC_MASTER_DIM.REG_WITH_PROD_CMPLT_FLG AS CHAR(1)) AS reg_with_prod_cmplt_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.REG_WITH_PROD_FLG AS CHAR(1)) AS reg_with_prod_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.RENEW_DT_KEY_NO AS BIGINT) AS renew_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.RPT_IMC_FLG AS INTEGER) AS rpt_imc_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.SIMC_F90_IBO_PRC_HLC_AMT AS DECIMAL(19,4)) AS simc_f90_ibo_prc_hlc_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.SIMC_F90_PV_LC_AMT AS DECIMAL(19,4)) AS simc_f90_pv_lc_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.SIMC_F90_WO_FD_IBO_PRC_HLC_AMT AS DECIMAL(19,4)) AS simc_f90_wo_fd_ibo_prc_hlc_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.SIMC_F90_WO_FD_PV_LC_AMT AS DECIMAL(19,4)) AS simc_f90_wo_fd_pv_lc_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.TEST_IBO_FLG AS CHAR(1)) AS test_ibo_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.TRAINED_FLG AS CHAR(1)) AS trained_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.VIMC_F90_IBO_PRC_HLC_AMT AS DECIMAL(19,4)) AS vimc_f90_ibo_prc_hlc_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.VIMC_F90_PV_LC_AMT AS DECIMAL(19,4)) AS vimc_f90_pv_lc_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.VIMC_F90_WO_FD_IBO_PRC_HLC_AMT AS DECIMAL(19,4)) AS vimc_f90_wo_fd_ibo_prc_hlc_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.VIMC_F90_WO_FD_PV_LC_AMT AS DECIMAL(19,4)) AS vimc_f90_wo_fd_pv_lc_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_DISTB_SPON_DT_KEY_NO AS DOUBLE) AS first_distb_spon_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_MBR_SPON_DT_KEY_NO AS DOUBLE) AS first_mbr_spon_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.INSRT_DT AS TIMESTAMP) AS insrt_dt,
+	CAST(DWV01021_IMC_MASTER_DIM.INSRT_PROC_NM AS VARCHAR(240)) AS insrt_proc_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.UPDT_DT AS TIMESTAMP) AS updt_dt,
+	CAST(DWV01021_IMC_MASTER_DIM.UPDT_PROC_NM AS VARCHAR(240)) AS updt_proc_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.UPDT_USER_ID AS VARCHAR(50)) AS updt_user_id,
+	CAST(DWV01021_IMC_MASTER_DIM.INSRT_DT_KEY_NO AS VARCHAR(8)) AS insrt_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.UPDT_DT_KEY_NO AS VARCHAR(8)) AS updt_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_AGE AS DOUBLE) AS app_1_age,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_AGE AS DOUBLE) AS app_2_age,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_1_OK_TO_EMAIL_FLG AS CHAR(1)) AS imc_app_1_ok_to_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APP_2_OK_TO_EMAIL_FLG AS CHAR(1)) AS imc_app_2_ok_to_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PRM_OK_TO_EMAIL_FLG AS CHAR(1)) AS imc_prm_ok_to_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_SEC_OK_TO_EMAIL_FLG AS CHAR(1)) AS imc_sec_ok_to_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PRM_MOBL_OK_TO_PHONE_FLG AS VARCHAR(1)) AS imc_prm_mobl_ok_to_phone_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_PRM_SHRD_MOBL_PHN_FLG AS CHAR(1)) AS imc_prm_shrd_mobl_phn_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.LOCAL_IMC_TYPE_CD AS VARCHAR(15)) AS local_imc_type_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.LOCAL_IMC_TYPE_DESC AS VARCHAR(50)) AS local_imc_type_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.ORGN_LOCAL_IMC_TYPE_CD AS VARCHAR(15)) AS orgn_local_imc_type_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.ORGN_LOCAL_IMC_TYPE_DESC AS VARCHAR(50)) AS orgn_local_imc_type_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.BNS_CPBL_CD AS VARCHAR(1)) AS bns_cpbl_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.CURR_SHOP_KEY_NO AS DOUBLE) AS curr_shop_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.REG_SHOP_KEY_NO AS DOUBLE) AS reg_shop_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.MISSING_INFO_FLG AS VARCHAR(1)) AS missing_info_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_SIGNED_CNTRC_DATE AS DOUBLE) AS imc_signed_cntrc_date,
+	CAST(DWV01021_IMC_MASTER_DIM.REG_CHNL_CD AS VARCHAR(10)) AS reg_chnl_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.REG_CHNL_NM AS VARCHAR(50)) AS reg_chnl_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_REG_URL AS VARCHAR(50)) AS imc_reg_url,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_LAST_RENEW_YEAR AS VARCHAR(4)) AS imc_last_renew_year,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_RENEWAL_MTHOD_CD AS VARCHAR(1)) AS imc_renewal_mthod_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_RENEWAL_MTHOD_DESC AS VARCHAR(480)) AS imc_renewal_mthod_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_SIGNUP_MTHOD_CD AS VARCHAR(1)) AS imc_signup_mthod_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_SIGNUP_MTHOD_DESC AS VARCHAR(480)) AS imc_signup_mthod_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_RECEIVE_PUB_PACK_FLG AS VARCHAR(1)) AS imc_receive_pub_pack_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_APPL_CNT_IBOSHIP AS DOUBLE) AS imc_appl_cnt_iboship,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_XCEPT_CLASS_CD AS VARCHAR(3)) AS imc_xcept_class_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_XCEPT_CLASS_DESC AS VARCHAR(480)) AS imc_xcept_class_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.AFF_LEADER_IMC_KEY_NO AS DOUBLE) AS aff_leader_imc_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.MOL_IMC_KEY_NO AS DOUBLE) AS mol_imc_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.SPONS_LEADER_IMC_KEY_NO AS DOUBLE) AS spons_leader_imc_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.TEAM_LEADER_IMC_KEY_NO AS DOUBLE) AS team_leader_imc_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.GRP_LEADER_IMC_KEY_NO AS DOUBLE) AS grp_leader_imc_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.SALE_ADVSR_ID AS VARCHAR(50)) AS sale_advsr_id,
+	CAST(DWV01021_IMC_MASTER_DIM.SALE_MGR_ID AS VARCHAR(50)) AS sale_mgr_id,
+	CAST(DWV01021_IMC_MASTER_DIM.SALE_ADVSR_NM AS VARCHAR(250)) AS sale_advsr_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.SALE_MGR_NM AS VARCHAR(250)) AS sale_mgr_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.IBO_CUST_LEAD_PRGM_SIGN_UP_FLG AS VARCHAR(4)) AS ibo_cust_lead_prgm_sign_up_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_BO_BLCK_FLG AS VARCHAR(4)) AS imc_bo_blck_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IBO_CUST_LEAD_ELGBL_FLG AS VARCHAR(4)) AS ibo_cust_lead_elgbl_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.FULFL_CD AS VARCHAR(4)) AS fulfl_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.FULFL_DESC AS VARCHAR(30)) AS fulfl_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.PAID_DIR_FLG AS VARCHAR(4)) AS paid_dir_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IBO_REF_FLG AS VARCHAR(4)) AS ibo_ref_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.WITHD_TAX_CD AS VARCHAR(5)) AS withd_tax_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.WITHD_TAX_DESC AS VARCHAR(100)) AS withd_tax_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_INACT_STAT_DT_KEY_NO AS DOUBLE) AS imc_inact_stat_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_GNDR_DESC AS VARCHAR(50)) AS app_1_gndr_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_GNDR_DESC AS VARCHAR(50)) AS app_2_gndr_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.SHARE_IMC_CNTAC_INFO_FLG AS VARCHAR(6)) AS share_imc_cntac_info_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.SHARE_IMC_ORD_INFO_FLG AS VARCHAR(6)) AS share_imc_ord_info_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_VINTG_GRP_CD AS VARCHAR(1)) AS imc_vintg_grp_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_VINTG_GRP_DESC AS VARCHAR(75)) AS imc_vintg_grp_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.DWNLN_ACT_DISTB_CNT AS DOUBLE) AS dwnln_act_distb_cnt,
+	CAST(DWV01021_IMC_MASTER_DIM.ONLY_ONE_DWNLN_LVL_FLG AS VARCHAR(4)) AS only_one_dwnln_lvl_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.FRONTLN_CLIENT_CNT AS DOUBLE) AS frontln_client_cnt,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_ETHNC_TARGT_CD AS VARCHAR(1)) AS imc_ethnc_targt_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_ETHNC_TARGT_DESC AS VARCHAR(50)) AS imc_ethnc_targt_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_HISP_ETHNC_TARGT_FLG AS VARCHAR(1)) AS imc_hisp_ethnc_targt_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_PERS_WEBSITE_CTGRY AS VARCHAR(200)) AS first_pers_website_ctgry,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_PERS_WEBSITE_THEME AS VARCHAR(200)) AS first_pers_website_theme,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_PERS_WEBSITE_NAME AS VARCHAR(400)) AS first_pers_website_name,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_PERS_WEBSITE_PATH AS VARCHAR(254)) AS first_pers_website_path,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_HARD_MAIL_HOLD_FLG AS VARCHAR(2)) AS imc_hard_mail_hold_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_MATCH_CUST_ADR_FLG AS VARCHAR(2)) AS imc_match_cust_adr_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_MATCH_IBO_ADR_FLG AS VARCHAR(2)) AS imc_match_ibo_adr_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_EMAIL_FRMT_DESC AS VARCHAR(200)) AS prm_email_frmt_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_VM AS VARCHAR(50)) AS prm_vm,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_VM_TYP_CD AS VARCHAR(1)) AS prm_vm_typ_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_VM_TYP_DESC AS VARCHAR(40)) AS prm_vm_typ_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.SEC_EMAIL_FLG AS VARCHAR(2)) AS sec_email_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.SEC_PERS_WEBSITE_PATH AS VARCHAR(200)) AS sec_pers_website_path,
+	CAST(DWV01021_IMC_MASTER_DIM.SEC_PERS_WEBSITE_NAME AS VARCHAR(400)) AS sec_pers_website_name,
+	CAST(DWV01021_IMC_MASTER_DIM.SEC_PERS_WEBSITE_THEME AS VARCHAR(200)) AS sec_pers_website_theme,
+	CAST(DWV01021_IMC_MASTER_DIM.SEC_PERS_WEBSITE_CTGRY AS VARCHAR(200)) AS sec_pers_website_ctgry,
+	CAST(DWV01021_IMC_MASTER_DIM.AUTH_SPON_FLG AS VARCHAR(1)) AS auth_spon_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_LANG_DESC AS VARCHAR(25)) AS prm_lang_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.LCL_LAST_PC_2_SR_DT_KEY_NO AS BIGINT) AS lcl_last_pc_2_sr_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LCL_LAST_PC_2_AA_DT_KEY_NO AS BIGINT) AS lcl_last_pc_2_aa_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LCL_LAST_PC_2_EMP_DT_KEY_NO AS BIGINT) AS lcl_last_pc_2_emp_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LCL_LAST_SR_2_AA_DT_KEY_NO AS BIGINT) AS lcl_last_sr_2_aa_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LCL_FIRST_SR_2_AA_DT_KEY_NO AS BIGINT) AS lcl_first_sr_2_aa_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.GBL_LAST_DISTB_TO_RC_DT_KEY_NO AS BIGINT) AS gbl_last_distb_to_rc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.GBL_LAST_RC_2_DISTB_DT_KEY_NO AS BIGINT) AS gbl_last_rc_2_distb_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.GBL_FIRST_CUS_2_DIST_DT_KEY_NO AS BIGINT) AS gbl_first_cus_2_dist_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_OIMC_90_PV_FLG AS VARCHAR(1)) AS first_oimc_90_pv_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_SIMC_90_PV_FLG AS VARCHAR(1)) AS first_simc_90_pv_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_VIMC_90_PV_FLG AS VARCHAR(1)) AS first_vimc_90_pv_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_OIMC_BV_DT_KEY_NO AS BIGINT) AS first_oimc_bv_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_SIMC_BV_DT_KEY_NO AS BIGINT) AS first_simc_bv_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_VIMC_BV_DT_KEY_NO AS BIGINT) AS first_vimc_bv_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LAST_OIMC_BV_DT_KEY_NO AS BIGINT) AS last_oimc_bv_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LAST_SIMC_BV_DT_KEY_NO AS BIGINT) AS last_simc_bv_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LAST_VIMC_BV_DT_KEY_NO AS BIGINT) AS last_vimc_bv_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LCL_CURR_TYPE_START_DT_KEY_NO AS BIGINT) AS lcl_curr_type_start_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LOCAL_ACT_FLG AS VARCHAR(1)) AS local_act_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.FIRST_60D_PV_LC_AMT AS DECIMAL(19,4)) AS first_60d_pv_lc_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_HOME_PHONE_LCL AS VARCHAR(20)) AS prm_home_phone_lcl,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BUS_PHONE_LCL AS VARCHAR(20)) AS prm_bus_phone_lcl,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_MOBILE_PHONE_LCL AS VARCHAR(20)) AS prm_mobile_phone_lcl,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_HOME_PHONE_LCL AS VARCHAR(20)) AS app_1_home_phone_lcl,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_BUS_PHONE_LCL AS VARCHAR(20)) AS app_1_bus_phone_lcl,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_MOBILE_PHONE_LCL AS VARCHAR(20)) AS app_1_mobile_phone_lcl,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_HOME_PHONE_LCL AS VARCHAR(20)) AS app_2_home_phone_lcl,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_BUS_PHONE_LCL AS VARCHAR(20)) AS app_2_bus_phone_lcl,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_MOBILE_PHONE_LCL AS VARCHAR(20)) AS app_2_mobile_phone_lcl,
+	CAST(DWV01021_IMC_MASTER_DIM.CENTER_CD AS VARCHAR(30)) AS center_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.SALES_COORD_NM AS VARCHAR(22)) AS sales_coord_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.SALES_COORD_VM_BOX_NO AS DOUBLE) AS sales_coord_vm_box_no,
+	CAST(DWV01021_IMC_MASTER_DIM.GRP_PV_AMT AS DECIMAL(15,2)) AS grp_pv_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.GRP_BV_AMT AS DECIMAL(15,2)) AS grp_bv_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.PERS_PV_AMT AS DECIMAL(15,2)) AS pers_pv_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.PERS_BV_AMT AS DECIMAL(15,2)) AS pers_bv_amt,
+	CAST(DWV01021_IMC_MASTER_DIM.SECOND_ORD_OIMC_DT_KEY_NO AS BIGINT) AS second_ord_oimc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.SECOND_ORD_SIMC_DT_KEY_NO AS BIGINT) AS second_ord_simc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.SECOND_ORD_VIMC_DT_KEY_NO AS BIGINT) AS second_ord_vimc_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_U35_FLG AS CHAR(1)) AS imc_u35_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_DLT_CD AS VARCHAR(4)) AS imc_dlt_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_DLT_DESC AS VARCHAR(33)) AS imc_dlt_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_AGE_BRCKT_CD AS VARCHAR(14)) AS imc_age_brckt_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_AGE_BRCKT_DESC AS VARCHAR(10)) AS imc_age_brckt_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_GNDR_CD AS CHAR(1)) AS imc_gndr_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_GNDR_DESC AS VARCHAR(7)) AS imc_gndr_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.LCL_LOS_GRP_CD AS VARCHAR(55)) AS lcl_los_grp_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.LCL_LOS_LCL_DESC AS VARCHAR(55)) AS lcl_los_lcl_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.LCL_LOS_ENG_DESC AS VARCHAR(55)) AS lcl_los_eng_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.SUB_LOA_KEY_NO AS DOUBLE) AS sub_loa_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.LCL_LOS_GRP_KEY_NO AS DOUBLE) AS lcl_los_grp_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.SUB_LOA_CD AS VARCHAR(55)) AS sub_loa_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.SUB_LOA_LCL_DESC AS VARCHAR(55)) AS sub_loa_lcl_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.SUB_LOA_ENG_DESC AS VARCHAR(55)) AS sub_loa_eng_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.RSDNCY_TYPE_CD AS VARCHAR(3)) AS rsdncy_type_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.RSDNCY_TYPE_DESC AS VARCHAR(30)) AS rsdncy_type_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_HOME_PHN_CNTRY_CD AS VARCHAR(6)) AS prm_home_phn_cntry_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_HOME_PHN_CITY_CD AS VARCHAR(12)) AS prm_home_phn_city_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_HOME_PHN_NBR AS VARCHAR(20)) AS prm_home_phn_nbr,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BUS_PHN_CNTRY_CD AS VARCHAR(6)) AS prm_bus_phn_cntry_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BUS_PHN_CITY_CD AS VARCHAR(12)) AS prm_bus_phn_city_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_BUS_PHN_NBR AS VARCHAR(20)) AS prm_bus_phn_nbr,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_MOBILE_PHN_CNTRY_CD AS VARCHAR(6)) AS prm_mobile_phn_cntry_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_MOBILE_PHN_CITY_CD AS VARCHAR(12)) AS prm_mobile_phn_city_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_MOBILE_PHN_NBR AS VARCHAR(20)) AS prm_mobile_phn_nbr,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_HOME_PHN_CNTRY_CD AS VARCHAR(6)) AS app_1_home_phn_cntry_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_HOME_PHN_CITY_CD AS VARCHAR(12)) AS app_1_home_phn_city_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_HOME_PHN_NBR AS VARCHAR(20)) AS app_1_home_phn_nbr,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_BUS_PHN_CNTRY_CD AS VARCHAR(6)) AS app_1_bus_phn_cntry_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_BUS_PHN_CITY_CD AS VARCHAR(12)) AS app_1_bus_phn_city_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_BUS_PHN_NBR AS VARCHAR(20)) AS app_1_bus_phn_nbr,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_MOBILE_PHN_CNTRY_CD AS VARCHAR(6)) AS app_1_mobile_phn_cntry_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_MOBILE_PHN_CITY_CD AS VARCHAR(12)) AS app_1_mobile_phn_city_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_MOBILE_PHN_NBR AS VARCHAR(20)) AS app_1_mobile_phn_nbr,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_HOME_PHN_CNTRY_CD AS VARCHAR(6)) AS app_2_home_phn_cntry_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_HOME_PHN_CITY_CD AS VARCHAR(12)) AS app_2_home_phn_city_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_HOME_PHN_NBR AS VARCHAR(20)) AS app_2_home_phn_nbr,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_BUS_PHN_CNTRY_CD AS VARCHAR(6)) AS app_2_bus_phn_cntry_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_BUS_PHN_CITY_CD AS VARCHAR(12)) AS app_2_bus_phn_city_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_BUS_PHN_NBR AS VARCHAR(20)) AS app_2_bus_phn_nbr,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_MOBILE_PHN_CNTRY_CD AS VARCHAR(6)) AS app_2_mobile_phn_cntry_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_MOBILE_PHN_CITY_CD AS VARCHAR(12)) AS app_2_mobile_phn_city_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_MOBILE_PHN_NBR AS VARCHAR(20)) AS app_2_mobile_phn_nbr,
+	CAST(DWV01021_IMC_MASTER_DIM.CTD_IMC_KEY_NO AS DOUBLE) AS ctd_imc_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.CTD_IMC_CNTRY_KEY_NO AS SMALLINT) AS ctd_imc_cntry_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.CTD_IMC_CNTRY_NM AS VARCHAR(30)) AS ctd_imc_cntry_nm,
+	CAST(DWV01021_IMC_MASTER_DIM.CTD_IMC_LOA_KEY_NO AS BIGINT) AS ctd_imc_loa_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.CTD_IMC_LOA_CD AS VARCHAR(5)) AS ctd_imc_loa_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.CTD_IMC_LOA_DESC AS VARCHAR(50)) AS ctd_imc_loa_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.CTD_GLOBL_AMWAY_ACCOUNT_ID AS DOUBLE) AS ctd_globl_amway_account_id,
+	CAST(DWV01021_IMC_MASTER_DIM.CTD_GLOBL_AMWAY_ACCOUNT_NO AS DOUBLE) AS ctd_globl_amway_account_no,
+	CAST(DWV01021_IMC_MASTER_DIM.CTD_IMC_NAME AS VARCHAR(360)) AS ctd_imc_name,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_PFR_LANG_CD AS VARCHAR(50)) AS prm_pfr_lang_cd,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_PFR_LANG_DESC AS VARCHAR(25)) AS prm_pfr_lang_desc,
+	CAST(DWV01021_IMC_MASTER_DIM.PLACE_HOLDER_FLG AS VARCHAR(1)) AS place_holder_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.PLACE_HOLDER_DT_KEY_NO AS BIGINT) AS place_holder_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_BNS_ACC_FLG AS SMALLINT) AS imc_bns_acc_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_DIRECT_DBT_ACC_FLG AS SMALLINT) AS imc_direct_dbt_acc_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_BNS_DIRECT_DBT_ACC_FLG AS SMALLINT) AS imc_bns_direct_dbt_acc_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.DISTB_CUR_90DY_ACTIV_DT_KEY_NO AS DOUBLE) AS distb_cur_90dy_activ_dt_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.DISTB_CUR_90DY_ACTIV_CMPLT_FLG AS CHAR(1)) AS distb_cur_90dy_activ_cmplt_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.DISTB_CUR_90DY_ACTIV_FLG AS CHAR(1)) AS distb_cur_90dy_activ_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.MOBL_DOC_COMPLETE AS VARCHAR(1)) AS mobl_doc_complete,
+	CAST(DWV01021_IMC_MASTER_DIM.IMC_LATIN_NAME AS VARCHAR(200)) AS imc_latin_name,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_1_LATIN_NAME AS VARCHAR(200)) AS app_1_latin_name,
+	CAST(DWV01021_IMC_MASTER_DIM.APP_2_LATIN_NAME AS VARCHAR(200)) AS app_2_latin_name,
+	CAST(DWV01021_IMC_MASTER_DIM.GBA_KEY_NO AS BIGINT) AS gba_key_no,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_WAP_PHN_GLOBL_FLG AS VARCHAR(1)) AS prm_wap_phn_globl_flg,
+	CAST(DWV01021_IMC_MASTER_DIM.PRM_WAP_PHONE AS VARCHAR(20)) AS prm_wap_phone 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV01021_IMC_MASTER_DIM DWV01021_IMC_MASTER_DIM</attribute>
+  <attribute name="creationDate" type="LONG">1559510153752</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">250108</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1570465437765</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">250108</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1559510153752</attribute>
+</metadata>

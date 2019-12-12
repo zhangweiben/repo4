@@ -1,0 +1,240 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv10230_Mos_Avg_Exchg_Rt_Fact" path="/shared/Common/Physical/Formatting/GDW/Dwv10230_Mos_Avg_Exchg_Rt_Fact" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="cntry_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cntry_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cntry_nm" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curcy_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="curcy_nm" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="iso_cntry_cd" nullable="true">
+      <datatype type="STRING" minLength="2" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="iso_curcy_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="eff_avg_mo_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mos_avg_rt_no" nullable="true">
+      <datatype type="DECIMAL" maxDigits="14" maxFractionalDigits="4"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="pub_avg_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="row_add_user_id" nullable="true">
+      <datatype type="STRING" minLength="30" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="row_add_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="row_chng_user_id" nullable="true">
+      <datatype type="STRING" minLength="30" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="row_chng_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="from_curcy_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="invrt_on_pub_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="prime_curcy_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="intro_dt_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="intro_mo_yr_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV10230_MOS_AVG_EXCHG_RT_FACT" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="CNTRY_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CNTRY_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="CNTRY_NM">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="CURCY_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="CURCY_NM">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="ISO_CNTRY_CD" nullable="false">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="ISO_CURCY_CD" nullable="false">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="EFF_AVG_MO_YR_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="MOS_AVG_RT_NO" nullable="false">
+        <datatype type="DECIMAL" maxDigits="14" maxFractionalDigits="4"/>
+      </element>
+      <element name="PUB_AVG_FLG" nullable="false">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="ROW_ADD_USER_ID" nullable="false">
+        <datatype type="STRING" minLength="30" maxLength="30"/>
+      </element>
+      <element name="ROW_ADD_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="ROW_CHNG_USER_ID">
+        <datatype type="STRING" minLength="30" maxLength="30"/>
+      </element>
+      <element name="ROW_CHNG_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="FROM_CURCY_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="INVRT_ON_PUB_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="PRIME_CURCY_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="INTRO_DT_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="INTRO_MO_YR_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV10230_MOS_AVG_EXCHG_RT_FACT.CNTRY_KEY_NO AS cntry_key_no,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.CNTRY_CD AS CHAR(3)) AS cntry_cd,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.CNTRY_NM AS VARCHAR(50)) AS cntry_nm,
+	DWV10230_MOS_AVG_EXCHG_RT_FACT.CURCY_KEY_NO AS curcy_key_no,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.CURCY_NM AS VARCHAR(50)) AS curcy_nm,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.ISO_CNTRY_CD AS CHAR(2)) AS iso_cntry_cd,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.ISO_CURCY_CD AS CHAR(3)) AS iso_curcy_cd,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.EFF_AVG_MO_YR_KEY_NO AS BIGINT) AS eff_avg_mo_yr_key_no,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.MOS_AVG_RT_NO AS DECIMAL(14,4)) AS mos_avg_rt_no,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.PUB_AVG_FLG AS CHAR(1)) AS pub_avg_flg,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.ROW_ADD_USER_ID AS CHAR(30)) AS row_add_user_id,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.ROW_ADD_DT_KEY_NO AS BIGINT) AS row_add_dt_key_no,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.ROW_CHNG_USER_ID AS CHAR(30)) AS row_chng_user_id,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.ROW_CHNG_DT_KEY_NO AS BIGINT) AS row_chng_dt_key_no,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.FROM_CURCY_KEY_NO AS BIGINT) AS from_curcy_key_no,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.INVRT_ON_PUB_FLG AS CHAR(1)) AS invrt_on_pub_flg,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.PRIME_CURCY_FLG AS CHAR(1)) AS prime_curcy_flg,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.INTRO_DT_KEY_NO AS BIGINT) AS intro_dt_key_no,
+	CAST(DWV10230_MOS_AVG_EXCHG_RT_FACT.INTRO_MO_YR_KEY_NO AS BIGINT) AS intro_mo_yr_key_no 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV10230_MOS_AVG_EXCHG_RT_FACT DWV10230_MOS_AVG_EXCHG_RT_FACT</attribute>
+  <attribute name="creationDate" type="LONG">1559510172004</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">250108</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">250108</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1559510172004</attribute>
+</metadata>

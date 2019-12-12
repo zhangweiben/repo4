@@ -1,0 +1,79 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv04020_Qual_Cd_Dim" path="/shared/Common/Physical/Formatting/GDW/Dwv04020_Qual_Cd_Dim" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="qual_cd_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="bns_rnk_no" nullable="true">
+      <datatype type="STRING" maxLength="8"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="qual_cd" nullable="true">
+      <datatype type="STRING" maxLength="8"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="qual_cd_desc" nullable="true">
+      <datatype type="STRING" maxLength="240"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes>
+    <index name="QUAL_CD_PK" type="PRIMARY_KEY" unique="true">
+      <indexColumn name="qual_cd_key_no" sortOrder="ASCENDING"/>
+    </index>
+  </indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV04020_QUAL_CD_DIM" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="QUAL_CD_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="BNS_RNK_NO">
+        <datatype type="STRING" maxLength="8"/>
+      </element>
+      <element name="QUAL_CD">
+        <datatype type="STRING" maxLength="8"/>
+      </element>
+      <element name="QUAL_CD_DESC">
+        <datatype type="STRING" maxLength="240"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV04020_QUAL_CD_DIM.QUAL_CD_KEY_NO qual_cd_key_no,
+	CAST(DWV04020_QUAL_CD_DIM.BNS_RNK_NO AS VARCHAR(8)) AS bns_rnk_no,
+	CAST(DWV04020_QUAL_CD_DIM.QUAL_CD AS VARCHAR(8)) AS qual_cd,
+	CAST(DWV04020_QUAL_CD_DIM.QUAL_CD_DESC AS VARCHAR(240)) AS qual_cd_desc 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV04020_QUAL_CD_DIM DWV04020_QUAL_CD_DIM</attribute>
+  <attribute name="creationDate" type="LONG">1567632427179</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30105</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30105</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1567632427179</attribute>
+</metadata>

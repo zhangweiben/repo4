@@ -1,0 +1,372 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:c1c35a38-ca4e-4bdd-8fa8-1681abd58de0 -->
+<metadata name="Dwv00011_Sip_Bns_Dim_View" path="/shared/Common/Physical/Formatting/GDW/Dwv00011_Sip_Bns_Dim_View" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="awd_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="aff_key_no" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_rnk_no" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_type_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="50"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="award_alias_cd" nullable="true">
+      <datatype type="STRING" minLength="3" maxLength="3"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_ind_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="dist_class_no" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="dist_class_name" nullable="true">
+      <datatype type="STRING" minLength="20" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_freq_cd" nullable="true">
+      <datatype type="STRING" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_freq_desc" nullable="true">
+      <datatype type="STRING" maxLength="256"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_recog_type_cd" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="awd_recog_type_desc" nullable="true">
+      <datatype type="STRING" minLength="20" maxLength="20"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="qual_track_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="requires_aprv_cd" nullable="true">
+      <datatype type="STRING" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="requires_aprv_desc" nullable="true">
+      <datatype type="STRING" maxLength="256"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="di" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="leg_types_allow_desc" nullable="true">
+      <datatype type="STRING" minLength="30" maxLength="30"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="tot_legs_to_qual_qty" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="same_legs_req_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="tot_same_legs_to_qual_qty" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="tot_mos_to_qual_qty" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cnsec_mos_to_qual_qty" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="xpr_type_cd" nullable="true">
+      <datatype type="STRING" maxLength="2"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="xpr_type_desc" nullable="true">
+      <datatype type="STRING" maxLength="256"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="cnsec_mos_requal_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="check_3_legs_flg" nullable="true">
+      <datatype type="STRING" minLength="1" maxLength="1"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="mo_bns_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+    <column name="faa_flg" nullable="true">
+      <datatype type="INTEGER" minValue="-128" maxValue="127"/>
+      <security>
+        <owner user="nobody" domain="composite"/>
+      </security>
+      <annotation/>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <dependency target="/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV00011_SIP_BNS_DIM_VIEW" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="AWD_KEY_NO" nullable="false">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="AFF_KEY_NO">
+        <datatype type="INTEGER" minValue="-9999999999" maxValue="9999999999"/>
+      </element>
+      <element name="AWD_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="AWD_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="AWD_RNK_NO">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="AWD_TYPE_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="AWD_TYPE_DESC">
+        <datatype type="STRING" maxLength="50"/>
+      </element>
+      <element name="AWARD_ALIAS_CD">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="AWD_IND_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="DIST_CLASS_NO">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="DIST_CLASS_NAME">
+        <datatype type="STRING" minLength="20" maxLength="20"/>
+      </element>
+      <element name="AWD_FREQ_CD">
+        <datatype type="STRING" maxLength="2"/>
+      </element>
+      <element name="AWD_FREQ_DESC">
+        <datatype type="STRING" maxLength="256"/>
+      </element>
+      <element name="AWD_RECOG_TYPE_CD">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="AWD_RECOG_TYPE_DESC">
+        <datatype type="STRING" minLength="20" maxLength="20"/>
+      </element>
+      <element name="QUAL_TRACK_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="REQUIRES_APRV_CD">
+        <datatype type="STRING" maxLength="2"/>
+      </element>
+      <element name="REQUIRES_APRV_DESC">
+        <datatype type="STRING" maxLength="256"/>
+      </element>
+      <element name="DI">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="LEG_TYPES_ALLOW_DESC">
+        <datatype type="STRING" minLength="30" maxLength="30"/>
+      </element>
+      <element name="TOT_LEGS_TO_QUAL_QTY">
+        <datatype type="INTEGER" minValue="-999999999999999999" maxValue="999999999999999999"/>
+      </element>
+      <element name="SAME_LEGS_REQ_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="TOT_SAME_LEGS_TO_QUAL_QTY">
+        <datatype type="INTEGER" minValue="-999999999999999999" maxValue="999999999999999999"/>
+      </element>
+      <element name="TOT_MOS_TO_QUAL_QTY">
+        <datatype type="INTEGER" minValue="-999999999999999999" maxValue="999999999999999999"/>
+      </element>
+      <element name="CNSEC_MOS_TO_QUAL_QTY">
+        <datatype type="INTEGER" minValue="-999999999999999999" maxValue="999999999999999999"/>
+      </element>
+      <element name="XPR_TYPE_CD">
+        <datatype type="STRING" maxLength="2"/>
+      </element>
+      <element name="XPR_TYPE_DESC">
+        <datatype type="STRING" maxLength="256"/>
+      </element>
+      <element name="CNSEC_MOS_REQUAL_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="CHECK_3_LEGS_FLG">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="MO_BNS_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+      <element name="FAA_FLG">
+        <datatype type="INTEGER" minValue="-9" maxValue="9"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT 
+	DWV00011_SIP_BNS_DIM_VIEW.AWD_KEY_NO AS awd_key_no,
+	DWV00011_SIP_BNS_DIM_VIEW.AFF_KEY_NO AS aff_key_no,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.AWD_CD AS CHAR(3)) AS awd_cd,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.AWD_DESC AS VARCHAR(50)) AS awd_desc,
+	DWV00011_SIP_BNS_DIM_VIEW.AWD_RNK_NO AS awd_rnk_no,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.AWD_TYPE_CD AS CHAR(3)) AS awd_type_cd,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.AWD_TYPE_DESC AS VARCHAR(50)) AS awd_type_desc,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.AWARD_ALIAS_CD AS CHAR(3)) AS award_alias_cd,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.AWD_IND_CD AS CHAR(1)) AS awd_ind_cd,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.DIST_CLASS_NO AS CHAR(1)) AS dist_class_no,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.DIST_CLASS_NAME AS CHAR(20)) AS dist_class_name,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.AWD_FREQ_CD AS VARCHAR(2)) AS awd_freq_cd,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.AWD_FREQ_DESC AS VARCHAR(256)) AS awd_freq_desc,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.AWD_RECOG_TYPE_CD AS CHAR(1)) AS awd_recog_type_cd,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.AWD_RECOG_TYPE_DESC AS CHAR(20)) AS awd_recog_type_desc,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.QUAL_TRACK_FLG AS CHAR(1)) AS qual_track_flg,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.REQUIRES_APRV_CD AS VARCHAR(2)) AS requires_aprv_cd,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.REQUIRES_APRV_DESC AS VARCHAR(256)) AS requires_aprv_desc,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.DI AS CHAR(1)) AS di,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.LEG_TYPES_ALLOW_DESC AS CHAR(30)) AS leg_types_allow_desc,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.TOT_LEGS_TO_QUAL_QTY AS BIGINT) AS tot_legs_to_qual_qty,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.SAME_LEGS_REQ_FLG AS CHAR(1)) AS same_legs_req_flg,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.TOT_SAME_LEGS_TO_QUAL_QTY AS BIGINT) AS tot_same_legs_to_qual_qty,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.TOT_MOS_TO_QUAL_QTY AS BIGINT) AS tot_mos_to_qual_qty,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.CNSEC_MOS_TO_QUAL_QTY AS BIGINT) AS cnsec_mos_to_qual_qty,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.XPR_TYPE_CD AS VARCHAR(2)) AS xpr_type_cd,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.XPR_TYPE_DESC AS VARCHAR(256)) AS xpr_type_desc,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.CNSEC_MOS_REQUAL_FLG AS CHAR(1)) AS cnsec_mos_requal_flg,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.CHECK_3_LEGS_FLG AS CHAR(1)) AS check_3_legs_flg,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.MO_BNS_FLG AS TINYINT) AS mo_bns_flg,
+	CAST(DWV00011_SIP_BNS_DIM_VIEW.FAA_FLG AS TINYINT) AS faa_flg 
+FROM
+	/shared/Common/Physical/Metadata/OnPremises/Oracle_GDW/DWSGDW01/DWV00011_SIP_BNS_DIM_VIEW DWV00011_SIP_BNS_DIM_VIEW</attribute>
+  <attribute name="creationDate" type="LONG">1567102834908</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30105</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1569940988725</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30105</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">aiuhmb0</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1567102834908</attribute>
+</metadata>
