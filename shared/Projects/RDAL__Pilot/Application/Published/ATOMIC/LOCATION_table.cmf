@@ -1,0 +1,141 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:883c2100-8dfd-4fdf-8ffc-b1b12540fcf4 -->
+<metadata name="LOCATION" path="/shared/Projects/RDAL_Pilot/Application/Published/ATOMIC/LOCATION" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="LOCATION_ID" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="LOCATION_NAME" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="COUNTRY_ID" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="AUDIT_FROM_TS" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="VALID_FROM_TS" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="LOCATION_CODE" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+  </columns>
+  <indexes>
+    <index name="XPKLOCATION" type="PRIMARY_KEY" unique="true">
+      <indexColumn name="LOCATION_ID" sortOrder="ASCENDING"/>
+    </index>
+    <index name="XAK1LOCATION" type="UNKNOWN" unique="true">
+      <indexColumn name="COUNTRY_ID" sortOrder="ASCENDING"/>
+      <indexColumn name="LOCATION_NAME" sortOrder="ASCENDING"/>
+    </index>
+  </indexes>
+  <foreignKeys>
+    <foreignKey name="LOCATION_IN_A_COUNTRY" primaryKeyName="XPKCOUNTRY" primaryKeyTableName="/shared/Projects/RDAL_Pilot/Application/Published/ATOMIC/COUNTRY">
+      <foreignKeyColumn primaryColumnName="COUNTRY_ID" foreignColumnName="COUNTRY_ID"/>
+      <foreignKeyColumn primaryColumnName="AUDIT_FROM_TS" foreignColumnName="AUDIT_FROM_TS"/>
+      <foreignKeyColumn primaryColumnName="VALID_FROM_TS" foreignColumnName="VALID_FROM_TS"/>
+    </foreignKey>
+  </foreignKeys>
+  <security>
+    <owner user="admin" domain="composite"/>
+  </security>
+  <dependency target="/shared/Projects/RDAL_Pilot/Application/Published/ATOMIC/COUNTRY" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="COUNTRY_ID">
+        <datatype type="INTEGER"/>
+      </element>
+      <element name="COUNTRY_NM">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="OECD_MEMBER_IND">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="USER_ID">
+        <datatype type="INTEGER"/>
+      </element>
+      <element name="ISO_COUNTRY_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="VALID_TO_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="VALID_FROM_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="ISO_COUNTRY_CD_3">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="AUDIT_FROM_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="AUDIT_TO_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="CONTINENT_ID">
+        <datatype type="INTEGER"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/Projects/RDAL_Pilot/Application/Views/ATOMIC/LOCATION" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="LOCATION_ID">
+        <datatype type="INTEGER"/>
+      </element>
+      <element name="LOCATION_NAME">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="COUNTRY_ID">
+        <datatype type="INTEGER"/>
+      </element>
+      <element name="AUDIT_FROM_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="VALID_FROM_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="LOCATION_CODE">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT
+	CAST(LOCATION_ID AS BIGINT) LOCATION_ID,
+	CAST(LOCATION_NAME AS VARCHAR(100)) LOCATION_NAME,
+	CAST(COUNTRY_ID AS BIGINT) COUNTRY_ID,
+	CAST(AUDIT_FROM_TS AS TIMESTAMP) AUDIT_FROM_TS,
+	CAST(VALID_FROM_TS AS TIMESTAMP) VALID_FROM_TS,
+	CAST(LOCATION_CODE AS VARCHAR(100)) LOCATION_CODE
+ FROM 
+	/shared/Projects/RDAL_Pilot/Application/Views/ATOMIC/LOCATION</attribute>
+  <attribute name="creationDate" type="LONG">1428682610004</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1428682631059</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1428682610004</attribute>
+</metadata>

@@ -1,0 +1,143 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:883c2100-8dfd-4fdf-8ffc-b1b12540fcf4 -->
+<metadata name="ADDRESS" path="/shared/Projects/RDAL_Pilot/Application/Views/ATOMIC/ADDRESS" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="ADDR_ID" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="ADDR_LINE_1" nullable="true">
+      <datatype type="STRING" maxLength="500"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="ADDR_LINE_2" nullable="true">
+      <datatype type="STRING" maxLength="500"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="ADDR_LINE_3" nullable="true">
+      <datatype type="STRING" maxLength="500"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="POSTAL_CODE" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="LOCATION_ID" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="AUDIT_FROM_TS" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="VALID_FROM_TS" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="COUNTRY_ID" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="BUILDING_NAME" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="STREET_NUM" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="STREET_NAME" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="SUITE_NUM" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="RURAL_ROUTE_NUM" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="PO_BOX_NUM" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="PO_STATION_NAME" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+  </columns>
+  <indexes></indexes>
+  <foreignKeys></foreignKeys>
+  <security>
+    <owner user="admin" domain="composite"/>
+  </security>
+  <dependency target="/services/databases/system/DUAL" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="DUMMY">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT
+	CAST(NULL AS BIGINT) ADDR_ID,
+	CAST(NULL AS VARCHAR(500)) ADDR_LINE_1,
+	CAST(NULL AS VARCHAR(500)) ADDR_LINE_2,
+	CAST(NULL AS VARCHAR(500)) ADDR_LINE_3,
+	CAST(NULL AS VARCHAR(20)) POSTAL_CODE,
+	CAST(NULL AS BIGINT) LOCATION_ID,
+	CAST(NULL AS TIMESTAMP) AUDIT_FROM_TS,
+	CAST(NULL AS TIMESTAMP) VALID_FROM_TS,
+	CAST(NULL AS BIGINT) COUNTRY_ID,
+	CAST(NULL AS VARCHAR(100)) BUILDING_NAME,
+	CAST(NULL AS VARCHAR(20)) STREET_NUM,
+	CAST(NULL AS VARCHAR(100)) STREET_NAME,
+	CAST(NULL AS VARCHAR(20)) SUITE_NUM,
+	CAST(NULL AS VARCHAR(20)) RURAL_ROUTE_NUM,
+	CAST(NULL AS VARCHAR(20)) PO_BOX_NUM,
+	CAST(NULL AS VARCHAR(100)) PO_STATION_NAME</attribute>
+  <attribute name="creationDate" type="LONG">1428520372209</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1428682542497</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1428520372209</attribute>
+</metadata>

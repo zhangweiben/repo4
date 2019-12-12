@@ -1,0 +1,270 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:883c2100-8dfd-4fdf-8ffc-b1b12540fcf4 -->
+<metadata name="ADDRESS" path="/shared/Projects/RDAL_Pilot/Application/Published/ATOMIC/ADDRESS" type="TABLE" subtype="SQL_TABLE" changeToken="0" tableType="VIEW">
+  <annotation/>
+  <columns>
+    <column name="ADDR_ID" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="ADDR_LINE_1" nullable="true">
+      <datatype type="STRING" maxLength="500"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="ADDR_LINE_2" nullable="true">
+      <datatype type="STRING" maxLength="500"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="ADDR_LINE_3" nullable="true">
+      <datatype type="STRING" maxLength="500"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="POSTAL_CODE" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="LOCATION_ID" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="AUDIT_FROM_TS" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="VALID_FROM_TS" nullable="true">
+      <datatype type="DATETIME"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="COUNTRY_ID" nullable="true">
+      <datatype type="INTEGER"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="BUILDING_NAME" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="STREET_NUM" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="STREET_NAME" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="SUITE_NUM" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="RURAL_ROUTE_NUM" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="PO_BOX_NUM" nullable="true">
+      <datatype type="STRING" maxLength="20"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+    <column name="PO_STATION_NAME" nullable="true">
+      <datatype type="STRING" maxLength="100"/>
+      <security>
+        <owner user="admin" domain="composite"/>
+      </security>
+    </column>
+  </columns>
+  <indexes>
+    <index name="XPKADDRESS" type="PRIMARY_KEY" unique="true">
+      <indexColumn name="ADDR_ID" sortOrder="ASCENDING"/>
+    </index>
+    <index name="XAK1ADDRESS" type="UNKNOWN" unique="true">
+      <indexColumn name="ADDR_LINE_1" sortOrder="ASCENDING"/>
+      <indexColumn name="ADDR_LINE_2" sortOrder="ASCENDING"/>
+      <indexColumn name="ADDR_LINE_3" sortOrder="ASCENDING"/>
+      <indexColumn name="COUNTRY_ID" sortOrder="ASCENDING"/>
+      <indexColumn name="LOCATION_ID" sortOrder="ASCENDING"/>
+      <indexColumn name="POSTAL_CODE" sortOrder="ASCENDING"/>
+    </index>
+  </indexes>
+  <foreignKeys>
+    <foreignKey name="COUNTRY_FOR_ADDRESS" primaryKeyName="XPKCOUNTRY" primaryKeyTableName="/shared/Projects/RDAL_Pilot/Application/Published/ATOMIC/COUNTRY">
+      <foreignKeyColumn primaryColumnName="COUNTRY_ID" foreignColumnName="COUNTRY_ID"/>
+      <foreignKeyColumn primaryColumnName="AUDIT_FROM_TS" foreignColumnName="AUDIT_FROM_TS"/>
+      <foreignKeyColumn primaryColumnName="VALID_FROM_TS" foreignColumnName="VALID_FROM_TS"/>
+    </foreignKey>
+    <foreignKey name="LOCATION_FOR_ADDRESS" primaryKeyName="XPKLOCATION" primaryKeyTableName="/shared/Projects/RDAL_Pilot/Application/Published/ATOMIC/LOCATION">
+      <foreignKeyColumn primaryColumnName="LOCATION_ID" foreignColumnName="LOCATION_ID"/>
+    </foreignKey>
+  </foreignKeys>
+  <security>
+    <owner user="admin" domain="composite"/>
+  </security>
+  <dependency target="/shared/Projects/RDAL_Pilot/Application/Published/ATOMIC/COUNTRY" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="COUNTRY_ID">
+        <datatype type="INTEGER"/>
+      </element>
+      <element name="COUNTRY_NM">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="OECD_MEMBER_IND">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="USER_ID">
+        <datatype type="INTEGER"/>
+      </element>
+      <element name="ISO_COUNTRY_CD">
+        <datatype type="STRING" minLength="2" maxLength="2"/>
+      </element>
+      <element name="VALID_TO_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="VALID_FROM_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="ISO_COUNTRY_CD_3">
+        <datatype type="STRING" minLength="3" maxLength="3"/>
+      </element>
+      <element name="AUDIT_FROM_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="AUDIT_TO_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="CONTINENT_ID">
+        <datatype type="INTEGER"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/Projects/RDAL_Pilot/Application/Published/ATOMIC/LOCATION" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="LOCATION_ID">
+        <datatype type="INTEGER"/>
+      </element>
+      <element name="LOCATION_NAME">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="COUNTRY_ID">
+        <datatype type="INTEGER"/>
+      </element>
+      <element name="AUDIT_FROM_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="VALID_FROM_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="LOCATION_CODE">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/Projects/RDAL_Pilot/Application/Views/ATOMIC/ADDRESS" type="TABLE">
+    <datatype type="TABLE" refId="1">
+      <element name="ADDR_ID">
+        <datatype type="INTEGER"/>
+      </element>
+      <element name="ADDR_LINE_1">
+        <datatype type="STRING" maxLength="500"/>
+      </element>
+      <element name="ADDR_LINE_2">
+        <datatype type="STRING" maxLength="500"/>
+      </element>
+      <element name="ADDR_LINE_3">
+        <datatype type="STRING" maxLength="500"/>
+      </element>
+      <element name="POSTAL_CODE">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="LOCATION_ID">
+        <datatype type="INTEGER"/>
+      </element>
+      <element name="AUDIT_FROM_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="VALID_FROM_TS">
+        <datatype type="DATETIME"/>
+      </element>
+      <element name="COUNTRY_ID">
+        <datatype type="INTEGER"/>
+      </element>
+      <element name="BUILDING_NAME">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="STREET_NUM">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="STREET_NAME">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+      <element name="SUITE_NUM">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="RURAL_ROUTE_NUM">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="PO_BOX_NUM">
+        <datatype type="STRING" maxLength="20"/>
+      </element>
+      <element name="PO_STATION_NAME">
+        <datatype type="STRING" maxLength="100"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="SQL" type="STRING">SELECT
+	CAST(ADDR_ID AS BIGINT) ADDR_ID,
+	CAST(ADDR_LINE_1 AS VARCHAR(500)) ADDR_LINE_1,
+	CAST(ADDR_LINE_2 AS VARCHAR(500)) ADDR_LINE_2,
+	CAST(ADDR_LINE_3 AS VARCHAR(500)) ADDR_LINE_3,
+	CAST(POSTAL_CODE AS VARCHAR(20)) POSTAL_CODE,
+	CAST(LOCATION_ID AS BIGINT) LOCATION_ID,
+	CAST(AUDIT_FROM_TS AS TIMESTAMP) AUDIT_FROM_TS,
+	CAST(VALID_FROM_TS AS TIMESTAMP) VALID_FROM_TS,
+	CAST(COUNTRY_ID AS BIGINT) COUNTRY_ID,
+	CAST(BUILDING_NAME AS VARCHAR(100)) BUILDING_NAME,
+	CAST(STREET_NUM AS VARCHAR(20)) STREET_NUM,
+	CAST(STREET_NAME AS VARCHAR(100)) STREET_NAME,
+	CAST(SUITE_NUM AS VARCHAR(20)) SUITE_NUM,
+	CAST(RURAL_ROUTE_NUM AS VARCHAR(20)) RURAL_ROUTE_NUM,
+	CAST(PO_BOX_NUM AS VARCHAR(20)) PO_BOX_NUM,
+	CAST(PO_STATION_NAME AS VARCHAR(100)) PO_STATION_NAME
+ FROM 
+	/shared/Projects/RDAL_Pilot/Application/Views/ATOMIC/ADDRESS</attribute>
+  <attribute name="creationDate" type="LONG">1428682542372</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1428682617194</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1428682542372</attribute>
+</metadata>
