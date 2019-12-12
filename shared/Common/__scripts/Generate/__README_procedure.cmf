@@ -1,0 +1,237 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="_README" path="/shared/Common/_scripts/Generate/_README" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+</annotation>
+  <parameters></parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <attribute name="Script" type="STRING">/* _README:
+	-- Composite Best Practices --
+ 	Please review the annotations within the procedure itself for more details.
+	Location: /shared/&lt;projectPath&gt;/_scripts/Generate
+
+   Dependencies:  
+		/shared/BestPractices/Procedures
+		/shared/ASAssets/Utilities
+
+==============================
+VIEW GENERATION SCRIPTS
+==============================
+	(1) generatePublishedResource:
+	-----------------------
+    Objective: 	
+	This procedure is used for generating LINKS into the Composite Database
+		An entire source folder in CIS can be searched for views to publish to a Composite data source 
+		or the specific source View or Procedure to publish to a Composite data source.
+
+	(2) generateCastViews:
+	-----------------------
+    Objective: 	
+	This procedure is used for generating views with cast statements.  Casting can be done at any layer within the best practices.
+	This procedure allows the user to specify the source folder or resource and target folder where the resource should be generated.
+	It does not rely on the ConfigureStartingFolders.
+
+	(3) generateClientPublished:
+	-----------------------
+    Objective: 	
+	This procedure is used for generating &quot;Application/Published&quot; views either from lower level views.  
+	According to the Best Practices, Client Published are created from the Application Layer, Client Views or Client Services.
+
+	(4) generateClientViews:
+	-----------------------
+    Objective: 	
+	This procedure is used for generating &quot;Application/Views&quot; either from lower level views.  
+	According to the Best Practices, Client Views are created from the Business Layer, Logical or Business Views.
+
+	(5) generateBusinessViews
+	---------------------------
+    Objective:
+	This procedure is used for generating &quot;Business/Business&quot; views from Logical Views.  
+	According to the Best Practices, Business Views are created from the Business layer, Logical sub-layer views.
+
+	(6) generateLogicalViews
+	---------------------------
+    Objective:
+	This procedure is used for generating &quot;Business/Logical&quot; views either from the Formatting views.  
+	According to the Best Practices, Logical Views are created from the Physical Layer, Formatting Views.
+
+	(7) generateFormattingViews
+	---------------------------
+    Objective:
+	generateFormattingViews:
+	-----------------------
+	This procedure is used for generating &quot;Physical/Formatting&quot; views either from other views or from data sources (Physial/Metadata).  
+	According to the Best Practices, Format Views are created from the Physical, Metadata tables. Formatting views map one-to-one
+	with the physical data source views.  The purpose of this is to	map the physical tables into the corresponding canonical views 
+	so that all queries that are performed in the layers above the Formatting View layer are done so using the logical/canonical model.
+
+	(8) generatePhysicalView (DEPRECATED)
+	-------------------------------------
+    Objective:
+	generatePhysicalViews:
+	---------------------
+	This procedure is used for generating &quot;Physical Views&quot; from a data sources.  
+
+	This Physical/Physical sub-layer and the generation procedures associated with it have been deprecated.  
+	The “generatePhysicalViews()” and “generatePhysicalViewsWrapper()” is still available for backwards compatibility if needed.  
+	However, it may be useful to use Physical Views when generating the CRUD operations.  CRUD operations require that the views
+	used as the basis for generating the CRUD operations be a one-to-one with the physical metadata and contain no new or
+	derived columns.  This makes the generatePhysicalViews procedure quite useful when coupled with generateCRUDOperations.
+
+	DEPRECATED STATEMENT:
+	The &quot;Physical&quot; views map one-to-one with the &quot;Physical/Metadata&quot; layer.  The purpose of this is to
+	map the data source metadata into a set of views that represent a one-to-one physical abstraction layer.  This allows
+	the administrators to import a Composite &quot;.CAR&quot; package and automatically perform a rebind of the Physical Views to different
+	Physical Metadata without changing any code.  This is typically done at the time of moving between DEV, UAT and Production.
+	Additionally, caching policies may be set up against the Physical Views instead of the Physical Metadata layer allowing for 
+	the definition in one place.
+
+	(9) generateViews
+	---------------------------
+    Objective:
+	This procedure is used for generating any layer of &quot;Views&quot; either from other views or from data sources.  
+	According to the Best Practices, there are 3 major layers (Physical, Busines and Application) each of which has
+	one or more sub-layers.  This is a general view generation procedure that must have all aspects of it configured
+	properly to achieve the desired results.   The other procedures (generatePhysicalViews, generateFormattingViews, 
+	generateLogicalViews, generateBusinessViews, generateClientViews and generateClientPublished) are more canned and 
+	specific to the concepts of a particular layer.  Use those as guidelines for configure the parameters that get 
+	passed into this procedure. 
+
+==============================
+COLUMN GENERATION SCRIPTS
+==============================
+	(10) generateDatasourceList
+	---------------------------
+    Objective:
+	This procedure is used for generating a list of columns either from a folder of views or from data sources (Physical/Metadata). 
+	This can be very useful when you need to understand what all the columns are in your datasource.  This file can then be used 
+	as the basis for sorting, removing duplicates and then assigning logical/canonical names to the physical names.  It is also 
+	possible to generate the logical names using various case sensitivity rules and alias rules.  This could be done if you 
+	do not already have a data dictionary defined for your physical to logical mappings.  This is one way to begin a data 
+	dictionary for the phyiscal to logical mapping.  
+
+	(11) generateDatasourceListCSV
+	-----------------------------
+	This procedure is used for generating the Best Practices, Common Model spreadsheet as a CSV file.  The benefit
+	of this is that it provides a round-trip capability whereby, you can either start with the spreadsheet and generate the
+	Formatting views or you can modify the Formatting views and generate the spreadsheet.  The round-trip allows for easier
+	maintenance of the spreadsheet.  The columns that are output to the spreadsheet match exactly with the format 
+	for Columns A-I in Common_Model_v2_file[1-3].xls. 
+
+	This can be very useful when you need to understand what all the columns are in your data source.  
+	It is also possible to generate the logical names using various case sensitivity rules and alias rules.  
+	This could be done if you do not already have a data dictionary defined for your physical to logical mappings.  
+	This is one way to begin a data dictionary for the physical to logical mapping
+
+	It should be noted that this procedure uses the &quot;Target&quot; folder in the ConfigureStartingFolders().
+	
+	This procedure is meant to be executed by a Data Architect within studio.
+
+==============================
+CRUD GENERATION SCRIPTS
+==============================
+	(12) generateCRUDOperations
+	---------------------------
+    Objective:
+	This procedure is used for generating Read/Write CRUD operation procedures.  In this context, CRUD includes
+	&quot;Create&quot;, &quot;Read&quot;, &quot;Retrieve Primary Key&quot;, &quot;Update&quot;, and &quot;Delete&quot;.  Those are the base operations.  In addition to those
+	base operations, there is a coordinator which is a procedure used to coordinate the lower level CRUD procedures.  
+	It is required that CRUD procedures be generated from views that do &quot;not&quot; contain any new or derived columns.  As such,
+	the best practice for CRUD views will be to utilize the &quot;generatePhysicalViews()&quot; procedure to generate a layer of views
+	that contain a one-to-one correspondence with the physical metadata views.   For purposes of consistency, it is suggested
+	that the those views be generated into the CRUD folder so that they are co-located with the other CRUD procedures and 
+	will be easier to maintain.
+
+	(13) generateTypeDefinitions
+	---------------------------
+    Objective:
+
+	This procedure is used for generating &quot;Type Definitions&quot; for use by the Read/Write CRUD procedures.  
+	According to the Best Practices, Type Definitions should be created against the layer of views that
+	will be used to execute Create, RetrievePK, Update and Delete operations against.  Generally speaking,
+	CRUD operations would be created against a layer of views that do not contain any new or derived columns.
+	If a top-level view such as the Application Layer, Client Views serves this purpose then use it.  However,
+	it may generally not as it or views in its lineage may contain new or dervied fields.  Therefore, it may
+	be necessary to generate a physical views layer within the Application/Services/CRUD folder which will be
+	guaranteed to be one-to-one with the physical source and not contain any new or derived columns.
+
+	This procedure is provided as a separate executable procedure for convenience.   The functionality of
+	generating Type Definitions is automatically performed within the context of executing &apos;generateCRUDOperations()&apos;.
+
+	-----------------------------------------
+	CRUD Generation FOLDER CONTENTS:
+	-----------------------------------------
+	The following details the folder structure that is generated when using the generateCRUDOperation().  
+	CRUD operations are generated in &lt;basePath&gt;/&lt;clientServicePath&gt;/CRUD.
+	An example can found in /shared/BestPractices/DataAbstractionSample/Application/Services/CRUD
+
+		/CRUD 				- Default CRUD folder
+			/Coordinate 	- A coordinator (save) procedure is generated for every target view.
+				/test 		- A test harness procedure to invoke the Coordinator procedure.
+			/Create 		- A create procedure is generated for every target view.
+				/Custom		- A custom procedure that allows the user to modify the values prior to create.
+				/test 		- A test harness procedure to invoke the Create procedure.
+			/Definitions	- A type definitions procedure is generated with the public types for each view
+			/Read 			- A read procedure is generated for every target view.
+				/test 		- A test harness procedure to invoke the Read procedure.
+			/RetrievePK 	- A retrieve primary key procedure is generated for every target view.
+				/test 		- A test harness procedure to invoke the RetrievePK procedure.
+			/Update 		- An update procedure is generated for every target view.
+				/Custom		- A custom procedure that allows the user to modify the values prior to update.
+				/test 		- A test harness procedure to invoke the Update procedure.
+			/Delete 		- A delete procedure is generated for every target view.
+				/test 		- A test harness procedure to invoke the Delete procedure.
+			/Utility 		- A folder to place the custom utility procedures that may be needed for CRUD.
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+	04/01/2013		Mike Tinius			5.2.0			Added generateDatasourceListCSV()
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+*/
+PROCEDURE &quot;_README&quot;() BEGIN END</attribute>
+  <attribute name="creationDate" type="LONG">1377564320237</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1557254299023</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="NULL"/>
+</metadata>

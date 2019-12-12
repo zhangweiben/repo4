@@ -1,0 +1,145 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="getBasePath" path="/shared/Common/_scripts/Constants/getBasePath" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>getBasePath - get the base project path
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.</annotation>
+  <parameters>
+    <parameter name="basePath" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/shared/Common/_scripts/Constants/defaultValues" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="bestPracticesVersion_" direction="OUT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="basePath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="scriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="configureScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="constantsScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="generationScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="documentationScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="compositeDatabasePath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationPublishedPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationServicesPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationViewsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationViewsSubFolder_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="crudPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="typeDefinitionPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="typeDefinitionProcName_" direction="OUT">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="businessBusinessPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="businessLogicalPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalFormattingPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalFormattingTransformationPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalViewsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalMetadataPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="genUniqueIDPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="debugTime_" direction="OUT">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">/*
+	getBasePath - get the base project path
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+*/
+PROCEDURE getBasePath(
+	out basePath	VARCHAR(4000)
+)
+BEGIN
+	set basePath = /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.basePath;
+END</attribute>
+  <attribute name="creationDate" type="LONG">1377564320207</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1570164291271</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">asp5665</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="NULL"/>
+</metadata>

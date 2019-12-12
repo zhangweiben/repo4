@@ -1,0 +1,928 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="generateDatasourceList" path="/shared/Common/_scripts/Generate/generateDatasourceList" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>generateDatasourceList:
+	-- Data Virtualization Best Practices --
+
+	This procedure is used for generating a list of columns either from a folder of views or from data sources (Physical/Metadata). 
+	This can be very useful when you need to understand what all the columns are in your datasource.  This file can then be used 
+	as the basis for sorting, removing duplicates and then assigning logical/canonical names to the physical names.  It is also 
+	possible to generate the logical names using various case sensitivity rules and alias rules.  This could be done if you 
+	do not already have a data dictionary defined for your physical to logical mappings.  This is one way to begin a data 
+	dictionary for the phyiscal to logical mapping.  
+
+	It should be noted that this procedure uses the &quot;Target&quot; folder in the ConfigureStartingFolders().
+	
+	This procedure is meant to be executed by a Data Architect within studio.
+
+	-------
+	Usage:
+	-------
+	1) Edit the /&lt;project-name&gt;/_scripts/Configure/ConfigureParams and ConfigureStartingFolders file to set up the processing
+		startingFolderVector - 
+			defines which data source folders to process, 
+			where the views get generated, 
+			and whether the sub-folders are derived from the source or defined absolutely
+	----------
+	Cautions:
+	----------
+	   CAUTION(1): Overlapping sourceFolderPath definitions will result in duplicated views being produced
+		Take the 2 example source folder paths expressed below.  The 2nd one is a sub-directory of the first one.
+		This will result in the same source folders being processed twice which generates the same mapping views
+		but in different target folders.
+		(1,&apos;PV&apos;,&apos;A&apos;,&apos;/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Metadata&apos;,null,&apos;/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Physical&apos;);
+		(1,&apos;PV&apos;,&apos;A&apos;,&apos;/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Metadata/OracleSource/cisOraDemoDS/CISORADEMO&apos;,null,&apos;/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Physical/CISORADEMO&apos;);
+
+	    CAUTION(2): Source Folder Path definitions are case sensitive and must match the actual source path that you
+		want to introspect to create mapping views from.
+
+	    CAUTION(3): Only views and procedures that produces a cursor output is supported.  Procedures include, parameterized or customer procedures
+			with cursor output, XSLT with cursor output, packaged queries with cursor output.
+
+	Input:
+   		Explanation:  The actual input are defined as local variables with DEFAULT values.  Adjust those variables accordingly.
+
+			-- generate the logical names or physical names only
+	    	-- 1 (TRUE) - generate datasource list with logical names
+			-- 0 (FALSE) - generate datasource list only with no logical names, 
+			-- Generally this parameter is true.  However, it may be useful to set to generateLogicalNames=0 and layerType=&apos;PM&apos; which allows
+			--  the user to generate just the physical names for the physical metadata in the spreadsheet format as a way of initializing
+			--  the physical names only.
+  		generateLogicalNames
+
+			-- Determines whether to retrieve names from the Common_Model_v2_file[1-3].xls spreadsheets or generate them and
+			--   is only meaninfful when generateLogicalNames=1
+		 	-- G=Generate the resource names 
+			--   use &apos;G&apos; in conjunctionwith layerType=&apos;PM&apos; to generate the physical metadata names to the spreadsheet.
+			--   This would be the strategy for initializing the Common_Model_v2_file[1-3].xls spreadsheet.  
+			--   It is often useful to set the caseRule parameter to establish the type of logical names that you want to start with.
+			-- R=Retrieve the resource name from a spreadsheet. (resources include PATH names, VIEW names AND COLUMN names)
+			--   use &apos;R&apos; in conjunction with layerType=&apos;FV&apos;
+		generateMode 
+
+			--  TABLES/PROCEDURES only.  This resourceCaseRule is only used for tables or procedures.
+			-- 		used when generateMode=&apos;G&apos;
+			--	 	Assumption:  The original table name has to have separators (_) for this to work properly.
+			--			     If the original word has no separators then the case rule gets applied to the single word
+			-- 		j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+			-- 		C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+			-- 		T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+			-- 		U=UPPER_CASE - All word parts are UPPER case with separtors retained
+			-- 		l=lower_case - All word parts are lower case with separators retained
+			-- 		O=Original_case - The word is not changed at all -- just pass it through as is
+		resourceCaseRule
+
+			--  COLUMNS only.  This caseRule is only used for columns.
+			--		used when generateMode=&apos;G&apos;
+			--	 	Assumption:  The original column name has to have separators (_) for this to work properly.
+			--			     If the original word has no separators then the case rule gets applied to the single word
+			--		j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+			--		C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+			--		T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+			--		U=UPPER_CASE - All word parts are UPPER case with separtors retained
+			--		l=lower_case - All word parts are lower case with separators retained
+			--		O=Original_case - The word is not changed at all -- just pass it through as is
+		columnCaseRule
+
+			-- determines how to use the word part alias rules.
+			-- used when generateMode=&apos;G&apos;
+			-- 0=[default] DO NOT perform alias rule lookup at all.  Word Part is passed through (default is 0)
+			-- 1=Use alias rule and MATCH CASE exactly
+			-- 2=Use alias rule and DO NOT MATCH CASE
+			-- The &quot;AliasNameRuleSet()&quot; procedure is found in the folder /shared/&lt;project-folder&gt;/_scripts/Configure.
+		useAliasRule
+
+			-- used when generateMode=&apos;G&apos;
+			--  Any set of characters used to prefix a table or procedure name.  Include underscores with the suffix if applicable.
+			--	Example: V_ MY_TABLE or V_MY_TABLE 	
+		resourcePrefix
+
+			-- used when generateMode=&apos;G&apos;
+			--  Any set of characters used to suffix a table or procedure name.  Include underscores with the suffix if applicable.
+			--	Example: _APP MY_TABLE or MY_TABLE_APP 	
+		resourceSuffix
+
+			-- flag indicating whether to ignore or generate unsupported column types.  For example in Oracle an SDO spatial type gets imported into Composite at &apos;OTHER&apos;.
+			-- 0/null (default) - ignore column type = &apos;OTHER&apos; and do not generate that column
+			-- 1 - generate columns where the column type = &apos;OTHER&apos;
+		generateUnsupportedColumnType
+
+			-- specifies how the source resource will be matched against the resource being interrogated
+			--	0=fuzzy match - sourcePath + derivedFilterPath must simply be contained within resourcePath
+			--	1 (default)=exact match - sourcePath + derivedFilterPath must match exactly in resourcePath
+		exactMatch
+
+			-- The list &quot;derivedFilterPath&quot; is a comma-separated list of resources and may be used with either generateToFolder (option 1) to groupId (option 2) 
+			-- The path is derived by concatenating the partial filter path with the source path either from the sourceResource or of the designated layer type and groupId.
+			-- The layerType and the groupId are used to filter the rows from the configureStartingFolders.  The source path is
+			--    defined in configureStartingFolders per the layerType and groupId combination.
+			--   e.g. layerType=CP and sourceFolderPath=/shared/BestPractices/DataAbstractionAbstractionSample/Application/Views
+			--        The derivedFilterPath list=&quot;Orders_Closed,/Orders/Customers,Orders/Product&quot;
+			--        Even though there are several other views in the /Orders folder under the /Application/Views only the ones specified
+			--	      will be generated to the Application/Published.  Views directly under the source path do not require any qualifying path except the view name.
+			--        Lastly, a leading &apos;/&apos; is not required but may be present if desired.
+			-- Correlate the groupId position with the derivedFilterPath position
+			--		derivedFilterPath=&quot;customers,orders&quot;,shippingmethods
+			--                         |                     |
+			--                         v                     v
+			--		          groupId=ds_inventory.tutorial,ds_orders.tutorial
+			-- If null, generate views from all source folders as directed by the sourceResource or &quot;configure starting folders&quot; and the designated layer type.
+		derivedFilterPath
+
+			-- comma separated list of resource paths or partials paths to exclude.  This may be useful when a data source has been moved and it&apos;s index or foreign keys
+			--	are pointing to another data source that does not exist anymore.  It may be necessary to exclude that path or paths.  If an exception is thrown during 
+			--	execution, try excluding those paths.
+			--	Values: /shared/MyPath/Physical/Metadata/MyDatasource
+		excludeDsPathsList
+
+		-- OPTION 1
+			-- The source folder in CIS to begin searching for views to generate the view list or
+			-- a source view (exact path) to generate for.
+			-- If this is set it supercedes layerType, groupIds with derivedFilterPath being optional
+	 	sourceResource
+
+		-- OPTION 2
+  			-- If sourceResource is blank, then layerType, groupIds must be set with derivedFilterPath being optional
+			-- PM=Physical Metadata - used by generateDasourceList
+			-- CR=CRUD Target Folder Path - generateTypeDefinitions and generateCRUDOperations invokes generateViews
+			-- PV=Physical Views - generatePhysicalViews invokes generateViews
+			-- FV=Formatting Views - generateFormattingViews invokes generateViews
+			-- BV=Business Views - generateBusinessViews invokes generateViews
+			-- LV=Logical Views - generateLoicalViews invokes generateViews
+			-- CV=Client Views - generateClientViews invokes generateViews
+			-- CP=Client Published - generateClientPublished invokes generateViews
+			-- DB=Database published link - generatePublishedResource invokes generateViews
+	   	layerType
+
+			-- This is a comma separate list group ids to process. 
+			-- This is a filter that allows the user to only generate for a specific group or list of groups
+			--   found in the /_scripts/Configure/ConfigureStartingFolders.
+			--   Pass in null to select all groupIds.
+		groupIds
+
+    	Configuration files:
+    			&quot;ConfigureParams&quot; - General parameters that affect execution.
+    			&quot;ConfigureStartingFolders&quot; - Instructs this procedure what data source folders to process
+    			&quot;AliasNameRuleSet&quot; - Provides a user-defined list of aliases and rules to apply to word parts
+    			&quot;ConfigureReservedList&quot; - Provides a list of Composite reserved words that must be double-quoted in views
+
+			-- This variable indicates whether you want to display a logical name or not.
+			-- 0 (FALSE) - generate datasource list only with no logical names, 
+     			This is useful if you want to create a starting list of physical columns 
+    			and their container names so that you can fill in the logical column name 									
+			-- 1 (TRUE) - generate datasource list with logical names either retrieved from a spreadsheet or generated.
+   		generateLogicalNames	BIT, 
+					If you want to generate logical names which are derived from the physical names, 
+					then pay attention to these parameters as well:
+					(1) The generateMode is set to &apos;G&apos;
+     					DECLARE generateMode		CHAR(1) DEFAULT &apos;G&apos;;
+    					-- G=Generate the resource names 
+						-- R=Retrieve the resource name from a spreadsheet. (resources include PATH names, VIEW names AND COLUMN names)
+   					(2) Use _ as a separator to detect word parts
+    				(3) Apply Case rules to the word parts by setting these to parmaters in the ConfigurationFile
+  				   		DECLARE caseRule			CHAR(1) DEFAULT &apos;C&apos;; -- (used when generateMode=&apos;G&apos;) 
+    					-- j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+						-- C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+						-- T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+						-- U=UPPER_CASE - All word parts are UPPER case with separtors retained
+						-- l=lower_case - All word parts are lower case with separators retained
+						-- O=Original_case - The word is not changed at all -- just pass it through as is
+					(4) Apply alias rules to the word parts
+					    DECLARE useAliasRule		SMALLINT DEFAULT 1;-- (used when generateMode=&apos;G&apos;)
+ 					   	-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+						-- 1=Use alias rule and MATCH CASE exactly
+						-- 2=Use alias rule and DO NOT MATCH CASE	
+	Output:
+			result CommonModelV2Row ROW (
+				&quot;Data Source&quot; 				VARCHAR(255), -- The name of the data source in composite (data lineage-used resources)
+--[NOT CURRENTLY IMPLEMENTED] Published					VARCHAR(255), -- Indicates whether this element is published in composite (data lineage-dependent resources)
+				&quot;Parent Name&quot; 				VARCHAR(255), -- The name of the parent container - parent to the parent (a.k.a. grandparent)
+				&quot;Container Name&quot; 			VARCHAR(255), -- The name of the container - parent to the resource
+				&quot;Physical Name&quot;				VARCHAR(255), -- The physical column name (a.k.a. source column name)
+				&quot;Physical Type&quot;				VARCHAR(255), -- The physical type (a.k.a. source column native type)
+				&quot;Logical Name&quot;				VARCHAR(255), -- The logical column name (a.k.a. table/view alias)
+				&quot;Logical Type&quot; 				VARCHAR(255), -- The logical column type
+				&quot;Logical Transformation&quot;	LONGVARCHAR,  -- The logical column transformation excluding outer cast statement
+				&quot;Logical Definition&quot;		LONGVARCHAR,  -- The logical resource definition (a.k.a. view/table/column annotation)
+				&quot;Logical Path&quot;				LONGVARCHAR   -- The logical Path (this is not dumped to the spreadsheet)
+			)
+
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+	03/15/2013		Mike Tinius			5.2.0			Modified for Best Practices v7.0
+	04/15/2013		Mike Tinius			5.2.0			Updated for Best Practices 7.0
+	04/22/2013		Mike Tinius			5.2.0			Updated for Best Practices 7.1
+	11/07/2013		Mike Tinius			6.1.0			B.P. 8.0: Added variable excludeDsPathsList and better formatted output.
+	01/24/2019		Mike Tinius			8.0.0			B.P. 2019.1: Added the ability to handle columnCaseRule, resourcePrefix, resourceSuffix and newColumnList for generateMode=&apos;G&apos;. 
+	01/29/2019		Mike Tinius			8.0.0			B.P. 2019.101: Fix bug so derivedFilterPath could be used with generateToFolder.
+	03/14/2019		Mike Tinius			7.0.8			B.P. 2019.102: Added scriptsPath for flexibility of the location of the _scripts folder.
+	06/12/2019		Mike Tinius			7.0.8			B.P. 2019.200: Modified to use XML based procedures in order to eliminate vector usage.
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.</annotation>
+  <parameters>
+    <parameter name="generateLogicalNames" direction="IN" nullable="true">
+      <datatype name="BIT" type="INTEGER" minValue="0" maxValue="1"/>
+    </parameter>
+    <parameter name="generateMode" direction="IN" nullable="true">
+      <datatype name="CHAR" type="STRING" minLength="1" maxLength="1"/>
+    </parameter>
+    <parameter name="resourceCaseRule" direction="IN" nullable="true">
+      <datatype name="CHAR" type="STRING" minLength="1" maxLength="1"/>
+    </parameter>
+    <parameter name="columnCaseRule" direction="IN" nullable="true">
+      <datatype name="CHAR" type="STRING" minLength="1" maxLength="1"/>
+    </parameter>
+    <parameter name="useAliasRule" direction="IN" nullable="true">
+      <datatype name="SMALLINT" type="INTEGER" minValue="-32768" maxValue="32767"/>
+    </parameter>
+    <parameter name="resourcePrefix" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="resourceSuffix" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="newColumnList" direction="IN" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="generateUnsupportedColumnType" direction="IN" nullable="true">
+      <datatype name="BIT" type="INTEGER" minValue="0" maxValue="1"/>
+    </parameter>
+    <parameter name="exactMatch" direction="IN" nullable="true">
+      <datatype name="BIT" type="INTEGER" minValue="0" maxValue="1"/>
+    </parameter>
+    <parameter name="derivedFilterPath" direction="IN" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="excludeDsPathsList" direction="IN" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="sourceResource" direction="IN" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="layerType" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="groupIds" direction="IN" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="result" direction="OUT" nullable="true">
+      <datatype name="result" type="TABLE" refId="1">
+        <element name="Data Source">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="Project Folder Name">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="Great Grand Parent Name">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="Grand Parent Name">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="Parent Name">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="Container Name">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="Physical Name">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="Physical Type">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="Logical Name">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="Logical Type">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="Logical Transformation">
+          <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+        </element>
+        <element name="Logical Definition">
+          <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+        </element>
+        <element name="Logical Path">
+          <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+        </element>
+        <element name="Duration">
+          <datatype name="IntervalDay" type="INTERVAL_DAY" intervalMode="INTERVAL_HOUR_TO_SECOND" intervalPrecision="2" fractionalSecondPrecision="6"/>
+        </element>
+      </datatype>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/lib/util/SetEnvironment" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="variableName" direction="IN">
+        <datatype referenceDefinitionSet="/lib/util/System" referenceType="PropertyName" type="STRING" maxLength="255"/>
+      </element>
+      <element name="value" direction="IN">
+        <datatype referenceDefinitionSet="/lib/util/System" referenceType="PropertyValue" type="STRING" maxLength="4096"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/BestPractices_v81/Procedures/TypeDefinitions" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1"></datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/BestPractices_v81/Procedures/generateDatasourceListXML" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="sourceResource" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="generateLogicalNames" direction="IN">
+        <datatype type="INTEGER" minValue="0" maxValue="1"/>
+      </element>
+      <element name="layerType" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="inGroupIds" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="inDerivedFilterPath" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="inStartingFolderExtendedXML" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="ConfigParamsXML" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="resultPipe" direction="OUT">
+        <datatype type="TABLE" refId="2">
+          <element name="DataSource">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="ProjectFolderName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="GreatGrandParentName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="GrandParentName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="ParentName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="ContainerName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="PhysicalName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="NativeType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="LogicalName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="LogicalType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="LogicalTransformation">
+            <datatype type="STRING" maxLength="2147483647"/>
+          </element>
+          <element name="LogicalDefinition">
+            <datatype type="STRING" maxLength="2147483647"/>
+          </element>
+          <element name="LogicalPath">
+            <datatype type="STRING" maxLength="2147483647"/>
+          </element>
+          <element name="Duration">
+            <datatype type="INTERVAL_DAY" intervalMode="INTERVAL_HOUR_TO_SECOND" intervalPrecision="2" fractionalSecondPrecision="6"/>
+          </element>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/BestPractices_v81/Procedures/getConfigureParamsXML" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="basePath" direction="IN">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="generateMode" direction="IN">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="outputMode" direction="IN">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="generateViews" direction="IN">
+        <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      </element>
+      <element name="resourceCaseRule" direction="IN">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="columnCaseRule" direction="IN">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="useAliasRule" direction="IN">
+        <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      </element>
+      <element name="resourcePrefix" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="resourceSuffix" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="generateWithSourceColumn" direction="IN">
+        <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      </element>
+      <element name="generateCast" direction="IN">
+        <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      </element>
+      <element name="generateIndexes" direction="IN">
+        <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      </element>
+      <element name="ConfigParamsXML" direction="OUT">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/Common/_scripts/Constants/defaultValues" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="bestPracticesVersion_" direction="OUT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="basePath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="scriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="configureScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="constantsScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="generationScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="documentationScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="compositeDatabasePath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationPublishedPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationServicesPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationViewsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationViewsSubFolder_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="crudPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="typeDefinitionPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="typeDefinitionProcName_" direction="OUT">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="businessBusinessPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="businessLogicalPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalFormattingPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalFormattingTransformationPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalViewsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalMetadataPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="genUniqueIDPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="debugTime_" direction="OUT">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">/* 
+	generateDatasourceList:
+	-- Data Virtualization Best Practices --
+
+	This procedure is used for generating a list of columns either from a folder of views or from data sources (Physical/Metadata). 
+	This can be very useful when you need to understand what all the columns are in your datasource.  This file can then be used 
+	as the basis for sorting, removing duplicates and then assigning logical/canonical names to the physical names.  It is also 
+	possible to generate the logical names using various case sensitivity rules and alias rules.  This could be done if you 
+	do not already have a data dictionary defined for your physical to logical mappings.  This is one way to begin a data 
+	dictionary for the phyiscal to logical mapping.  
+
+	It should be noted that this procedure uses the &quot;Target&quot; folder in the ConfigureStartingFolders().
+	
+	This procedure is meant to be executed by a Data Architect within studio.
+
+	-------
+	Usage:
+	-------
+	1) Edit the /&lt;project-name&gt;/_scripts/Configure/ConfigureParams and ConfigureStartingFolders file to set up the processing
+		startingFolderVector - 
+			defines which data source folders to process, 
+			where the views get generated, 
+			and whether the sub-folders are derived from the source or defined absolutely
+	----------
+	Cautions:
+	----------
+	   CAUTION(1): Overlapping sourceFolderPath definitions will result in duplicated views being produced
+		Take the 2 example source folder paths expressed below.  The 2nd one is a sub-directory of the first one.
+		This will result in the same source folders being processed twice which generates the same mapping views
+		but in different target folders.
+		(1,&apos;PV&apos;,&apos;A&apos;,&apos;/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Metadata&apos;,null,&apos;/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Physical&apos;);
+		(1,&apos;PV&apos;,&apos;A&apos;,&apos;/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Metadata/OracleSource/cisOraDemoDS/CISORADEMO&apos;,null,&apos;/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Physical/CISORADEMO&apos;);
+
+	    CAUTION(2): Source Folder Path definitions are case sensitive and must match the actual source path that you
+		want to introspect to create mapping views from.
+
+	    CAUTION(3): Only views and procedures that produces a cursor output is supported.  Procedures include, parameterized or customer procedures
+			with cursor output, XSLT with cursor output, packaged queries with cursor output.
+
+	Input:
+   		Explanation:  The actual input are defined as local variables with DEFAULT values.  Adjust those variables accordingly.
+
+			-- generate the logical names or physical names only
+	    	-- 1 (TRUE) - generate datasource list with logical names
+			-- 0 (FALSE) - generate datasource list only with no logical names, 
+			-- Generally this parameter is true.  However, it may be useful to set to generateLogicalNames=0 and layerType=&apos;PM&apos; which allows
+			--  the user to generate just the physical names for the physical metadata in the spreadsheet format as a way of initializing
+			--  the physical names only.
+  		generateLogicalNames
+
+			-- Determines whether to retrieve names from the Common_Model_v2_file[1-3].xls spreadsheets or generate them and
+			--   is only meaninfful when generateLogicalNames=1
+		 	-- G=Generate the resource names 
+			--   use &apos;G&apos; in conjunctionwith layerType=&apos;PM&apos; to generate the physical metadata names to the spreadsheet.
+			--   This would be the strategy for initializing the Common_Model_v2_file[1-3].xls spreadsheet.  
+			--   It is often useful to set the caseRule parameter to establish the type of logical names that you want to start with.
+			-- R=Retrieve the resource name from a spreadsheet. (resources include PATH names, VIEW names AND COLUMN names)
+			--   use &apos;R&apos; in conjunction with layerType=&apos;FV&apos;
+		generateMode 
+
+			--  TABLES/PROCEDURES only.  This resourceCaseRule is only used for tables or procedures.
+			-- 		used when generateMode=&apos;G&apos;
+			--	 	Assumption:  The original table name has to have separators (_) for this to work properly.
+			--			     If the original word has no separators then the case rule gets applied to the single word
+			-- 		j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+			-- 		C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+			-- 		T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+			-- 		U=UPPER_CASE - All word parts are UPPER case with separtors retained
+			-- 		l=lower_case - All word parts are lower case with separators retained
+			-- 		O=Original_case - The word is not changed at all -- just pass it through as is
+		resourceCaseRule
+
+			--  COLUMNS only.  This caseRule is only used for columns.
+			--		used when generateMode=&apos;G&apos;
+			--	 	Assumption:  The original column name has to have separators (_) for this to work properly.
+			--			     If the original word has no separators then the case rule gets applied to the single word
+			--		j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+			--		C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+			--		T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+			--		U=UPPER_CASE - All word parts are UPPER case with separtors retained
+			--		l=lower_case - All word parts are lower case with separators retained
+			--		O=Original_case - The word is not changed at all -- just pass it through as is
+		columnCaseRule
+
+			-- determines how to use the word part alias rules.
+			-- used when generateMode=&apos;G&apos;
+			-- 0=[default] DO NOT perform alias rule lookup at all.  Word Part is passed through (default is 0)
+			-- 1=Use alias rule and MATCH CASE exactly
+			-- 2=Use alias rule and DO NOT MATCH CASE
+			-- The &quot;AliasNameRuleSet()&quot; procedure is found in the folder /shared/&lt;project-folder&gt;/_scripts/Configure.
+		useAliasRule
+
+			-- used when generateMode=&apos;G&apos;
+			--  Any set of characters used to prefix a table or procedure name.  Include underscores with the suffix if applicable.
+			--	Example: V_ MY_TABLE or V_MY_TABLE 	
+		resourcePrefix
+
+			-- used when generateMode=&apos;G&apos;
+			--  Any set of characters used to suffix a table or procedure name.  Include underscores with the suffix if applicable.
+			--	Example: _APP MY_TABLE or MY_TABLE_APP 	
+		resourceSuffix
+
+			-- flag indicating whether to ignore or generate unsupported column types.  For example in Oracle an SDO spatial type gets imported into Composite at &apos;OTHER&apos;.
+			-- 0/null (default) - ignore column type = &apos;OTHER&apos; and do not generate that column
+			-- 1 - generate columns where the column type = &apos;OTHER&apos;
+		generateUnsupportedColumnType
+
+			-- specifies how the source resource will be matched against the resource being interrogated
+			--	0=fuzzy match - sourcePath + derivedFilterPath must simply be contained within resourcePath
+			--	1 (default)=exact match - sourcePath + derivedFilterPath must match exactly in resourcePath
+		exactMatch
+
+			-- The list &quot;derivedFilterPath&quot; is a comma-separated list of resources and may be used with either generateToFolder (option 1) to groupId (option 2) 
+			-- The path is derived by concatenating the partial filter path with the source path either from the sourceResource or of the designated layer type and groupId.
+			-- The layerType and the groupId are used to filter the rows from the configureStartingFolders.  The source path is
+			--    defined in configureStartingFolders per the layerType and groupId combination.
+			--   e.g. layerType=CP and sourceFolderPath=/shared/BestPractices/DataAbstractionAbstractionSample/Application/Views
+			--        The derivedFilterPath list=&quot;Orders_Closed,/Orders/Customers,Orders/Product&quot;
+			--        Even though there are several other views in the /Orders folder under the /Application/Views only the ones specified
+			--	      will be generated to the Application/Published.  Views directly under the source path do not require any qualifying path except the view name.
+			--        Lastly, a leading &apos;/&apos; is not required but may be present if desired.
+			-- Correlate the groupId position with the derivedFilterPath position
+			--		derivedFilterPath=&quot;customers,orders&quot;,shippingmethods
+			--                         |                     |
+			--                         v                     v
+			--		          groupId=ds_inventory.tutorial,ds_orders.tutorial
+			-- If null, generate views from all source folders as directed by the sourceResource or &quot;configure starting folders&quot; and the designated layer type.
+		derivedFilterPath
+
+			-- comma separated list of resource paths or partials paths to exclude.  This may be useful when a data source has been moved and it&apos;s index or foreign keys
+			--	are pointing to another data source that does not exist anymore.  It may be necessary to exclude that path or paths.  If an exception is thrown during 
+			--	execution, try excluding those paths.
+			--	Values: /shared/MyPath/Physical/Metadata/MyDatasource
+		excludeDsPathsList
+
+		-- OPTION 1
+			-- The source folder in CIS to begin searching for views to generate the view list or
+			-- a source view (exact path) to generate for.
+			-- If this is set it supercedes layerType, groupIds with derivedFilterPath being optional
+	 	sourceResource
+
+		-- OPTION 2
+  			-- If sourceResource is blank, then layerType, groupIds must be set with derivedFilterPath being optional
+			-- PM=Physical Metadata - used by generateDasourceList
+			-- CR=CRUD Target Folder Path - generateTypeDefinitions and generateCRUDOperations invokes generateViews
+			-- PV=Physical Views - generatePhysicalViews invokes generateViews
+			-- FV=Formatting Views - generateFormattingViews invokes generateViews
+			-- BV=Business Views - generateBusinessViews invokes generateViews
+			-- LV=Logical Views - generateLoicalViews invokes generateViews
+			-- CV=Client Views - generateClientViews invokes generateViews
+			-- CP=Client Published - generateClientPublished invokes generateViews
+			-- DB=Database published link - generatePublishedResource invokes generateViews
+	   	layerType
+
+			-- This is a comma separate list group ids to process. 
+			-- This is a filter that allows the user to only generate for a specific group or list of groups
+			--   found in the /_scripts/Configure/ConfigureStartingFolders.
+			--   Pass in null to select all groupIds.
+		groupIds
+
+    	Configuration files:
+    			&quot;ConfigureParams&quot; - General parameters that affect execution.
+    			&quot;ConfigureStartingFolders&quot; - Instructs this procedure what data source folders to process
+    			&quot;AliasNameRuleSet&quot; - Provides a user-defined list of aliases and rules to apply to word parts
+    			&quot;ConfigureReservedList&quot; - Provides a list of Composite reserved words that must be double-quoted in views
+
+			-- This variable indicates whether you want to display a logical name or not.
+			-- 0 (FALSE) - generate datasource list only with no logical names, 
+     			This is useful if you want to create a starting list of physical columns 
+    			and their container names so that you can fill in the logical column name 									
+			-- 1 (TRUE) - generate datasource list with logical names either retrieved from a spreadsheet or generated.
+   		generateLogicalNames	BIT, 
+					If you want to generate logical names which are derived from the physical names, 
+					then pay attention to these parameters as well:
+					(1) The generateMode is set to &apos;G&apos;
+     					DECLARE generateMode		CHAR(1) DEFAULT &apos;G&apos;;
+    					-- G=Generate the resource names 
+						-- R=Retrieve the resource name from a spreadsheet. (resources include PATH names, VIEW names AND COLUMN names)
+   					(2) Use _ as a separator to detect word parts
+    				(3) Apply Case rules to the word parts by setting these to parmaters in the ConfigurationFile
+  				   		DECLARE caseRule			CHAR(1) DEFAULT &apos;C&apos;; -- (used when generateMode=&apos;G&apos;) 
+    					-- j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+						-- C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+						-- T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+						-- U=UPPER_CASE - All word parts are UPPER case with separtors retained
+						-- l=lower_case - All word parts are lower case with separators retained
+						-- O=Original_case - The word is not changed at all -- just pass it through as is
+					(4) Apply alias rules to the word parts
+					    DECLARE useAliasRule		SMALLINT DEFAULT 1;-- (used when generateMode=&apos;G&apos;)
+ 					   	-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+						-- 1=Use alias rule and MATCH CASE exactly
+						-- 2=Use alias rule and DO NOT MATCH CASE	
+	Output:
+			result CommonModelV2Row ROW (
+				&quot;Data Source&quot; 				VARCHAR(255), -- The name of the data source in composite (data lineage-used resources)
+--[NOT CURRENTLY IMPLEMENTED] Published					VARCHAR(255), -- Indicates whether this element is published in composite (data lineage-dependent resources)
+				&quot;Parent Name&quot; 				VARCHAR(255), -- The name of the parent container - parent to the parent (a.k.a. grandparent)
+				&quot;Container Name&quot; 			VARCHAR(255), -- The name of the container - parent to the resource
+				&quot;Physical Name&quot;				VARCHAR(255), -- The physical column name (a.k.a. source column name)
+				&quot;Physical Type&quot;				VARCHAR(255), -- The physical type (a.k.a. source column native type)
+				&quot;Logical Name&quot;				VARCHAR(255), -- The logical column name (a.k.a. table/view alias)
+				&quot;Logical Type&quot; 				VARCHAR(255), -- The logical column type
+				&quot;Logical Transformation&quot;	LONGVARCHAR,  -- The logical column transformation excluding outer cast statement
+				&quot;Logical Definition&quot;		LONGVARCHAR,  -- The logical resource definition (a.k.a. view/table/column annotation)
+				&quot;Logical Path&quot;				LONGVARCHAR   -- The logical Path (this is not dumped to the spreadsheet)
+			)
+
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+	03/15/2013		Mike Tinius			5.2.0			Modified for Best Practices v7.0
+	04/15/2013		Mike Tinius			5.2.0			Updated for Best Practices 7.0
+	04/22/2013		Mike Tinius			5.2.0			Updated for Best Practices 7.1
+	11/07/2013		Mike Tinius			6.1.0			B.P. 8.0: Added variable excludeDsPathsList and better formatted output.
+	01/24/2019		Mike Tinius			8.0.0			B.P. 2019.1: Added the ability to handle columnCaseRule, resourcePrefix, resourceSuffix and newColumnList for generateMode=&apos;G&apos;. 
+	01/29/2019		Mike Tinius			8.0.0			B.P. 2019.101: Fix bug so derivedFilterPath could be used with generateToFolder.
+	03/14/2019		Mike Tinius			7.0.8			B.P. 2019.102: Added scriptsPath for flexibility of the location of the _scripts folder.
+	06/12/2019		Mike Tinius			7.0.8			B.P. 2019.200: Modified to use XML based procedures in order to eliminate vector usage.
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+*/
+PROCEDURE generateDatasourceList(
+		-- generate the logical names or physical names only
+    	-- 1 (TRUE) [default] - generate datasource list with logical names
+		-- 0 (FALSE) - generate datasource list only with no logical names, 
+		-- Generally this parameter is true.  However, it may be useful to set to 0 when generateMode=&apos;G&apos; and layerType=&apos;PM&apos; which allows
+		--  the user to generate just the physical names for the physical metadata in the spreadsheet format as a way of initializing
+		--  the physical names only.
+    IN generateLogicalNames			BIT,
+
+		-- Determines whether to retrieve names from the Common_Model_v2_file[1-3].xls spreadsheets or generate them and
+		--   is only meaninfful when generateLogicalNames=1
+	 	-- G=Generate the resource names 
+		--   use &apos;G&apos; in conjunctionwith layerType=&apos;PM&apos; to generate the physical metadata names to the spreadsheet.
+		--   This would be the strategy for initializing the Common_Model_v2_file[1-3].xls spreadsheet.  
+		--   It is often useful to set the caseRule parameter to establish the type of logical names that you want to start with.
+		-- R=Retrieve the resource name from a spreadsheet. (resources include PATH names, VIEW names AND COLUMN names)
+		--   use &apos;R&apos; in conjunction with layerType=&apos;FV&apos;
+    IN generateMode					CHAR(1),
+
+		--  TABLES only.  This resourceCaseRule is only used for tables.
+		--	 Assumption:  The original table name has to have separators (_) for this to work properly.
+		--			     If the original word has no separators then the case rule gets applied to the single word.
+    	-- 	j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+		-- 	C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+		-- 	T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+		-- 	U=UPPER_CASE - All word parts are UPPER case with separtors retained
+		-- 	l=lower_case - All word parts are lower case with separators retained
+		-- 	O=Original_case - The word is not changed at all -- just pass it through as is
+	IN resourceCaseRule				CHAR(1), -- (used when generateMode=&apos;G&apos;)
+
+		--  COLUMNS only.  This columnCaseRule is only used for columns.
+		--	 Assumption:  The original column name has to have separators (_) for this to work properly.
+		--			     If the original word has no separators then the case rule gets applied to the single word.
+		--	j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+		--	C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+		--	T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+		--	U=UPPER_CASE - All word parts are UPPER case with separtors retained
+		--	l=lower_case - All word parts are lower case with separators retained
+		--	O=Original_case - The word is not changed at all -- just pass it through as is
+	IN columnCaseRule				CHAR(1), -- (used when generateMode=&apos;G&apos;)
+
+    	-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+		-- 1=Use alias rule and MATCH CASE exactly
+		-- 2=Use alias rule and DO NOT MATCH CASE
+	IN useAliasRule					SMALLINT,	-- (used when generateMode=&apos;G&apos;)
+
+		--  Any set of characters used to prefix a table or procedure name.  Include underscores with the suffix if applicable.
+		--	Example: V_ MY_TABLE or V_MY_TABLE 	
+	IN resourcePrefix 				VARCHAR, --(used when generateMode=&apos;G&apos;)
+
+		--  Any set of characters used to suffix a table or procedure name.  Include underscores with the suffix if applicable.
+		--	Example: _APP MY_TABLE or MY_TABLE_APP 
+	IN resourceSuffix 				VARCHAR, --(used when generateMode=&apos;G&apos;)
+
+		-- A formatted list of new columns to add to the end of the view.  The column will not be added if it already exists.
+		-- The format is as follows:  column1&amp;&amp;type1&amp;&amp;value1//column2&amp;&amp;type2&amp;&amp;value2//column3&amp;&amp;type3&amp;&amp;value3
+	IN newColumnList				LONGVARCHAR, --(used when generateMode=&apos;G&apos;)
+
+		-- flag indicating whether to ignore or generate unsupported column types.  For example in Oracle an SDO spatial type gets imported into Composite as &apos;OTHER&apos;.
+		-- 0/null (default) - ignore column type = &apos;OTHER&apos; and do not generate that column
+		-- 1 - generate columns where the column type = &apos;OTHER&apos;
+	IN generateUnsupportedColumnType BIT,
+
+		-- specifies how the source resource will be matched against the resource being interrogated
+		-- 0=fuzzy match - sourcePath + derivedFilterPath must simply be contained within resourcePath
+		-- 1 (default)=exact match - sourcePath + derivedFilterPath must match exactly in resourcePath
+	IN exactMatch					BIT,
+
+		-- The list &quot;derivedFilterPath&quot; is a comma-separated list of resources and may be used with either generateToFolder (option 1) to groupId (option 2) 
+		-- The path is derived by concatenating the partial filter path with the source path either from the sourceResource or of the designated layer type and groupId.
+		-- The layerType and the groupId are used to filter the rows from the configureStartingFolders.  The source path is
+		--    defined in configureStartingFolders per the layerType and groupId combination.
+		--   e.g. layerType=CP and sourceFolderPath=/shared/BestPractices/DataAbstractionAbstractionSample/Application/Views
+		--        The derivedFilterPath list=&quot;Orders_Closed,/Orders/Customers,Orders/Product&quot;
+		--        Even though there are several other views in the /Orders folder under the /Application/Views only the ones specified
+		--	      will be generated to the Application/Published.  Views directly under the source path do not require any qualifying path except the view name.
+		--        Lastly, a leading &apos;/&apos; is not required but may be present if desired.
+		-- Correlate the groupId position with the derivedFilterPath position
+		--		derivedFilterPath=&quot;customers,orders&quot;,shippingmethods
+		--                         |                     |
+		--                         v                     v
+		--		          groupId=ds_inventory.tutorial,ds_orders.tutorial
+		-- If null, generate views from all source folders as directed by the sourceResource or &quot;configure starting folders&quot; and the designated layer type.
+	IN derivedFilterPath			LONGVARCHAR,
+
+		-- comma separated list of resource paths or partials paths to exclude.  This may be useful when a data source has been moved and it&apos;s index or foreign keys
+		--	are pointing to another data source that does not exist anymore.  It may be necessary to exclude that path or paths.  If an exception is thrown during 
+		--	execution, try excluding those paths.
+		--	Values: /shared/MyPath/Physical/Metadata/MyDatasource
+	IN excludeDsPathsList			LONGVARCHAR,
+
+	-- OPTION 1
+		-- The source folder in CIS to begin searching for views to generate the view list or
+		-- a source view (exact path) to generate for.
+		-- If this is set it supercedes layerType, inGroupIDs and derivedFilterPath
+	IN sourceResource				LONGVARCHAR, 	
+
+	-- OPTION 2
+		-- If sourceResource is blank, then layerType, groupIds must be set with derivedFilterPath being optional.  The default is &apos;PM&apos;.
+		-- PM=Physical Metadata - used by generateDasourceList
+		-- CR=CRUD Target Folder Path - generateTypeDefinitions and generateCRUDOperations invokes generateViews
+		-- PV=Physical Views - generatePhysicalViews invokes generateViews
+		-- FV=Formatting Views - generateFormattingViews invokes generateViews
+		-- BV=Business Views - generateBusinessViews invokes generateViews
+		-- LV=Logical Views - generateLoicalViews invokes generateViews
+		-- CV=Client Views - generateClientViews invokes generateViews
+		-- CP=Client Published - generateClientPublished invokes generateViews
+		-- DB=Database published link - generatePublishedResource invokes generateViews
+    IN layerType					VARCHAR,
+
+		-- This is a comma separate list group ids to process. 
+		-- This is a filter that allows the user to only generate for a specific group or list of groups
+		--   found in the /_scripts/Configure/ConfigureStartingFolders.
+		--   Pass in null to select all groupIds.
+	IN groupIds						LONGVARCHAR, 
+
+    OUT result 						CURSOR /shared/ASAssets/BestPractices_v81/Procedures/TypeDefinitions.CommonModelV2Row
+)
+BEGIN
+		-- Path to the base project directory.
+    DECLARE basePath				VARCHAR(4000);
+
+		-- Path to the scripts project directory.
+	DECLARE scriptsPath				VARCHAR(4000);
+
+ 	DECLARE ConfigParamsXML			LONGVARCHAR;
+
+	-----------------------------------------------------------------
+	-- NOTE: Make sure the path is pointing to the correct project
+	-----------------------------------------------------------------
+	set basePath = /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.basePath;
+	set scriptsPath = /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.scriptsPath;
+
+ 	-- Set environment variables
+	call /lib/util/SetEnvironment(&apos;best.practices.scriptsPath&apos;,scriptsPath);
+	call /lib/util/SetEnvironment(&apos;best.practices.generateUnsupportedColumnType&apos;,CAST(generateUnsupportedColumnType AS VARCHAR));
+	call /lib/util/SetEnvironment(&apos;best.practices.exactMatch&apos;,CAST(exactMatch AS VARCHAR));
+	call /lib/util/SetEnvironment(&apos;best.practices.excludeDsPathsList&apos;,excludeDsPathsList);
+	call /lib/util/SetEnvironment(&apos;best.practices.newColumnList&apos;,newColumnList);
+
+   CALL /shared/ASAssets/BestPractices_v81/Procedures/getConfigureParamsXML(basePath, generateMode, NULL, NULL, resourceCaseRule, columnCaseRule, useAliasRule, resourcePrefix, resourceSuffix, NULL, NULL, NULL, ConfigParamsXML);	    
+
+    OPEN result FOR 
+        SELECT *
+        FROM /shared/ASAssets/BestPractices_v81/Procedures/generateDatasourceListXML(sourceResource, generateLogicalNames, NVL(layerType,&apos;PM&apos;), groupIds, derivedFilterPath, null, ConfigParamsXML);
+END</attribute>
+  <attribute name="creationDate" type="LONG">0</attribute>
+  <attribute name="creatorUserDomain" type="STRING"/>
+  <attribute name="creatorUserName" type="STRING"/>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1570164291271</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">asp5665</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="NULL"/>
+</metadata>

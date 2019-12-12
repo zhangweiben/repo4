@@ -1,0 +1,215 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="displayResourceTree" path="/shared/Common/_scripts/Display/displayResourceTree" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>displayResourceTree:
+	-- Data Virtualization Best Practices --
+
+	Return a list of resources, resource path, type and subtype for a given folder path.  The input to this is a starting
+	folder and not an actual resource.  Recursively walk down the tree to identify the list of resources.
+	Return all resources including folders (containers) and non-folder resources.
+ 
+	Input:
+   		resourcePath - CIS source folder path to begin deriving a list of resources
+			Values: e.g. /shared/ASAssets/Utilities
+	Output:
+		resourceTreeList - Cursor result set of resources
+			PIPE (
+				name		VARCHAR, - name of the CIS resource
+				resPath		TypeDefinitions.pathType, - full path of the CIS resource
+				resType		VARCHAR, - resource type
+				subType		VARCHAR - resource sub type
+			)
+		Values: example:
+name					resPath															resType		subType
+TypeDefinitions			/shared/ASAssets/Utilities/TypeDefinitions						PROCEDURE	SQL_SCRIPT_PROCEDURE
+calculations			/shared/ASAssets/Utilities/calculations							CONTAINER	FOLDER_CONTAINER
+calculateAge			/shared/ASAssets/Utilities/calculations/calculateAge			PROCEDURE	SQL_SCRIPT_PROCEDURE
+conversions				/shared/ASAssets/Utilities/conversions							CONTAINER	FOLDER_CONTAINER
+convertBoolean			/shared/ASAssets/Utilities/conversions/convertBoolean			PROCEDURE	SQL_SCRIPT_PROCEDURE
+convertDoubleToInteger	/shared/ASAssets/Utilities/conversions/convertDoubleToInteger	PROCEDURE	SQL_SCRIPT_PROCEDURE
+convertYN				/shared/ASAssets/Utilities/conversions/convertYN				PROCEDURE	SQL_SCRIPT_PROCEDURE
+file					/shared/ASAssets/Utilities/file									CONTAINER	FOLDER_CONTAINER
+FileProcessingCJP		/shared/ASAssets/Utilities/file/FileProcessingCJP				DATA_SOURCE	NONE
+log						/shared/ASAssets/Utilities/log									CONTAINER	FOLDER_CONTAINER
+errorNotification		/shared/ASAssets/Utilities/log/errorNotification				PROCEDURE	SQL_SCRIPT_PROCEDURE
+
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.</annotation>
+  <parameters>
+    <parameter name="resourcePath" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+    </parameter>
+    <parameter name="result" direction="OUT" nullable="true">
+      <datatype name="result" type="TABLE" refId="1">
+        <element name="ResourceName">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="ResourcePath">
+          <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+        </element>
+        <element name="ResourceType">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="ResourceSubType">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+      </datatype>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/shared/ASAssets/Utilities/repository/getResourceListRecursive" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="resourcePath" direction="IN">
+        <datatype referenceDefinitionSet="/lib/resource/ResourceDefs" referenceType="ResourcePath" type="STRING" maxLength="4096"/>
+      </element>
+      <element name="resourceType" direction="IN">
+        <datatype referenceDefinitionSet="/lib/resource/ResourceDefs" referenceType="ResourceType" type="STRING" maxLength="40"/>
+      </element>
+      <element name="resourceTreeList" direction="OUT">
+        <datatype type="TABLE" refId="2">
+          <element name="name">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="resPath">
+            <datatype referenceDefinitionSet="/shared/ASAssets/Utilities/TypeDefinitions" referenceType="pathType" type="STRING" maxLength="4000"/>
+          </element>
+          <element name="resType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="subType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="creationDate">
+            <datatype type="DATETIME"/>
+          </element>
+          <element name="creationDateBigint">
+            <datatype type="INTEGER"/>
+          </element>
+          <element name="creatorUserDomain">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="creatorUserName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="lastModifiedDate">
+            <datatype type="DATETIME"/>
+          </element>
+          <element name="lastModifiedDateBigint">
+            <datatype type="INTEGER"/>
+          </element>
+          <element name="lastModifiedUserDomain">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="lastModifiedUserName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">/* 
+	displayResourceTree:
+	-- Data Virtualization Best Practices --
+
+	Return a list of resources, resource path, type and subtype for a given folder path.  The input to this is a starting
+	folder and not an actual resource.  Recursively walk down the tree to identify the list of resources.
+	Return all resources including folders (containers) and non-folder resources.
+ 
+	Input:
+   		resourcePath - CIS source folder path to begin deriving a list of resources
+			Values: e.g. /shared/ASAssets/Utilities
+	Output:
+		resourceTreeList - Cursor result set of resources
+			PIPE (
+				name		VARCHAR, - name of the CIS resource
+				resPath		TypeDefinitions.pathType, - full path of the CIS resource
+				resType		VARCHAR, - resource type
+				subType		VARCHAR - resource sub type
+			)
+		Values: example:
+name					resPath															resType		subType
+TypeDefinitions			/shared/ASAssets/Utilities/TypeDefinitions						PROCEDURE	SQL_SCRIPT_PROCEDURE
+calculations			/shared/ASAssets/Utilities/calculations							CONTAINER	FOLDER_CONTAINER
+calculateAge			/shared/ASAssets/Utilities/calculations/calculateAge			PROCEDURE	SQL_SCRIPT_PROCEDURE
+conversions				/shared/ASAssets/Utilities/conversions							CONTAINER	FOLDER_CONTAINER
+convertBoolean			/shared/ASAssets/Utilities/conversions/convertBoolean			PROCEDURE	SQL_SCRIPT_PROCEDURE
+convertDoubleToInteger	/shared/ASAssets/Utilities/conversions/convertDoubleToInteger	PROCEDURE	SQL_SCRIPT_PROCEDURE
+convertYN				/shared/ASAssets/Utilities/conversions/convertYN				PROCEDURE	SQL_SCRIPT_PROCEDURE
+file					/shared/ASAssets/Utilities/file									CONTAINER	FOLDER_CONTAINER
+FileProcessingCJP		/shared/ASAssets/Utilities/file/FileProcessingCJP				DATA_SOURCE	NONE
+log						/shared/ASAssets/Utilities/log									CONTAINER	FOLDER_CONTAINER
+errorNotification		/shared/ASAssets/Utilities/log/errorNotification				PROCEDURE	SQL_SCRIPT_PROCEDURE
+
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+*/
+PROCEDURE displayResourceTree(
+    IN resourcePath VARCHAR(4000), 
+    OUT result CURSOR (
+        ResourceName VARCHAR(255), 
+        ResourcePath VARCHAR(4000), 
+        ResourceType VARCHAR(255), 
+        ResourceSubType VARCHAR(255)
+        )
+    )
+    BEGIN
+        OPEN result FOR 
+            SELECT 
+                getResourceListRecursive.name ResourceName, 
+                getResourceListRecursive.resPath ResourcePath, 
+                getResourceListRecursive.resType ResourceType, 
+                getResourceListRecursive.subType ResourceSubType
+            FROM      
+                /shared/ASAssets/Utilities/repository/getResourceListRecursive(resourcePath, &apos;CONTAINER&apos;) getResourceListRecursive;
+    END </attribute>
+  <attribute name="creationDate" type="LONG">1377564320207</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1560450692565</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="NULL"/>
+</metadata>

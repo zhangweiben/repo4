@@ -1,0 +1,128 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="AliasNameRuleSet" path="/shared/Common/_scripts/Configure/AliasNameRuleSet" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>AliasNameRuleSet:
+	-- Data Virtualization Best Practices --
+
+	Alias names are a way of converting short names or abbreviations into more formalizaed names that fit the canonical format.
+	For example, ds_inventory would be broken down into its word parts so we would have &quot;ds&quot; and &quot;inventory&quot;.  Each word
+	part would be passed into the &apos;shared/BestPractices/Procedures/generateName/applyAliasRule()&apos; procedure which will 
+	use the list below to convert the alias into the more formalized aliasRule.  So &quot;ds&quot; would become &quot;DataSource&quot;.
+	It should be noted that the case rules will be applied after the alias rules.  So the actual case-sensitivity of
+	the aliasRule may not be applied as you see it here.
+ 
+	Input: none
+	Output:
+		aliasNames 					- a list of name value pairs defining an alias name and the value it should be transformed to.
+			PIPE (
+				alias VARCHAR, 		- the name that applyAliasRule() uses to compare its word part with what is in this list
+				aliasRule VARCHAR	- the value in which to convert the alias name to.
+			)
+
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.</annotation>
+  <parameters>
+    <parameter name="aliasNames" direction="OUT" nullable="true">
+      <datatype name="aliasNames" type="TABLE" refId="1">
+        <element name="alias">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="aliasRule">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+      </datatype>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <attribute name="Script" type="STRING">/* 
+	AliasNameRuleSet:
+	-- Data Virtualization Best Practices --
+
+	Alias names are a way of converting short names or abbreviations into more formalizaed names that fit the canonical format.
+	For example, ds_inventory would be broken down into its word parts so we would have &quot;ds&quot; and &quot;inventory&quot;.  Each word
+	part would be passed into the &apos;shared/BestPractices/Procedures/generateName/applyAliasRule()&apos; procedure which will 
+	use the list below to convert the alias into the more formalized aliasRule.  So &quot;ds&quot; would become &quot;DataSource&quot;.
+	It should be noted that the case rules will be applied after the alias rules.  So the actual case-sensitivity of
+	the aliasRule may not be applied as you see it here.
+ 
+	Input: none
+	Output:
+		aliasNames 					- a list of name value pairs defining an alias name and the value it should be transformed to.
+			PIPE (
+				alias VARCHAR, 		- the name that applyAliasRule() uses to compare its word part with what is in this list
+				aliasRule VARCHAR	- the value in which to convert the alias name to.
+			)
+
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+*/
+PROCEDURE AliasNameRuleSet(
+	OUT  aliasNames PIPE (alias VARCHAR, aliasRule VARCHAR)
+)
+BEGIN
+--                            alias,aliasRule
+INSERT INTO aliasNames VALUES (&apos;DS&apos;,&apos;DataSource&apos;);
+INSERT INTO aliasNames VALUES (&apos;CDE&apos;,&apos;Code&apos;);
+INSERT INTO aliasNames VALUES (&apos;DT&apos;,&apos;Date&apos;);
+INSERT INTO aliasNames VALUES (&apos;DTE&apos;,&apos;Date&apos;);
+INSERT INTO aliasNames VALUES (&apos;TMS&apos;,&apos;Timestamp&apos;);
+INSERT INTO aliasNames VALUES (&apos;CHG&apos;,&apos;Change&apos;);
+INSERT INTO aliasNames VALUES (&apos;TYP&apos;,&apos;Type&apos;);
+INSERT INTO aliasNames VALUES (&apos;USR&apos;,&apos;User&apos;);
+INSERT INTO aliasNames VALUES (&apos;ID&apos;,&apos;Id&apos;);
+INSERT INTO aliasNames VALUES (&apos;DESC&apos;,&apos;Description&apos;);
+INSERT INTO aliasNames VALUES (&apos;TRMN&apos;,&apos;Termination&apos;);
+INSERT INTO aliasNames VALUES (&apos;ISS&apos;,&apos;Issue&apos;);
+INSERT INTO aliasNames VALUES (&apos;MKT&apos;,&apos;Market&apos;);
+END</attribute>
+  <attribute name="creationDate" type="LONG">1377564320197</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1560446203233</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="NULL"/>
+</metadata>

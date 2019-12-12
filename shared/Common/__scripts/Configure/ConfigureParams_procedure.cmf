@@ -1,0 +1,363 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="ConfigureParams" path="/shared/Common/_scripts/Configure/ConfigureParams" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>ConfigureParamsXML:
+	-- Data Virtualization Best Practices --
+
+	These settings are &quot;DEFAULT&quot; configuration settings used by the generation scripts.
+
+   	The following parameters can be changed on invocation to generateViews and generateDatasourceList.
+   	generateViews, caseRule, useAliasRule, generateWithSourceColumn
+   	
+	There is **ALWAYS ONLY** 1 row of values returned:
+ 
+	Input: none
+	Output:
+		ConfigParamsPipe 			- a row containing the default configuration settings.
+			PIPE (
+			    	-- 	G=Generate the resource names 
+			    	-- 	R=Retrieve the resource name,  (resources include PATH names, VIEW names AND COLUMN names)
+   				generateMode,
+ 			   		-- 	A=Return All abstract columns, 
+			    	-- 	U=Return ONLY Unchanged/Dropped columns that were NOT found.
+				outputMode,
+					--     0=Do not generate - (browse only) print out what will happen but don&apos;t perform the generation
+					--     1=Do generate - Perform the VIEW Generation, 
+				generateViews
+					--  TABLES only.  This caseRule is only used for tables.
+					--	 	Assumption:  The original table name has to have separators (_) for this to work properly.
+					--			     If the original word has no separators then the case rule gets applied to the single word
+					--		j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+					--		C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+					--		T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+					--		U=UPPER_CASE - All word parts are UPPER case with separtors retained
+					--		l=lower_case - All word parts are lower case with separators retained
+					--		O=Original_case - The word is not changed at all -- just pass it through as is
+				resourceCaseRule (used when generateMode=&apos;G&apos;) 
+					--  COLUMNS only.  This caseRule is only used for columns.
+					--	 	Assumption:  The original column name has to have separators (_) for this to work properly.
+					--			     If the original word has no separators then the case rule gets applied to the single word
+					--		j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+					--		C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+					--		T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+					--		U=UPPER_CASE - All word parts are UPPER case with separtors retained
+					--		l=lower_case - All word parts are lower case with separators retained
+					--		O=Original_case - The word is not changed at all -- just pass it through as is
+				columnCaseRule (used when generateMode=&apos;G&apos;) 
+					--     Word part separator consisting of a 1 character value such as &apos;_&apos;
+					--	which is used to separate the word parts within a column.  Spaces ARE NOT allowed IN COLUMN NAMES.
+					--	Example MY_COLUMN_NAME
+				separator (used when generateMode=&apos;G&apos;)
+					-- 	When generating the logical name from the data source, use the &quot;AliasNameRuleSet&quot; as a lookup procedure
+					--	  to match a word part against the Alias table.  For exmaple:
+					--		word part=ds		table alias=DS		table rule=DataSource
+					--	0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+					--		result=ds
+					--  1=Use alias rule and MATCH CASE exactly
+					--		result=ds (the original word part &apos;ds&apos; is returned as no match is found becuase &apos;ds&apos; is not equal to &apos;DS&apos;
+					--	2=Use alias rule and DO NOT MATCH CASE
+					--		result=DataSource (UPPER(&apos;ds&apos;) = UPPER(&apos;DS&apos;), therefore DataSource is returned	
+				useAliasRule (used when generateMode=&apos;G&apos;)
+					--  Any set of characters used to prefix a table or procedure name.  Include underscores with the suffix if applicable.
+					--	Example: V_ MY_TABLE or V_MY_TABLE 	
+				resourcePrefix (used when generateMode=&apos;G&apos;)
+					--  Any set of characters used to suffix a table or procedure name.  Include underscores with the suffix if applicable.
+					--	Example: _APP MY_TABLE or MY_TABLE_APP 	
+				resourceSuffix (used when generateMode=&apos;G&apos;)
+					-- 	This parameter allows the user to control whether to generate the view with the original data source
+					--	   column or not.  It adds a level of control and flexibility into this automation process.
+					--	Regarding the retrieved logicalColumn from the mapping spreadsheet.
+					--	   When logicalColumn IS blank OR NULL then
+					-- 	   1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+					--	   0=Do NOT generate the view with the source column (no pass through)-logical status is DROPPED
+				generateWithSourceColumn (used when generateMode=&apos;R&apos;)
+					-- 	This parameter allows the user to control whether to generate the cast statement around the generated
+					--	   column or not.  It uses the column type from the source view.
+					-- 	1=Generate the CAST statement around the column
+					--	0=Do not generate CAST statement.  Pass through column as is.  Default behavior.
+				generateCast (used when generateMode=&apos;G&apos;)
+				debug  - Debug level 1: &apos;Y&apos;=print to log and console window, &apos;F&apos;=no debug output to log or console
+				debug2 - Debug level 2: &apos;Y&apos;=print to log and console window, &apos;F&apos;=no debug output to log or console
+				debug3 - Debug level 3: &apos;Y&apos;=print to log and console window, &apos;F&apos;=no debug output to log or console
+					-- basePath gets SET dynamically so it is initially set to NULL.
+				basePath - Path to the base project directory. 
+					-- scriptsPath gets SET dynamically so it is initially set to NULL.
+				scriptsPath - Path to the scripts folder
+				padAmount - The amount of padding to use when printing out the columnName (in the example below padding of 30 is used)
+			)
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+	01/24/2019		Mike Tinius			8.0.0			B.P. 2019.1: Added the ability to handle columnCaseRule, resourcePrefix, resourceSuffix and newColumnList for generateMode=&apos;G&apos;. 
+	06/12/2019		Mike Tinius			7.0.8			B.P. 2019.200: Modified to use XML based procedures in order to eliminate vector usage.
+	
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.</annotation>
+  <parameters>
+    <parameter name="ConfigParamsXML" direction="OUT" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <attribute name="Script" type="STRING">/* 
+	ConfigureParamsXML:
+	-- Data Virtualization Best Practices --
+
+	These settings are &quot;DEFAULT&quot; configuration settings used by the generation scripts.
+
+   	The following parameters can be changed on invocation to generateViews and generateDatasourceList.
+   	generateViews, caseRule, useAliasRule, generateWithSourceColumn
+   	
+	There is **ALWAYS ONLY** 1 row of values returned:
+ 
+	Input: none
+	Output:
+		ConfigParamsPipe 			- a row containing the default configuration settings.
+			PIPE (
+			    	-- 	G=Generate the resource names 
+			    	-- 	R=Retrieve the resource name,  (resources include PATH names, VIEW names AND COLUMN names)
+   				generateMode,
+
+ 			   		-- 	A=Return All abstract columns, 
+			    	-- 	U=Return ONLY Unchanged/Dropped columns that were NOT found.
+				outputMode,
+
+					--     0=Do not generate - (browse only) print out what will happen but don&apos;t perform the generation
+					--     1=Do generate - Perform the VIEW Generation, 
+				generateViews
+
+					--  TABLES only.  This caseRule is only used for tables.
+					--	 	Assumption:  The original table name has to have separators (_) for this to work properly.
+					--			     If the original word has no separators then the case rule gets applied to the single word
+					--		j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+					--		C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+					--		T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+					--		U=UPPER_CASE - All word parts are UPPER case with separtors retained
+					--		l=lower_case - All word parts are lower case with separators retained
+					--		O=Original_case - The word is not changed at all -- just pass it through as is
+				resourceCaseRule (used when generateMode=&apos;G&apos;) 
+
+					--  COLUMNS only.  This caseRule is only used for columns.
+					--	 	Assumption:  The original column name has to have separators (_) for this to work properly.
+					--			     If the original word has no separators then the case rule gets applied to the single word
+					--		j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+					--		C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+					--		T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+					--		U=UPPER_CASE - All word parts are UPPER case with separtors retained
+					--		l=lower_case - All word parts are lower case with separators retained
+					--		O=Original_case - The word is not changed at all -- just pass it through as is
+				columnCaseRule (used when generateMode=&apos;G&apos;) 
+
+					--     Word part separator consisting of a 1 character value such as &apos;_&apos;
+					--	which is used to separate the word parts within a column.  Spaces ARE NOT allowed IN COLUMN NAMES.
+					--	Example MY_COLUMN_NAME
+				separator (used when generateMode=&apos;G&apos;)
+
+					-- 	When generating the logical name from the data source, use the &quot;AliasNameRuleSet&quot; as a lookup procedure
+					--	  to match a word part against the Alias table.  For exmaple:
+					--		word part=ds		table alias=DS		table rule=DataSource
+					--	0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+					--		result=ds
+					--  1=Use alias rule and MATCH CASE exactly
+					--		result=ds (the original word part &apos;ds&apos; is returned as no match is found becuase &apos;ds&apos; is not equal to &apos;DS&apos;
+					--	2=Use alias rule and DO NOT MATCH CASE
+					--		result=DataSource (UPPER(&apos;ds&apos;) = UPPER(&apos;DS&apos;), therefore DataSource is returned	
+				useAliasRule (used when generateMode=&apos;G&apos;)
+
+					--  Any set of characters used to prefix a table or procedure name.  Include underscores with the suffix if applicable.
+					--	Example: V_ MY_TABLE or V_MY_TABLE 	
+				resourcePrefix (used when generateMode=&apos;G&apos;)
+
+					--  Any set of characters used to suffix a table or procedure name.  Include underscores with the suffix if applicable.
+					--	Example: _APP MY_TABLE or MY_TABLE_APP 	
+				resourceSuffix (used when generateMode=&apos;G&apos;)
+
+					-- 	This parameter allows the user to control whether to generate the view with the original data source
+					--	   column or not.  It adds a level of control and flexibility into this automation process.
+					--	Regarding the retrieved logicalColumn from the mapping spreadsheet.
+					--	   When logicalColumn IS blank OR NULL then
+					-- 	   1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+					--	   0=Do NOT generate the view with the source column (no pass through)-logical status is DROPPED
+				generateWithSourceColumn (used when generateMode=&apos;R&apos;)
+
+					-- 	This parameter allows the user to control whether to generate the cast statement around the generated
+					--	   column or not.  It uses the column type from the source view.
+					-- 	1=Generate the CAST statement around the column
+					--	0=Do not generate CAST statement.  Pass through column as is.  Default behavior.
+				generateCast (used when generateMode=&apos;G&apos;)
+
+				debug  - Debug level 1: &apos;Y&apos;=print to log and console window, &apos;F&apos;=no debug output to log or console
+				debug2 - Debug level 2: &apos;Y&apos;=print to log and console window, &apos;F&apos;=no debug output to log or console
+				debug3 - Debug level 3: &apos;Y&apos;=print to log and console window, &apos;F&apos;=no debug output to log or console
+
+					-- basePath gets SET dynamically so it is initially set to NULL.
+				basePath - Path to the base project directory. 
+
+					-- scriptsPath gets SET dynamically so it is initially set to NULL.
+				scriptsPath - Path to the scripts folder
+
+					-- The amount of padding to use when printing out the columnName (in the example below padding of 30 is used)
+				padAmount 
+			)
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+	01/24/2019		Mike Tinius			8.0.0			B.P. 2019.1: Added the ability to handle columnCaseRule, resourcePrefix, resourceSuffix and newColumnList for generateMode=&apos;G&apos;. 
+	06/12/2019		Mike Tinius			7.0.8			B.P. 2019.200: Modified to use XML based procedures in order to eliminate vector usage.
+	
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+*/
+PROCEDURE ConfigureParams(
+	OUT ConfigParamsXML		LONGVARCHAR
+)
+BEGIN
+	-- Set default values
+	SET ConfigParamsXML = 
+&apos;&lt;ConfigParamsType&gt;
+    &lt;generateMode&gt;G&lt;/generateMode&gt;
+    &lt;outputMode&gt;A&lt;/outputMode&gt;
+    &lt;generateViews&gt;1&lt;/generateViews&gt;
+    &lt;resourceCaseRule&gt;T&lt;/resourceCaseRule&gt;
+    &lt;columnCaseRule&gt;l&lt;/columnCaseRule&gt;
+    &lt;separator&gt;_&lt;/separator&gt;
+    &lt;useAliasRule&gt;2&lt;/useAliasRule&gt;
+    &lt;resourcePrefix&gt;null&lt;/resourcePrefix&gt;
+    &lt;resourceSuffix&gt;null&lt;/resourceSuffix&gt;
+    &lt;generateWithSourceColumn&gt;1&lt;/generateWithSourceColumn&gt;
+    &lt;generateCast&gt;0&lt;/generateCast&gt;
+    &lt;generateIndexes&gt;1&lt;/generateIndexes&gt;
+    &lt;debug&gt;N&lt;/debug&gt;
+    &lt;debug2&gt;N&lt;/debug2&gt;
+    &lt;debug3&gt;N&lt;/debug3&gt;
+    &lt;basePath&gt;null&lt;/basePath&gt;
+    &lt;scriptsPath&gt;null&lt;/scriptsPath&gt;
+    &lt;padAmount&gt;40&lt;/padAmount&gt;
+&lt;/ConfigParamsType&gt;&apos;;
+/* Default Values
+   	&apos;G&apos;,	-- generateMode,
+	    	--	 	G=Generate the resource names 
+	    	--	 	R=Retrieve the resource name,  (resources include PATH names, VIEW names AND COLUMN names)
+   	&apos;A&apos;,	-- outputMode,
+ 	   		--	 	A=Return All abstract columns, 
+	    	--	 	U=Return ONLY Unchanged/Dropped columns that were NOT found.
+	1,		-- generateViews
+	 		-- 		0=Do not generate - (browse only) print out what will happen but don&apos;t perform the generation.
+			-- 		1=Do generate [DEFAULT] - Perform the VIEW Generation with a column projection.
+			-- 		2= Do generate          - Perform the VIEW Generation with a select * projection.
+	&apos;O&apos;,	-- resourceCaseRule (used when generateMode=&apos;G&apos;) 
+			--  TABLES only.  This caseRule is only used for tables.
+			--	 	Assumption:  The original table name has to have separators (_) for this to work properly.
+			--			     If the original word has no separators then the case rule gets applied to the single word
+			--		j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+			--		C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+			--		T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+			--		U=UPPER_CASE - All word parts are UPPER case with separtors retained
+			--		l=lower_case - All word parts are lower case with separators retained
+			--		O=Original_case - The word is not changed at all -- just pass it through as is
+	&apos;O&apos;,	-- columnCaseRule (used when generateMode=&apos;G&apos;) 
+			--  COLUMNS only.  This caseRule is only used for columns.
+			--	 	Assumption:  The original column name has to have separators (_) for this to work properly.
+			--			     If the original word has no separators then the case rule gets applied to the single word
+			--		j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+			--		C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+			--		T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+			--		U=UPPER_CASE - All word parts are UPPER case with separtors retained
+			--		l=lower_case - All word parts are lower case with separators retained
+			--		O=Original_case - The word is not changed at all -- just pass it through as is
+	&apos;_&apos;,	-- separator (used when generateMode=&apos;G&apos;)
+			--	    Word part separator consisting of a 1 character value such as &apos;_&apos;
+			--		which is used to separate the word parts within a column.  Spaces ARE NOT allowed IN COLUMN NAMES.
+			--		Example MY_COLUMN_NAME
+	2,		-- useAliasRule (used when generateMode=&apos;G&apos;)
+			--	 	When generating the logical name from the data source, use the &quot;AliasNameRuleSet&quot; as a lookup procedure
+			--		  to match a word part against the Alias table.  For exmaple:
+			--			word part=ds		table alias=DS		table rule=DataSource
+			--		0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+			--			result=ds
+			--		1=Use alias rule and MATCH CASE exactly
+			--			result=ds (the original word part &apos;ds&apos; is returned as no match is found becuase &apos;ds&apos; is not equal to &apos;DS&apos;
+			--		2=Use alias rule and DO NOT MATCH CASE
+			--			result=DataSource (UPPER(&apos;ds&apos;) = UPPER(&apos;DS&apos;), therefore DataSource is returned	
+	null,	-- resourcePrefix (used when generateMode=&apos;G&apos;)
+			--  Any set of characters used to prefix a table or procedure name.  Include underscores with the suffix if applicable.
+			--	Example: V_ MY_TABLE or V_MY_TABLE 	
+	null,	-- resourceSuffix (used when generateMode=&apos;G&apos;)
+			--  Any set of characters used to suffix a table or procedure name.  Include underscores with the suffix if applicable.
+			--	Example: _APP MY_TABLE or MY_TABLE_APP 	
+	1,		-- generateWithSourceColumn (used when generateMode=&apos;R&apos;)
+			--	 	This parameter allows the user to control whether to generate the view with the original data source
+			--		   column or not.  It adds a level of control and flexibility into this automation process.
+			--		Regarding the retrieved logicalColumn from the mapping spreadsheet.
+			--		   When logicalColumn IS blank OR NULL then
+			--	 	   1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+			--		   0=Do NOT generate the view with the source column (no pass through)-logical status is DROPPED
+
+	0,		--	generateCast (used when generateMode=&apos;G&apos;)
+			-- 		This parameter allows the user to control whether to generate the cast statement around the generated
+			--	   		column or not.  It uses the column type from the source view.
+			--		0=Do not generate CAST statement.  Pass through column as is.  Default behavior.
+			-- 		1=Generate the CAST statement around the column
+			--		2-Generate the CAST statement around the non-index columns only (No CAST on index columns)
+			--		3-Generate the CAST statement around the non-index columns only and generate a &quot;display&quot; CAST column for each index column.  (No CAST o nindex columns)
+			--		4-Generate the CAST statement around the non-index columns and non-primary key index columns only (No CAST on primary key index columns)
+			--		5-Generate the CAST statement around the non-index columns and non-primary key index columns only and generate a &quot;display&quot; CAST column for each primary key index column.  (No CAST on primary key index columns)
+	1,		--	generateIndexes
+			-- 		This parameter allows the user to control whether to generate indexes on the target views 
+			--		   as derived from the underlying resources
+			-- 		1=(default) Generate indexes
+			--		0=Do not generate indexes
+	&apos;N&apos;,	-- Debug level 1: &apos;Y&apos;=print to log and console window, &apos;F&apos;=no debug output to log or console
+	&apos;N&apos;,	-- Debug level 2: &apos;Y&apos;=print to log and console window, &apos;F&apos;=no debug output to log or console
+	&apos;N&apos;,	-- Debug level 3: &apos;Y&apos;=print to log and console window, &apos;F&apos;=no debug output to log or console
+	NULL, 	-- Path to the base project directory.  Path gets SET dynamically so it is initially set to NULL.
+	NULL, 	-- Path to the scripts subfolder of the project directory.  Path gets SET dynamically so it is initially set to NULL.
+	40	-- padAmount - The amount of padding to use when printing out the columnName (in the example below padding of 30 is used)
+--	** View Generator ** generateViews() : resource=inventorytransactions  column=TransactionID        logical=TransactionID
+--	** View Generator ** generateViews() : resource=inventorytransactions  column=TransactionDate      logical=TransactionDate 
+*/
+
+END</attribute>
+  <attribute name="creationDate" type="LONG">0</attribute>
+  <attribute name="creatorUserDomain" type="STRING"/>
+  <attribute name="creatorUserName" type="STRING"/>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1570169355264</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">asp5665</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="NULL"/>
+</metadata>

@@ -1,0 +1,201 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="rebindAllResources" path="/shared/Common/_scripts/Rebind/rebindAllResources" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>rebindAllResources:
+	-- Data Virtualization Best Practices --
+
+	This procedure is used to rebind all of the resources (Views) in a given starting source folder to a target
+	rebind folder.   For example, if all of the views in the Formatting Views layer are pointing to a particular 
+	data source and you want to rebind them to point to a different data source folder then this procedure
+	will accomplish that task.  This may be useful when redeploying from Dev to Test to Production or
+	simply rebinding to a different development instance of the database.  Rules:
+		1) If a resource in the folder has both the source and the target sources present, it will
+			use rebindResource to do an explicit rebind.
+		2) If a resource in the folder does not have the source present, it will rebind using explicit
+			text modification techniques instead of rebindResource.  The following text modification
+			techniques are supported for the given resource type:
+				resourceType = &apos;TABLE&apos;
+					subtype = &apos;SQL_TABLE&apos; -- Regular View not a database table
+	
+				resourceType = &apos;PROCEDURE&apos;
+					subtype = &apos;SQL_SCRIPT_PROCEDURE&apos; -- Custom Procedure or Parameterized query
+					subtype = &apos;EXTERNAL_SQL_PROCEDURE&apos; -- Packaged Query Procedure
+ 					subtype = &apos;BASIC_TRANSFORM_PROCEDURE&apos; -- XSLT Basic Transformation definition
+					subtype = &apos;XSLT_TRANSFORM_PROCEDURE&apos; -- XSLT Transformation text
+					subtype = &apos;STREAM_TRANSFORM_PROCEDURE&apos; -- XSLT Stream Transformation text
+		3) if a resource in the folder does not have the target present, that is an error and an exception is raised.
+ 
+	Input:
+		startingResourceFolder - the folder from which to start from and interrogate all of the resource Views in it.  
+			Values: path
+		rebindFromFolder - The source &quot;used&quot; resource folder to rebind from
+			Values: path
+		rebindToFolder - The target &quot;used&quot; resource folder to rebind to
+			Values: path
+	Output:
+		success	- true(1) or false(0)
+			Values: 1 or 0
+		faultResponse - null if succesful otherwise contains a fault resposne.
+			Values: Fault Resposne XML value
+
+	Exceptions:  throws exception on error
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/02/2010		Mike Tinius			5.2.0			Created new
+	05/06/2013		Mike Tinius			6.0.0			Modified to use rebindFolder.  Modified signature
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.</annotation>
+  <parameters>
+    <parameter name="startingResourceFolder" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+    </parameter>
+    <parameter name="rebindFromFolder" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+    </parameter>
+    <parameter name="rebindToFolder" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+    </parameter>
+    <parameter name="success" direction="OUT" nullable="true">
+      <datatype name="BIT" type="INTEGER" minValue="0" maxValue="1"/>
+    </parameter>
+    <parameter name="faultResponse" direction="OUT" nullable="true">
+      <datatype name="XML" referenceType="XML" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="TYPE" componentName="XML">
+        <schemaDatatype>
+          <datatype name="XML" type="TREE" refId="1"></datatype>
+        </schemaDatatype>
+      </datatype>
+      <attribute name="Customized" type="STRING">datatype.changed;datatype.changed</attribute>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/shared/ASAssets/Utilities/repository/rebindFolder" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="startingResourceFolder" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="rebindFromFolder" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="rebindToFolder" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="success" direction="OUT">
+        <datatype type="INTEGER" minValue="0" maxValue="1"/>
+      </element>
+      <element name="faultResponse" direction="OUT">
+        <datatype name="XML" referenceType="XML" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="TYPE" componentName="XML">
+          <schemaDatatype>
+            <datatype name="XML" type="TREE" refId="2"></datatype>
+          </schemaDatatype>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">/* 
+	rebindAllResources:
+	-- Data Virtualization Best Practices --
+
+	This procedure is used to rebind all of the resources (Views) in a given starting source folder to a target
+	rebind folder.   For example, if all of the views in the Formatting Views layer are pointing to a particular 
+	data source and you want to rebind them to point to a different data source folder then this procedure
+	will accomplish that task.  This may be useful when redeploying from Dev to Test to Production or
+	simply rebinding to a different development instance of the database.  Rules:
+		1) If a resource in the folder has both the source and the target sources present, it will
+			use rebindResource to do an explicit rebind.
+		2) If a resource in the folder does not have the source present, it will rebind using explicit
+			text modification techniques instead of rebindResource.  The following text modification
+			techniques are supported for the given resource type:
+				resourceType = &apos;TABLE&apos;
+					subtype = &apos;SQL_TABLE&apos; -- Regular View not a database table
+	
+				resourceType = &apos;PROCEDURE&apos;
+					subtype = &apos;SQL_SCRIPT_PROCEDURE&apos; -- Custom Procedure or Parameterized query
+					subtype = &apos;EXTERNAL_SQL_PROCEDURE&apos; -- Packaged Query Procedure
+ 					subtype = &apos;BASIC_TRANSFORM_PROCEDURE&apos; -- XSLT Basic Transformation definition
+					subtype = &apos;XSLT_TRANSFORM_PROCEDURE&apos; -- XSLT Transformation text
+					subtype = &apos;STREAM_TRANSFORM_PROCEDURE&apos; -- XSLT Stream Transformation text
+		3) if a resource in the folder does not have the target present, that is an error and an exception is raised.
+ 
+	Input:
+		startingResourceFolder - the folder from which to start from and interrogate all of the resource Views in it.  
+			Values: path
+		rebindFromFolder - The source &quot;used&quot; resource folder to rebind from
+			Values: path
+		rebindToFolder - The target &quot;used&quot; resource folder to rebind to
+			Values: path
+	Output:
+		success	- true(1) or false(0)
+			Values: 1 or 0
+		faultResponse - null if succesful otherwise contains a fault resposne.
+			Values: Fault Resposne XML value
+
+	Exceptions:  throws exception on error
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/02/2010		Mike Tinius			5.2.0			Created new
+	05/06/2013		Mike Tinius			6.0.0			Modified to use rebindFolder.  Modified signature
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+*/
+PROCEDURE rebindAllResources(
+	-- The start folder in which to recursively inspect.
+	--		e.g. /shared/PROJECT/DataAbstraction/Physical/Formatting/MyDataSource
+	IN startingResourceFolder 	VARCHAR(4000),
+
+	-- The folder path to rebind from.
+	--		e.g. /shared/PROJECTPS/DataAbstraction/Physical/Metadata/MyDataSource/MySchema
+	IN rebindFromFolder			VARCHAR(4000),
+
+	-- The folder path to rebind to.
+	--		e.g. /shared/PROJECTPS/DataAbstraction/Physical/Metadata/MyDataSource/MySchema2
+	IN rebindToFolder			VARCHAR(4000),
+	OUT success					BIT,
+	OUT faultResponse			XML
+)
+BEGIN
+	CALL /shared/ASAssets/Utilities/repository/rebindFolder(startingResourceFolder,rebindFromFolder,rebindToFolder,success,faultResponse);
+END</attribute>
+  <attribute name="creationDate" type="LONG">0</attribute>
+  <attribute name="creatorUserDomain" type="STRING"/>
+  <attribute name="creatorUserName" type="STRING"/>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1564598276798</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="p:4:Customized" type="STRING">datatype.changed;datatype.changed</attribute>
+  <attribute name="references" type="NULL"/>
+</metadata>

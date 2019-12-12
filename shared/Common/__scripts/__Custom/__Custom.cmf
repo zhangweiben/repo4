@@ -1,0 +1,17 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="_Custom" path="/shared/Common/_scripts/_Custom" type="CONTAINER" subtype="FOLDER" changeToken="0">
+  <security>
+    <owner user="nobody" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ SELECT"/>
+  </security>
+  <attribute name="creationDate" type="LONG">1570164229927</attribute>
+  <attribute name="creatorUserDomain" type="STRING">na</attribute>
+  <attribute name="creatorUserId" type="INTEGER">30105</attribute>
+  <attribute name="creatorUserName" type="STRING">asp5665</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1570164229927</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">30105</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">asp5665</attribute>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1570164229927</attribute>
+</metadata>

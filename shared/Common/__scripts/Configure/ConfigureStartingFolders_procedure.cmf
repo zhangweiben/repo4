@@ -1,0 +1,1100 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="ConfigureStartingFolders" path="/shared/Common/_scripts/Configure/ConfigureStartingFolders" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>ConfigureStartingFolders:
+	-- Data Virtualization Best Practices --
+
+	Rows of directories that define physical layer sources and corresponding target folder
+	At the present time, these configurations are used to generate &quot;Physical Views&quot; or &quot;Formatting Views&quot;.
+
+	Note: As of v7.0, generating Physical Views has been deprecated as the best practice is to generated
+		  Formatting Views directly from the Physical Metadata.
+
+Cursor Definition for startingFolderPipe:
+
+(1st parameter)	groupId - Provides a way of grouping multiple rows together so that the user can identify
+	which group they want to generate for.  It becomes a filter for view generation.
+
+(2nd parameter)	process - Tells the generatViews whether to process the ConfigureStartingFolders row or not.
+	Allows you to maintain the list but not process a configuration if you don&apos;t want to.
+	0=Do Not process this configuration row.
+	1=Do process this configuration row.
+
+(3rd parameter)	layerType - Tells the generateViews what Layer it will be generating views for (target layer).
+	&apos;PV&apos;=Physical Views - generatePhysicalViews inovkes generateViews (DEPRECATED)
+	&apos;FV&apos;=Formatting Views - generateFormattingViews invokes generateViews
+	&apos;BV&apos;=Business Views - use generateViews
+	&apos;LV&apos;=Logical Views - generateLoicalViews invokes generateViews
+	&apos;CV&apos;=Client Views - generateClientViews invokes generateViews
+	&apos;CP&apos;=Client Published - generateClientPublished invokes generateViews
+
+(4th parameter)	pathDerivation 
+	&apos;A&apos;=Absolute path as described by targetFolderPath, 
+	&apos;D&apos;=(Default setting) Derived from the targetFolderPath + adding on the remaining path from the actual resource 
+	       after subtracting the sourceFolderPath - Example:
+	 		sourceFolderPath     = /shared/examples
+	 		actual resource path = /shared/examples/ds_orders/customers
+	 		targetFolderPath   = /shared/examples/TargetLayer
+
+		subtract the sourceFolderPath(/shared/examples) from the actual resource path 
+		(/shared/examples/ds_orders/customers) to get the derived remaining folder  
+		(ds_orders/customers).  Apply naming convention rules on each folder part to derive the canonical
+		names for the folders such as (/DataSourceOrders/Customers).  Take the targetFolderPath 
+		(/shared/examples/TargetLayer) and concatenate the remaining folder to arrive at the 
+		final dervied target folder (/shared/examples/TargetLayer/DataSourceOrders/Customers)
+
+(5th parameter)	sourceFolderPath - Source CIS folder location
+	 When layerType=PM, this is the Physical_Metadata folder path to the physical data source
+
+(6th parameter)	targetFolderPath - Target CIS folder location
+
+	Supported Behavior
+	------------------
+	   BEHAVIOR(1): Overlapping sourceFolderPath definitions will result in duplicated views being produced
+					Take the 2 source folder paths expressed below.  The 2nd one is a sub-directory of the first one.
+					This will result in the same source folders being processed twice which generates the same mapping views
+					but in different target target folders.
+		(groupId,1,&apos;A&apos;,&apos;/shared/BestPractices/DataAbstractionSample/Physical/Metadata&apos;       ,&apos;/shared/BestPractices/DataAbstractionSample/Physical/Formatting&apos;),
+		(groupId,1,&apos;A&apos;,&apos;/shared/BestPractices/DataAbstractionSample/Physical/Metadata/ORDERS&apos;,&apos;/shared/BestPractices/DataAbstractionSample/Physicalayer/Formatting/Orders&apos;)
+
+	    BEHAVIOR(2): Source Folder Path definitions are case sensitive and must match the actual source path that you
+					 want to introspect to create mapping views from.
+
+	    BEHAVIOR(3): Any &apos;TABLE&apos; or &apos;PROCEDURE&apos; resource type that produces a curosr output is supported.
+					Examples: Views, Relational Table, Procedures with cursors including XSLT, custom or parameterized queries.
+
+		BEHAVIOR(4): Set the PM_FOLDER as general or as specific as needed.  If only one data source lives in a folder
+					 then it is feasible to set it to the container.  If a data source has multiple schemas then it
+					 may be necessary to set up a group that identifies the specific &quot;SCHEMA_NAME&quot;.   For example, with 
+					 Oracle, it may be necessary to provide the entire path to the schema user.  For MySQl, it may only 
+					 be necessary to provide the path to the actual Data Source.
+
+				Oracle
+					Set the PM_FOLDER (Physical Metadata Source Folder) to the path representing the Oracle Schema
+					Example: SET PM_FOLDER=&quot;Metadata Path&quot;/OracleSource/cisOraDemoDS/CISORADEMO
+       		        Best Practices              ^                 ^             ^            ^
+       		       Physical Metadata Layer Path |                 |             |            |
+       		                                       CIS Sub-folder |             |            |
+            		                                     CIS Oracle Data Source |            |
+                    	                                      Oracle Data Source Schema User |
+					The key thing with Oracle is that it contains a schema user &quot;container&quot; under the data source.  
+					For the script to work properly, it needs to be pointed past this intermediate container to the
+					actual schema user so that it can introspect the underlying tables.
+
+				MySQL
+					Set the PM_FOLDER (Physical Metadata Source Folder) to the path representing MySQL data source
+					Example: SET PM_FOLDER=&quot;Metadata Path&quot;/MysqlSource/INVENTORY/ds_inventory
+         		      Best Practices              ^                 ^          ^            ^
+         		     Physical Metadata Layer Path |                 |          |            |
+        		                                     CIS Sub-folder |          |            |
+         		                                                CIS Sub-folder |            |
+            		                                                 CIS MySQL Data Source  |
+        		    The key thing with MySQL is that the scripts are able to detect multiple data sources in a
+					sub-folder because the CIS data source contains tables directly underneath the data source.  It has 
+					no other catalog or schema folders like Oracle has.
+
+------------------------------------------------------------------
+--  EXAMPLE ORACLE CISORADEMO DATA SOURCE GENERATION FOLDERS
+-------------------------------------------------------------------
+set groupId = &apos;CISORADEMO&apos;;
+SET PM_FOLDER=physicalMetadataPath||&apos;/OracleSource/cisOraDemoDS/CISORADEMO&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/CISORADEMO&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/CISORADEMO&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/CISORADEMO&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;&apos;;
+
+NOTE: Physical Views has been DEPRECATED. 
+Generate Physical Views (Generate logical alias name from physical name)
+	From: Physical Metadata Source
+	  To: Physical View Target
+	step 1: Execute generatePhysicalViews()
+		Configuration used:
+			layerType = &apos;PV&apos;			-- PV=Physical Views - generatePhysicalViews invokes generateViews
+			generateMode = &apos;G&apos;			-- G=Generate the resource names 
+			outputMode = &apos;A&apos;			-- A=Return All abstract columns, 
+			generateViews = 1			-- 1=Do generate - Perform the VIEW Generation, 
+		(G)	caseRule = &apos;O&apos;				-- O=Original_case - The word is not changed at all -- just pass it through as is
+		(G)	useAliasRule = 0			-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+		(R)	generateWithSourceColumn=1	-- 1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM__FOLDER,PV_FOLDER);
+
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+
+Generate Formatting Views (Retrieve logical alias name from a spreadsheet)
+	From: Physical Metadata Source
+	  To: Formatting View Target
+	step 1: Execute generateFormattingViews()
+		Configuration used:
+			layerType = &apos;FV&apos;			-- FV=Formatting Views - generateFormattingViews invokes generateViews
+			generateMode = &apos;R&apos;			-- R=Retrieve the resource name from a spreadsheet. (resources include PATH names, VIEW names AND COLUMN names)
+			outputMode = &apos;A&apos;			-- A=Return All abstract columns, 
+			generateViews = 1			-- 1=Do generate - Perform the VIEW Generation, 
+		(G)	caseRule = &apos;O&apos;				-- O=Original_case - The word is not changed at all -- just pass it through as is
+		(G)	useAliasRule = 0			-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+		(R)	generateWithSourceColumn=0	-- 1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+Generate Logical Views (Generate logical views using the same names as the formatting view)
+	From: Formatting View Source
+	  To: Logical View Target
+	step 1: Execute generateLogicalViews()
+		Configuration used:
+			layerType = &apos;LV&apos;			-- LV=Logical Views - generateLoicalViews invokes generateViews
+			generateMode = &apos;G&apos;			-- G=Generate the resource names 
+			outputMode = &apos;A&apos;			-- A=Return All abstract columns, 
+			generateViews = 1			-- 1=Do generate - Perform the VIEW Generation, 
+		(G)	caseRule = &apos;O&apos;				-- O=Original_case - The word is not changed at all -- just pass it through as is
+		(G)	useAliasRule = 0			-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+		(R)	generateWithSourceColumn=0	-- 1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+Generate Client Views (Generate client views using the same names as the logical view)
+	From: Logical View Source
+	  To: Client View Target
+	step 1: Execute generateClientViews()
+		Configuration used:
+			layerType = &apos;CV&apos;			-- CV=Client Views - generateClientViews invokes generateViews
+			generateMode = &apos;G&apos;			-- G=Generate the resource names 
+			outputMode = &apos;A&apos;			-- A=Return All abstract columns, 
+			generateViews = 1			-- 1=Do generate - Perform the VIEW Generation, 
+		(G)	caseRule = &apos;O&apos;				-- O=Original_case - The word is not changed at all -- just pass it through as is
+		(G)	useAliasRule = 0			-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+		(R)	generateWithSourceColumn=0	-- 1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;A&apos;,LV_FOLDER,CV_FOLDER);
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+	04/01/2013		Mike Tinius			5.2.0			Removed the 6th parameter (sourceName) in between sourceFolder and tagetFolder.  No longer relavant.
+	05/15/2013		Mike Tinius			6.0.0			Updated Best Practices 7.1 with compositeDatabasePath and bestPracticesVersion
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.</annotation>
+  <parameters>
+    <parameter name="StartingFolderPipe" direction="OUT" nullable="true">
+      <datatype name="startingFolderType" type="TABLE" refId="1">
+        <element name="groupId">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="process">
+          <datatype name="BIT" type="INTEGER" minValue="0" maxValue="1"/>
+        </element>
+        <element name="layerType">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="pathDerivation">
+          <datatype name="CHAR" type="STRING" minLength="1" maxLength="1"/>
+        </element>
+        <element name="sourceFolderPath">
+          <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+        </element>
+        <element name="targetFolderPath">
+          <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+        </element>
+      </datatype>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/shared/ASAssets/BestPractices_v81/Procedures/TypeDefinitions" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1"></datatype>
+  </dependency>
+  <dependency target="/shared/Common/_scripts/Constants/defaultValues" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="bestPracticesVersion_" direction="OUT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="basePath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="scriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="configureScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="constantsScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="generationScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="documentationScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="compositeDatabasePath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationPublishedPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationServicesPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationViewsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationViewsSubFolder_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="crudPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="typeDefinitionPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="typeDefinitionProcName_" direction="OUT">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="businessBusinessPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="businessLogicalPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalFormattingPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalFormattingTransformationPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalViewsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalMetadataPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="genUniqueIDPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="debugTime_" direction="OUT">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">/* 
+	ConfigureStartingFolders:
+	-- Data Virtualization Best Practices --
+
+	Rows of directories that define physical layer sources and corresponding target folder
+	At the present time, these configurations are used to generate &quot;Physical Views&quot; or &quot;Formatting Views&quot;.
+
+	Note: As of v7.0, generating Physical Views has been deprecated as the best practice is to generated
+		  Formatting Views directly from the Physical Metadata.
+
+Cursor Definition for startingFolderPipe:
+
+(1st parameter)	groupId - Provides a way of grouping multiple rows together so that the user can identify
+	which group they want to generate for.  It becomes a filter for view generation.
+
+(2nd parameter)	process - Tells the generatViews whether to process the ConfigureStartingFolders row or not.
+	Allows you to maintain the list but not process a configuration if you don&apos;t want to.
+	0=Do Not process this configuration row.
+	1=Do process this configuration row.
+
+(3rd parameter)	layerType - Tells the generateViews what Layer it will be generating views for (target layer).
+	&apos;PV&apos;=Physical Views - generatePhysicalViews inovkes generateViews (DEPRECATED)
+	&apos;FV&apos;=Formatting Views - generateFormattingViews invokes generateViews
+	&apos;BV&apos;=Business Views - use generateViews
+	&apos;LV&apos;=Logical Views - generateLoicalViews invokes generateViews
+	&apos;CV&apos;=Client Views - generateClientViews invokes generateViews
+	&apos;CP&apos;=Client Published - generateClientPublished invokes generateViews
+
+(4th parameter)	pathDerivation 
+	&apos;A&apos;=Absolute path as described by targetFolderPath, 
+	&apos;D&apos;=(Default setting) Derived from the targetFolderPath + adding on the remaining path from the actual resource 
+	       after subtracting the sourceFolderPath - Example:
+	 		sourceFolderPath     = /shared/examples
+	 		actual resource path = /shared/examples/ds_orders/customers
+	 		targetFolderPath   = /shared/examples/TargetLayer
+
+		subtract the sourceFolderPath(/shared/examples) from the actual resource path 
+		(/shared/examples/ds_orders/customers) to get the derived remaining folder  
+		(ds_orders/customers).  Apply naming convention rules on each folder part to derive the canonical
+		names for the folders such as (/DataSourceOrders/Customers).  Take the targetFolderPath 
+		(/shared/examples/TargetLayer) and concatenate the remaining folder to arrive at the 
+		final dervied target folder (/shared/examples/TargetLayer/DataSourceOrders/Customers)
+
+(5th parameter)	sourceFolderPath - Source CIS folder location
+	 When layerType=PM, this is the Physical_Metadata folder path to the physical data source
+
+(6th parameter)	targetFolderPath - Target CIS folder location
+
+	Supported Behavior
+	------------------
+	   BEHAVIOR(1): Overlapping sourceFolderPath definitions will result in duplicated views being produced
+					Take the 2 source folder paths expressed below.  The 2nd one is a sub-directory of the first one.
+					This will result in the same source folders being processed twice which generates the same mapping views
+					but in different target target folders.
+		(groupId,1,&apos;A&apos;,&apos;/shared/BestPractices/DataAbstractionSample/Physical/Metadata&apos;       ,&apos;/shared/BestPractices/DataAbstractionSample/Physical/Formatting&apos;),
+		(groupId,1,&apos;A&apos;,&apos;/shared/BestPractices/DataAbstractionSample/Physical/Metadata/ORDERS&apos;,&apos;/shared/BestPractices/DataAbstractionSample/Physicalayer/Formatting/Orders&apos;)
+
+	    BEHAVIOR(2): Source Folder Path definitions are case sensitive and must match the actual source path that you
+					 want to introspect to create mapping views from.
+
+	    BEHAVIOR(3): Any &apos;TABLE&apos; or &apos;PROCEDURE&apos; resource type that produces a curosr output is supported.
+					Examples: Views, Relational Table, Procedures with cursors including XSLT, custom or parameterized queries.
+
+		BEHAVIOR(4): Set the PM_FOLDER as general or as specific as needed.  If only one data source lives in a folder
+					 then it is feasible to set it to the container.  If a data source has multiple schemas then it
+					 may be necessary to set up a group that identifies the specific &quot;SCHEMA_NAME&quot;.   For example, with 
+					 Oracle, it may be necessary to provide the entire path to the schema user.  For MySQl, it may only 
+					 be necessary to provide the path to the actual Data Source.
+
+				Oracle
+					Set the PM_FOLDER (Physical Metadata Source Folder) to the path representing the Oracle Schema
+					Example: SET PM_FOLDER=&quot;Metadata Path&quot;/OracleSource/cisOraDemoDS/CISORADEMO
+       		        Best Practices              ^                 ^             ^            ^
+       		       Physical Metadata Layer Path |                 |             |            |
+       		                                       CIS Sub-folder |             |            |
+            		                                     CIS Oracle Data Source |            |
+                    	                                      Oracle Data Source Schema User |
+					The key thing with Oracle is that it contains a schema user &quot;container&quot; under the data source.  
+					For the script to work properly, it needs to be pointed past this intermediate container to the
+					actual schema user so that it can introspect the underlying tables.
+
+				MySQL
+					Set the PM_FOLDER (Physical Metadata Source Folder) to the path representing MySQL data source
+					Example: SET PM_FOLDER=&quot;Metadata Path&quot;/MysqlSource/INVENTORY/ds_inventory
+         		      Best Practices              ^                 ^          ^            ^
+         		     Physical Metadata Layer Path |                 |          |            |
+        		                                     CIS Sub-folder |          |            |
+         		                                                CIS Sub-folder |            |
+            		                                                 CIS MySQL Data Source  |
+        		    The key thing with MySQL is that the scripts are able to detect multiple data sources in a
+					sub-folder because the CIS data source contains tables directly underneath the data source.  It has 
+					no other catalog or schema folders like Oracle has.
+
+------------------------------------------------------------------
+--  EXAMPLE ORACLE CISORADEMO DATA SOURCE GENERATION FOLDERS
+-------------------------------------------------------------------
+set groupId = &apos;CISORADEMO&apos;;
+SET PM_FOLDER=physicalMetadataPath||&apos;/OracleSource/cisOraDemoDS/CISORADEMO&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/CISORADEMO&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/CISORADEMO&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/CISORADEMO&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;&apos;;
+
+NOTE: Physical Views has been DEPRECATED. 
+Generate Physical Views (Generate logical alias name from physical name)
+	From: Physical Metadata Source
+	  To: Physical View Target
+	step 1: Execute generatePhysicalViews()
+		Configuration used:
+			layerType = &apos;PV&apos;			-- PV=Physical Views - generatePhysicalViews invokes generateViews
+			generateMode = &apos;G&apos;			-- G=Generate the resource names 
+			outputMode = &apos;A&apos;			-- A=Return All abstract columns, 
+			generateViews = 1			-- 1=Do generate - Perform the VIEW Generation, 
+		(G)	caseRule = &apos;O&apos;				-- O=Original_case - The word is not changed at all -- just pass it through as is
+		(G)	useAliasRule = 0			-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+		(R)	generateWithSourceColumn=1	-- 1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM__FOLDER,PV_FOLDER);
+
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+
+Generate Formatting Views (Retrieve logical alias name from a spreadsheet)
+	From: Physical Metadata Source
+	  To: Formatting View Target
+	step 1: Execute generateFormattingViews()
+		Configuration used:
+			layerType = &apos;FV&apos;			-- FV=Formatting Views - generateFormattingViews invokes generateViews
+			generateMode = &apos;R&apos;			-- R=Retrieve the resource name from a spreadsheet. (resources include PATH names, VIEW names AND COLUMN names)
+			outputMode = &apos;A&apos;			-- A=Return All abstract columns, 
+			generateViews = 1			-- 1=Do generate - Perform the VIEW Generation, 
+		(G)	caseRule = &apos;O&apos;				-- O=Original_case - The word is not changed at all -- just pass it through as is
+		(G)	useAliasRule = 0			-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+		(R)	generateWithSourceColumn=0	-- 1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+Generate Logical Views (Generate logical views using the same names as the formatting view)
+	From: Formatting View Source
+	  To: Logical View Target
+	step 1: Execute generateLogicalViews()
+		Configuration used:
+			layerType = &apos;LV&apos;			-- LV=Logical Views - generateLoicalViews invokes generateViews
+			generateMode = &apos;G&apos;			-- G=Generate the resource names 
+			outputMode = &apos;A&apos;			-- A=Return All abstract columns, 
+			generateViews = 1			-- 1=Do generate - Perform the VIEW Generation, 
+		(G)	caseRule = &apos;O&apos;				-- O=Original_case - The word is not changed at all -- just pass it through as is
+		(G)	useAliasRule = 0			-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+		(R)	generateWithSourceColumn=0	-- 1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+Generate Client Views (Generate client views using the same names as the logical view)
+	From: Logical View Source
+	  To: Client View Target
+	step 1: Execute generateClientViews()
+		Configuration used:
+			layerType = &apos;CV&apos;			-- CV=Client Views - generateClientViews invokes generateViews
+			generateMode = &apos;G&apos;			-- G=Generate the resource names 
+			outputMode = &apos;A&apos;			-- A=Return All abstract columns, 
+			generateViews = 1			-- 1=Do generate - Perform the VIEW Generation, 
+		(G)	caseRule = &apos;O&apos;				-- O=Original_case - The word is not changed at all -- just pass it through as is
+		(G)	useAliasRule = 0			-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+		(R)	generateWithSourceColumn=0	-- 1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;A&apos;,LV_FOLDER,CV_FOLDER);
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/20/2010		Mike Tinius			5.1.0			Created new
+	04/01/2013		Mike Tinius			5.2.0			Removed the 6th parameter (sourceName) in between sourceFolder and tagetFolder.  No longer relavant.
+	05/15/2013		Mike Tinius			6.0.0			Updated Best Practices 7.1 with compositeDatabasePath and bestPracticesVersion
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+*/
+PROCEDURE ConfigureStartingFolders(
+	OUT StartingFolderPipe PIPE /shared/ASAssets/BestPractices_v81/Procedures/TypeDefinitions.startingFolderType
+)
+BEGIN
+------------------------------------------------------------------
+-- VARIABLE DECLARATIONS
+------------------------------------------------------------------
+-- Default base folder locations defined in /Constants/defaultValues
+-- (It makes maintenance easier if the base project folder is moved)
+-----------------------------------------------------------------
+-- NOTE: Make sure the path is pointing to the correct project
+-----------------------------------------------------------------
+DECLARE compositeDatabasePath     VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.compositeDatabasePath;
+DECLARE applicationPublishedPath  VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.applicationPublishedPath;
+DECLARE applicationViewsPath 	  VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.applicationViewsPath;
+DECLARE applicationViewsSubFolder VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.applicationViewsSubFolder;
+DECLARE businessBusinessPath 	  VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.businessBusinessPath;
+DECLARE businessLogicalPath 	  VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.businessLogicalPath;
+DECLARE physicalFormattingPath    VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.physicalFormattingPath;
+DECLARE physicalFormattingTransformationPath   VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.physicalFormattingTransformationPath;
+DECLARE physicalMetadataPath 	  VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.physicalMetadataPath;
+DECLARE crudPath				  VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.crudPath;
+--DEPRECATED: 
+DECLARE federatedViewsPath 	 	  VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.federatedViewsPath;
+DECLARE physicalViewsPath 	 	  VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.physicalViewsPath;
+
+-- Folder location variables for generating Data Abstraction Views
+-- Physical Layer [Metadata, Physical, Formatting]
+DECLARE PM_FOLDER	VARCHAR(4000) DEFAULT NULL; -- Physical Metadata Folder Path (PM)
+DECLARE PV_FOLDER	VARCHAR(4000) DEFAULT NULL; -- Physical Views Folder Path (PV) (Deprecated)
+DECLARE FV_FOLDER	VARCHAR(4000) DEFAULT NULL; -- Formatting Views Folder Path (FV)
+-- Business Layer [Logical, Business]
+DECLARE LV_FOLDER	VARCHAR(4000) DEFAULT NULL; -- Logical Views Folder Path (LV)
+DECLARE EV_FOLDER	VARCHAR(4000) DEFAULT NULL; -- Federated Views Folder Path (EV) (Deprecated)
+DECLARE BV_FOLDER	VARCHAR(4000) DEFAULT NULL; -- Business Views Folder Path (BV)
+-- Application Layer [Views, Published]
+DECLARE CV_FOLDER	VARCHAR(4000) DEFAULT NULL; -- Client Views Folder Path (CV)
+DECLARE CP_FOLDER	VARCHAR(4000) DEFAULT NULL; -- Client Published Folder Path (CP)
+-- Database Layer [/services/databases]
+DECLARE DB_FOLDER	VARCHAR(4000) DEFAULT NULL;	-- Published Composite Database (DB)
+-- CRUD (Create,Read,Update,Delete) Source Folder.  This is the folder from which CRUD operations are generated
+DECLARE CR_FOLDER	VARCHAR(4000) DEFAULT NULL; -- CRUD Source Folder Path (CR)
+DECLARE CT_FOLDER	VARCHAR(4000) DEFAULT NULL; -- CRUD Target Folder Path (CR)
+-- Group Identifier (used as a filter for view generation)
+DECLARE groupId				VARCHAR;
+/*------------------------------------------------------------------
+  INSTRUCTIONS:  
+  -------------
+  Each Physical Data Source must have it&apos;s own section for view
+  generation section.  A section is defined by 5 variables and
+  4 insert statements as seen in the examples below.
+    1. Copy an entire Example section below.
+    2. Modify for your File or Relational Data Source.
+    3. Use the 5 base path variables so that your project can easily
+       be copied and renamed if necessary.
+------------------------------------------------------------------*/
+
+---------------------------------------------------------------------
+-- SECTION: Common_Model_v2 DATA SOURCE GENERATION FOLDERS
+----------------------------------------------------------------------
+-- This example shows how to specify the Physical Metadata CIS datasource path for Oracle.
+-- Specify the full path all the way down to the Oracle Schema user folder.  This is the folder just above the tables.
+-- Comment out or removing SET and INSERT statements that are not needed.
+set groupId = &apos;Common_Model_v2&apos;;
+SET PM_FOLDER=physicalMetadataPath||&apos;/File/Common_Model_v2&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/Common_Model_v2&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/Common_Model_v2&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/Common_Model_v2&apos;;
+SET BV_FOLDER=businessBusinessPath||&apos;/Common_Model_v2&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;/Common_Model_v2&apos;;
+SET CP_FOLDER=applicationPublishedPath||&apos;/Common_Model_v2&apos;;
+SET DB_FOLDER=compositeDatabasePath||&apos;/Common_Model_v2&apos;;
+
+-- Generate Published Database
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;DB&apos;,&apos;A&apos;,CP_FOLDER,DB_FOLDER);
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+-- Generate Formatting_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+-- Generate Logical_Views from the Formatting_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+-- Generate Business_Views from the Logical_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;BV&apos;,&apos;A&apos;,LV_FOLDER,BV_FOLDER);
+
+-- Generate Client_Views from the Business_Views source path specified
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;D&apos;,BV_FOLDER,CV_FOLDER);
+
+-- Generate Client_Published from the Client_Views source path specified 
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CP&apos;,&apos;D&apos;,CV_FOLDER,CP_FOLDER);
+
+-- Generate CRUD operations from the CRUD source folder by designating it as the target folder.
+-- By generating from the Physical_Views it will insure that no new or derived columns are propagated.
+-- It is not permitted to perform a CRUD operation against a view with any derived columns present.
+--DEPRECATED: Generate Physical_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM_FOLDER,PV_FOLDER);
+SET CR_FOLDER=PV_FOLDER;
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CR&apos;,&apos;A&apos;,CR_FOLDER,crudPath);
+
+
+---------------------------------------------------------------------
+-- SECTION: testfile DATA SOURCE GENERATION FOLDERS
+----------------------------------------------------------------------
+-- This example shows how to specify the Physical Metadata CIS datasource path for Oracle.
+-- Specify the full path all the way down to the Oracle Schema user folder.  This is the folder just above the tables.
+-- Comment out or removing SET and INSERT statements that are not needed.
+set groupId = &apos;testfile&apos;;
+SET PM_FOLDER=physicalMetadataPath||&apos;/File/testfile&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/testfile&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/testfile&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/testfile&apos;;
+SET BV_FOLDER=businessBusinessPath||&apos;/testfile&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;/testfile&apos;;
+SET CP_FOLDER=applicationPublishedPath||&apos;/testfile&apos;;
+SET DB_FOLDER=compositeDatabasePath||&apos;/testfile&apos;;
+
+-- Generate Published Database
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;DB&apos;,&apos;A&apos;,CP_FOLDER,DB_FOLDER);
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+-- Generate Formatting_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+-- Generate Logical_Views from the Formatting_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+-- Generate Business_Views from the Logical_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;BV&apos;,&apos;A&apos;,LV_FOLDER,BV_FOLDER);
+
+-- Generate Client_Views from the Business_Views source path specified
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;D&apos;,BV_FOLDER,CV_FOLDER);
+
+-- Generate Client_Published from the Client_Views source path specified 
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CP&apos;,&apos;D&apos;,CV_FOLDER,CP_FOLDER);
+
+-- Generate CRUD operations from the CRUD source folder by designating it as the target folder.
+-- By generating from the Physical_Views it will insure that no new or derived columns are propagated.
+-- It is not permitted to perform a CRUD operation against a view with any derived columns present.
+--DEPRECATED: Generate Physical_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM_FOLDER,PV_FOLDER);
+SET CR_FOLDER=PV_FOLDER;
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CR&apos;,&apos;A&apos;,CR_FOLDER,crudPath);
+
+---------------------------------------------------------------------
+-- SECTION: ds_inventory DATA SOURCE GENERATION FOLDERS
+----------------------------------------------------------------------
+-- This example shows how to specify the Physical Metadata CIS datasource path for Oracle.
+-- Specify the full path all the way down to the Oracle Schema user folder.  This is the folder just above the tables.
+-- Comment out or removing SET and INSERT statements that are not needed.
+set groupId = &apos;ds_inventory&apos;;
+SET PM_FOLDER=physicalMetadataPath||&apos;/MysqlSource/INVENTORY/ds_inventory&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/ds_inventory&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/ds_inventory&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/ds_inventory&apos;;
+SET BV_FOLDER=businessBusinessPath||&apos;/ds_inventory&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;/ds_inventory&apos;;
+SET CP_FOLDER=applicationPublishedPath||&apos;/ds_inventory&apos;;
+SET DB_FOLDER=compositeDatabasePath||&apos;/ds_inventory&apos;;
+
+-- Generate Published Database
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;DB&apos;,&apos;A&apos;,CP_FOLDER,DB_FOLDER);
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+-- Generate Formatting_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+-- Generate Logical_Views from the Formatting_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+-- Generate Business_Views from the Logical_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;BV&apos;,&apos;A&apos;,LV_FOLDER,BV_FOLDER);
+
+-- Generate Client_Views from the Business_Views source path specified
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;D&apos;,BV_FOLDER,CV_FOLDER);
+
+-- Generate Client_Published from the Client_Views source path specified 
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CP&apos;,&apos;D&apos;,CV_FOLDER,CP_FOLDER);
+
+-- Generate CRUD operations from the CRUD source folder by designating it as the target folder.
+-- By generating from the Physical_Views it will insure that no new or derived columns are propagated.
+-- It is not permitted to perform a CRUD operation against a view with any derived columns present.
+--DEPRECATED: Generate Physical_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM_FOLDER,PV_FOLDER);
+SET CR_FOLDER=PV_FOLDER;
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CR&apos;,&apos;A&apos;,CR_FOLDER,crudPath);
+
+
+---------------------------------------------------------------------
+-- SECTION: ds_orders1 DATA SOURCE GENERATION FOLDERS
+----------------------------------------------------------------------
+-- This example shows how to specify the Physical Metadata CIS datasource path for Oracle.
+-- Specify the full path all the way down to the Oracle Schema user folder.  This is the folder just above the tables.
+-- Comment out or removing SET and INSERT statements that are not needed.
+set groupId = &apos;ds_orders1&apos;;
+SET PM_FOLDER=physicalMetadataPath||&apos;/MysqlSource/ORDERS1/ds_orders1&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/ds_orders1&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/ds_orders1&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/ds_orders1&apos;;
+SET BV_FOLDER=businessBusinessPath||&apos;/ds_orders1&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;/ds_orders1&apos;;
+SET CP_FOLDER=applicationPublishedPath||&apos;/ds_orders1&apos;;
+SET DB_FOLDER=compositeDatabasePath||&apos;/ds_orders1&apos;;
+
+-- Generate Published Database
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;DB&apos;,&apos;A&apos;,CP_FOLDER,DB_FOLDER);
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+-- Generate Formatting_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+-- Generate Logical_Views from the Formatting_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+-- Generate Business_Views from the Logical_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;BV&apos;,&apos;A&apos;,LV_FOLDER,BV_FOLDER);
+
+-- Generate Client_Views from the Business_Views source path specified
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;D&apos;,BV_FOLDER,CV_FOLDER);
+
+-- Generate Client_Published from the Client_Views source path specified 
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CP&apos;,&apos;D&apos;,CV_FOLDER,CP_FOLDER);
+
+-- Generate CRUD operations from the CRUD source folder by designating it as the target folder.
+-- By generating from the Physical_Views it will insure that no new or derived columns are propagated.
+-- It is not permitted to perform a CRUD operation against a view with any derived columns present.
+--DEPRECATED: Generate Physical_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM_FOLDER,PV_FOLDER);
+SET CR_FOLDER=PV_FOLDER;
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CR&apos;,&apos;A&apos;,CR_FOLDER,crudPath);
+
+
+---------------------------------------------------------------------
+-- SECTION: ds_orders2 DATA SOURCE GENERATION FOLDERS
+----------------------------------------------------------------------
+-- This example shows how to specify the Physical Metadata CIS datasource path for Oracle.
+-- Specify the full path all the way down to the Oracle Schema user folder.  This is the folder just above the tables.
+-- Comment out or removing SET and INSERT statements that are not needed.
+set groupId = &apos;ds_orders2&apos;;
+SET PM_FOLDER=physicalMetadataPath||&apos;/MysqlSource/ORDERS2/ds_orders2&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/ds_orders2&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/ds_orders2&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/ds_orders2&apos;;
+SET BV_FOLDER=businessBusinessPath||&apos;/ds_orders2&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;/ds_orders2&apos;;
+SET CP_FOLDER=applicationPublishedPath||&apos;/ds_orders2&apos;;
+SET DB_FOLDER=compositeDatabasePath||&apos;/ds_orders2&apos;;
+
+-- Generate Published Database
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;DB&apos;,&apos;A&apos;,CP_FOLDER,DB_FOLDER);
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+-- Generate Formatting_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+-- Generate Logical_Views from the Formatting_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+-- Generate Business_Views from the Logical_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;BV&apos;,&apos;A&apos;,LV_FOLDER,BV_FOLDER);
+
+-- Generate Client_Views from the Business_Views source path specified
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;D&apos;,BV_FOLDER,CV_FOLDER);
+
+-- Generate Client_Published from the Client_Views source path specified 
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CP&apos;,&apos;D&apos;,CV_FOLDER,CP_FOLDER);
+
+-- Generate CRUD operations from the CRUD source folder by designating it as the target folder.
+-- By generating from the Physical_Views it will insure that no new or derived columns are propagated.
+-- It is not permitted to perform a CRUD operation against a view with any derived columns present.
+--DEPRECATED: Generate Physical_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM_FOLDER,PV_FOLDER);
+SET CR_FOLDER=PV_FOLDER;
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CR&apos;,&apos;A&apos;,CR_FOLDER,crudPath);
+
+
+
+---------------------------------------------------------------------
+-- SECTION: ds_inventory_local DATA SOURCE GENERATION FOLDERS
+----------------------------------------------------------------------
+-- This example shows how to specify the Physical Metadata CIS datasource path for Oracle.
+-- Specify the full path all the way down to the Oracle Schema user folder.  This is the folder just above the tables.
+-- Comment out or removing SET and INSERT statements that are not needed.
+set groupId = &apos;ds_inventory_local&apos;;
+SET PM_FOLDER=physicalMetadataPath||&apos;/MysqlSource/local/ds_inventory_local&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/ds_inventory_local&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/ds_inventory_local&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/ds_inventory_local&apos;;
+SET BV_FOLDER=businessBusinessPath||&apos;/ds_inventory_local&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;/ds_inventory_local&apos;;
+SET CP_FOLDER=applicationPublishedPath||&apos;/ds_inventory_local&apos;;
+SET DB_FOLDER=compositeDatabasePath||&apos;/ds_inventory_local&apos;;
+
+-- Generate Published Database
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;DB&apos;,&apos;A&apos;,CP_FOLDER,DB_FOLDER);
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+-- Generate Formatting_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+-- Generate Logical_Views from the Formatting_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+-- Generate Business_Views from the Logical_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;BV&apos;,&apos;A&apos;,LV_FOLDER,BV_FOLDER);
+
+-- Generate Client_Views from the Business_Views source path specified
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;D&apos;,BV_FOLDER,CV_FOLDER);
+
+-- Generate Client_Published from the Client_Views source path specified 
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CP&apos;,&apos;D&apos;,CV_FOLDER,CP_FOLDER);
+
+-- Generate CRUD operations from the CRUD source folder by designating it as the target folder.
+-- By generating from the Physical_Views it will insure that no new or derived columns are propagated.
+-- It is not permitted to perform a CRUD operation against a view with any derived columns present.
+--DEPRECATED: Generate Physical_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM_FOLDER,PV_FOLDER);
+SET CR_FOLDER=PV_FOLDER;
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CR&apos;,&apos;A&apos;,CR_FOLDER,crudPath);
+
+
+
+---------------------------------------------------------------------
+-- SECTION: ds_orders_local DATA SOURCE GENERATION FOLDERS
+----------------------------------------------------------------------
+-- This example shows how to specify the Physical Metadata CIS datasource path for Oracle.
+-- Specify the full path all the way down to the Oracle Schema user folder.  This is the folder just above the tables.
+-- Comment out or removing SET and INSERT statements that are not needed.
+set groupId = &apos;ds_orders_local&apos;;
+SET PM_FOLDER=physicalMetadataPath||&apos;/MysqlSource/local/ds_orders_local&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/ds_orders_local&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/ds_orders_local&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/ds_orders_local&apos;;
+SET BV_FOLDER=businessBusinessPath||&apos;/ds_orders_local&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;/ds_orders_local&apos;;
+SET CP_FOLDER=applicationPublishedPath||&apos;/ds_orders_local&apos;;
+SET DB_FOLDER=compositeDatabasePath||&apos;/ds_orders_local&apos;;
+
+-- Generate Published Database
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;DB&apos;,&apos;A&apos;,CP_FOLDER,DB_FOLDER);
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+-- Generate Formatting_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+-- Generate Logical_Views from the Formatting_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+-- Generate Business_Views from the Logical_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;BV&apos;,&apos;A&apos;,LV_FOLDER,BV_FOLDER);
+
+-- Generate Client_Views from the Business_Views source path specified
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;D&apos;,BV_FOLDER,CV_FOLDER);
+
+-- Generate Client_Published from the Client_Views source path specified 
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CP&apos;,&apos;D&apos;,CV_FOLDER,CP_FOLDER);
+
+-- Generate CRUD operations from the CRUD source folder by designating it as the target folder.
+-- By generating from the Physical_Views it will insure that no new or derived columns are propagated.
+-- It is not permitted to perform a CRUD operation against a view with any derived columns present.
+--DEPRECATED: Generate Physical_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM_FOLDER,PV_FOLDER);
+SET CR_FOLDER=PV_FOLDER;
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CR&apos;,&apos;A&apos;,CR_FOLDER,crudPath);
+
+
+
+---------------------------------------------------------------------
+-- SECTION: Seq DATA SOURCE GENERATION FOLDERS
+----------------------------------------------------------------------
+-- This example shows how to specify the Physical Metadata CIS datasource path for Oracle.
+-- Specify the full path all the way down to the Oracle Schema user folder.  This is the folder just above the tables.
+-- Comment out or removing SET and INSERT statements that are not needed.
+set groupId = &apos;Seq&apos;;
+SET PM_FOLDER=physicalMetadataPath||&apos;/OracleSource/Seq&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/Seq&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/Seq&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/Seq&apos;;
+SET BV_FOLDER=businessBusinessPath||&apos;/Seq&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;/Seq&apos;;
+SET CP_FOLDER=applicationPublishedPath||&apos;/Seq&apos;;
+SET DB_FOLDER=compositeDatabasePath||&apos;/Seq&apos;;
+
+-- Generate Published Database
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;DB&apos;,&apos;A&apos;,CP_FOLDER,DB_FOLDER);
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+-- Generate Formatting_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+-- Generate Logical_Views from the Formatting_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+-- Generate Business_Views from the Logical_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;BV&apos;,&apos;A&apos;,LV_FOLDER,BV_FOLDER);
+
+-- Generate Client_Views from the Business_Views source path specified
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;D&apos;,BV_FOLDER,CV_FOLDER);
+
+-- Generate Client_Published from the Client_Views source path specified 
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CP&apos;,&apos;D&apos;,CV_FOLDER,CP_FOLDER);
+
+-- Generate CRUD operations from the CRUD source folder by designating it as the target folder.
+-- By generating from the Physical_Views it will insure that no new or derived columns are propagated.
+-- It is not permitted to perform a CRUD operation against a view with any derived columns present.
+--DEPRECATED: Generate Physical_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM_FOLDER,PV_FOLDER);
+SET CR_FOLDER=PV_FOLDER;
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CR&apos;,&apos;A&apos;,CR_FOLDER,crudPath);
+
+
+
+---------------------------------------------------------------------
+-- SECTION: CISORADEMO DATA SOURCE GENERATION FOLDERS
+----------------------------------------------------------------------
+-- This example shows how to specify the Physical Metadata CIS datasource path for Oracle.
+-- Specify the full path all the way down to the Oracle Schema user folder.  This is the folder just above the tables.
+-- Comment out or removing SET and INSERT statements that are not needed.
+set groupId = &apos;CISORADEMO&apos;;
+SET PM_FOLDER=physicalMetadataPath||&apos;/OracleSource/cisOraDemoDS/CISORADEMO&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/CISORADEMO&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/CISORADEMO&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/CISORADEMO&apos;;
+SET BV_FOLDER=businessBusinessPath||&apos;/CISORADEMO&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;/CISORADEMO&apos;;
+SET CP_FOLDER=applicationPublishedPath||&apos;/Orders&apos;;
+SET DB_FOLDER=compositeDatabasePath||&apos;/Orders&apos;;
+
+-- Generate Published Database
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;DB&apos;,&apos;A&apos;,CP_FOLDER,DB_FOLDER);
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+-- Generate Formatting_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+-- Generate Logical_Views from the Formatting_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+-- Generate Business_Views from the Logical_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;BV&apos;,&apos;A&apos;,LV_FOLDER,BV_FOLDER);
+
+-- Generate Client_Views from the Business_Views source path specified
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;D&apos;,BV_FOLDER,CV_FOLDER);
+
+-- Generate Client_Published from the Client_Views source path specified 
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CP&apos;,&apos;D&apos;,CV_FOLDER,CP_FOLDER);
+
+-- Generate CRUD operations from the CRUD source folder by designating it as the target folder.
+-- By generating from the Physical_Views it will insure that no new or derived columns are propagated.
+-- It is not permitted to perform a CRUD operation against a view with any derived columns present.
+--DEPRECATED: Generate Physical_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM_FOLDER,PV_FOLDER);
+SET CR_FOLDER=PV_FOLDER;
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CR&apos;,&apos;A&apos;,CR_FOLDER,crudPath);
+
+
+
+---------------------------------------------------------------------
+-- SECTION: ds_XML DATA SOURCE GENERATION FOLDERS
+----------------------------------------------------------------------
+-- This example shows how to specify the Physical Metadata CIS datasource path for Oracle.
+-- Specify the full path all the way down to the Oracle Schema user folder.  This is the folder just above the tables.
+-- Comment out or removing SET and INSERT statements that are not needed.
+set groupId = &apos;ds_XML&apos;;
+SET PM_FOLDER=physicalFormattingTransformationPath||&apos;/ds_XML&apos;;
+SET PV_FOLDER=physicalViewsPath||&apos;/ds_XML&apos;;
+SET FV_FOLDER=physicalFormattingPath||&apos;/ds_XML&apos;;
+SET LV_FOLDER=businessLogicalPath||&apos;/ds_XML&apos;;
+SET BV_FOLDER=businessBusinessPath||&apos;/ds_XML&apos;;
+SET CV_FOLDER=applicationViewsPath||&apos;/ds_XML&apos;;
+SET CP_FOLDER=applicationPublishedPath||&apos;/ds_XML&apos;;
+SET DB_FOLDER=compositeDatabasePath||&apos;/ds_XML&apos;;
+
+-- Generate Published Database
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;DB&apos;,&apos;A&apos;,CP_FOLDER,DB_FOLDER);
+
+-- Generate Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PM&apos;,&apos;A&apos;,physicalMetadataPath,PM_FOLDER);
+
+-- Generate Formatting_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;FV&apos;,&apos;A&apos;,PM_FOLDER,FV_FOLDER);
+
+-- Generate Logical_Views from the Formatting_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;LV&apos;,&apos;A&apos;,FV_FOLDER,LV_FOLDER);
+
+-- Generate Business_Views from the Logical_Views source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;BV&apos;,&apos;A&apos;,LV_FOLDER,BV_FOLDER);
+
+-- Generate Client_Views from the Business_Views source path specified
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CV&apos;,&apos;D&apos;,BV_FOLDER,CV_FOLDER);
+
+-- Generate Client_Published from the Client_Views source path specified 
+--   Path introspection is recursive starting at a base folder.  
+--   When you want to generate views from multiple folders in a hierarchy, provide the least common denominator folder 
+--   as the base path and set the path derivation mode=&apos;D&apos; for derived which will traverse all sub-folders during generation. 
+--   When using &apos;D&apos;, Consider using base paths for source and target so directories are emulated exactly.
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CP&apos;,&apos;D&apos;,CV_FOLDER,CP_FOLDER);
+
+-- Generate CRUD operations from the CRUD source folder by designating it as the target folder.
+-- By generating from the Physical_Views it will insure that no new or derived columns are propagated.
+-- It is not permitted to perform a CRUD operation against a view with any derived columns present.
+--DEPRECATED: Generate Physical_Views from the Physical_Metadata source path specified
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;PV&apos;,&apos;A&apos;,PM_FOLDER,PV_FOLDER);
+SET CR_FOLDER=PV_FOLDER;
+INSERT INTO StartingFolderPipe VALUES (groupId,1,&apos;CR&apos;,&apos;A&apos;,CR_FOLDER,crudPath);
+
+
+
+END</attribute>
+  <attribute name="creationDate" type="LONG">0</attribute>
+  <attribute name="creatorUserDomain" type="STRING"/>
+  <attribute name="creatorUserName" type="STRING"/>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1570164291271</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">asp5665</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="NULL"/>
+</metadata>

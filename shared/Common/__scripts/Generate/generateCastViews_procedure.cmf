@@ -1,0 +1,763 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="generateCastViews" path="/shared/Common/_scripts/Generate/generateCastViews" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>generateCastViews: 
+	-- Data Virtualization Best Practices --
+
+	This procedure is used for generating views with cast statements.  Casting can be done at any layer within the best practices.
+	This procedure allows the user to specify the source folder or resource and target folder where the resource should be generated.
+	It does not rely on the ConfigureStartingFolders.
+
+	Combinations allowed:
+		sourceResource	--&gt;		targetResource
+		--------------			--------------
+		CONTAINER 		--&gt; 	CONTAINER	[generate casting views from the contents of a CONTAINER (folder) to another CONTAINER retaining any sub-folders during the generation.]
+		RESOURCE  		--&gt; 	CONTAINER	[generate casting views for a resource to a target folder]
+
+	Combinations not allowed:
+		RESOURCE		--&gt;		RESOURCE [will evaluate for phase 2]
+		CONTAINER		--&gt;		RESOURCE [this scenario is never allowed]
+
+	Input:
+			-- 0           - print the output to the cursor.  The cursor is bound by Composite Studio &quot;Fetch Row Size&quot; and &quot;Cursor Fetch Limit&quot;
+			--               The cursor stops producing output when it hits those limits.  The limits are configured in Composite Studio
+			--                  AdministrationConfigurationStudioDataFetch Rows Size and Cursor Fetch Limit.  
+			--                  Modify the Cursor Fetch Limit to an arbitrary number such as 500
+			-- 1 (default) - print TABLE only information to console window.  Do not print to the cursor result window.  The aforementioned limits do not apply.
+			-- 2           - print TABLE and COLUMN information to console window.  Do not print to the cursor result window.
+		generateViewsWrapper
+
+			-- allows user to decide whether they want to overwrite an existing view or not.
+			-- 0=&quot;FAIL_IF_EXISTS&quot;=do not overwrite the resource.  If the resource exists, raise an exception.
+			-- 1=&quot;SKIP_IF_EXISTS&quot;=skip the resource if it exists and continue processing
+			-- 2 (default)=&quot;OVERWRITE_IF_EXISTS&quot;=overwrite the resource if it exists.
+		overwrite 
+
+			-- allows user to decide whether they want to copy annotations or not form both resource and columns.
+			-- 0 (default)=false=do not copy the annotation from the target resource
+			-- 1=true=do copy the annotation from the target resource
+		copyAnnotation 
+
+			-- flag indicating the mode in which to copy privileges.  Privileges are only copied from the parent when creating new resources including folders.
+			-- null (default) - do not set any privileges at all
+			-- 0 - set mode to &quot;OVERWRITE_APPEND&quot; - merges and does not update privileges for users or groups not mentioned.
+			-- 1 - set the mode to &quot;SET_EXACTLY&quot; - makes privileges look exactly like those provided in the call.
+		copyPrivilegeMode 
+
+			-- specifies how the source resource will be matched against the resource being interrogated
+			--	0=fuzzy match - sourcePath + derivedFilterPath must simply be contained within resourcePath
+			--	1  (default)=exact match - sourcePath + derivedFilterPath must match exactly in resourcePath
+		exactMatch 
+
+			-- comma separated list of resource paths or partials paths to exclude.  This may be useful when a data source has been moved and it&apos;s index or foreign keys
+			--	are pointing to another data source that does not exist anymore.  It may be necessary to exclude that path or paths.  If an exception is thrown during 
+			--	execution, try excluding those paths.
+			--	Values: /shared/MyPath/Physical/Metadata/MyDatasource
+		excludeDsPathsList
+
+			-- the source resource may be a starting folder or a specific resource such as a view, procedure, data source, data source schema or data source table
+			--	type = CONTAINER
+			--	type = TABLE, PROCEDURE, DATA_SOURCE, when the type is not a container, it will extract the resource name into the derivedFilterPath
+			--		and use the remaining path to evaluate if it is a CONTAINER.   A container must be passed into the underlying &quot;generateViewsLoop&quot;
+			--		which does the processing.  Depending on how the parameter &quot;exactMatch&quot; is set will determine what views get generated.
+		sourceResource
+
+			-- the target resource may only be a folder (phase 1).  
+			--	 In phase 2, I will evaluate the possibility of specifying a specific resource where the name may be different than the target.
+		targetResource
+
+	Output:
+   		1. Abstract Views are generated into the CIS repository.
+    	2. A cursor is returned from CIS which contains the following:
+			generateViewsRow - 	CURSOR (
+        		containerName 			VARCHAR(255), - the name of the container resource beging created.
+        		containerType 			VARCHAR(255), - the resource type of the container resource (i.e. TABLE)
+        		columnName 				VARCHAR(255), - the name of the original column within the source resource.
+        		logicalColumnName 		VARCHAR(255), - the name of the target column that will be created.
+        		logicalColumnType 		VARCHAR(255), - the type of the target column that will be created.
+        		logicalStatus 			VARCHAR(255), - the status for the usage of this column
+						-- on input, when generateMode = &apos;G&apos; possible values are:
+						-- 		GENERATED - generated the column name based on rules supplied
+						-- 		UNCHANGED - remains unchanged when it cannot match to the physical resourceName and the ConfigureParams.generateWithSourceColumn=1
+						-- on input, when generateMode = &apos;R&apos; possible values are:
+						-- 		FOUND - found when it finds a match to physical name in the spreadsheet
+						-- 		UNCHANGED - remains unchanged when it cannot match to the physical resourceName and the ConfigureParams.generateWithSourceColumn=1
+						-- 		DROPPED - gets dropped from the list when it cannot match to the physical resourceName and the ConfigureParams.generateWithSourceColumn=0
+        		containerPath 			VARCHAR(4000) - the full path to the container resource.
+			)
+
+			Values: example:
+parentName,	containerName,	containerType,	columnName,			logicalColumnName,	logicalColumnType,logicalStatus,containerPath
+----------	---------------	---------------	-------------------	-------------------	---------------	---------------	---------------------------------
+[NULL],		CISORADEMO,		TABLE,			CUSTOMERS,			Customers,			TABLE,			FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		INTEGER,		CUSTOMER_ID,		CustomerId,			INTEGER,		FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(50),	COMPANY_NAME,		CompanyName,		VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(30),	CONTACT_FIRST_NAME,	ContactFirstName,	VARCHAR(30),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(50),	CONTACT_LAST_NAME,	ContactLastName,	VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(255),	BILLING_ADDRESS,	BillingAddress,		VARCHAR(255),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(50),	CITY,				City,				VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(20),	STATE_OR_PROVINCE,	StateOrProvince,	VARCHAR(20),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(20),	POSTAL_CODE,		PostalCode,			VARCHAR(20),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(50),	COUNTRY_REGION,		CountryRegion,		VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(50),	CONTACT_TITLE,		ContactTitle,		VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(30),	PHONE_NUMBER,		PhoneNumber,		VARCHAR(30),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(30),	FAX_NUMBER,			FaxNumber,			VARCHAR(30),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		TIMESTAMP,		MOD_DT,				ModifiedDate,		TIMESTAMP,		FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		TIMESTAMP,		CAST(CURRENT_DATE() AS DATE) AS,CurrentDate,DATE,		FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+[NULL],		CISORADEMO,		TABLE,			EMPLOYEES,			Employees,			TABLE,			FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		INTEGER,		EMPLOYEE_ID,		EmployeeId,			INTEGER,		FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		VARCHAR(50),	FIRST_NAME,			FirstName,			VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		VARCHAR(50),	LAST_NAME,			LastName,			VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		VARCHAR(50),	TITLE,				Title,				VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		VARCHAR(30),	EXTENSION,			Extension,			VARCHAR(30),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		VARCHAR(30),	WORK_PHONE,			WorkPhone,			VARCHAR(30),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		TIMESTAMP,		MOD_DT,				ModifiedDate,			TIMESTAMP,	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	09/30/2012		Mike Tinius			5.2.0			Created new
+	04/15/2013		Mike Tinius			5.2.0			Updated for Best Practices 7.0
+	04/22/2013		Mike Tinius			5.2.0			Updated for Best Practices 7.1 - added logicalColumnType to cursor output
+	05/02/2013		Mike Tinius			5.2.0			Updated for Best Practices 7.1 - added overwrite, copyAnnotation, updatePrivilegesRecursively, copyPrivilegeMode
+	07/31/2013		Mike Tinius			6.0.0			Updated for Best Practices 7.3 - moved console output to /shared/BestPractices_vXX/Procedures/generateViews
+	09/16/2013		Mike Tinius			6.1.0			B.P. 7.3.1: patch - modified generateViewsWrapper to print to console window: 0 (print nothing) (, 1 (TABLE only), 2 (TABLE and COLUMNS)
+	11/07/2013		Mike Tinius			6.1.0			B.P. 8.0: Added variable excludeDsPathsList.
+	08/08/2014		Mike Tinius			6.2.6			B.P. 8.1.3: Added check for dependency views in target path.  Don&apos;t generate when 0 or 1.  Changed default overwrite=1 instead of 2.
+	08/08/2014		Mike Tinius			6.2.5			B.P. 8.1.3: Modified ability generate cast statements under various conditions when generateMode=G or R and generateCast=0-5.
+			Added generateCast=2,3,4,5 allowing for &quot;NO&quot; CAST around index columns and adding a CAST display column for index columns.
+			--	0=Do not generate CAST statement.  Pass through column as is.  Default behavior.
+			-- 	1=Generate the CAST statement around the column
+			--	2-Generate the CAST statement around the non-index columns only (No CAST on index columns)
+			--	3-Generate the CAST statement around the non-index columns only and generate a &quot;display&quot; column for each index column.  (No CAST o nindex columns)
+			--	4-Generate the CAST statement around the non-index columns and non-primary key index columns only (No CAST on primary key index columns)
+			--	5-Generate the CAST statement around the non-index columns and non-primary key index columns only and generate a &quot;display&quot; column for each primary key index column.  (No CAST on primary key index columns)
+	01/24/2019		Mike Tinius			8.0.0			B.P. 2019.1: Added the ability to handle columnCaseRule, resourcePrefix, resourceSuffix and newColumnList for generateMode=&apos;G&apos;. 
+	03/14/2019		Mike Tinius			7.0.8			B.P. 2019.102: Added scriptsPath for flexibility of the location of the _scripts folder.
+	06/12/2019		Mike Tinius			7.0.8			B.P. 2019.200: Modified to use XML based procedures in order to eliminate vector usage.
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.</annotation>
+  <parameters>
+    <parameter name="generateViewsWrapper" direction="IN" nullable="true">
+      <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+    </parameter>
+    <parameter name="overwrite" direction="IN" nullable="true">
+      <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+    </parameter>
+    <parameter name="copyAnnotation" direction="IN" nullable="true">
+      <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+    </parameter>
+    <parameter name="copyPrivilegeMode" direction="IN" nullable="true">
+      <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+    </parameter>
+    <parameter name="exactMatch" direction="IN" nullable="true">
+      <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+    </parameter>
+    <parameter name="excludeDsPathsList" direction="IN" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="sourceResource" direction="IN" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="targetResource" direction="IN" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="result" direction="OUT" nullable="true">
+      <datatype name="result" type="TABLE" refId="1">
+        <element name="datasourceName">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="projectFolderName">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="greatGrandParentName">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="grandParentName">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="parentName">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="containerName">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="containerType">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="columnName">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="logicalColumnName">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="logicalColumnType">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="logicalStatus">
+          <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+        </element>
+        <element name="containerPath">
+          <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+        </element>
+        <element name="duration">
+          <datatype name="IntervalDay" type="INTERVAL_DAY" intervalMode="INTERVAL_HOUR_TO_SECOND" intervalPrecision="2" fractionalSecondPrecision="6"/>
+        </element>
+      </datatype>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/lib/util/SetEnvironment" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="variableName" direction="IN">
+        <datatype referenceDefinitionSet="/lib/util/System" referenceType="PropertyName" type="STRING" maxLength="255"/>
+      </element>
+      <element name="value" direction="IN">
+        <datatype referenceDefinitionSet="/lib/util/System" referenceType="PropertyValue" type="STRING" maxLength="4096"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/BestPractices_v81/Procedures/TypeDefinitions" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1"></datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/BestPractices_v81/Procedures/generateViewsXML" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="ConfigParamsXML" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="layerType" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="groupId" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="derivedFilterPath" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="result" direction="OUT">
+        <datatype type="TABLE" refId="2">
+          <element name="datasourceName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="projectFolderName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="greatGrandParentName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="grandParentName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="parentName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="containerName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="containerType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="columnName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="logicalColumnName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="logicalColumnType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="logicalStatus">
+            <datatype type="STRING" maxLength="4000"/>
+          </element>
+          <element name="containerPath">
+            <datatype type="STRING" maxLength="2147483647"/>
+          </element>
+          <element name="duration">
+            <datatype type="INTERVAL_DAY" intervalMode="INTERVAL_HOUR_TO_SECOND" intervalPrecision="2" fractionalSecondPrecision="6"/>
+          </element>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/BestPractices_v81/Procedures/getConfigureParamsXML" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="basePath" direction="IN">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="generateMode" direction="IN">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="outputMode" direction="IN">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="generateViews" direction="IN">
+        <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      </element>
+      <element name="resourceCaseRule" direction="IN">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="columnCaseRule" direction="IN">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+      <element name="useAliasRule" direction="IN">
+        <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      </element>
+      <element name="resourcePrefix" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="resourceSuffix" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="generateWithSourceColumn" direction="IN">
+        <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      </element>
+      <element name="generateCast" direction="IN">
+        <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      </element>
+      <element name="generateIndexes" direction="IN">
+        <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      </element>
+      <element name="ConfigParamsXML" direction="OUT">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/Common/_scripts/Constants/defaultValues" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="bestPracticesVersion_" direction="OUT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="basePath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="scriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="configureScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="constantsScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="generationScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="documentationScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="compositeDatabasePath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationPublishedPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationServicesPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationViewsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationViewsSubFolder_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="crudPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="typeDefinitionPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="typeDefinitionProcName_" direction="OUT">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="businessBusinessPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="businessLogicalPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalFormattingPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalFormattingTransformationPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalViewsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalMetadataPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="genUniqueIDPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="debugTime_" direction="OUT">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">/* 
+	generateCastViews: 
+	-- Data Virtualization Best Practices --
+
+	This procedure is used for generating views with cast statements.  Casting can be done at any layer within the best practices.
+	This procedure allows the user to specify the source folder or resource and target folder where the resource should be generated.
+	It does not rely on the ConfigureStartingFolders.
+
+	Combinations allowed:
+		sourceResource	--&gt;		targetResource
+		--------------			--------------
+		CONTAINER 		--&gt; 	CONTAINER	[generate casting views from the contents of a CONTAINER (folder) to another CONTAINER retaining any sub-folders during the generation.]
+		RESOURCE  		--&gt; 	CONTAINER	[generate casting views for a resource to a target folder]
+
+	Combinations not allowed:
+		RESOURCE		--&gt;		RESOURCE [will evaluate for phase 2]
+		CONTAINER		--&gt;		RESOURCE [this scenario is never allowed]
+
+	Input:
+			-- 0           - print the output to the cursor.  The cursor is bound by Composite Studio &quot;Fetch Row Size&quot; and &quot;Cursor Fetch Limit&quot;
+			--               The cursor stops producing output when it hits those limits.  The limits are configured in Composite Studio
+			--                  AdministrationConfigurationStudioDataFetch Rows Size and Cursor Fetch Limit.  
+			--                  Modify the Cursor Fetch Limit to an arbitrary number such as 500
+			-- 1 (default) - print TABLE only information to console window.  Do not print to the cursor result window.  The aforementioned limits do not apply.
+			-- 2           - print TABLE and COLUMN information to console window.  Do not print to the cursor result window.
+		generateViewsWrapper
+
+			-- allows user to decide whether they want to overwrite an existing view or not.
+			-- 0=&quot;FAIL_IF_EXISTS&quot;=do not overwrite the resource.  If the resource exists, raise an exception.
+			-- 1=&quot;SKIP_IF_EXISTS&quot;=skip the resource if it exists and continue processing
+			-- 2 (default)=&quot;OVERWRITE_IF_EXISTS&quot;=overwrite the resource if it exists.
+		overwrite 
+
+			-- allows user to decide whether they want to copy annotations or not form both resource and columns.
+			-- 0 (default)=false=do not copy the annotation from the target resource
+			-- 1=true=do copy the annotation from the target resource
+		copyAnnotation 
+
+			-- flag indicating the mode in which to copy privileges.  Privileges are only copied from the parent when creating new resources including folders.
+			-- null (default) - do not set any privileges at all
+			-- 0 - set mode to &quot;OVERWRITE_APPEND&quot; - merges and does not update privileges for users or groups not mentioned.
+			-- 1 - set the mode to &quot;SET_EXACTLY&quot; - makes privileges look exactly like those provided in the call.
+		copyPrivilegeMode 
+
+			-- specifies how the source resource will be matched against the resource being interrogated
+			--	0=fuzzy match - sourcePath + derivedFilterPath must simply be contained within resourcePath
+			--	1  (default)=exact match - sourcePath + derivedFilterPath must match exactly in resourcePath
+		exactMatch 
+
+			-- comma separated list of resource paths or partials paths to exclude.  This may be useful when a data source has been moved and it&apos;s index or foreign keys
+			--	are pointing to another data source that does not exist anymore.  It may be necessary to exclude that path or paths.  If an exception is thrown during 
+			--	execution, try excluding those paths.
+			--	Values: /shared/MyPath/Physical/Metadata/MyDatasource
+		excludeDsPathsList
+
+			-- the source resource may be a starting folder or a specific resource such as a view, procedure, data source, data source schema or data source table
+			--	type = CONTAINER
+			--	type = TABLE, PROCEDURE, DATA_SOURCE, when the type is not a container, it will extract the resource name into the derivedFilterPath
+			--		and use the remaining path to evaluate if it is a CONTAINER.   A container must be passed into the underlying &quot;generateViewsLoop&quot;
+			--		which does the processing.  Depending on how the parameter &quot;exactMatch&quot; is set will determine what views get generated.
+		sourceResource
+
+			-- the target resource may only be a folder (phase 1).  
+			--	 In phase 2, I will evaluate the possibility of specifying a specific resource where the name may be different than the target.
+		targetResource
+
+	Output:
+   		1. Abstract Views are generated into the CIS repository.
+    	2. A cursor is returned from CIS which contains the following:
+			generateViewsRow - 	CURSOR (
+        		containerName 			VARCHAR(255), - the name of the container resource beging created.
+        		containerType 			VARCHAR(255), - the resource type of the container resource (i.e. TABLE)
+        		columnName 				VARCHAR(255), - the name of the original column within the source resource.
+        		logicalColumnName 		VARCHAR(255), - the name of the target column that will be created.
+        		logicalColumnType 		VARCHAR(255), - the type of the target column that will be created.
+        		logicalStatus 			VARCHAR(255), - the status for the usage of this column
+						-- on input, when generateMode = &apos;G&apos; possible values are:
+						-- 		GENERATED - generated the column name based on rules supplied
+						-- 		UNCHANGED - remains unchanged when it cannot match to the physical resourceName and the ConfigureParams.generateWithSourceColumn=1
+						-- on input, when generateMode = &apos;R&apos; possible values are:
+						-- 		FOUND - found when it finds a match to physical name in the spreadsheet
+						-- 		UNCHANGED - remains unchanged when it cannot match to the physical resourceName and the ConfigureParams.generateWithSourceColumn=1
+						-- 		DROPPED - gets dropped from the list when it cannot match to the physical resourceName and the ConfigureParams.generateWithSourceColumn=0
+        		containerPath 			VARCHAR(4000) - the full path to the container resource.
+			)
+
+			Values: example:
+parentName,	containerName,	containerType,	columnName,			logicalColumnName,	logicalColumnType,logicalStatus,containerPath
+----------	---------------	---------------	-------------------	-------------------	---------------	---------------	---------------------------------
+[NULL],		CISORADEMO,		TABLE,			CUSTOMERS,			Customers,			TABLE,			FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		INTEGER,		CUSTOMER_ID,		CustomerId,			INTEGER,		FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(50),	COMPANY_NAME,		CompanyName,		VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(30),	CONTACT_FIRST_NAME,	ContactFirstName,	VARCHAR(30),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(50),	CONTACT_LAST_NAME,	ContactLastName,	VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(255),	BILLING_ADDRESS,	BillingAddress,		VARCHAR(255),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(50),	CITY,				City,				VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(20),	STATE_OR_PROVINCE,	StateOrProvince,	VARCHAR(20),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(20),	POSTAL_CODE,		PostalCode,			VARCHAR(20),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(50),	COUNTRY_REGION,		CountryRegion,		VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(50),	CONTACT_TITLE,		ContactTitle,		VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(30),	PHONE_NUMBER,		PhoneNumber,		VARCHAR(30),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		VARCHAR(30),	FAX_NUMBER,			FaxNumber,			VARCHAR(30),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		TIMESTAMP,		MOD_DT,				ModifiedDate,		TIMESTAMP,		FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	CUSTOMERS,		TIMESTAMP,		CAST(CURRENT_DATE() AS DATE) AS,CurrentDate,DATE,		FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+[NULL],		CISORADEMO,		TABLE,			EMPLOYEES,			Employees,			TABLE,			FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		INTEGER,		EMPLOYEE_ID,		EmployeeId,			INTEGER,		FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		VARCHAR(50),	FIRST_NAME,			FirstName,			VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		VARCHAR(50),	LAST_NAME,			LastName,			VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		VARCHAR(50),	TITLE,				Title,				VARCHAR(50),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		VARCHAR(30),	EXTENSION,			Extension,			VARCHAR(30),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		VARCHAR(30),	WORK_PHONE,			WorkPhone,			VARCHAR(30),	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+CISORADEMO,	EMPLOYEES,		TIMESTAMP,		MOD_DT,				ModifiedDate,			TIMESTAMP,	FOUND,			/shared/BestPractices/DataAbstraction_GENERIC_Template/Physical/Formatting/CISORADEMO
+
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	09/30/2012		Mike Tinius			5.2.0			Created new
+	04/15/2013		Mike Tinius			5.2.0			Updated for Best Practices 7.0
+	04/22/2013		Mike Tinius			5.2.0			Updated for Best Practices 7.1 - added logicalColumnType to cursor output
+	05/02/2013		Mike Tinius			5.2.0			Updated for Best Practices 7.1 - added overwrite, copyAnnotation, updatePrivilegesRecursively, copyPrivilegeMode
+	07/31/2013		Mike Tinius			6.0.0			Updated for Best Practices 7.3 - moved console output to /shared/BestPractices_vXX/Procedures/generateViews
+	09/16/2013		Mike Tinius			6.1.0			B.P. 7.3.1: patch - modified generateViewsWrapper to print to console window: 0 (print nothing) (, 1 (TABLE only), 2 (TABLE and COLUMNS)
+	11/07/2013		Mike Tinius			6.1.0			B.P. 8.0: Added variable excludeDsPathsList.
+	08/08/2014		Mike Tinius			6.2.6			B.P. 8.1.3: Added check for dependency views in target path.  Don&apos;t generate when 0 or 1.  Changed default overwrite=1 instead of 2.
+	08/08/2014		Mike Tinius			6.2.5			B.P. 8.1.3: Modified ability generate cast statements under various conditions when generateMode=G or R and generateCast=0-5.
+			Added generateCast=2,3,4,5 allowing for &quot;NO&quot; CAST around index columns and adding a CAST display column for index columns.
+			--	0=Do not generate CAST statement.  Pass through column as is.  Default behavior.
+			-- 	1=Generate the CAST statement around the column
+			--	2-Generate the CAST statement around the non-index columns only (No CAST on index columns)
+			--	3-Generate the CAST statement around the non-index columns only and generate a &quot;display&quot; column for each index column.  (No CAST o nindex columns)
+			--	4-Generate the CAST statement around the non-index columns and non-primary key index columns only (No CAST on primary key index columns)
+			--	5-Generate the CAST statement around the non-index columns and non-primary key index columns only and generate a &quot;display&quot; column for each primary key index column.  (No CAST on primary key index columns)
+	01/24/2019		Mike Tinius			8.0.0			B.P. 2019.1: Added the ability to handle columnCaseRule, resourcePrefix, resourceSuffix and newColumnList for generateMode=&apos;G&apos;. 
+	03/14/2019		Mike Tinius			7.0.8			B.P. 2019.102: Added scriptsPath for flexibility of the location of the _scripts folder.
+	06/12/2019		Mike Tinius			7.0.8			B.P. 2019.200: Modified to use XML based procedures in order to eliminate vector usage.
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+*/
+PROCEDURE generateCastViews(
+		-- 0           - print the output to the cursor.  The cursor is bound by Composite Studio &quot;Fetch Row Size&quot; and &quot;Cursor Fetch Limit&quot;
+		--               The cursor stops producing output when it hits those limits.  The limits are configured in Composite Studio
+		--                  AdministrationConfigurationStudioDataFetch Rows Size and Cursor Fetch Limit.  
+		--                  Modify the Cursor Fetch Limit to an arbitrary number such as 500
+		-- 1 (default) - print TABLE only information to console window.  Do not print to the cursor result window.  The aforementioned limits do not apply.
+		-- 2           - print TABLE and COLUMN information to console window.  Do not print to the cursor result window.
+	IN generateViewsWrapper			INTEGER,
+
+		-- allows user to decide whether they want to overwrite an existing view or not.
+		-- 0=&quot;FAIL_IF_EXISTS&quot;=do not overwrite the resource.  If the resource exists, raise an exception.
+		-- 1=&quot;SKIP_IF_EXISTS&quot;=skip the resource if it exists and continue processing
+		-- 2 (default)=&quot;OVERWRITE_IF_EXISTS&quot;=overwrite the resource if it exists.
+	IN overwrite					INTEGER,
+
+		-- allows user to decide whether they want to copy annotations or not form both resource and columns.
+		-- 0 (default)=false=do not copy the annotation from the target resource
+		-- 1=true=do copy the annotation from the target resource
+	IN copyAnnotation				INTEGER,
+
+		-- flag indicating the mode in which to copy privileges.  Privileges are only copied from the parent when creating new resources including folders.
+		-- null (default) - do not set any privileges at all
+		-- 0 - set mode to &quot;OVERWRITE_APPEND&quot; - merges and does not update privileges for users or groups not mentioned.
+		-- 1 - set the mode to &quot;SET_EXACTLY&quot; - makes privileges look exactly like those provided in the call.
+	IN copyPrivilegeMode			INTEGER,
+
+		-- specifies how the source resource will be matched against the resource being interrogated
+		-- 0=fuzzy match - sourcePath + derivedFilterPath must simply be contained within resourcePath
+		-- 1  (default)=exact match - sourcePath + derivedFilterPath must match exactly in resourcePath
+	IN exactMatch					INTEGER,
+
+		-- comma separated list of resource paths or partials paths to exclude.  This may be useful when a data source has been moved and it&apos;s index or foreign keys
+		--	are pointing to another data source that does not exist anymore.  It may be necessary to exclude that path or paths.  If an exception is thrown during 
+		--	execution, try excluding those paths.
+		--	Values: /shared/MyPath/Physical/Metadata/MyDatasource
+	IN excludeDsPathsList			LONGVARCHAR,
+
+		-- may be a folder or a resource
+	IN sourceResource				LONGVARCHAR,
+
+		-- may be a folder only in phase 1 	
+	IN targetResource				LONGVARCHAR, 	
+    OUT result 						CURSOR /shared/ASAssets/BestPractices_v81/Procedures/TypeDefinitions.generateViewsRow
+)
+BEGIN
+-- ***********************************************************************************************************************
+-- *  Default Profile for generating the &quot;Client_Views&quot; layer from the source layer defined in ConfigureStartingFolders()
+-- ***********************************************************************************************************************
+		-- PM=Physical Metadata - used by generateDasourceList
+		-- CR=CRUD Target Folder Path - generateTypeDefinitions and generateCRUDOperations invokes generateViews
+		-- PV=Physical Views - generatePhysicalViews invokes generateViews
+		-- FV=Formatting Views - generateFormattingViews invokes generateViews
+		-- BV=Business Views - generateBusinessViews invokes generateViews
+		-- LV=Logical Views - generateLoicalViews invokes generateViews
+		-- CV=Client Views - generateClientViews invokes generateViews
+		-- CP=Client Published - generateClientPublished invokes generateViews
+		-- DB=Database published link - generatePublishedResource invokes generateViews
+    DECLARE layerType					VARCHAR DEFAULT null;
+
+    	-- G=Generate the resource names 
+		-- R=Retrieve the resource name from a spreadsheet. (resources include PATH names, VIEW names AND COLUMN names)
+    DECLARE generateMode				CHAR(1) DEFAULT &apos;G&apos;;
+
+    	-- A=Return All abstract columns, 
+    	-- U=Return ONLY Unchanged/Dropped columns that were NOT found.
+    DECLARE outputMode	 				CHAR(1) DEFAULT &apos;A&apos;;
+
+ 		-- 0=Do not generate - (browse only) print out what will happen but don&apos;t perform the generation.
+		-- 1=Do generate [DEFAULT] - Perform the VIEW Generation with a column projection.
+		-- 2=Do generate           - Perform the VIEW Generation with a select * projection.
+    DECLARE generateViews				SMALLINT DEFAULT 1;
+
+		--  TABLES only.  This resourceCaseRule is only used for tables.
+		--	 Assumption:  The original table name has to have separators (_) for this to work properly.
+		--			     If the original word has no separators then the case rule gets applied to the single word
+    	-- 	j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+		-- 	C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+		-- 	T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+		-- 	U=UPPER_CASE - All word parts are UPPER case with separtors retained
+		-- 	l=lower_case - All word parts are lower case with separators retained
+		-- 	O=Original_case - The word is not changed at all -- just pass it through as is
+	DECLARE resourceCaseRule			CHAR(1) DEFAULT &apos;O&apos;; -- (used when generateMode=&apos;G&apos;)
+
+		--  COLUMNS only.  This caseRule is only used for columns.
+		--	 Assumption:  The original column name has to have separators (_) for this to work properly.
+		--			     If the original word has no separators then the case rule gets applied to the single word
+		--	j=javaCase - 1st word part is lower case, following word parts are 1st is letter is upper and remaining word part is lower with no separators
+		--	C=CamelCase - 1st letter of each word part is upper case and remaining word part is lower with no separators
+		--	T=Title_Case - 1st letter of each word part is upper case and remaining word part is lower with separators retained
+		--	U=UPPER_CASE - All word parts are UPPER case with separtors retained
+		--	l=lower_case - All word parts are lower case with separators retained
+		--	O=Original_case - The word is not changed at all -- just pass it through as is
+	DECLARE columnCaseRule				CHAR(1) DEFAULT &apos;O&apos;; -- (used when generateMode=&apos;G&apos;)
+
+    	-- 0=DO NOT perform alias rule lookup at all.  Word Part is passed through
+		-- 1=Use alias rule and MATCH CASE exactly
+		-- 2=Use alias rule and DO NOT MATCH CASE
+	DECLARE useAliasRule				SMALLINT DEFAULT 0;	-- (used when generateMode=&apos;G&apos;)
+
+		--  Any set of characters used to prefix a table or procedure name.  Include underscores with the suffix if applicable.
+		--	Example: V_ MY_TABLE or V_MY_TABLE 	
+	DECLARE resourcePrefix 				VARCHAR DEFAULT null; --(used when generateMode=&apos;G&apos;)
+
+		--  Any set of characters used to suffix a table or procedure name.  Include underscores with the suffix if applicable.
+		--	Example: _APP MY_TABLE or MY_TABLE_APP 	
+	DECLARE resourceSuffix 				VARCHAR DEFAULT null; --(used when generateMode=&apos;G&apos;)
+
+		-- A formatted list of new columns to add to the end of the view.  The column will not be added if it already exists.
+		-- The format is as follows:  column1&amp;&amp;type1&amp;&amp;value1//column2&amp;&amp;type2&amp;&amp;value2//column3&amp;&amp;type3&amp;&amp;value3
+	DECLARE newColumnList				LONGVARCHAR DEFAULT null; --(used when generateMode=&apos;G&apos;)
+
+		-- 0=Do NOT generate the view with the source column (no pass through)-logical status is DROPPED
+    	-- 1=Generate the view with the source column (pass through)-logical status is UNCHANGED
+    DECLARE generateWithSourceColumn 	SMALLINT DEFAULT 0;-- (used when generateMode=&apos;R&apos;)
+
+		-- 	This parameter allows the user to control whether to generate the cast statement around the generated
+		--	   column or not.  It uses the column type from the source view.
+		--	0=Do not generate CAST statement.  Pass through column as is.  Default behavior.
+		-- 	1=Generate the CAST statement around the column
+		--	2-Generate the CAST statement around the non-index columns only (No CAST on index columns)
+		--	3-Generate the CAST statement around the non-index columns only and generate a &quot;display&quot; CAST column for each index column.  (No CAST o nindex columns)
+		--	4-Generate the CAST statement around the non-index columns and non-primary key index columns only (No CAST on primary key index columns)
+		--	5-Generate the CAST statement around the non-index columns and non-primary key index columns only and generate a &quot;display&quot; CAST column for each primary key index column.  (No CAST on primary key index columns)
+	DECLARE generateCast 				SMALLINT DEFAULT 1;-- (used when generateMode=&apos;G&apos; or &apos;R&apos;)
+
+		--	generateIndexes - This parameter allows the user to control whether to generate indexes on the target views as derived from the underlying resources
+		--	0=Do not generate indexes
+		-- 	1=(default) Generate indexes
+	DECLARE generateIndexes 			SMALLINT DEFAULT 0;
+
+		--  flag indicating whether to ignore or generate unsupported column types.  For example in Oracle an SDO spatial type gets imported into Composite as &apos;OTHER&apos;.
+		--  0/null (default) - ignore column type = &apos;OTHER&apos; and do not generate that column
+		--  1 - generate columns where the column type = &apos;OTHER&apos;
+	DECLARE generateUnsupportedColumnType INTEGER DEFAULT 0;
+
+		-- name of the type definition procedure.  e.g. TypeDefinitions
+		-- If null, then the default name &apos;TypeDefinitions&apos; is used.
+	DECLARE typeDefProcName				VARCHAR DEFAULT null;
+
+		-- Path to the base project directory.
+	DECLARE basePath					VARCHAR(4000);
+
+		-- Path to the scripts project directory.
+	DECLARE scriptsPath					VARCHAR(4000);
+
+	DECLARE ConfigParamsXML				LONGVARCHAR;
+	DECLARE moduleName					VARCHAR DEFAULT &apos;generateCastViews&apos;;
+	DECLARE i							INTEGER DEFAULT 1;
+
+	-----------------------------------------------------------------
+	-- NOTE: Make sure the path is pointing to the correct project
+	-----------------------------------------------------------------
+	set basePath = /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.basePath;
+	set scriptsPath = /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.scriptsPath;
+
+	-- Set environment variables
+	call /lib/util/SetEnvironment(&apos;best.practices.scriptsPath&apos;,scriptsPath);
+	call /lib/util/SetEnvironment(&apos;best.practices.generateType&apos;,&apos;VIEW&apos;);
+ 	call /lib/util/SetEnvironment(&apos;best.practices.overwrite&apos;,CAST(overwrite AS VARCHAR));
+	call /lib/util/SetEnvironment(&apos;best.practices.copyAnnotation&apos;,CAST(copyAnnotation AS VARCHAR));
+	call /lib/util/SetEnvironment(&apos;best.practices.copyPrivilegeMode&apos;,CAST(copyPrivilegeMode AS VARCHAR));
+	call /lib/util/SetEnvironment(&apos;best.practices.sourceResource&apos;,sourceResource);
+  	call /lib/util/SetEnvironment(&apos;best.practices.generateToFolder&apos;,targetResource);
+ 	call /lib/util/SetEnvironment(&apos;best.practices.exactMatch&apos;,CAST(exactMatch AS VARCHAR));
+	call /lib/util/SetEnvironment(&apos;best.practices.executeModuleName&apos;,moduleName);
+	call /lib/util/SetEnvironment(&apos;best.practices.typeDefinitionProcedureName&apos;,typeDefProcName);
+	call /lib/util/SetEnvironment(&apos;best.practices.generateUnsupportedColumnType&apos;,CAST(generateUnsupportedColumnType AS VARCHAR));
+ 	call /lib/util/SetEnvironment(&apos;best.practices.excludeDsPathsList&apos;,excludeDsPathsList);
+ 	call /lib/util/SetEnvironment(&apos;best.practices.newColumnList&apos;,newColumnList);
+
+    CALL /shared/ASAssets/BestPractices_v81/Procedures/getConfigureParamsXML(basePath, generateMode, outputMode, generateViews, resourceCaseRule, columnCaseRule, useAliasRule, resourcePrefix, resourceSuffix, generateWithSourceColumn, generateCast, generateIndexes, ConfigParamsXML);	    
+
+	if (generateViewsWrapper is not null and generateViewsWrapper = 0) then
+		-- Invoke sending results to &quot;RESULT CURSOR TAB&quot;
+ 		OPEN result FOR 
+		    SELECT * FROM /shared/ASAssets/BestPractices_v81/Procedures/generateViewsXML(ConfigParamsXML, layerType, null, null);
+	else
+		-- Invoke sending results to &quot;CONSOLE WINDOW TAB&quot;
+		for r as 
+		    SELECT * FROM /shared/ASAssets/BestPractices_v81/Procedures/generateViewsXML(ConfigParamsXML, layerType, null, null) 
+		do
+			set i = i + 1;
+		end for;
+	end if; 
+END</attribute>
+  <attribute name="creationDate" type="LONG">0</attribute>
+  <attribute name="creatorUserDomain" type="STRING"/>
+  <attribute name="creatorUserName" type="STRING"/>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1570164291271</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">asp5665</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="NULL"/>
+</metadata>

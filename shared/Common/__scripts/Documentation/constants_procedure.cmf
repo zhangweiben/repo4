@@ -1,0 +1,322 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="constants" path="/shared/Common/_scripts/Documentation/constants" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>constants:
+
+	These are default constants used by the documentation procedures
+ 
+	Modified Date:	Updated By:			CSW Version:	Reason:
+	07/25/2012		Mike Tinius			5.2.0			Created new
+	11/12/2012		Mike Tinius			5.2.0			Added new constants: debugTime, debutTime2, excludeDSPathsList
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.</annotation>
+  <parameters>
+    <parameter name="docPreambleImpl" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+    </parameter>
+    <parameter name="docResourceFormatImpl" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+    </parameter>
+    <parameter name="debug" direction="OUT" nullable="true">
+      <datatype name="CHAR" type="STRING" minLength="1" maxLength="1"/>
+    </parameter>
+    <parameter name="debugTime" direction="OUT" nullable="true">
+      <datatype name="CHAR" type="STRING" minLength="1" maxLength="1"/>
+    </parameter>
+    <parameter name="debugTime2" direction="OUT" nullable="true">
+      <datatype name="CHAR" type="STRING" minLength="1" maxLength="1"/>
+    </parameter>
+    <parameter name="switches" direction="OUT" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="parentFilePath" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+    </parameter>
+    <parameter name="filePath" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+    </parameter>
+    <parameter name="resourcePath" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+    </parameter>
+    <parameter name="resourceType" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="eol" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="indent2" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="indent4" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="padChar" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="beginSeparator" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="endSeparator" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="minorSeparator" direction="OUT" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="excludeKeywordsInPathList" direction="OUT" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="excludePathsList" direction="OUT" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="excludeDSPathsList" direction="OUT" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/shared/ASAssets/BestPractices_v81/_ProjectMaintenance/defaultValues" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1"></datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/Utilities/string/getConstantV2" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="constantsPath" direction="IN">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="constantsName" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="optionReturn" direction="IN">
+        <datatype type="INTEGER" minValue="-32768" maxValue="32767"/>
+      </element>
+      <element name="outValue" direction="OUT">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+    </datatype>
+  </dependency>
+  <dependency target="/shared/Common/_scripts/Constants/defaultValues" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="bestPracticesVersion_" direction="OUT">
+        <datatype type="FLOAT" minValue="2.2250738585072014E-308" maxValue="1.7976931348623157E308"/>
+      </element>
+      <element name="basePath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="scriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="configureScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="constantsScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="generationScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="documentationScriptsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="compositeDatabasePath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationPublishedPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationServicesPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationViewsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="applicationViewsSubFolder_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="crudPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="typeDefinitionPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="typeDefinitionProcName_" direction="OUT">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="businessBusinessPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="businessLogicalPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalFormattingPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalFormattingTransformationPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalViewsPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="physicalMetadataPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="genUniqueIDPath_" direction="OUT">
+        <datatype type="STRING" maxLength="4000"/>
+      </element>
+      <element name="debugTime_" direction="OUT">
+        <datatype type="STRING" minLength="1" maxLength="1"/>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">/* 	constants:
+
+	These are default constants used by the documentation procedures
+ 
+	Modified Date:	Updated By:			CSW Version:	Reason:
+	07/25/2012		Mike Tinius			5.2.0			Created new
+	11/12/2012		Mike Tinius			5.2.0			Added new constants: debugTime, debutTime2, excludeDSPathsList
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+*/
+PROCEDURE constants(
+ 	OUT docPreambleImpl 		VARCHAR(4000),
+ 	OUT docResourceFormatImpl 	VARCHAR(4000),
+	OUT debug 					CHAR(1),
+	OUT debugTime				CHAR(1),
+	OUT debugTime2				CHAR(1),
+	OUT switches				LONGVARCHAR,
+	OUT parentFilePath			VARCHAR(4000),
+	OUT filePath 				VARCHAR(4000),
+	OUT resourcePath 			VARCHAR(4000),
+	OUT resourceType 			VARCHAR,
+	OUT eol						VARCHAR,
+	OUT indent2 				VARCHAR,
+	OUT indent4 				VARCHAR,
+	OUT padChar 				VARCHAR,
+	OUT beginSeparator 			VARCHAR,
+	OUT endSeparator 			VARCHAR,
+	OUT minorSeparator 			VARCHAR,
+	OUT excludeKeywordsInPathList LONGVARCHAR,
+	OUT excludePathsList 		LONGVARCHAR,
+	OUT excludeDSPathsList		LONGVARCHAR
+)
+BEGIN
+	DECLARE PUBLIC constantsScriptsPath	CONSTANT VARCHAR(4000) DEFAULT /shared/Common/&quot;_scripts&quot;/Constants/defaultValues.constantsScriptsPath;
+	DECLARE PUBLIC defaultValuesPath	CONSTANT VARCHAR(4000) DEFAULT REPLACE(constantsScriptsPath || &apos;/defaultValues&apos;, &apos;//&apos;, &apos;/&apos;);
+	DECLARE utilitiesRootPath			VARCHAR(4000) DEFAULT /shared/ASAssets/BestPractices_v81/&quot;_ProjectMaintenance&quot;/defaultValues.utilitiesRootPath;
+	DECLARE basePath					VARCHAR(4000);
+	DECLARE projectName					VARCHAR DEFAULT &apos;&apos;;
+	DECLARE pos							INTEGER;
+
+	-- Get the project level base path and extract the project name only from the path to use with the parent file path as a subfolder.
+	CALL /shared/ASAssets/Utilities/string/getConstantV2(defaultValuesPath , &apos;basePath_&apos;, 1, basePath);
+	-- There should be no double quotes
+	SET basePath =REPLACE(basePath, &apos;&quot;&apos;, &apos;&apos;);
+	SET pos = INSTR(basePath, &apos;/&apos;, -1, 1);
+	IF (pos &gt; 0) THEN
+		SET projectName = SUBSTRING(basePath, pos); -- this includes the leading slash such as /projectName
+	END IF;
+
+	/* 
+	This is the path to the implementation procedure which provides formatted output for a single resource.
+	This implementation must always have this signature:
+		Input:
+			fullResourcePath - Full resource path which includes the path and the resource name  
+				Values: e.g. /shared/ASAssets/Utilities/repository/examples/source/proc1
+			resourceType - Type of CIS resource to be created
+				Values: see &quot;TYPES / SUBTYPES&quot; listing below.  e.g. PROCEDURE
+		Output: 
+			CURSOR (formattedText LONGVARCHAR) - formatted text is out output complete with a separator at the beginning of the resource.
+	*/
+ 	set docPreambleImpl			= utilitiesRootPath||&apos;/documentation/implementations/getDocPreambleImpl1&apos;;
+ 	set docResourceFormatImpl	= utilitiesRootPath||&apos;/documentation/implementations/getDocResourceFormatImpl1&apos;;
+	-- Debug resources and time.
+	set debug					= &apos;N&apos;; -- Y=debug on.  N=debug off.
+	set debugTime				= &apos;N&apos;; -- first level of time display
+	set debugTime2				= &apos;N&apos;; -- second level of time display for the resource vector loop
+	-- Default switches
+	set switches				= &apos;print_time=yes save_file=yes save_file_intermediate=yes&apos;;
+	-- The parent path location in the file system where the formatted file will be written.  The file name is provided by the trigger.
+	-- The parent path appends this project name from the basepath and changes spaces to underscores.
+	--   e.g. basepath= /shared/my project -- projectName=/my_project
+	set parentFilePath			= &apos;c:/temp&apos;||REPLACE(projectName, &apos; &apos;, &apos;_&apos;);
+	-- The default location in the file system where the formatted file will be written.
+	set filePath				= parentFilePath||&apos;/best_practices_layer_documentation.txt&apos;;
+	-- Default resource path to being the introspection of resources
+	set resourcePath			= &apos;/shared&apos;||projectName;
+	-- Default resource type for the given resource path
+	set resourceType			= &apos;CONTAINER&apos;;
+	-- Define the end of line marker
+	set eol						= CHR(13);
+	-- Indent (2 vspaces)
+	set indent2					= &apos;  &apos;;
+	-- Indent (4 spaces)
+	set indent4					= &apos;    &apos;;
+	-- Pad character
+	set padChar					= &apos; &apos;;
+	-- Beginning separator for each section
+	set beginSeparator			= &apos;================================================================================&apos;; -- 80 characters
+	-- Ending separator for each section
+	set endSeparator			= &apos;--------------------------------------------------------------------------------&apos;; -- 80 characters
+	-- Minor separator within a section
+	set minorSeparator 			= &apos;&apos;;
+
+	-- Exclude keywords in path, case insensitive.  Comma separated list.  These are whole words and not wild cards.  
+	--   A word is defined by what exists between folder separators &quot;/&quot;
+	set excludeKeywordsInPathList = null;
+	-- Exclude actual paths.  Double quotes are not required.  Comma separated list.
+	set excludePathsList		= null;
+	-- Exclude paths when finding matches for datasources.    This is a comma separated list of paths to exclude from processing.  
+	-- It may include any CIS path such as /shared/ASAssets/Utilities, /shared/ASAssets/BestPractices, /lib, /system etc.
+	set excludeDSPathsList 		= utilitiesRootPath||&apos;, /lib, /services/databases/system&apos;;
+END</attribute>
+  <attribute name="creationDate" type="LONG">1377564320217</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1570164291271</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">na</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">asp5665</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="public_constants" type="MAP">
+    <item>
+      <key type="STRING">constantsScriptsPath</key>
+      <value type="BYTE_ARRAY">EBsGAgAGAFMAdAByAGkAbgBnAxIAAAABBAQAAAAAAAAPqgETAf//</value>
+    </item>
+    <item>
+      <key type="STRING">defaultValuesPath</key>
+      <value type="BYTE_ARRAY">EBsGAgAGAFMAdAByAGkAbgBnAxIAAAABBAQAAAAAAAAPrgETAf//</value>
+    </item>
+  </attribute>
+  <attribute name="references" type="NULL"/>
+</metadata>

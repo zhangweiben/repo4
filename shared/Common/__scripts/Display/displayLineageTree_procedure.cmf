@@ -1,0 +1,382 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:191caa64-5627-4a1f-90af-0c179431b0fb -->
+<metadata name="displayLineageTree" path="/shared/Common/_scripts/Display/displayLineageTree" type="PROCEDURE" subtype="SQL_SCRIPT_PROCEDURE" changeToken="0">
+  <annotation>displayLineageTree:
+	-- Data Virtualization Best Practices --
+
+	Return the Data Lineage for a given resource path.   The resource must **not** be a container (folder) type
+	but an actual resource such as a VIEW, PROCEDURE, etc.  Start at the parent and traverse down through the 
+	layers until no more resources can be found that are bound to the parent or children of the parent.  Think 
+	of this as a list of the parent and it&apos;s children.  Calculate the Parent ID for each row in the return cursor.  
+	This procedure invokes getResourceLineageParent() to recursively walk the dependent tree. 
+ 
+	The first row is the parent and the id=0 and the parentId is null.  
+	The parentId points back to an id in order to provide procedure traceability.
+
+	Input:
+   		resourcePath - CIS source path to an actual resource
+			Values: e.g. /shared/examples/CompositeView [this is a SQL VIEW.]
+		resourceType - Type of CIS resource to be created.  It is null on the first invocation.
+			Values: see &quot;TYPES / SUBTYPES&quot; listing below.  e.g. TABLE
+		excludePathsList	- comma separated list of resource paths or partials paths to exclude
+			Values: /shared/ASAssets/Utilities,/lib
+		datasourceAncestor	- flag to get the data source ancestor 
+			Values: 1=yes, 0=no
+		inIgnoreResourceDoesNotExist - Ignore any resources that do not exist
+			Values: 1 = Bypass the processing of that resource.  0 = (default) Do not ignore any resources.  Throw an error that the resource does not exist.
+	Output:
+		DECLARE PUBLIC TYPE lineageTreeType ROW (
+			seqNum					INTEGER, -- generated sequence number
+			resourceID				INTEGER, -- resource id from CIS
+			parentID				INTEGER, -- how this row relates to resourceID
+			resDepth				INTEGER, -- depth as related to the start
+			treeType				VARCHAR(255), -- Parent, Child
+			resName 				VARCHAR(255), -- resource name
+			resPath 				TypeDefinitions.pathType, -- resource path
+			resType					VARCHAR(255), -- resource type
+			subType					VARCHAR(255), -- resource sub type
+			enabled					BIT, -- enabled or not (1 or 0)
+			dsID					INTEGER, -- datasource ancestor id
+			dsResName				VARCHAR(255), -- datasource ancestor name
+			dsResPath				TypeDefinitions.pathType, -- datasource ancestor path
+			dsResType 				VARCHAR(255), -- datasource ancestor type
+			dsResSubType			VARCHAR(255), -- datasource ancestor sub type
+			dsEnabled				BIT,  -- datasource ancestor enabled (1 or 0)
+			dsChildCount			INTEGER --  datasource ancestor number of children
+		);
+
+Values: example:
+seqNum	resourceID	parentID	resDepth	treeType	resName							resPath												resType		subType					enabled	dsID	dsResName		dsResPath						dsResType	dsResSubType			dsEnabled	dsChildCount
+1		20587		[NULL]		0			Parent		CompositeView					/shared/examples/CompositeView						TABLE		SQL_TABLE				1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+2		20658		20587		1			Child		ViewOrder						/shared/examples/ViewOrder							TABLE		SQL_TABLE				1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+3		20741		20658		2			Child		customers						/shared/examples/ds_orders/customers				TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+4		20679		20658		2			Child		orderdetails					/shared/examples/ds_orders/orderdetails				TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+5		20711		20658		2			Child		orders							/shared/examples/ds_orders/orders					TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+6		20670		20711		3			Child		ds_orders						/shared/examples/ds_orders							DATA_SOURCE	RELATIONAL_DATA_SOURCE	1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+7		20729		20670		4			Child		cache_status					/shared/examples/ds_orders/cache_status				TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+8		20671		20670		4			Child		cache_tracking					/shared/examples/ds_orders/cache_tracking			TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+9		20689		20711		3			Child		orders_cache					/shared/examples/ds_orders/orders_cache				TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+10		20774		20587		1			Child		ViewSales						/shared/examples/ViewSales							TABLE		SQL_TABLE				1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+11		20679		20774		2			Child		orderdetails					/shared/examples/ds_orders/orderdetails				TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+12		20786		20774		2			Child		productCatalog_Transformation	/shared/examples/productCatalog_Transformation		PROCEDURE	XSLT_TRANSFORM_PROCEDURE 1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+13		20757		20786		3			Child		productCatalog.xml				/shared/examples/ds_XML/productCatalog.xml			TREE		XML_FILE_TREE			1		20756	ds_XML			/shared/examples/ds_XML			DATA_SOURCE	XML_FILE_DATA_SOURCE	1			1
+14		20763		20587		1			Child		ViewSupplier					/shared/examples/ViewSupplier						TABLE		SQL_TABLE				1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+15		20606		20763		2			Child		inventorytransactions			/shared/examples/ds_inventory/inventorytransactions	TABLE		DATABASE_TABLE			1		20605	ds_inventory	/shared/examples/ds_inventory	DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			4
+16		20619		20763		2			Child		purchaseorders					/shared/examples/ds_inventory/purchaseorders		TABLE		DATABASE_TABLE			1		20605	ds_inventory	/shared/examples/ds_inventory	DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			4
+17		20644		20763		2			Child		suppliers						/shared/examples/ds_inventory/suppliers				TABLE		DATABASE_TABLE			1		20605	ds_inventory	/shared/examples/ds_inventory	DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			4
+
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/02/2010		Mike Tinius			5.1.0			Created new
+	11/15/2012		Mike Tinius        	5.2.0			Expanded result cursor.
+	03/20/2014		Mike Tinius			6.2.0			Added parameter to getResourceListRecursive to support recursion detection.
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.</annotation>
+  <parameters>
+    <parameter name="resourcePath" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="4000"/>
+    </parameter>
+    <parameter name="resourceType" direction="IN" nullable="true">
+      <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+    </parameter>
+    <parameter name="excludePathsList" direction="IN" nullable="true">
+      <datatype name="LONGVARCHAR" type="STRING" maxLength="2147483647"/>
+    </parameter>
+    <parameter name="datasourceAncestor" direction="IN" nullable="true">
+      <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+    </parameter>
+    <parameter name="inIgnoreResourceDoesNotExist" direction="IN" nullable="true">
+      <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+    </parameter>
+    <parameter name="resourceTreeList" direction="OUT" nullable="true">
+      <datatype name="resourceTreeList" type="TABLE" refId="1">
+        <element name="seqNum">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="resourceID">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="parentID">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="resDepth">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="treeType">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="resName">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="resPath">
+          <datatype name="VARCHAR" referenceDefinitionSet="/shared/ASAssets/Utilities/TypeDefinitions" referenceType="pathType" type="STRING" maxLength="4000"/>
+        </element>
+        <element name="resType">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="subType">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="enabled">
+          <datatype name="BIT" type="INTEGER" minValue="0" maxValue="1"/>
+        </element>
+        <element name="dsID">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="dsResName">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="dsResPath">
+          <datatype name="VARCHAR" referenceDefinitionSet="/shared/ASAssets/Utilities/TypeDefinitions" referenceType="pathType" type="STRING" maxLength="4000"/>
+        </element>
+        <element name="dsResType">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="dsResSubType">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+        <element name="dsEnabled">
+          <datatype name="BIT" type="INTEGER" minValue="0" maxValue="1"/>
+        </element>
+        <element name="dsChildCount">
+          <datatype name="INTEGER" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+        </element>
+        <element name="dataSourceType">
+          <datatype name="VARCHAR" type="STRING" maxLength="255"/>
+        </element>
+      </datatype>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="admin" domain="composite"/>
+    <privilege group="all" domain="composite" privileges="READ"/>
+  </security>
+  <dependency target="/shared/ASAssets/Utilities/repository/definitions/RepositoryDefinitionsRecursive" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1"></datatype>
+  </dependency>
+  <dependency target="/shared/ASAssets/Utilities/repository/getResourceLineageRecursive" type="PROCEDURE">
+    <datatype type="PROCEDURE" refId="1">
+      <element name="inSeqNum" direction="IN">
+        <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      </element>
+      <element name="inParentID" direction="IN">
+        <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      </element>
+      <element name="inResourceDepth" direction="IN">
+        <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      </element>
+      <element name="inLineageResourceIdList" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="resourcePath" direction="IN">
+        <datatype referenceDefinitionSet="/shared/ASAssets/Utilities/TypeDefinitions" referenceType="pathType" type="STRING" maxLength="4000"/>
+      </element>
+      <element name="resourceType" direction="IN">
+        <datatype type="STRING" maxLength="255"/>
+      </element>
+      <element name="excludePathsList" direction="IN">
+        <datatype type="STRING" maxLength="2147483647"/>
+      </element>
+      <element name="datasourceAncestor" direction="IN">
+        <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      </element>
+      <element name="inIgnoreResourceDoesNotExist" direction="IN">
+        <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+      </element>
+      <element name="resourceTreeList" direction="OUT">
+        <datatype type="TABLE" refId="2">
+          <element name="seqNum">
+            <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+          </element>
+          <element name="resourceID">
+            <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+          </element>
+          <element name="parentID">
+            <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+          </element>
+          <element name="resDepth">
+            <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+          </element>
+          <element name="treeType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="resName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="resPath">
+            <datatype referenceDefinitionSet="/shared/ASAssets/Utilities/TypeDefinitions" referenceType="pathType" type="STRING" maxLength="4000"/>
+          </element>
+          <element name="resType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="subType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="enabled">
+            <datatype type="INTEGER" minValue="0" maxValue="1"/>
+          </element>
+          <element name="dsID">
+            <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+          </element>
+          <element name="dsResName">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="dsResPath">
+            <datatype referenceDefinitionSet="/shared/ASAssets/Utilities/TypeDefinitions" referenceType="pathType" type="STRING" maxLength="4000"/>
+          </element>
+          <element name="dsResType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="dsResSubType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+          <element name="dsEnabled">
+            <datatype type="INTEGER" minValue="0" maxValue="1"/>
+          </element>
+          <element name="dsChildCount">
+            <datatype type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+          </element>
+          <element name="dataSourceType">
+            <datatype type="STRING" maxLength="255"/>
+          </element>
+        </datatype>
+      </element>
+    </datatype>
+  </dependency>
+  <attribute name="Script" type="STRING">/* 
+	displayLineageTree:
+	-- Data Virtualization Best Practices --
+
+	Return the Data Lineage for a given resource path.   The resource must **not** be a container (folder) type
+	but an actual resource such as a VIEW, PROCEDURE, etc.  Start at the parent and traverse down through the 
+	layers until no more resources can be found that are bound to the parent or children of the parent.  Think 
+	of this as a list of the parent and it&apos;s children.  Calculate the Parent ID for each row in the return cursor.  
+	This procedure invokes getResourceLineageParent() to recursively walk the dependent tree. 
+ 
+	The first row is the parent and the id=0 and the parentId is null.  
+	The parentId points back to an id in order to provide procedure traceability.
+
+	Input:
+   		resourcePath - CIS source path to an actual resource
+			Values: e.g. /shared/examples/CompositeView [this is a SQL VIEW.]
+		resourceType - Type of CIS resource to be created.  It is null on the first invocation.
+			Values: see &quot;TYPES / SUBTYPES&quot; listing below.  e.g. TABLE
+		excludePathsList	- comma separated list of resource paths or partials paths to exclude
+			Values: /shared/ASAssets/Utilities,/lib
+		datasourceAncestor	- flag to get the data source ancestor 
+			Values: 1=yes, 0=no
+		inIgnoreResourceDoesNotExist - Ignore any resources that do not exist
+			Values: 1 = Bypass the processing of that resource.  0 = (default) Do not ignore any resources.  Throw an error that the resource does not exist.
+	Output:
+		DECLARE PUBLIC TYPE lineageTreeType ROW (
+			seqNum					INTEGER, -- generated sequence number
+			resourceID				INTEGER, -- resource id from CIS
+			parentID				INTEGER, -- how this row relates to resourceID
+			resDepth				INTEGER, -- depth as related to the start
+			treeType				VARCHAR(255), -- Parent, Child
+			resName 				VARCHAR(255), -- resource name
+			resPath 				TypeDefinitions.pathType, -- resource path
+			resType					VARCHAR(255), -- resource type
+			subType					VARCHAR(255), -- resource sub type
+			enabled					BIT, -- enabled or not (1 or 0)
+			dsID					INTEGER, -- datasource ancestor id
+			dsResName				VARCHAR(255), -- datasource ancestor name
+			dsResPath				TypeDefinitions.pathType, -- datasource ancestor path
+			dsResType 				VARCHAR(255), -- datasource ancestor type
+			dsResSubType			VARCHAR(255), -- datasource ancestor sub type
+			dsEnabled				BIT,  -- datasource ancestor enabled (1 or 0)
+			dsChildCount			INTEGER --  datasource ancestor number of children
+		);
+
+Values: example:
+seqNum	resourceID	parentID	resDepth	treeType	resName							resPath												resType		subType					enabled	dsID	dsResName		dsResPath						dsResType	dsResSubType			dsEnabled	dsChildCount
+1		20587		[NULL]		0			Parent		CompositeView					/shared/examples/CompositeView						TABLE		SQL_TABLE				1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+2		20658		20587		1			Child		ViewOrder						/shared/examples/ViewOrder							TABLE		SQL_TABLE				1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+3		20741		20658		2			Child		customers						/shared/examples/ds_orders/customers				TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+4		20679		20658		2			Child		orderdetails					/shared/examples/ds_orders/orderdetails				TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+5		20711		20658		2			Child		orders							/shared/examples/ds_orders/orders					TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+6		20670		20711		3			Child		ds_orders						/shared/examples/ds_orders							DATA_SOURCE	RELATIONAL_DATA_SOURCE	1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+7		20729		20670		4			Child		cache_status					/shared/examples/ds_orders/cache_status				TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+8		20671		20670		4			Child		cache_tracking					/shared/examples/ds_orders/cache_tracking			TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+9		20689		20711		3			Child		orders_cache					/shared/examples/ds_orders/orders_cache				TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+10		20774		20587		1			Child		ViewSales						/shared/examples/ViewSales							TABLE		SQL_TABLE				1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+11		20679		20774		2			Child		orderdetails					/shared/examples/ds_orders/orderdetails				TABLE		DATABASE_TABLE			1		20670	ds_orders		/shared/examples/ds_orders		DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			7
+12		20786		20774		2			Child		productCatalog_Transformation	/shared/examples/productCatalog_Transformation		PROCEDURE	XSLT_TRANSFORM_PROCEDURE 1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+13		20757		20786		3			Child		productCatalog.xml				/shared/examples/ds_XML/productCatalog.xml			TREE		XML_FILE_TREE			1		20756	ds_XML			/shared/examples/ds_XML			DATA_SOURCE	XML_FILE_DATA_SOURCE	1			1
+14		20763		20587		1			Child		ViewSupplier					/shared/examples/ViewSupplier						TABLE		SQL_TABLE				1		[NULL]	[NULL]			[NULL]							[NULL]		[NULL]					[NULL]		[NULL]
+15		20606		20763		2			Child		inventorytransactions			/shared/examples/ds_inventory/inventorytransactions	TABLE		DATABASE_TABLE			1		20605	ds_inventory	/shared/examples/ds_inventory	DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			4
+16		20619		20763		2			Child		purchaseorders					/shared/examples/ds_inventory/purchaseorders		TABLE		DATABASE_TABLE			1		20605	ds_inventory	/shared/examples/ds_inventory	DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			4
+17		20644		20763		2			Child		suppliers						/shared/examples/ds_inventory/suppliers				TABLE		DATABASE_TABLE			1		20605	ds_inventory	/shared/examples/ds_inventory	DATA_SOURCE	RELATIONAL_DATA_SOURCE	1			4
+
+	Exceptions:  none
+
+	Modified Date:	Modified By:		CSW Version:	Reason:
+	08/02/2010		Mike Tinius			5.1.0			Created new
+	11/15/2012		Mike Tinius        	5.2.0			Expanded result cursor.
+	03/20/2014		Mike Tinius			6.2.0			Added parameter to getResourceListRecursive to support recursion detection.
+
+	(c) 2017 TIBCO Software Inc.  All rights reserved.
+	
+	Except as specified below, this software is licensed pursuant to the Eclipse Public License v. 1.0.
+	The details can be found in the file LICENSE.
+	
+	The following proprietary files are included as a convenience, and may not be used except pursuant
+	to valid license to Composite Information Server or TIBCO® Data Virtualization Server:
+	csadmin-XXXX.jar, csarchive-XXXX.jar, csbase-XXXX.jar, csclient-XXXX.jar, cscommon-XXXX.jar,
+	csext-XXXX.jar, csjdbc-XXXX.jar, csserverutil-XXXX.jar, csserver-XXXX.jar, cswebapi-XXXX.jar,
+	and customproc-XXXX.jar (where -XXXX is an optional version number).  Any included third party files
+	are licensed under the terms contained in their own accompanying LICENSE files, generally named .LICENSE.txt.
+	
+	This software is licensed AS-IS. Support for this software is not covered by standard maintenance agreements with TIBCO.
+	If you would like to obtain assistance with this software, such assistance may be obtained through a separate paid consulting
+	agreement with TIBCO.
+
+*/
+PROCEDURE displayLineageTree(
+    IN resourcePath 				VARCHAR(4000), 	-- /shared/examples/ViewSales
+	IN resourceType 				VARCHAR, 		-- TABLE
+	IN excludePathsList				LONGVARCHAR, 	-- comma separated list of resource paths or partials paths to exclude
+	IN datasourceAncestor			INTEGER, 		-- flag to get the data source ancestory (1=yes, 0=no)
+	IN inIgnoreResourceDoesNotExist INTEGER, 		-- Ignore any resources that do not exist
+													-- 1 = Bypass the processing of that resource.
+													-- 0 = (default) Do not ignore any resources.  Throw an error that the resource does not exist.
+	OUT resourceTreeList 	CURSOR /shared/ASAssets/Utilities/repository/definitions/RepositoryDefinitionsRecursive.lineageTreeType
+)
+BEGIN
+	DECLARE datasourceAncestor_ 		 INTEGER DEFAULT datasourceAncestor;
+
+	if (datasourceAncestor_ is null) then
+		set datasourceAncestor_ = 0;
+	end if;
+
+	OPEN resourceTreeList FOR 
+		SELECT *
+            FROM      
+                /shared/ASAssets/Utilities/repository/getResourceLineageRecursive(null, null, null, null, resourcePath, resourceType, excludePathsList, datasourceAncestor_, inIgnoreResourceDoesNotExist) getResourceLineageRecursive;
+END</attribute>
+  <attribute name="creationDate" type="LONG">1377564320207</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">false</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1560602113064</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="model" type="NULL"/>
+  <attribute name="native_only" type="STRING">false</attribute>
+  <attribute name="references" type="NULL"/>
+</metadata>
