@@ -1,0 +1,99 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:45e4de9d-71db-41ee-b3ed-ac2016da64d9 -->
+<metadata name="Definitions" path="/shared/ddd/Definitions" type="DEFINITION_SET" subtype="WSDL_DEFINITION_SET" changeToken="0">
+  <definitions>
+    <definition name="{urn:uvindexalert}UVIndexAlertResult" type="TYPE">
+      <attribute name="creationDate" type="LONG">0</attribute>
+      <attribute name="creatorUserDomain" type="STRING"/>
+      <attribute name="creatorUserId" type="INTEGER">0</attribute>
+      <attribute name="creatorUserName" type="STRING"/>
+      <attribute name="lastModifiedDate" type="LONG">0</attribute>
+      <attribute name="lastModifiedUserDomain" type="STRING"/>
+      <attribute name="lastModifiedUserId" type="INTEGER">0</attribute>
+      <attribute name="lastModifiedUserName" type="STRING"/>
+      <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">0</attribute>
+    </definition>
+  </definitions>
+  <security>
+    <owner user="ben" domain="composite"/>
+    <privilege user="ben" domain="composite" privileges="READ WRITE"/>
+  </security>
+  <attribute name="creationDate" type="LONG">1573598699382</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">260101</attribute>
+  <attribute name="creatorUserName" type="STRING">ben</attribute>
+  <attribute name="explicitly.designed" type="BOOLEAN">true</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1576128019524</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">260101</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1573598699382</attribute>
+  <attribute name="selectionState" type="INTEGER">1</attribute>
+  <attribute name="sourceText" type="STRING">&lt;!-- Published by JAX-WS RI (http://jax-ws.java.net). RI&apos;s version is JAX-WS RI 2.2.10-b140319.1121 svn-revision#7b34660d6bc70e587e8ec81a17e4d76af68816a6. --&gt;&lt;WL5G3N0:definitions xmlns:WL5G3N0=&quot;http://schemas.xmlsoap.org/wsdl/&quot; xmlns:WL5G3N1=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:WL5G3N2=&quot;urn:uvindexalert&quot; xmlns:WL5G3N3=&quot;http://schemas.xmlsoap.org/wsdl/soap/&quot; targetNamespace=&quot;urn:uvindexalert&quot;&gt;
+  &lt;WL5G3N0:types&gt;
+    &lt;xsd:schema xmlns=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:apachesoap=&quot;http://xml.apache.org/xml-soap&quot; xmlns:impl=&quot;urn:uvindexalert&quot; xmlns:intf=&quot;urn:uvindexalert&quot; xmlns:soapenc=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; xmlns:wsdl=&quot;http://schemas.xmlsoap.org/wsdl/&quot; xmlns:wsdlsoap=&quot;http://schemas.xmlsoap.org/wsdl/soap/&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; targetNamespace=&quot;urn:uvindexalert&quot;&gt;
+      &lt;xsd:import namespace=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;/&gt;
+      &lt;xsd:complexType name=&quot;UVIndexAlertResult&quot;&gt;
+        &lt;xsd:sequence&gt;
+          &lt;xsd:element name=&quot;alert&quot; type=&quot;xsd:boolean&quot;/&gt;
+          &lt;xsd:element name=&quot;forecastDate&quot; nillable=&quot;true&quot; type=&quot;xsd:dateTime&quot;/&gt;
+          &lt;xsd:element name=&quot;index&quot; type=&quot;xsd:int&quot;/&gt;
+        &lt;/xsd:sequence&gt;
+      &lt;/xsd:complexType&gt;
+    &lt;/xsd:schema&gt;
+  &lt;/WL5G3N0:types&gt;
+  &lt;WL5G3N0:message name=&quot;getUVIndexAlertByZipCodeRequest&quot;&gt;
+    &lt;WL5G3N0:part name=&quot;in0&quot; type=&quot;WL5G3N1:string&quot;/&gt;
+  &lt;/WL5G3N0:message&gt;
+  &lt;WL5G3N0:message name=&quot;getUVIndexAlertByCityStateRequest&quot;&gt;
+    &lt;WL5G3N0:part name=&quot;in0&quot; type=&quot;WL5G3N1:string&quot;/&gt;
+    &lt;WL5G3N0:part name=&quot;in1&quot; type=&quot;WL5G3N1:string&quot;/&gt;
+  &lt;/WL5G3N0:message&gt;
+  &lt;WL5G3N0:message name=&quot;getUVIndexAlertByZipCodeResponse&quot;&gt;
+    &lt;WL5G3N0:part name=&quot;getUVIndexAlertByZipCodeReturn&quot; type=&quot;WL5G3N2:UVIndexAlertResult&quot;/&gt;
+  &lt;/WL5G3N0:message&gt;
+  &lt;WL5G3N0:message name=&quot;getUVIndexAlertByCityStateResponse&quot;&gt;
+    &lt;WL5G3N0:part name=&quot;getUVIndexAlertByCityStateReturn&quot; type=&quot;WL5G3N2:UVIndexAlertResult&quot;/&gt;
+  &lt;/WL5G3N0:message&gt;
+  &lt;WL5G3N0:portType name=&quot;UVIndexAlertPortType&quot;&gt;
+    &lt;WL5G3N0:operation name=&quot;getUVIndexAlertByZipCode&quot; parameterOrder=&quot;in0&quot;&gt;
+      &lt;WL5G3N0:input message=&quot;WL5G3N2:getUVIndexAlertByZipCodeRequest&quot; name=&quot;getUVIndexAlertByZipCodeRequest&quot;/&gt;
+      &lt;WL5G3N0:output message=&quot;WL5G3N2:getUVIndexAlertByZipCodeResponse&quot; name=&quot;getUVIndexAlertByZipCodeResponse&quot;/&gt;
+    &lt;/WL5G3N0:operation&gt;
+    &lt;WL5G3N0:operation name=&quot;getUVIndexAlertByCityState&quot; parameterOrder=&quot;in0 in1&quot;&gt;
+      &lt;WL5G3N0:input message=&quot;WL5G3N2:getUVIndexAlertByCityStateRequest&quot; name=&quot;getUVIndexAlertByCityStateRequest&quot;/&gt;
+      &lt;WL5G3N0:output message=&quot;WL5G3N2:getUVIndexAlertByCityStateResponse&quot; name=&quot;getUVIndexAlertByCityStateResponse&quot;/&gt;
+    &lt;/WL5G3N0:operation&gt;
+  &lt;/WL5G3N0:portType&gt;
+  &lt;WL5G3N0:binding name=&quot;UVIndexAlertPortSoapBinding&quot; type=&quot;WL5G3N2:UVIndexAlertPortType&quot;&gt;
+    &lt;WL5G3N3:binding style=&quot;rpc&quot; transport=&quot;http://schemas.xmlsoap.org/soap/http&quot;/&gt;
+    &lt;WL5G3N0:operation name=&quot;getUVIndexAlertByZipCode&quot;&gt;
+      &lt;WL5G3N3:operation/&gt;
+      &lt;WL5G3N0:input name=&quot;getUVIndexAlertByZipCodeRequest&quot;&gt;
+        &lt;WL5G3N3:body encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; namespace=&quot;urn:uvindexalert&quot; use=&quot;literal&quot;/&gt;
+      &lt;/WL5G3N0:input&gt;
+      &lt;WL5G3N0:output name=&quot;getUVIndexAlertByZipCodeResponse&quot;&gt;
+        &lt;WL5G3N3:body encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; namespace=&quot;urn:uvindexalert&quot; use=&quot;literal&quot;/&gt;
+      &lt;/WL5G3N0:output&gt;
+    &lt;/WL5G3N0:operation&gt;
+    &lt;WL5G3N0:operation name=&quot;getUVIndexAlertByCityState&quot;&gt;
+      &lt;WL5G3N3:operation/&gt;
+      &lt;WL5G3N0:input name=&quot;getUVIndexAlertByCityStateRequest&quot;&gt;
+        &lt;WL5G3N3:body encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; namespace=&quot;urn:uvindexalert&quot; use=&quot;literal&quot;/&gt;
+      &lt;/WL5G3N0:input&gt;
+      &lt;WL5G3N0:output name=&quot;getUVIndexAlertByCityStateResponse&quot;&gt;
+        &lt;WL5G3N3:body encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; namespace=&quot;urn:uvindexalert&quot; use=&quot;literal&quot;/&gt;
+      &lt;/WL5G3N0:output&gt;
+    &lt;/WL5G3N0:operation&gt;
+  &lt;/WL5G3N0:binding&gt;
+  &lt;WL5G3N0:service name=&quot;UVIndexAlertPort&quot;&gt;
+    &lt;WL5G3N0:port binding=&quot;WL5G3N2:UVIndexAlertPortSoapBinding&quot; name=&quot;UVIndexAlertPort&quot;&gt;
+      &lt;WL5G3N3:address location=&quot;https://iaspub.epa.gov:443/uvindexalert/services/UVIndexAlertPort&quot;/&gt;
+    &lt;/WL5G3N0:port&gt;
+  &lt;/WL5G3N0:service&gt;
+&lt;/WL5G3N0:definitions&gt;
+</attribute>
+  <attribute name="sources" type="LIST">
+    <list type="OBJECT">rO0ABXNyADVjb20uY29tcG9zaXRlc3cuY29tbW9uLnJlcG9zaXRvcnkuRGVmaW5pdGlvblNldFNvdXJjZVYpv6Zr2hqJAgACTAAIbG9jYXRpb250ABJMamF2YS9sYW5nL1N0cmluZztMAApzb3VyY2VUZXh0cQB+AAF4cHQAEFVWSW5kZXhBbGVydFBvcnR0EME8P3htbCB2ZXJzaW9uPSIxLjAiIGVuY29kaW5nPSJVVEYtOCI/Pgo8V0w1RzNOMDpkZWZpbml0aW9ucyB0YXJnZXROYW1lc3BhY2U9InVybjp1dmluZGV4YWxlcnQiIHhtbG5zPSIiIHhtbG5zOldMNUczTjA9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzZGwvIiB4bWxuczpXTDVHM04xPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYSIgeG1sbnM6V0w1RzNOMj0idXJuOnV2aW5kZXhhbGVydCIgeG1sbnM6V0w1RzNOMz0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3NkbC9zb2FwLyI+CiAgPFdMNUczTjA6dHlwZXM+CiAgICA8eHNkOnNjaGVtYSB0YXJnZXROYW1lc3BhY2U9InVybjp1dmluZGV4YWxlcnQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYSIgeG1sbnM6YXBhY2hlc29hcD0iaHR0cDovL3htbC5hcGFjaGUub3JnL3htbC1zb2FwIiB4bWxuczppbXBsPSJ1cm46dXZpbmRleGFsZXJ0IiB4bWxuczppbnRmPSJ1cm46dXZpbmRleGFsZXJ0IiB4bWxuczpzb2FwZW5jPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6d3NkbD0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3NkbC8iIHhtbG5zOndzZGxzb2FwPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93c2RsL3NvYXAvIiB4bWxuczp4c2Q9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hIj4KICAgICAgPHhzZDppbXBvcnQgbmFtZXNwYWNlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIvPgogICAgICA8eHNkOmNvbXBsZXhUeXBlIG5hbWU9IlVWSW5kZXhBbGVydFJlc3VsdCI+CiAgICAgICAgPHhzZDpzZXF1ZW5jZT4KICAgICAgICAgIDx4c2Q6ZWxlbWVudCBuYW1lPSJhbGVydCIgdHlwZT0ieHNkOmJvb2xlYW4iLz4KICAgICAgICAgIDx4c2Q6ZWxlbWVudCBuYW1lPSJmb3JlY2FzdERhdGUiIG5pbGxhYmxlPSJ0cnVlIiB0eXBlPSJ4c2Q6ZGF0ZVRpbWUiLz4KICAgICAgICAgIDx4c2Q6ZWxlbWVudCBuYW1lPSJpbmRleCIgdHlwZT0ieHNkOmludCIvPgogICAgICAgIDwveHNkOnNlcXVlbmNlPgogICAgICA8L3hzZDpjb21wbGV4VHlwZT4KICAgIDwveHNkOnNjaGVtYT4KICA8L1dMNUczTjA6dHlwZXM+CiAgPFdMNUczTjA6bWVzc2FnZSBuYW1lPSJnZXRVVkluZGV4QWxlcnRCeUNpdHlTdGF0ZVJlc3BvbnNlIj4KICAgIDxXTDVHM04wOnBhcnQgbmFtZT0iZ2V0VVZJbmRleEFsZXJ0QnlDaXR5U3RhdGVSZXR1cm4iIHR5cGU9IldMNUczTjI6VVZJbmRleEFsZXJ0UmVzdWx0Ij4KICAgIDwvV0w1RzNOMDpwYXJ0PgogIDwvV0w1RzNOMDptZXNzYWdlPgogIDxXTDVHM04wOm1lc3NhZ2UgbmFtZT0iZ2V0VVZJbmRleEFsZXJ0QnlaaXBDb2RlUmVzcG9uc2UiPgogICAgPFdMNUczTjA6cGFydCBuYW1lPSJnZXRVVkluZGV4QWxlcnRCeVppcENvZGVSZXR1cm4iIHR5cGU9IldMNUczTjI6VVZJbmRleEFsZXJ0UmVzdWx0Ij4KICAgIDwvV0w1RzNOMDpwYXJ0PgogIDwvV0w1RzNOMDptZXNzYWdlPgogIDxXTDVHM04wOm1lc3NhZ2UgbmFtZT0iZ2V0VVZJbmRleEFsZXJ0QnlDaXR5U3RhdGVSZXF1ZXN0Ij4KICAgIDxXTDVHM04wOnBhcnQgbmFtZT0iaW4wIiB0eXBlPSJXTDVHM04xOnN0cmluZyI+CiAgICA8L1dMNUczTjA6cGFydD4KICAgIDxXTDVHM04wOnBhcnQgbmFtZT0iaW4xIiB0eXBlPSJXTDVHM04xOnN0cmluZyI+CiAgICA8L1dMNUczTjA6cGFydD4KICA8L1dMNUczTjA6bWVzc2FnZT4KICA8V0w1RzNOMDptZXNzYWdlIG5hbWU9ImdldFVWSW5kZXhBbGVydEJ5WmlwQ29kZVJlcXVlc3QiPgogICAgPFdMNUczTjA6cGFydCBuYW1lPSJpbjAiIHR5cGU9IldMNUczTjE6c3RyaW5nIj4KICAgIDwvV0w1RzNOMDpwYXJ0PgogIDwvV0w1RzNOMDptZXNzYWdlPgogIDxXTDVHM04wOnBvcnRUeXBlIG5hbWU9IlVWSW5kZXhBbGVydFBvcnRUeXBlIj4KICAgIDxXTDVHM04wOm9wZXJhdGlvbiBuYW1lPSJnZXRVVkluZGV4QWxlcnRCeVppcENvZGUiIHBhcmFtZXRlck9yZGVyPSJpbjAiPgogICAgICA8V0w1RzNOMDppbnB1dCBuYW1lPSJnZXRVVkluZGV4QWxlcnRCeVppcENvZGVSZXF1ZXN0IiBtZXNzYWdlPSJXTDVHM04yOmdldFVWSW5kZXhBbGVydEJ5WmlwQ29kZVJlcXVlc3QiPgogICAgPC9XTDVHM04wOmlucHV0PgogICAgICA8V0w1RzNOMDpvdXRwdXQgbmFtZT0iZ2V0VVZJbmRleEFsZXJ0QnlaaXBDb2RlUmVzcG9uc2UiIG1lc3NhZ2U9IldMNUczTjI6Z2V0VVZJbmRleEFsZXJ0QnlaaXBDb2RlUmVzcG9uc2UiPgogICAgPC9XTDVHM04wOm91dHB1dD4KICAgIDwvV0w1RzNOMDpvcGVyYXRpb24+CiAgICA8V0w1RzNOMDpvcGVyYXRpb24gbmFtZT0iZ2V0VVZJbmRleEFsZXJ0QnlDaXR5U3RhdGUiIHBhcmFtZXRlck9yZGVyPSJpbjAgaW4xIj4KICAgICAgPFdMNUczTjA6aW5wdXQgbmFtZT0iZ2V0VVZJbmRleEFsZXJ0QnlDaXR5U3RhdGVSZXF1ZXN0IiBtZXNzYWdlPSJXTDVHM04yOmdldFVWSW5kZXhBbGVydEJ5Q2l0eVN0YXRlUmVxdWVzdCI+CiAgICA8L1dMNUczTjA6aW5wdXQ+CiAgICAgIDxXTDVHM04wOm91dHB1dCBuYW1lPSJnZXRVVkluZGV4QWxlcnRCeUNpdHlTdGF0ZVJlc3BvbnNlIiBtZXNzYWdlPSJXTDVHM04yOmdldFVWSW5kZXhBbGVydEJ5Q2l0eVN0YXRlUmVzcG9uc2UiPgogICAgPC9XTDVHM04wOm91dHB1dD4KICAgIDwvV0w1RzNOMDpvcGVyYXRpb24+CiAgPC9XTDVHM04wOnBvcnRUeXBlPgogIDxXTDVHM04wOmJpbmRpbmcgbmFtZT0iVVZJbmRleEFsZXJ0UG9ydFNvYXBCaW5kaW5nIiB0eXBlPSJXTDVHM04yOlVWSW5kZXhBbGVydFBvcnRUeXBlIj4KICAgIDxXTDVHM04zOmJpbmRpbmcgc3R5bGU9InJwYyIgdHJhbnNwb3J0PSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2h0dHAiLz4KICAgIDxXTDVHM04wOm9wZXJhdGlvbiBuYW1lPSJnZXRVVkluZGV4QWxlcnRCeVppcENvZGUiPgogICAgICA8V0w1RzNOMzpvcGVyYXRpb24vPgogICAgICA8V0w1RzNOMDppbnB1dCBuYW1lPSJnZXRVVkluZGV4QWxlcnRCeVppcENvZGVSZXF1ZXN0Ij4KICAgICAgICA8V0w1RzNOMzpib2R5IHVzZT0ibGl0ZXJhbCIgZW5jb2RpbmdTdHlsZT0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbmNvZGluZy8iIG5hbWVzcGFjZT0idXJuOnV2aW5kZXhhbGVydCIvPgogICAgICA8L1dMNUczTjA6aW5wdXQ+CiAgICAgIDxXTDVHM04wOm91dHB1dCBuYW1lPSJnZXRVVkluZGV4QWxlcnRCeVppcENvZGVSZXNwb25zZSI+CiAgICAgICAgPFdMNUczTjM6Ym9keSB1c2U9ImxpdGVyYWwiIGVuY29kaW5nU3R5bGU9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW5jb2RpbmcvIiBuYW1lc3BhY2U9InVybjp1dmluZGV4YWxlcnQiLz4KICAgICAgPC9XTDVHM04wOm91dHB1dD4KICAgIDwvV0w1RzNOMDpvcGVyYXRpb24+CiAgICA8V0w1RzNOMDpvcGVyYXRpb24gbmFtZT0iZ2V0VVZJbmRleEFsZXJ0QnlDaXR5U3RhdGUiPgogICAgICA8V0w1RzNOMzpvcGVyYXRpb24vPgogICAgICA8V0w1RzNOMDppbnB1dCBuYW1lPSJnZXRVVkluZGV4QWxlcnRCeUNpdHlTdGF0ZVJlcXVlc3QiPgogICAgICAgIDxXTDVHM04zOmJvZHkgdXNlPSJsaXRlcmFsIiBlbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgbmFtZXNwYWNlPSJ1cm46dXZpbmRleGFsZXJ0Ii8+CiAgICAgIDwvV0w1RzNOMDppbnB1dD4KICAgICAgPFdMNUczTjA6b3V0cHV0IG5hbWU9ImdldFVWSW5kZXhBbGVydEJ5Q2l0eVN0YXRlUmVzcG9uc2UiPgogICAgICAgIDxXTDVHM04zOmJvZHkgdXNlPSJsaXRlcmFsIiBlbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgbmFtZXNwYWNlPSJ1cm46dXZpbmRleGFsZXJ0Ii8+CiAgICAgIDwvV0w1RzNOMDpvdXRwdXQ+CiAgICA8L1dMNUczTjA6b3BlcmF0aW9uPgogIDwvV0w1RzNOMDpiaW5kaW5nPgogIDxXTDVHM04wOnNlcnZpY2UgbmFtZT0iVVZJbmRleEFsZXJ0UG9ydCI+CiAgICA8V0w1RzNOMDpwb3J0IG5hbWU9IlVWSW5kZXhBbGVydFBvcnQiIGJpbmRpbmc9IldMNUczTjI6VVZJbmRleEFsZXJ0UG9ydFNvYXBCaW5kaW5nIj4KICAgICAgPFdMNUczTjM6YWRkcmVzcyBsb2NhdGlvbj0iaHR0cHM6Ly9pYXNwdWIuZXBhLmdvdjo0NDMvdXZpbmRleGFsZXJ0L3NlcnZpY2VzL1VWSW5kZXhBbGVydFBvcnQiLz4KICAgIDwvV0w1RzNOMDpwb3J0PgogIDwvV0w1RzNOMDpzZXJ2aWNlPgo8L1dMNUczTjA6ZGVmaW5pdGlvbnM+Cg==</list>
+  </attribute>
+</metadata>

@@ -1,0 +1,90 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:45e4de9d-71db-41ee-b3ed-ac2016da64d9 -->
+<metadata name="getUVIndexAlertByCityState" path="/shared/ddd/UVIndexAlertPort/UVIndexAlertPort/getUVIndexAlertByCityState" type="PROCEDURE" subtype="OPERATION" changeToken="0">
+  <parameters>
+    <parameter name="inputMessage" direction="IN" nullable="false">
+      <datatype name="Envelope" namespace="http://schemas.xmlsoap.org/soap/envelope/" referenceType="{http://schemas.xmlsoap.org/soap/envelope/}Envelope" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="TYPE" componentName="{http://schemas.xmlsoap.org/soap/envelope/}Envelope">
+        <schemaDatatype>
+          <datatype name="Envelope" namespace="http://schemas.xmlsoap.org/soap/envelope/" type="TREE" refId="1">
+            <element name="Body" namespace="http://schemas.xmlsoap.org/soap/envelope/">
+              <datatype name="Body" namespace="http://schemas.xmlsoap.org/soap/envelope/" type="TREE" refId="2">
+                <element name="getUVIndexAlertByCityState" namespace="urn:uvindexalert" nullable="false">
+                  <datatype name="getUVIndexAlertByCityState" namespace="urn:uvindexalert" type="TREE" refId="3">
+                    <element name="in0" nullable="false">
+                      <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                    </element>
+                    <element name="in1" nullable="false">
+                      <datatype name="string" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="STRING" maxLength="2147483647"/>
+                    </element>
+                  </datatype>
+                </element>
+              </datatype>
+            </element>
+          </datatype>
+        </schemaDatatype>
+      </datatype>
+    </parameter>
+    <parameter name="outputMessage" direction="OUT" nullable="false">
+      <datatype name="Envelope" namespace="http://schemas.xmlsoap.org/soap/envelope/" referenceType="{http://schemas.xmlsoap.org/soap/envelope/}Envelope" type="XML" contentConstraint="SEQUENCE" schemaConstraint="ANY" componentType="TYPE" componentName="{http://schemas.xmlsoap.org/soap/envelope/}Envelope">
+        <schemaDatatype>
+          <datatype name="Envelope" namespace="http://schemas.xmlsoap.org/soap/envelope/" type="TREE" refId="1">
+            <element name="Body" namespace="http://schemas.xmlsoap.org/soap/envelope/">
+              <datatype name="Body" namespace="http://schemas.xmlsoap.org/soap/envelope/" type="TREE" refId="2">
+                <element name="getUVIndexAlertByCityStateResponse" namespace="urn:uvindexalert" nullable="false">
+                  <datatype name="getUVIndexAlertByCityStateResponse" namespace="urn:uvindexalert" type="TREE" refId="3">
+                    <element name="getUVIndexAlertByCityStateReturn" nullable="false">
+                      <datatype name="UVIndexAlertResult" namespace="urn:uvindexalert" superTypeName="anyType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" subType="COMPLEX_TYPE" type="TREE" refId="4">
+                        <element name="alert">
+                          <datatype name="boolean" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="INTEGER" minValue="0" maxValue="1"/>
+                        </element>
+                        <element name="forecastDate">
+                          <datatype name="dateTime" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="anySimpleType" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="DATETIME"/>
+                        </element>
+                        <element name="index">
+                          <datatype name="int" namespace="http://www.w3.org/2001/XMLSchema" superTypeName="long" superTypeNamespace="http://www.w3.org/2001/XMLSchema" type="INTEGER" minValue="-2147483648" maxValue="2147483647"/>
+                        </element>
+                      </datatype>
+                    </element>
+                  </datatype>
+                </element>
+              </datatype>
+            </element>
+          </datatype>
+        </schemaDatatype>
+      </datatype>
+    </parameter>
+  </parameters>
+  <security>
+    <owner user="ben" domain="composite"/>
+    <privilege user="ben" domain="composite" privileges="READ WRITE EXECUTE"/>
+  </security>
+  <attribute name="creationDate" type="LONG">1573598699413</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">260101</attribute>
+  <attribute name="creatorUserName" type="STRING">ben</attribute>
+  <attribute name="httpVerb" type="NULL"/>
+  <attribute name="inputMessagePartPaths" type="STRING_ARRAY">
+    <item>&quot;{http://schemas.xmlsoap.org/soap/envelope/}Body&quot;/{urn:uvindexalert}getUVIndexAlertByCityState/in0</item>
+    <item>&quot;{http://schemas.xmlsoap.org/soap/envelope/}Body&quot;/{urn:uvindexalert}getUVIndexAlertByCityState/in1</item>
+  </attribute>
+  <attribute name="inputMessageType" type="BYTE_ARRAY">EBAGAgAIAEUAbgB2AGUAbABvAHAAZQYkACkAaAB0AHQAcAA6AC8ALwBzAGMAaABlAG0AYQBzAC4AeABtAGwAcwBvAGEAcAAuAG8AcgBnAC8AcwBvAGEAcAAvAGUAbgB2AGUAbABvAHAAZQAvBioAMwB7AGgAdAB0AHAAOgAvAC8AcwBjAGgAZQBtAGEAcwAuAHgAbQBsAHMAbwBhAHAALgBvAHIAZwAvAHMAbwBhAHAALwBlAG4AdgBlAGwAbwBwAGUALwB9AEUAbgB2AGUAbABvAHAAZQMSAAAAAQY5ADMAewBoAHQAdABwADoALwAvAHMAYwBoAGUAbQBhAHMALgB4AG0AbABzAG8AYQBwAC4AbwByAGcALwBzAG8AYQBwAC8AZQBuAHYAZQBsAG8AcABlAC8AfQBFAG4AdgBlAGwAbwBwAGUDOgAAAAEIIxAfBgIACABFAG4AdgBlAGwAbwBwAGUGJAApAGgAdAB0AHAAOgAvAC8AcwBjAGgAZQBtAGEAcwAuAHgAbQBsAHMAbwBhAHAALgBvAHIAZwAvAHMAbwBhAHAALwBlAG4AdgBlAGwAbwBwAGUALwMSAAAAAgMSAAAAAgETAQkUAAAAARAhBhUABABCAG8AZAB5BiwAKQBoAHQAdABwADoALwAvAHMAYwBoAGUAbQBhAHMALgB4AG0AbABzAG8AYQBwAC4AbwByAGcALwBzAG8AYQBwAC8AZQBuAHYAZQBsAG8AcABlAC8DLwAAAAEDFgAAAAADGgAAAAEDGwAAAAEDIP////8DIgAAAAAIGRAfBgIABABCAG8AZAB5BiQAKQBoAHQAdABwADoALwAvAHMAYwBoAGUAbQBhAHMALgB4AG0AbABzAG8AYQBwAC4AbwByAGcALwBzAG8AYQBwAC8AZQBuAHYAZQBsAG8AcABlAC8DEgAAAAMDEgAAAAMBEwEJFAAAAAEQIQYVABoAZwBlAHQAVQBWAEkAbgBkAGUAeABBAGwAZQByAHQAQgB5AEMAaQB0AHkAUwB0AGEAdABlBiwAEAB1AHIAbgA6AHUAdgBpAG4AZABlAHgAYQBsAGUAcgB0Ay8AAAACAxYAAAAAAxoAAAABAxsAAAABAyD/////AyIAAAAACBkQHwYCABoAZwBlAHQAVQBWAEkAbgBkAGUAeABBAGwAZQByAHQAQgB5AEMAaQB0AHkAUwB0AGEAdABlBiQAEAB1AHIAbgA6AHUAdgBpAG4AZABlAHgAYQBsAGUAcgB0AxIAAAAEAxIAAAAEARMBCRQAAAACECEGFQADAGkAbgAwAy8AAAACAxYAAAAAAxoAAAABAxsAAAABAyD/////AyIAAAAACBkQLwMS///3aP////8QIQYVAAMAaQBuADEDLwAAAAIDFgAAAAADGgAAAAEDGwAAAAEDIP////8DIgAAAAAIGRAvAxL///do/////////////////////w==</attribute>
+  <attribute name="lastModifiedDate" type="LONG">1573598699413</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">260101</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">ben</attribute>
+  <attribute name="messageType" type="STRING">Text</attribute>
+  <attribute name="outputMessagePartPaths" type="STRING_ARRAY">
+    <item>&quot;{http://schemas.xmlsoap.org/soap/envelope/}Body&quot;/{urn:uvindexalert}getUVIndexAlertByCityStateResponse/getUVIndexAlertByCityStateReturn</item>
+  </attribute>
+  <attribute name="outputMessageType" type="BYTE_ARRAY">EBAGAgAIAEUAbgB2AGUAbABvAHAAZQYkACkAaAB0AHQAcAA6AC8ALwBzAGMAaABlAG0AYQBzAC4AeABtAGwAcwBvAGEAcAAuAG8AcgBnAC8AcwBvAGEAcAAvAGUAbgB2AGUAbABvAHAAZQAvBioAMwB7AGgAdAB0AHAAOgAvAC8AcwBjAGgAZQBtAGEAcwAuAHgAbQBsAHMAbwBhAHAALgBvAHIAZwAvAHMAbwBhAHAALwBlAG4AdgBlAGwAbwBwAGUALwB9AEUAbgB2AGUAbABvAHAAZQMSAAAAAQY5ADMAewBoAHQAdABwADoALwAvAHMAYwBoAGUAbQBhAHMALgB4AG0AbABzAG8AYQBwAC4AbwByAGcALwBzAG8AYQBwAC8AZQBuAHYAZQBsAG8AcABlAC8AfQBFAG4AdgBlAGwAbwBwAGUDOgAAAAEIIxAfBgIACABFAG4AdgBlAGwAbwBwAGUGJAApAGgAdAB0AHAAOgAvAC8AcwBjAGgAZQBtAGEAcwAuAHgAbQBsAHMAbwBhAHAALgBvAHIAZwAvAHMAbwBhAHAALwBlAG4AdgBlAGwAbwBwAGUALwMSAAAAAgMSAAAAAgETAQkUAAAAARAhBhUABABCAG8AZAB5BiwAKQBoAHQAdABwADoALwAvAHMAYwBoAGUAbQBhAHMALgB4AG0AbABzAG8AYQBwAC4AbwByAGcALwBzAG8AYQBwAC8AZQBuAHYAZQBsAG8AcABlAC8DLwAAAAEDFgAAAAADGgAAAAEDGwAAAAEDIP////8DIgAAAAAIGRAfBgIABABCAG8AZAB5BiQAKQBoAHQAdABwADoALwAvAHMAYwBoAGUAbQBhAHMALgB4AG0AbABzAG8AYQBwAC4AbwByAGcALwBzAG8AYQBwAC8AZQBuAHYAZQBsAG8AcABlAC8DEgAAAAMDEgAAAAMBEwEJFAAAAAEQIQYVACIAZwBlAHQAVQBWAEkAbgBkAGUAeABBAGwAZQByAHQAQgB5AEMAaQB0AHkAUwB0AGEAdABlAFIAZQBzAHAAbwBuAHMAZQYsABAAdQByAG4AOgB1AHYAaQBuAGQAZQB4AGEAbABlAHIAdAMvAAAAAgMWAAAAAAMaAAAAAQMbAAAAAQMg/////wMiAAAAAAgZEB8GAgAiAGcAZQB0AFUAVgBJAG4AZABlAHgAQQBsAGUAcgB0AEIAeQBDAGkAdAB5AFMAdABhAHQAZQBSAGUAcwBwAG8AbgBzAGUGJAAQAHUAcgBuADoAdQB2AGkAbgBkAGUAeABhAGwAZQByAHQDEgAAAAQDEgAAAAQBEwEJFAAAAAEQIQYVACAAZwBlAHQAVQBWAEkAbgBkAGUAeABBAGwAZQByAHQAQgB5AEMAaQB0AHkAUwB0AGEAdABlAFIAZQB0AHUAcgBuAy8AAAACAxYAAAAAAxoAAAABAxsAAAABAyD/////AyIAAAAACBkQHwYCABIAVQBWAEkAbgBkAGUAeABBAGwAZQByAHQAUgBlAHMAdQBsAHQGJAAQAHUAcgBuADoAdQB2AGkAbgBkAGUAeABhAGwAZQByAHQGJQAHAGEAbgB5AFQAeQBwAGUGKAAgAGgAdAB0AHAAOgAvAC8AdwB3AHcALgB3ADMALgBvAHIAZwAvADIAMAAwADEALwBYAE0ATABTAGMAaABlAG0AYQMrAAAADAMSAAAABQMSAAAABQETAQkUAAAAAxAhBhUABQBhAGwAZQByAHQDLwAAAAEDFgAAAAADGgAAAAEDGwAAAAEDIP////8DIgAAAAAIGRAvAxL///dV/////xAhBhUADABmAG8AcgBlAGMAYQBzAHQARABhAHQAZQMvAAAAAQMWAAAAAAMaAAAAAQMbAAAAAQMg/////wMiAAAAAAgZEC8DEv//91P/////ECEGFQAFAGkAbgBkAGUAeAMvAAAAAQMWAAAAAAMaAAAAAQMbAAAAAQMg/////wMiAAAAAAgZEC8DEv//92H//////////////////////////w==</attribute>
+  <attribute name="paramPaths" type="STRING_ARRAY">
+    <item>/</item>
+    <item>/</item>
+  </attribute>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1573598699413</attribute>
+  <attribute name="selectionState" type="INTEGER">2</attribute>
+  <attribute name="sourceName" type="STRING">getUVIndexAlertByCityState</attribute>
+  <attribute name="timeout" type="LONG">-1</attribute>
+  <attribute name="usePortMappings" type="BOOLEAN">true</attribute>
+  <attribute name="usePortPipelines" type="BOOLEAN">true</attribute>
+</metadata>
