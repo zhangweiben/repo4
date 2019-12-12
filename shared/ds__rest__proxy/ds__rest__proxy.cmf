@@ -1,0 +1,56 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!-- salt:740e949f-1344-4bfb-ac90-ad507adadaaf -->
+<metadata name="ds_rest_proxy" path="/shared/ds_rest_proxy" type="DATA_SOURCE" subtype="NONE" changeToken="0">
+  <security>
+    <owner user="admin" domain="composite"/>
+  </security>
+  <attribute name="BadgerFish" type="STRING">false</attribute>
+  <attribute name="JSONFormat" type="STRING">false</attribute>
+  <attribute name="OAuthConfig" type="NULL"/>
+  <attribute name="PackageName" type="STRING"/>
+  <attribute name="PrimitiveValue" type="STRING">false</attribute>
+  <attribute name="RestOperations" type="STRING">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;&lt;bindingModel&gt;&lt;portBindings&gt;&lt;portBinding xsi:type=&quot;restfulPortBinding&quot; serviceName=&quot;getBlock&quot; jsonWrappedTable=&quot;true&quot; jsonWrappedCursor=&quot;true&quot; jsonValidateXml=&quot;true&quot; jsonUseProcParamName=&quot;false&quot; jsonFieldAsString=&quot;false&quot; jsonBareValue=&quot;false&quot; enabled=&quot;false&quot; bindingStyles=&quot;&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;operationBindings&gt;&lt;operationBinding xsi:type=&quot;restfulProcedureBinding&quot; operationPathTemplate=&quot;/api?module=block&amp;amp;action=getblockreward&amp;amp;blockno=2165403&quot; httpMethod=&quot;GET&quot; resourceName=&quot;getBlock&quot; requestWrapperQName=&quot;&quot; parameterStyle=&quot;BARE&quot; responseWrapperQName=&quot;&quot;&gt;&lt;parameterBindings/&gt;&lt;/operationBinding&gt;&lt;/operationBindings&gt;&lt;/portBinding&gt;&lt;/portBindings&gt;&lt;/bindingModel&gt;</attribute>
+  <attribute name="accessToken" type="STRING"/>
+  <attribute name="authentication" type="STRING">BASIC</attribute>
+  <attribute name="autoAddChildren" type="BOOLEAN">true</attribute>
+  <attribute name="cacheStatusTable" type="STRING"/>
+  <attribute name="cacheTrackingTable" type="STRING"/>
+  <attribute name="creationDate" type="LONG">1567391816148</attribute>
+  <attribute name="creatorUserDomain" type="STRING">composite</attribute>
+  <attribute name="creatorUserId" type="INTEGER">-1973</attribute>
+  <attribute name="creatorUserName" type="STRING">admin</attribute>
+  <attribute name="domain" type="STRING"/>
+  <attribute name="driverName" type="STRING">REST</attribute>
+  <attribute name="environmentPassThrough" type="STRING"/>
+  <attribute name="execTimeout" type="LONG">0</attribute>
+  <attribute name="isPassThrough" type="STRING">Disabled</attribute>
+  <attribute name="jsonResponseWrapper" type="STRING"/>
+  <attribute name="keystore" type="MAP">
+    <item>
+      <key type="STRING">type</key>
+      <value type="STRING">jks</value>
+    </item>
+    <item>
+      <key type="STRING">data</key>
+      <value type="BYTE_ARRAY">/u3+7QAAAAIAAAABAAAAAgAJcmFqYWxpYXMxAAABbO/tWb4ABVguNTA5AAAFWTCCBVUwggQ9oAMCAQICEQDb66YcpI5hXT8uij6dUzEGMA0GCSqGSIb3DQEBCwUAMIGQMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRowGAYDVQQKExFDT01PRE8gQ0EgTGltaXRlZDE2MDQGA1UEAxMtQ09NT0RPIFJTQSBEb21haW4gVmFsaWRhdGlvbiBTZWN1cmUgU2VydmVyIENBMB4XDTE3MDgyMjAwMDAwMFoXDTIwMDgyMTIzNTk1OVowVDEhMB8GA1UECxMYRG9tYWluIENvbnRyb2wgVmFsaWRhdGVkMRQwEgYDVQQLEwtQb3NpdGl2ZVNTTDEZMBcGA1UEAxMQYXBpLmV0aGVyc2Nhbi5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANSCvizNOvIN5qjh3VEo0vy9KzK95FxBMjSh/z+55Q+VoMH/Y+pZNEsMgGJH0MtwtDQkwun9YdoCzeaZ16YvpdcOeNaY3cDT1R1bJLxgmuZpNUHlvQF+3oiza7Lhb8Lp2PlK0nJXnby8Fr5o590qw93L3/Q9v1EgfQerbqz71/vqi9NN+1TX/RdCdhLzjGto32JtExoyHfTBylzBjdFhEAskDhs/6k0gO676K75NCg5jY9xN+eeleLNKQoagEP9Ec0NoQ7SCr5otfQnJwZL9J66V1/QSpx8tm3zhhtSmZp/DoADi/b67dDkuOC7I5a+hGURnvacBe0lMewd1P6G7JRMCAwEAAaOCAeMwggHfMB8GA1UdIwQYMBaAFJCvajqUWgvYkOoSVnPfQ7Q6KNrnMB0GA1UdDgQWBBQqM3F7kQtTNLMAq5BNMd/SPwNV1DAOBgNVHQ8BAf8EBAMCBaAwDAYDVR0TAQH/BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwTwYDVR0gBEgwRjA6BgsrBgEEAbIxAQICBzArMCkGCCsGAQUFBwIBFh1odHRwczovL3NlY3VyZS5jb21vZG8uY29tL0NQUzAIBgZngQwBAgEwVAYDVR0fBE0wSzBJoEegRYZDaHR0cDovL2NybC5jb21vZG9jYS5jb20vQ09NT0RPUlNBRG9tYWluVmFsaWRhdGlvblNlY3VyZVNlcnZlckNBLmNybDCBhQYIKwYBBQUHAQEEeTB3ME8GCCsGAQUFBzAChkNodHRwOi8vY3J0LmNvbW9kb2NhLmNvbS9DT01PRE9SU0FEb21haW5WYWxpZGF0aW9uU2VjdXJlU2VydmVyQ0EuY3J0MCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5jb21vZG9jYS5jb20wMQYDVR0RBCowKIIQYXBpLmV0aGVyc2Nhbi5pb4IUd3d3LmFwaS5ldGhlcnNjYW4uaW8wDQYJKoZIhvcNAQELBQADggEBAGrECuPFxGng5K04EO9hrZ6fc9bkvtI9Tl/4bCqBk9dg0enJ1265/rscS6Oqv+78TGh4uR+H6VHTJum8VV0MpSun1XcUVdD0jkWJ7p31wH2XrDSjTyUNwhHAXCUHojpwoFqL2Ag+fuHJTUbnanekXXwPX3vsjcB7bTDVIc5+XZdEnd0mjWd1Q6CXmQHUQaG+XC+AtGkXH+JNctvGIcHKjVH91lMfy3BUMXD1HNAL0rUJQ0Hz0QedvyC41/7nZtbp5qrNz1OUCGak83uG1i/ICpBILH++1gZmLxwn2rAnupDzJN1KvQzQs2LTi5wkYmpV71GG/RAJr5A3hCSZqKjMX4PrA17uzDsGCY/q1zNCUQv/BUQkZw==</value>
+    </item>
+    <item>
+      <key type="STRING">password</key>
+      <value type="STRING">ENC(FIfz8vU/TiQcg4/WC0KJxQ==$oE6GSUdc1S3qDLFtLziy5g==)</value>
+    </item>
+  </attribute>
+  <attribute name="lastModifiedDate" type="LONG">1567393476421</attribute>
+  <attribute name="lastModifiedUserDomain" type="STRING">composite</attribute>
+  <attribute name="lastModifiedUserId" type="INTEGER">-1973</attribute>
+  <attribute name="lastModifiedUserName" type="STRING">admin</attribute>
+  <attribute name="login" type="STRING"/>
+  <attribute name="name" type="STRING">ds_rest_proxy</attribute>
+  <attribute name="persistPassword" type="BOOLEAN">true</attribute>
+  <attribute name="propertyPassThrough" type="STRING"/>
+  <attribute name="resourceModifiedDateOnSourceCISSite" type="LONG">1567391816148</attribute>
+  <attribute name="retrieveToken" type="STRING">true</attribute>
+  <attribute name="spn" type="STRING"/>
+  <attribute name="type" type="STRING">Rest</attribute>
+  <attribute name="url" type="STRING">https://api.etherscan.io</attribute>
+  <attribute name="userDeletedSet" type="SET"></attribute>
+</metadata>
